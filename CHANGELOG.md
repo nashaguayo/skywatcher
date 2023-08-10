@@ -8,3 +8,4 @@
 
 - Setup Project
 - Github pages deploy script
+- Pull Request template
