@@ -7,3 +7,4 @@
 ##### Added
 
 - Setup Project
+- Github pages deploy script
