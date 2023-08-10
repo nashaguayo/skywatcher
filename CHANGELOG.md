@@ -10,3 +10,4 @@
 - Github pages deploy script
 - Pull Request template
 - Vue Router
+- Added jest
