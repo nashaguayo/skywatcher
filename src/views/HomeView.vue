@@ -1,20 +1,17 @@
 <template>
   <div class="home-view">
-    <img src="@/assets/images/ui/logo.svg" />
-    <h1>SkyWatcher</h1>
-    <h2>The universe at the tip of your fingers</h2>
-    <span
-      >Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, nostrum?
-      Rerum voluptatum doloremque ex! Sunt dolorum sapiente dicta. Possimus ut
-      deleniti voluptas ad quisquam odit quas natus minima doloribus
-      ipsam?</span
-    >
+    <LandingHero />
   </div>
 </template>
 
 <script>
+import LandingHero from '@/components/home/LandingHero.vue';
+
 export default {
   name: 'HomeView',
+  components: {
+    LandingHero,
+  },
 };
 </script>
 
@@ -23,5 +20,8 @@ export default {
   background-image: url('@/assets/images/landing/hero.jpg');
   background-size: cover;
   background-position: center;
+  padding: 2rem;
+  padding-left: 4rem;
+  height: 100%;
 }
 </style>

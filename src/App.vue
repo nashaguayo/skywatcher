@@ -26,28 +26,45 @@
     url(@/assets/fonts/zilla-slab.ttf) format('truetype');
 }
 
+html {
+  --main-title-color: rgb(207, 207, 207);
+  --main-subtitle-color: rgb(230, 230, 230);
+  --main-text-color: rgb(230, 230, 230);
+}
+
 #app {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 body {
   margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 h1 {
-  margin: 0 0 1rem;
-  color: white;
+  margin: 0;
+  color: var(--main-title-color);
   font-family: 'Zilla Slab';
 }
 
+h3,
 h2 {
-  margin: 0 0 1rem;
-  color: white;
+  margin: 0;
+  color: var(--main-subtitle-color);
   font-family: 'Nanum';
 }
 
+a,
 span,
 p {
-  color: white;
+  margin: 0;
+  color: var(--main-text-color);
   font-family: 'Roboto Condensed';
 }
 </style>
