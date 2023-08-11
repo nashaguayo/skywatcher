@@ -34,8 +34,12 @@ export default {
   gap: 1rem;
   justify-content: center;
 
-  @media (min-width: $min-width-fourth-break) {
+  @media (min-width: $min-width-second-break) {
     gap: 2rem;
+  }
+
+  @media (min-width: $min-width-third-break) {
+    gap: 3rem;
   }
 
   .tunned-logo {
@@ -47,6 +51,10 @@ export default {
     @media (min-width: $min-width-second-break) {
       margin-top: 5rem;
       margin-left: -3.5rem;
+    }
+
+    @media (min-width: $min-width-third-break) {
+      margin-left: -5rem;
     }
 
     @media (min-width: $min-width-fourth-break) {
@@ -61,6 +69,10 @@ export default {
       @media (min-width: $min-width-second-break) {
         height: 5rem;
       }
+
+      @media (min-width: $min-width-third-break) {
+        height: 7.5rem;
+      }
     }
 
     h1 {
@@ -70,6 +82,12 @@ export default {
 
       @media (min-width: $min-width-second-break) {
         font-size: 5rem;
+        margin-left: -1.8rem;
+      }
+
+      @media (min-width: $min-width-third-break) {
+        margin-left: -3rem;
+        font-size: 8rem;
       }
     }
   }
@@ -78,11 +96,19 @@ export default {
     @media (min-width: $min-width-second-break) {
       font-size: 2rem;
     }
+
+    @media (min-width: $min-width-third-break) {
+      font-size: 3rem;
+    }
   }
 
   p {
     @media (min-width: $min-width-second-break) {
       font-size: 1.5rem;
+    }
+
+    @media (min-width: $min-width-third-break) {
+      font-size: 1.7rem;
     }
   }
 }
