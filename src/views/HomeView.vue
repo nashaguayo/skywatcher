@@ -9,6 +9,7 @@ import LandingHero from '@/components/home/LandingHero.vue';
 
 export default {
   name: 'HomeView',
+  title: 'Universe Explorer',
   components: {
     LandingHero,
   },
