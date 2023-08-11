@@ -4,6 +4,8 @@
 
 ##### Added
 
+- Landing page
+
 ##### Modified
 
 ##### Fixed
