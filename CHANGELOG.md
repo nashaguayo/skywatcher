@@ -1,13 +1,28 @@
 # SkyWatcher
 
----
-
-## [V0.1.0](https://github.com/nashaguayo/skywatcher/releases/tag/V0.1.0) (10-08-2023)
+## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/0.1.1...develop) (dd-mm-yyyy)
 
 ##### Added
 
-- Setup Project
+##### Modified
+
+##### Fixed
+
+---
+
+## [0.1.1](https://github.com/nashaguayo/skywatcher/compare/0.1.0...0.1.1) (10-08-2023)
+
+##### Added
+
 - Github pages deploy script
 - Pull Request template
 - Vue Router
 - Added jest
+
+---
+
+## [0.1.0](https://github.com/nashaguayo/skywatcher/releases/tag/0.1.0) (10-08-2023)
+
+##### Added
+
+- Setup Project
