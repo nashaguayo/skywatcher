@@ -1,9 +1,11 @@
 <template>
   <div class="landing-hero">
-    <div class="tunned-logo">
-      <img src="@/assets/images/ui/logo.svg" />
-      <h1>SkyWatcher</h1>
-    </div>
+    <transition name="skywatcher" appear>
+      <div class="tunned-logo">
+        <img src="@/assets/images/ui/logo.svg" />
+        <h1>SkyWatcher</h1>
+      </div>
+    </transition>
     <h2>The universe at the tip of your fingers</h2>
     <div class="description">
       <p>This webapp was built by a universe fan.</p>
@@ -131,6 +133,21 @@ export default {
     @media (min-width: $min-width-third-break) {
       font-size: 1.7rem;
     }
+  }
+}
+
+.skywatcher-enter-active {
+  animation: bounce-less-in 1s ease-in-out;
+}
+
+@keyframes bounce-less-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: skew(10deg);
   }
 }
 </style>
