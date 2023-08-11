@@ -5,6 +5,7 @@
 ##### Added
 
 - Landing page
+- Missing deploy command
 
 ##### Modified
 
