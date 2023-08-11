@@ -1,6 +1,9 @@
 <template>
   <div class="landing-hero">
-    <TunnedLogo class="logo" />
+    <div class="tunned-logo">
+      <img src="@/assets/images/ui/logo.svg" />
+      <h1>SkyWatcher</h1>
+    </div>
     <h2>The universe at the tip of your fingers</h2>
     <div class="description">
       <p>This webapp was built by a universe fan.</p>
@@ -14,13 +17,8 @@
 </template>
 
 <script>
-import TunnedLogo from '@/components/ui/TunnedLogo.vue';
-
 export default {
   name: 'LandingHero',
-  components: {
-    TunnedLogo,
-  },
   data() {
     return {
       nasaApisUrl: process.env.VUE_APP_NASA_APIS_URL,
@@ -40,16 +38,51 @@ export default {
     gap: 2rem;
   }
 
-  .logo {
+  .tunned-logo {
+    display: flex;
+    align-items: center;
     margin-top: 2rem;
     margin-left: -2.5rem;
 
     @media (min-width: $min-width-second-break) {
       margin-top: 5rem;
+      margin-left: -3.5rem;
     }
 
     @media (min-width: $min-width-fourth-break) {
       margin-top: 8rem;
+    }
+
+    img {
+      -webkit-mask-image: linear-gradient(90deg, black, 40%, transparent);
+      filter: invert(1);
+      height: 4rem;
+
+      @media (min-width: $min-width-second-break) {
+        height: 5rem;
+      }
+    }
+
+    h1 {
+      -webkit-mask-image: linear-gradient(90deg, transparent, 0.1%, black);
+      margin-left: -1.6rem;
+      font-size: 3.5rem;
+
+      @media (min-width: $min-width-second-break) {
+        font-size: 5rem;
+      }
+    }
+  }
+
+  h2 {
+    @media (min-width: $min-width-second-break) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    @media (min-width: $min-width-second-break) {
+      font-size: 1.5rem;
     }
   }
 }
