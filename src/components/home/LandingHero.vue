@@ -3,7 +3,7 @@
     <div class="landing-hero-container">
       <transition name="skywatcher" appear>
         <div class="tunned-logo">
-          <img src="@/assets/images/ui/logo.svg" />
+          <img src="@/assets/images/ui/logo.svg" alt="SkyWatcher Logo" />
           <h1>SkyWatcher</h1>
         </div>
       </transition>
