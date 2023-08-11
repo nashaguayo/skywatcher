@@ -21,8 +21,12 @@ export default {
   background-size: cover;
   background-position: center;
   padding: 2rem;
-  padding-left: 4rem;
+  padding-left: 3.5rem;
   height: 100%;
+
+  @media (min-width: $min-width-first-break) {
+    padding-left: 4rem;
+  }
 
   @media (min-width: $min-width-second-break) {
     padding-left: 6rem;

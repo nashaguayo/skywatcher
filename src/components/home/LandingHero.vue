@@ -45,8 +45,17 @@ export default {
   .tunned-logo {
     display: flex;
     align-items: center;
-    margin-top: 2rem;
-    margin-left: -2.5rem;
+    margin-top: 1rem;
+    margin-left: -2rem;
+
+    @media (min-width: $min-width-first-break) {
+      margin-left: -2.3rem;
+    }
+
+    @media (min-width: $min-width-second-break) {
+      margin-top: 2rem;
+      margin-left: -2.5rem;
+    }
 
     @media (min-width: $min-width-second-break) {
       margin-top: 5rem;
@@ -64,7 +73,15 @@ export default {
     img {
       -webkit-mask-image: linear-gradient(90deg, black, 40%, transparent);
       filter: invert(1);
-      height: 4rem;
+      height: 3rem;
+
+      @media (min-width: $min-width-first-break) {
+        height: 3.5em;
+      }
+
+      @media (min-width: $min-width-second-break) {
+        height: 4rem;
+      }
 
       @media (min-width: $min-width-second-break) {
         height: 5rem;
@@ -77,9 +94,13 @@ export default {
 
     h1 {
       -webkit-mask-image: linear-gradient(90deg, transparent, 0.1%, black);
-      margin-left: -1.6rem;
-      font-size: 3.5rem;
+      margin-left: -1rem;
+      font-size: 2.5rem;
 
+      @media (min-width: $min-width-first-break) {
+        margin-left: -1.3rem;
+        font-size: 3.5rem;
+      }
       @media (min-width: $min-width-second-break) {
         font-size: 5rem;
         margin-left: -1.8rem;
