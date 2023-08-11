@@ -36,8 +36,21 @@ export default {
   gap: 1rem;
   justify-content: center;
 
+  @media (min-width: $min-width-fourth-break) {
+    gap: 2rem;
+  }
+
   .logo {
-    margin-left: -1.6rem;
+    margin-top: 2rem;
+    margin-left: -2.5rem;
+
+    @media (min-width: $min-width-second-break) {
+      margin-top: 5rem;
+    }
+
+    @media (min-width: $min-width-fourth-break) {
+      margin-top: 8rem;
+    }
   }
 }
 </style>

@@ -19,13 +19,17 @@ export default {
   img {
     -webkit-mask-image: linear-gradient(90deg, black, 40%, transparent);
     filter: invert(1);
-    height: 2.5rem;
+    height: 4rem;
   }
 
   h1 {
     -webkit-mask-image: linear-gradient(90deg, transparent, 0.1%, black);
-    margin-left: -0.8rem;
+    margin-left: -1.6rem;
     font-size: 2.5rem;
+
+    @media (min-width: $min-width-second-break) {
+      font-size: 4rem;
+    }
   }
 }
 </style>
