@@ -6,15 +6,23 @@
         <h1>SkyWatcher</h1>
       </div>
     </transition>
-    <h2>The universe at the tip of your fingers</h2>
+    <transition name="skywatcher-delayed" appear>
+      <h2>The universe at the tip of your fingers</h2>
+    </transition>
     <div class="description">
-      <p>This webapp was built by a universe fan.</p>
-      <p>
-        It is fueled by
-        <a :href="nasaApisUrl" target="_blank"> NASA's APIs. </a>
-      </p>
+      <transition name="flip" appear>
+        <p>This webapp was built by a universe fan.</p>
+      </transition>
+      <transition name="flip" appear>
+        <p>
+          It is fueled by
+          <a :href="nasaApisUrl" target="_blank"> NASA's APIs. </a>
+        </p>
+      </transition>
     </div>
-    <p>More to come soon...</p>
+    <transition name="flip" appear>
+      <p>More to come soon...</p>
+    </transition>
   </div>
 </template>
 
@@ -136,10 +144,6 @@ export default {
   }
 }
 
-.skywatcher-enter-active {
-  animation: bounce-less-in 1s ease-in-out;
-}
-
 @keyframes bounce-less-in {
   0% {
     opacity: 0;
@@ -149,5 +153,29 @@ export default {
     opacity: 1;
     transform: skew(10deg);
   }
+}
+
+.skywatcher-delayed-enter-active,
+.skywatcher-enter-active {
+  transition: opacity 1s, transform 1s ease-in-out;
+}
+
+.skywatcher-delayed-enter-active {
+  transition-delay: 1s;
+}
+
+.skywatcher-delayed-enter,
+.skywatcher-enter {
+  opacity: 0;
+  transform: skew(30deg) translateX(-100%);
+}
+
+.flip-enter-active {
+  transition: transform 0.5s ease-in-out;
+  transition-delay: 2s;
+}
+
+.flip-enter {
+  transform: scaleY(0);
 }
 </style>
