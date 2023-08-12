@@ -6,14 +6,20 @@
         <span class="copyright">By {{ copyright }}</span>
       </div>
     </transition>
-    <div class="title">
+    <div class="title-container">
       <transition name="slide-from-above" appear>
         <h1>Astronomy Picture of the Day</h1>
       </transition>
       <transition name="flip-open" appear>
         <span class="date">{{ dateText }}</span>
       </transition>
-      <h2>{{ title }}</h2>
+      <transition name="open-up" appear>
+        <div class="title">
+          <transition name="flip-open-later" appear>
+            <h2>{{ title }}</h2>
+          </transition>
+        </div>
+      </transition>
     </div>
     <transition name="slide-up" appear>
       <div class="container">
@@ -107,7 +113,7 @@ export default {
     }
   }
 
-  .title {
+  .title-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,21 +130,24 @@ export default {
       padding: 0 2rem;
     }
 
-    h2 {
+    .date {
+      color: var(--variant-text-color);
+      font-size: 1.2rem;
+    }
+
+    .title {
       width: 100%;
-      padding: 0.6rem 0;
       background: linear-gradient(
         100deg,
         var(--secondary-background-color),
         var(--secondary-gradient-background-color)
       );
-      color: var(--secondary-text-color);
       box-shadow: var(--main-box-shadow);
-    }
 
-    .date {
-      color: var(--variant-text-color);
-      font-size: 1.2rem;
+      h2 {
+        padding: 0.6rem 0rem;
+        color: var(--secondary-text-color);
+      }
     }
   }
 
@@ -175,6 +184,12 @@ export default {
   transition-delay: 0.5s;
 }
 
+.flip-open-later-enter-active {
+  transition: transform 0.5s;
+  transition-delay: 1.5s;
+}
+
+.flip-open-later-enter,
 .flip-open-enter {
   transform: scaleY(0);
 }
@@ -191,5 +206,14 @@ export default {
 .slide-up-enter {
   opacity: 0;
   transform: translateY(20%);
+}
+
+.open-up-enter-active {
+  transition: transform 0.5s;
+  transition-delay: 1s;
+}
+
+.open-up-enter {
+  transform: scaleX(0);
 }
 </style>
