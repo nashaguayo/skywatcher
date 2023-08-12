@@ -81,5 +81,6 @@ p {
   margin: 0;
   color: var(--main-text-color);
   font-family: 'Roboto Condensed';
+  line-height: 1.3rem;
 }
 </style>
