@@ -15,3 +15,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.apod-view {
+  height: 100%;
+}
+</style>

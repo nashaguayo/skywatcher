@@ -27,9 +27,14 @@
 }
 
 html {
+  --main-background-color: #142d3d;
+  --variant-background-color: #183c53;
+
   --main-title-color: rgb(207, 207, 207);
   --main-subtitle-color: rgb(230, 230, 230);
   --main-text-color: rgb(230, 230, 230);
+
+  --main-box-shadow: 0 0 0.5rem #0c0c0c;
 
   --button-main-color: #ff8800;
   --button-variant-color: #209cee;
