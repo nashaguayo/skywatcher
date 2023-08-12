@@ -1,13 +1,13 @@
 <template>
   <div class="daily-picture">
-    <div class="title">
-      <h1>Astronomy Picture of the Day</h1>
-      <h2>{{ title }}</h2>
-      <span v-if="dateText" class="date">{{ dateText }}</span>
-    </div>
     <div class="image-container" @click="seeHdImage">
       <img v-if="mediaType === 'image'" class="image" :src="url" />
       <span class="copyright">By {{ copyright }}</span>
+    </div>
+    <div class="title">
+      <h1>Astronomy Picture of the Day</h1>
+      <h2>{{ title }}</h2>
+      <span class="date">{{ dateText }}</span>
     </div>
     <div class="container">
       <span>{{ explanation }}</span>
@@ -18,7 +18,7 @@
 
 <script>
 import { getAstronomyPictureOfTheDay } from '@/helpers/apod';
-import { format, isEqual, startOfDay } from 'date-fns';
+import { format, isEqual, startOfDay, parseISO } from 'date-fns';
 
 export default {
   name: 'DailyPicture',
@@ -36,7 +36,7 @@ export default {
   computed: {
     dateText() {
       if (isEqual(startOfDay(this.date), startOfDay(new Date()))) {
-        return '';
+        return "Today's Picture";
       } else if (this.date.getFullYear() === new Date().getFullYear()) {
         return format(this.date, 'EEEE, do LLLL');
       }
@@ -47,7 +47,7 @@ export default {
     const { copyright, date, explanation, hdurl, media_type, title, url } =
       await getAstronomyPictureOfTheDay();
     this.copyright = copyright;
-    this.date = new Date(date);
+    this.date = parseISO(date);
     this.explanation = explanation;
     this.hdurl = hdurl;
     this.mediaType = media_type;
@@ -71,8 +71,37 @@ export default {
   );
   min-height: 100%;
 
+  .image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+
+    .copyright {
+      position: absolute;
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
+      bottom: 0;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--variant-text-color);
+    }
+
+    .image {
+      height: auto;
+      width: 100%;
+      object-fit: contain;
+      box-shadow: var(--main-box-shadow);
+      cursor: pointer;
+    }
+
+    .image:hover {
+      box-shadow: var(--bright-box-shadow);
+    }
+  }
+
   .title {
-    padding-top: 2rem;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,35 +136,10 @@ export default {
     }
   }
 
-  .image-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1rem;
-
-    .copyright {
-      margin-top: 0.5rem;
-      font-size: 0.8rem;
-      color: var(--variant-text-color);
-    }
-
-    .image {
-      height: auto;
-      width: 100%;
-      object-fit: contain;
-      box-shadow: var(--main-box-shadow);
-      cursor: pointer;
-    }
-
-    .image:hover {
-      box-shadow: var(--bright-box-shadow);
-    }
-  }
-
   .container {
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 1rem 2rem 2rem;
   }
 }
 </style>
