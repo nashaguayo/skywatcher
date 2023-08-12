@@ -15,6 +15,9 @@ describe('HomeView', () => {
 
   afterEach(() => {
     wrapper.destroy();
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+    jest.resetAllMocks();
   });
 
   it('renders the component', () => {
