@@ -196,7 +196,7 @@ export default {
 }
 
 .slide-from-right-enter {
-  transform: translateX(100%);
+  transform: translateX(110%);
 }
 
 .flip-open-enter-active {
