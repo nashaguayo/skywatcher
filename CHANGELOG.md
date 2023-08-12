@@ -7,6 +7,7 @@
 - Landing page
 - Missing deploy command
 - Github workflow for tests
+- NASA's API key
 
 ##### Modified
 
