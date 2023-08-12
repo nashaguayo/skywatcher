@@ -11,7 +11,6 @@
     </div>
     <div class="container">
       <span>{{ explanation }}</span>
-      <span>{{ mediaType }}</span>
     </div>
   </div>
 </template>
@@ -79,7 +78,7 @@ export default {
 
     .copyright {
       position: absolute;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       margin-right: 0.5rem;
       bottom: 0;
       margin-top: 0.5rem;
@@ -91,8 +90,8 @@ export default {
       height: auto;
       width: 100%;
       object-fit: contain;
-      box-shadow: var(--main-box-shadow);
       cursor: pointer;
+      -webkit-mask-image: linear-gradient(black 70%, transparent);
     }
 
     .image:hover {
@@ -101,7 +100,6 @@ export default {
   }
 
   .title {
-    padding-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
