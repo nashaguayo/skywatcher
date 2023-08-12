@@ -72,7 +72,9 @@ export default {
   },
   methods: {
     seeHdImage() {
-      window.open(this.hdurl, '_blank');
+      if (this.mediaType === 'image') {
+        window.open(this.hdurl, '_blank');
+      }
     },
   },
 };
