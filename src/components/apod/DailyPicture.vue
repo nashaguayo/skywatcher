@@ -5,7 +5,9 @@
       <span class="copyright">By {{ copyright }}</span>
     </div>
     <div class="title">
-      <h1>Astronomy Picture of the Day</h1>
+      <transition name="slide-from-above" appear>
+        <h1>Astronomy Picture of the Day</h1>
+      </transition>
       <span class="date">{{ dateText }}</span>
       <h2>{{ title }}</h2>
     </div>
@@ -139,5 +141,14 @@ export default {
     flex-direction: column;
     padding: 1.5rem 2rem 2rem;
   }
+}
+
+.slide-from-above-enter-active {
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.slide-from-above-enter {
+  opacity: 0;
+  transform: translateY(-100%);
 }
 </style>
