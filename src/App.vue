@@ -28,11 +28,17 @@
 
 html {
   --main-background-color: #142d3d;
-  --variant-background-color: #183c53;
+  --main-gradient-background-color: #194966;
+
+  --secondary-background-color: #ff8800;
+  --secondary-gradient-background-color: #ffd900;
 
   --main-title-color: rgb(207, 207, 207);
   --main-subtitle-color: rgb(230, 230, 230);
   --main-text-color: rgb(230, 230, 230);
+
+  --secondary-text-color: #101416;
+  --variant-text-color: #ff8800;
 
   --main-box-shadow: 0 0 0.5rem #0c0c0c;
   --bright-box-shadow: 0 0 0.5rem #ff8800;
@@ -59,7 +65,7 @@ body {
 h1 {
   margin: 0;
   color: var(--main-title-color);
-  font-family: 'Zilla Slab';
+  font-family: 'Nanum';
 }
 
 h3,

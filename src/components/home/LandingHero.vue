@@ -140,6 +140,7 @@ export default {
         -webkit-mask-image: linear-gradient(90deg, transparent, 0.1%, black);
         margin-left: -1rem;
         font-size: 2.5rem;
+        font-family: 'Zilla Slab';
 
         @media (min-width: $min-width-first-break) {
           margin-left: -1.3rem;
