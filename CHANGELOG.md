@@ -14,6 +14,8 @@
 
 ##### Fixed
 
+- GH Pages config for production
+
 ---
 
 ## [0.1.1](https://github.com/nashaguayo/skywatcher/compare/0.1.0...0.1.1) (10-08-2023)
