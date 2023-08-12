@@ -6,6 +6,7 @@
 
 - Landing page
 - Missing deploy command
+- Github workflow for tests
 
 ##### Modified
 
