@@ -88,6 +88,7 @@ export default {
     var(--main-gradient-background-color)
   );
   min-height: 100%;
+  overflow-x: hidden;
 
   .image-container {
     display: flex;
