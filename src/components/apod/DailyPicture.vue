@@ -3,7 +3,9 @@
     <transition name="slide-slower-from-above" appear>
       <div class="image-container" @click="seeHdImage">
         <img v-if="mediaType === 'image'" class="image" :src="url" />
-        <span class="copyright">By {{ copyright }}</span>
+        <transition name="slide-from-right" appear>
+          <span class="copyright">By {{ copyright }}</span>
+        </transition>
       </div>
     </transition>
     <div class="title-container">
@@ -177,6 +179,15 @@ export default {
 .slide-slower-from-above-enter {
   opacity: 0;
   transform: translateY(-10%);
+}
+
+.slide-from-right-enter-active {
+  transition: transform 0.5s;
+  transition-delay: 2.5s;
+}
+
+.slide-from-right-enter {
+  transform: translateX(100%);
 }
 
 .flip-open-enter-active {
