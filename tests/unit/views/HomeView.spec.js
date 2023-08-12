@@ -28,7 +28,7 @@ describe('HomeView', () => {
     expect(wrapper.classes()).toContain('home-view');
   });
 
-  it('renders the mockeded components', () => {
+  it('renders the mocked components', () => {
     expect(wrapper.find('landinghero-stub').exists()).toBeTruthy();
   });
 });
