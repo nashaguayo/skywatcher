@@ -30,6 +30,9 @@ html {
   --main-title-color: rgb(207, 207, 207);
   --main-subtitle-color: rgb(230, 230, 230);
   --main-text-color: rgb(230, 230, 230);
+
+  --button-main-color: #ff8800;
+  --button-variant-color: #209cee;
 }
 
 #app {
