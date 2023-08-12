@@ -1,19 +1,16 @@
 <template>
   <div class="daily-picture">
     <div class="title">
-      <h1>Astronomy Picture</h1>
-      <h1>of the Day</h1>
-      <h2>{{ date }}</h2>
+      <h1>Astronomy Picture of the Day</h1>
+      <h3>{{ date }}</h3>
       <h2>{{ title }}</h2>
     </div>
-    <div class="image-container">
+    <div class="image-container" @click="seeHdImage">
       <img v-if="mediaType === 'image'" class="image" :src="url" />
+      <span>By {{ copyright }}</span>
     </div>
     <div class="container">
-      <span>{{ copyright }}</span>
-      <span>{{ date }}</span>
       <span>{{ explanation }}</span>
-      <span>{{ hdurl }}</span>
       <span>{{ mediaType }}</span>
     </div>
   </div>
@@ -46,6 +43,11 @@ export default {
     this.title = title;
     this.url = url;
   },
+  methods: {
+    seeHdImage() {
+      window.open(this.hdurl, '_blank');
+    },
+  },
 };
 </script>
 
@@ -56,18 +58,41 @@ export default {
     var(--main-background-color),
     var(--variant-background-color)
   );
-  height: 100%;
+  min-height: 100%;
 
-  .image {
-    height: auto;
-    width: 100%;
-    object-fit: contain;
-    box-shadow: var(--main-box-shadow);
+  .title {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    span {
+      margin-top: 0.5rem;
+    }
+
+    .image {
+      height: auto;
+      width: 100%;
+      object-fit: contain;
+      box-shadow: var(--main-box-shadow);
+      cursor: pointer;
+    }
+
+    .image:hover {
+      box-shadow: var(--bright-box-shadow);
+    }
   }
 
   .container {
     display: flex;
     flex-direction: column;
+    padding: 2rem;
   }
 }
 </style>

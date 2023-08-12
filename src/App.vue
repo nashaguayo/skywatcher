@@ -35,6 +35,7 @@ html {
   --main-text-color: rgb(230, 230, 230);
 
   --main-box-shadow: 0 0 0.5rem #0c0c0c;
+  --bright-box-shadow: 0 0 0.5rem #ff8800;
 
   --button-main-color: #ff8800;
   --button-variant-color: #209cee;
