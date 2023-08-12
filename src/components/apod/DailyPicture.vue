@@ -6,8 +6,8 @@
     </div>
     <div class="title">
       <h1>Astronomy Picture of the Day</h1>
-      <h2>{{ title }}</h2>
       <span class="date">{{ dateText }}</span>
+      <h2>{{ title }}</h2>
     </div>
     <div class="container">
       <span>{{ explanation }}</span>
@@ -137,7 +137,7 @@ export default {
   .container {
     display: flex;
     flex-direction: column;
-    padding: 1rem 2rem 2rem;
+    padding: 1.5rem 2rem 2rem;
   }
 }
 </style>
