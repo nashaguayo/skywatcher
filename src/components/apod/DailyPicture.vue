@@ -3,6 +3,7 @@
     <transition name="slide-slower-from-above" appear>
       <div class="image-container" @click="seeHdImage">
         <img v-if="mediaType === 'image'" class="image" :src="url" />
+        <LazyYoutube v-else :src="url" class="video" />
         <transition name="slide-from-right" appear>
           <span class="copyright">By {{ copyright }}</span>
         </transition>
@@ -108,6 +109,10 @@ export default {
       object-fit: contain;
       cursor: pointer;
       -webkit-mask-image: linear-gradient(black 70%, transparent);
+    }
+
+    .video {
+      margin-bottom: 2.5rem;
     }
 
     .image:hover {
