@@ -33,7 +33,7 @@ export default {
   name: 'LandingHero',
   data() {
     return {
-      nasaApisUrl: process.env.VUE_APP_NASA_APIS_URL,
+      nasaApisUrl: process.env.VUE_APP_NASA_API_URL,
     };
   },
 };
