@@ -1,14 +1,18 @@
 <template>
   <div class="daily-picture">
-    <div class="image-container" @click="seeHdImage">
-      <img v-if="mediaType === 'image'" class="image" :src="url" />
-      <span class="copyright">By {{ copyright }}</span>
-    </div>
+    <transition name="slide-slower-from-above" appear>
+      <div class="image-container" @click="seeHdImage">
+        <img v-if="mediaType === 'image'" class="image" :src="url" />
+        <span class="copyright">By {{ copyright }}</span>
+      </div>
+    </transition>
     <div class="title">
       <transition name="slide-from-above" appear>
         <h1>Astronomy Picture of the Day</h1>
       </transition>
-      <span class="date">{{ dateText }}</span>
+      <transition name="flip-open" appear>
+        <span class="date">{{ dateText }}</span>
+      </transition>
       <h2>{{ title }}</h2>
     </div>
     <div class="container">
@@ -143,6 +147,7 @@ export default {
   }
 }
 
+.slide-slower-from-above-enter-active,
 .slide-from-above-enter-active {
   transition: transform 0.5s, opacity 0.5s;
 }
@@ -150,5 +155,19 @@ export default {
 .slide-from-above-enter {
   opacity: 0;
   transform: translateY(-100%);
+}
+
+.slide-slower-from-above-enter {
+  opacity: 0;
+  transform: translateY(-10%);
+}
+
+.flip-open-enter-active {
+  transition: transform 0.5s;
+  transition-delay: 0.5s;
+}
+
+.flip-open-enter {
+  transform: scaleY(0);
 }
 </style>
