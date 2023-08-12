@@ -116,6 +116,7 @@ export default {
 
     .video {
       margin-bottom: 2.5rem;
+      box-shadow: var(--main-box-shadow);
     }
 
     .image:hover {
