@@ -15,9 +15,11 @@
       </transition>
       <h2>{{ title }}</h2>
     </div>
-    <div class="container">
-      <span>{{ explanation }}</span>
-    </div>
+    <transition name="slide-up" appear>
+      <div class="container">
+        <span>{{ explanation }}</span>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -144,9 +146,15 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 1.5rem 2rem 2rem;
+
+    span {
+      text-align: justify;
+      text-justify: inter-word;
+    }
   }
 }
 
+.slide-up-enter-active,
 .slide-slower-from-above-enter-active,
 .slide-from-above-enter-active {
   transition: transform 0.5s, opacity 0.5s;
@@ -169,5 +177,19 @@ export default {
 
 .flip-open-enter {
   transform: scaleY(0);
+}
+
+.slide-up-enter-active {
+  transition: transform 0.5s;
+}
+
+.slide-up-enter-active {
+  transition: transform 0.5s, opacity 0.5s;
+  transition-delay: 2s;
+}
+
+.slide-up-enter {
+  opacity: 0;
+  transform: translateY(20%);
 }
 </style>
