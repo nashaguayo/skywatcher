@@ -10,6 +10,8 @@
 
 ##### Modified
 
+- Error handling
+
 ##### Fixed
 
 ---
