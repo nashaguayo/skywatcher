@@ -37,15 +37,14 @@ export default {
     };
   },
   async created() {
-    const { copyright, date, explanation, hdurl, media_type, title, url } =
-      await getAstronomyPictureOfTheDay();
-    this.apod.copyright = copyright;
-    this.apod.date = parseISO(date);
-    this.apod.explanation = explanation;
-    this.apod.hdurl = hdurl;
-    this.apod.mediaType = media_type;
-    this.apod.title = title;
-    this.apod.url = url;
+    const apod = await getAstronomyPictureOfTheDay();
+    this.apod.copyright = apod.copyright;
+    this.apod.date = parseISO(apod.date);
+    this.apod.explanation = apod.explanation;
+    this.apod.hdurl = apod.hdurl;
+    this.apod.mediaType = apod.media_type;
+    this.apod.title = apod.title;
+    this.apod.url = apod.url;
   },
 };
 </script>

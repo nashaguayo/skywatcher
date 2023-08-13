@@ -21,7 +21,7 @@ describe('HomeView', () => {
   });
 
   it('renders the component', () => {
-    expect(wrapper.exists()).toBe(true);
+    expect(wrapper.exists()).toBeTruthy();
   });
 
   it('contains the "home-view" class', () => {
