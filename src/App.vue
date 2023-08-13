@@ -33,6 +33,8 @@ html {
   --secondary-background-color: #ff8800;
   --secondary-gradient-background-color: #ffd900;
 
+  --variant-background-color: #101416;
+
   --main-title-color: rgb(207, 207, 207);
   --main-subtitle-color: rgb(230, 230, 230);
   --main-text-color: rgb(230, 230, 230);

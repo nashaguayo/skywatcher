@@ -8,9 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faInfo);
 library.add(faCircleNotch);
+library.add(faQuestion);
 
 Vue.component('FontAwesomeIcon', FontAwesomeIcon);
 

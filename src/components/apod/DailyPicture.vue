@@ -121,13 +121,12 @@ export default {
   height: 100%;
 
   .daily-picture-container {
+    overflow-x: hidden;
     background: linear-gradient(
       100deg,
       var(--main-background-color),
       var(--main-gradient-background-color)
     );
-    min-height: 100%;
-    overflow-x: hidden;
 
     .image-container {
       display: flex;
@@ -224,7 +223,7 @@ export default {
     .container {
       display: flex;
       flex-direction: column;
-      padding: 1.5rem 2rem 2rem;
+      padding: 1.5rem 2rem;
       gap: 1rem;
 
       .icon {
