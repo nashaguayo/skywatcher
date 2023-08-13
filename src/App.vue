@@ -34,6 +34,7 @@ html {
   --secondary-gradient-background-color: #ffd900;
 
   --variant-background-color: #101416;
+  --variant-gradient-background-color: #29261d;
 
   --main-title-color: rgb(207, 207, 207);
   --main-subtitle-color: rgb(230, 230, 230);
