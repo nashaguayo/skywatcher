@@ -151,6 +151,14 @@ export default {
     .date {
       color: var(--variant-text-color);
       font-size: 1.2rem;
+
+      @media (min-width: $min-width-second-break) {
+        font-size: 1.5rem;
+      }
+
+      @media (min-width: $min-width-third-break) {
+        font-size: 1.8rem;
+      }
     }
 
     .title {

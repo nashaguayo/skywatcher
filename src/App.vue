@@ -66,6 +66,14 @@ h1 {
   margin: 0;
   color: var(--main-title-color);
   font-family: 'Nanum';
+
+  @media (min-width: $min-width-second-break) {
+    font-size: 3rem;
+  }
+
+  @media (min-width: $min-width-third-break) {
+    font-size: 4rem;
+  }
 }
 
 h3,
@@ -75,6 +83,26 @@ h2 {
   font-family: 'Nanum';
 }
 
+h2 {
+  @media (min-width: $min-width-second-break) {
+    font-size: 1.8rem;
+  }
+
+  @media (min-width: $min-width-third-break) {
+    font-size: 2.5rem;
+  }
+}
+
+h3 {
+  @media (min-width: $min-width-second-break) {
+    font-size: 1.5rem;
+  }
+
+  @media (min-width: $min-width-third-break) {
+    font-size: 1.8rem;
+  }
+}
+
 a,
 span,
 p {
@@ -82,5 +110,15 @@ p {
   color: var(--main-text-color);
   font-family: 'Roboto Condensed';
   line-height: 1.3rem;
+
+  @media (min-width: $min-width-second-break) {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
+
+  @media (min-width: $min-width-third-break) {
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+  }
 }
 </style>
