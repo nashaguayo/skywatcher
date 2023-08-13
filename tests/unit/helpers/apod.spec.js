@@ -46,4 +46,11 @@ describe('getAstronomyPicturesOfTheDay', () => {
     ]);
     expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalled();
   });
+
+  it('should return false when no apod', async () => {
+    spyGetAstronomyPicturesOfTheDay.mockResolvedValue(undefined);
+    const result = await getAstronomyPicturesOfTheDay();
+    expect(result).toBeFalsy();
+    expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalled();
+  });
 });

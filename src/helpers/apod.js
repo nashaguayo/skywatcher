@@ -3,6 +3,9 @@ import { parseISO } from 'date-fns';
 
 export async function getAstronomyPicturesOfTheDay(startDate, endDate) {
   const apods = await getAstronomyPicturesOfTheDayApi(startDate, endDate);
+  if (!apods) {
+    return false;
+  }
   const processedApods = apods.map((apod) => {
     const { copyright, date, explanation, hdurl, media_type, title, url } =
       apod;
