@@ -5,7 +5,7 @@
         <img v-if="mediaType === 'image'" class="image" :src="url" />
         <LazyYoutube v-else :src="url" class="video" />
         <transition name="slide-from-right" appear>
-          <span class="copyright">By {{ copyright }}</span>
+          <span v-if="copyright" class="copyright">By {{ copyright }}</span>
         </transition>
       </div>
     </transition>
