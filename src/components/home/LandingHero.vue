@@ -33,7 +33,7 @@ export default {
   name: 'LandingHero',
   data() {
     return {
-      nasaApisUrl: process.env.VUE_APP_NASA_APIS_URL,
+      nasaApisUrl: process.env.VUE_APP_NASA_API_URL,
     };
   },
 };
@@ -140,6 +140,7 @@ export default {
         -webkit-mask-image: linear-gradient(90deg, transparent, 0.1%, black);
         margin-left: -1rem;
         font-size: 2.5rem;
+        font-family: 'Zilla Slab';
 
         @media (min-width: $min-width-first-break) {
           margin-left: -1.3rem;

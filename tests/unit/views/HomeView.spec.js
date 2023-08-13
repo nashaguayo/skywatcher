@@ -15,17 +15,20 @@ describe('HomeView', () => {
 
   afterEach(() => {
     wrapper.destroy();
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+    jest.resetAllMocks();
   });
 
   it('renders the component', () => {
-    expect(wrapper.exists()).toBe(true);
+    expect(wrapper.exists()).toBeTruthy();
   });
 
   it('contains the "home-view" class', () => {
     expect(wrapper.classes()).toContain('home-view');
   });
 
-  it('renders the mockeded components', () => {
+  it('renders the mocked components', () => {
     expect(wrapper.find('landinghero-stub').exists()).toBeTruthy();
   });
 });
