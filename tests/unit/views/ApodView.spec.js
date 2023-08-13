@@ -18,7 +18,7 @@ const spyGetAstronomyPictureOfTheDay = jest.spyOn(
 );
 const spyParseISO = jest.spyOn(dateFns, 'parseISO');
 
-describe('ApodView Template', () => {
+describe('ApodView', () => {
   let wrapper;
 
   beforeEach(() => {
@@ -44,24 +44,14 @@ describe('ApodView Template', () => {
   });
 
   it('renders the component', () => {
-    expect(spyGetAstronomyPictureOfTheDay).toHaveBeenCalled();
-    expect(wrapper.vm.apod).toEqual({
-      copyright: 'The Deep Sky Collective',
-      date: new Date(2023, 8, 12),
-      explanation: 'An explanation',
-      hdurl: 'https://apod.nasa.gov/apod/image/2308/M51_255hours.jpg',
-      mediaType: 'image',
-      title: 'Messier 51 in 255 Hours',
-      url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
-    });
-    expect(wrapper.exists()).toBe(true);
+    expect(wrapper.exists()).toBeTruthy();
   });
 
-  it('contains the "home-view" class', () => {
+  it('contains the "apod-view" class', () => {
     expect(wrapper.classes()).toContain('apod-view');
   });
 
-  it('renders the mockeded components', () => {
+  it('renders the mocked components', () => {
     const dailyPictureComponent = wrapper.find('dailypicture-stub');
     expect(dailyPictureComponent.exists()).toBeTruthy();
     expect(dailyPictureComponent.attributes().copyright).toBe(
@@ -83,32 +73,6 @@ describe('ApodView Template', () => {
     expect(dailyPictureComponent.attributes('url')).toBe(
       'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg'
     );
-  });
-});
-
-describe('ApodView Script', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    spyGetAstronomyPictureOfTheDay.mockResolvedValue({
-      copyright: 'The Deep Sky Collective',
-      date: '2023-08-12',
-      explanation: 'An explanation',
-      hdurl: 'https://apod.nasa.gov/apod/image/2308/M51_255hours.jpg',
-      media_type: 'image',
-      service_version: 'v1',
-      title: 'Messier 51 in 255 Hours',
-      url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
-    });
-    spyParseISO.mockReturnValue(new Date(2023, 8, 12));
-    wrapper = mount(ApodView, { stubs: ['DailyPicture'] });
-  });
-
-  afterEach(() => {
-    wrapper.destroy();
-    jest.clearAllMocks();
-    jest.restoreAllMocks();
-    jest.resetAllMocks();
   });
 
   it('sets apod data on created correctly', () => {
