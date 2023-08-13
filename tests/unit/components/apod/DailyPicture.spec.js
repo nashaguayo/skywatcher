@@ -2,6 +2,11 @@ import { mount } from '@vue/test-utils';
 import DailyPicture from '@/components/apod/DailyPicture.vue';
 import * as dateFns from 'date-fns';
 
+jest.mock('@/skeleton/apod/DailyPictureSkeleton', () => ({
+  name: 'DailyPictureSkeleton',
+  template: '<div class="mock-daily-picture-skeleton"></div>',
+}));
+
 jest.mock('date-fns');
 
 const spyIsEqual = jest.spyOn(dateFns, 'isEqual');
@@ -24,7 +29,7 @@ describe('DailyPicture Template', () => {
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
       },
-      stubs: ['LazyYoutube', 'FontAwesomeIcon'],
+      stubs: ['LazyYoutube', 'FontAwesomeIcon', 'DailyPictureSkeleton'],
     });
   });
 
@@ -34,6 +39,23 @@ describe('DailyPicture Template', () => {
 
   it('contains the "daily-picture" class', () => {
     expect(wrapper.classes()).toContain('daily-picture');
+  });
+
+  it('shows skeleton while loading', () => {
+    wrapper = mount(DailyPicture, {
+      propsData: {
+        copyright: 'Mock Copyright',
+        date: new Date('2023-08-12T10:00:00.000Z'),
+        explanation: 'Mock Explanation',
+        hdurl: 'https://example.com/mock-hdurl.jpg',
+        mediaType: 'image',
+        title: 'Mock Title',
+        url: 'https://example.com/mock-url.jpg',
+      },
+      stubs: ['LazyYoutube', 'FontAwesomeIcon', 'DailyPictureSkeleton'],
+    });
+    const skeleton = wrapper.find('dailypictureskeleton-stub');
+    expect(skeleton.exists()).toBeTruthy();
   });
 
   it('displays all the content', async () => {
@@ -63,6 +85,9 @@ describe('DailyPicture Template', () => {
     const explanation = wrapper.find('.container span');
     expect(explanation.exists()).toBeTruthy();
     expect(explanation.text()).toBe('Mock Explanation');
+
+    const skeleton = wrapper.find('dailypictureskeleton-stub');
+    expect(skeleton.exists()).toBeFalsy();
   });
 
   it('loads video when it is not an image', () => {

@@ -1,52 +1,59 @@
 <template>
-  <div class="daily-picture" v-show="loaded">
-    <div class="image-container" @click="seeHdImage">
-      <img
-        v-if="mediaType === 'image'"
-        class="image"
-        :src="url"
-        @load="loaded = true"
-      />
-      <LazyYoutube v-else :src="url" class="video" />
-      <transition name="slide-from-right" appear>
-        <span v-if="copyright && loaded" class="copyright">
-          By {{ copyright }}
-        </span>
-      </transition>
-    </div>
-    <div class="title-container">
-      <transition name="slide-from-above" appear>
-        <h1 v-if="loaded">Astronomy Picture of the Day</h1>
-      </transition>
-      <transition name="flip-open" appear>
-        <span v-if="loaded" class="date">{{ dateText }}</span>
-      </transition>
-      <transition name="open-up" appear>
-        <div v-if="loaded" class="title">
-          <transition name="flip-open-later" appear>
-            <h2 v-if="loaded">{{ title }}</h2>
-          </transition>
+  <div class="daily-picture">
+    <DailyPictureSkeleton v-if="!loaded" />
+    <div class="daily-picture-container" v-show="loaded">
+      <div class="image-container" @click="seeHdImage">
+        <img
+          v-if="mediaType === 'image'"
+          class="image"
+          :src="url"
+          @load="loaded = true"
+        />
+        <LazyYoutube v-else :src="url" class="video" />
+        <transition name="slide-from-right" appear>
+          <span v-if="copyright && loaded" class="copyright">
+            By {{ copyright }}
+          </span>
+        </transition>
+      </div>
+      <div class="title-container">
+        <transition name="slide-from-above" appear>
+          <h1 v-if="loaded">Astronomy Picture of the Day</h1>
+        </transition>
+        <transition name="flip-open" appear>
+          <span v-if="loaded" class="date">{{ dateText }}</span>
+        </transition>
+        <transition name="open-up" appear>
+          <div v-if="loaded" class="title">
+            <transition name="flip-open-later" appear>
+              <h2 v-if="loaded">{{ title }}</h2>
+            </transition>
+          </div>
+        </transition>
+      </div>
+      <transition name="slide-up" appear>
+        <div v-if="loaded" class="container">
+          <FontAwesomeIcon
+            icon="fa-solid fa-info"
+            class="icon"
+            style="color: #ff8800"
+          />
+          <span>{{ explanation }}</span>
         </div>
       </transition>
     </div>
-    <transition name="slide-up" appear>
-      <div v-if="loaded" class="container">
-        <FontAwesomeIcon
-          icon="fa-solid fa-info"
-          class="icon"
-          style="color: #ff8800"
-        />
-        <span>{{ explanation }}</span>
-      </div>
-    </transition>
   </div>
 </template>
 
 <script>
 import { format, isEqual, startOfDay } from 'date-fns';
+import DailyPictureSkeleton from '@/skeleton/apod/DailyPictureSkeleton.vue';
 
 export default {
   name: 'DailyPicture',
+  components: {
+    DailyPictureSkeleton,
+  },
   props: {
     copyright: {
       type: String,
@@ -111,124 +118,128 @@ export default {
 
 <style lang="scss" scoped>
 .daily-picture {
-  background: linear-gradient(
-    100deg,
-    var(--main-background-color),
-    var(--main-gradient-background-color)
-  );
-  min-height: 100%;
-  overflow-x: hidden;
+  height: 100%;
 
-  .image-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    position: relative;
+  .daily-picture-container {
+    background: linear-gradient(
+      100deg,
+      var(--main-background-color),
+      var(--main-gradient-background-color)
+    );
+    min-height: 100%;
+    overflow-x: hidden;
 
-    .copyright {
-      position: absolute;
-      margin-bottom: 1rem;
-      margin-right: 0.5rem;
-      bottom: 0;
-      margin-top: 0.5rem;
-      font-size: 0.8rem;
-      color: var(--variant-text-color);
-    }
-
-    .image {
-      height: auto;
-      width: 100%;
-      object-fit: contain;
-      cursor: pointer;
-      -webkit-mask-image: linear-gradient(black 70%, transparent);
-    }
-
-    .video {
-      margin-bottom: 2.5rem;
-      box-shadow: var(--main-box-shadow);
-    }
-
-    .image:hover {
-      box-shadow: var(--bright-box-shadow);
-    }
-  }
-
-  .title-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-
-    @media (min-width: $min-width-third-break) {
-      gap: 2rem;
-    }
-
-    h1,
-    h2,
-    span {
-      text-align: center;
-    }
-
-    h1,
-    h2 {
-      padding: 0 2rem;
-    }
-
-    .date {
-      color: var(--variant-text-color);
-      font-size: 1.2rem;
-
-      @media (min-width: $min-width-second-break) {
-        font-size: 1.5rem;
-      }
-
-      @media (min-width: $min-width-third-break) {
-        font-size: 1.8rem;
-      }
-    }
-
-    .title {
-      width: 100%;
-      background: linear-gradient(
-        100deg,
-        var(--secondary-background-color),
-        var(--secondary-gradient-background-color)
-      );
-      box-shadow: var(--main-box-shadow);
-      min-height: 4.7rem;
+    .image-container {
       display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      position: relative;
+
+      .copyright {
+        position: absolute;
+        margin-bottom: 1rem;
+        margin-right: 0.5rem;
+        bottom: 0;
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--variant-text-color);
+      }
+
+      .image {
+        height: auto;
+        width: 100%;
+        object-fit: contain;
+        cursor: pointer;
+        -webkit-mask-image: linear-gradient(black 70%, transparent);
+      }
+
+      .video {
+        margin-bottom: 2.5rem;
+        box-shadow: var(--main-box-shadow);
+      }
+
+      .image:hover {
+        box-shadow: var(--bright-box-shadow);
+      }
+    }
+
+    .title-container {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      gap: 1rem;
 
       @media (min-width: $min-width-third-break) {
-        min-height: 6rem;
+        gap: 2rem;
       }
 
+      h1,
+      h2,
+      span {
+        text-align: center;
+      }
+
+      h1,
       h2 {
-        padding: 0.6rem 0rem;
-        color: var(--secondary-text-color);
+        padding: 0 2rem;
+      }
+
+      .date {
+        color: var(--variant-text-color);
+        font-size: 1.2rem;
+
+        @media (min-width: $min-width-second-break) {
+          font-size: 1.5rem;
+        }
+
+        @media (min-width: $min-width-third-break) {
+          font-size: 1.8rem;
+        }
+      }
+
+      .title {
+        width: 100%;
+        background: linear-gradient(
+          100deg,
+          var(--secondary-background-color),
+          var(--secondary-gradient-background-color)
+        );
+        box-shadow: var(--main-box-shadow);
+        min-height: 4.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media (min-width: $min-width-third-break) {
+          min-height: 6rem;
+        }
+
+        h2 {
+          padding: 0.6rem 0rem;
+          color: var(--secondary-text-color);
+        }
       }
     }
-  }
 
-  .container {
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem 2rem 2rem;
-    gap: 1rem;
+    .container {
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 2rem 2rem;
+      gap: 1rem;
 
-    .icon {
-      border: 0.2rem solid var(--variant-text-color);
-      border-radius: 50%;
-      height: 2rem;
-      width: 2rem;
-      padding: 0.2rem 0.45rem 0.7rem;
-      align-self: center;
-    }
+      .icon {
+        border: 0.2rem solid var(--variant-text-color);
+        border-radius: 50%;
+        height: 2rem;
+        width: 2rem;
+        padding: 0.2rem 0.45rem 0.7rem;
+        align-self: center;
+      }
 
-    span {
-      text-align: justify;
-      text-justify: inter-word;
+      span {
+        text-align: justify;
+        text-justify: inter-word;
+      }
     }
   }
 }

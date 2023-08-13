@@ -37,6 +37,8 @@ html {
   --main-subtitle-color: rgb(230, 230, 230);
   --main-text-color: rgb(230, 230, 230);
 
+  --variant-subtitle-color: #ff8800;
+
   --secondary-text-color: #101416;
   --variant-text-color: #ff8800;
 
@@ -51,6 +53,11 @@ html {
   position: absolute;
   height: 100%;
   width: 100%;
+  background: linear-gradient(
+    100deg,
+    var(--main-background-color),
+    var(--main-gradient-background-color)
+  );
 }
 
 body {
@@ -79,11 +86,12 @@ h1 {
 h3,
 h2 {
   margin: 0;
-  color: var(--main-subtitle-color);
   font-family: 'Nanum';
 }
 
 h2 {
+  color: var(--main-subtitle-color);
+
   @media (min-width: $min-width-second-break) {
     font-size: 1.8rem;
   }
@@ -94,6 +102,8 @@ h2 {
 }
 
 h3 {
+  color: var(--variant-subtitle-color);
+
   @media (min-width: $min-width-second-break) {
     font-size: 1.5rem;
   }
