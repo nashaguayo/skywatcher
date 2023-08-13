@@ -14,11 +14,17 @@ jest.mock('@/components/apod/ApodCalendar.vue', () => ({
 
 jest.mock('@/helpers/apod', () => ({
   getAstronomyPictureOfTheDay: jest.fn(),
+  getAstronomyPicturesOfTheDay: jest.fn(),
 }));
 
 const spyGetAstronomyPictureOfTheDay = jest.spyOn(
   apodHelper,
   'getAstronomyPictureOfTheDay'
+);
+
+const spyGetAstronomyPicturesOfTheDay = jest.spyOn(
+  apodHelper,
+  'getAstronomyPicturesOfTheDay'
 );
 
 describe('ApodContainer', () => {
@@ -34,6 +40,17 @@ describe('ApodContainer', () => {
       title: 'Messier 51 in 255 Hours',
       url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
     });
+    spyGetAstronomyPicturesOfTheDay.mockResolvedValue([
+      {
+        copyright: 'The Deep Sky Collective',
+        date: new Date(2023, 8, 12),
+        explanation: 'An explanation',
+        hdurl: 'https://apod.nasa.gov/apod/image/2308/M51_255hours.jpg',
+        mediaType: 'image',
+        title: 'Messier 51 in 255 Hours',
+        url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
+      },
+    ]);
     wrapper = shallowMount(ApodContainer, { stubs: ['DailyPicture'] });
   });
 
@@ -89,5 +106,20 @@ describe('ApodContainer', () => {
       title: 'Messier 51 in 255 Hours',
       url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
     });
+  });
+
+  it('sets apods data con created correctly', () => {
+    expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalled();
+    expect(wrapper.vm.apods.list).toStrictEqual([
+      {
+        copyright: 'The Deep Sky Collective',
+        date: new Date(2023, 8, 12),
+        explanation: 'An explanation',
+        hdurl: 'https://apod.nasa.gov/apod/image/2308/M51_255hours.jpg',
+        mediaType: 'image',
+        title: 'Messier 51 in 255 Hours',
+        url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
+      },
+    ]);
   });
 });
