@@ -1,89 +1,108 @@
 <template>
   <div class="landing-hero">
-    <div class="landing-hero-container">
+    <LandingHeroSkeleton v-if="!loaded" />
+    <div v-show="loaded" class="landing-hero-container">
       <transition name="skywatcher" appear>
-        <div class="tunned-logo">
+        <div v-if="loaded" class="tunned-logo">
           <img src="@/assets/images/ui/logo.svg" alt="SkyWatcher Logo" />
           <h1>SkyWatcher</h1>
         </div>
       </transition>
       <transition name="skywatcher-delayed" appear>
-        <h2>The universe at the tip of your fingers</h2>
+        <h2 v-if="loaded">The universe at the tip of your fingers</h2>
       </transition>
       <div class="description">
         <transition name="flip" appear>
-          <p>This webapp was built by a universe fan.</p>
+          <p v-if="loaded">This webapp was built by a universe fan.</p>
         </transition>
         <transition name="flip" appear>
-          <p>
+          <p v-if="loaded">
             It is fueled by
             <a :href="nasaApisUrl" target="_blank"> NASA's APIs. </a>
           </p>
         </transition>
       </div>
       <transition name="flip" appear>
-        <p>More to come soon...</p>
+        <p v-if="loaded">More to come soon...</p>
       </transition>
     </div>
   </div>
 </template>
 
 <script>
+import LandingHeroSkeleton from '@/skeleton/home/LandingHeroSkeleton.vue';
+
 export default {
   name: 'LandingHero',
+  components: {
+    LandingHeroSkeleton,
+  },
   data() {
     return {
       nasaApisUrl: process.env.VUE_APP_NASA_API_URL,
+      loaded: false,
     };
+  },
+  mounted() {
+    if (!this.loaded) {
+      const imageElement = document.querySelector('.landing-hero-container');
+      const srcImage = window.getComputedStyle(imageElement).backgroundImage;
+      const url = srcImage.match(/\((.*?)\)/)[1].replace(/('|")/g, '');
+
+      const image = new Image();
+      image.onload = () => {
+        this.loaded = true;
+      };
+
+      image.src = url;
+      if (image.complete) {
+        image.onload();
+      }
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .landing-hero {
-  background-image: url('@/assets/images/landing/hero.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 2rem;
-  padding-left: 3.5rem;
   height: 100%;
 
-  @media (min-width: $min-width-first-break) {
-    padding-left: 4rem;
-  }
-
-  @media (min-width: $min-width-second-break) {
-    padding-left: 6rem;
-  }
-
-  @media (min-width: $min-width-third-break) {
-    padding-left: 10rem;
-  }
-
-  @media (min-width: $min-width-fourth-break) {
-    padding-left: 14rem;
-  }
-
-  @media (min-width: $min-width-fifth-break) {
-    padding-left: 20rem;
-  }
-
-  @media (min-width: $min-width-sixth-break) {
-    padding-left: 28rem;
-  }
-
   .landing-hero-container {
+    background-image: url('@/assets/images/landing/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 2rem;
+    padding-left: 3.5rem;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     justify-content: center;
 
+    @media (min-width: $min-width-first-break) {
+      padding-left: 4rem;
+    }
+
     @media (min-width: $min-width-second-break) {
+      padding-left: 6rem;
       gap: 2rem;
     }
 
     @media (min-width: $min-width-third-break) {
+      padding-left: 10rem;
       gap: 3rem;
+    }
+
+    @media (min-width: $min-width-fourth-break) {
+      padding-left: 14rem;
+    }
+
+    @media (min-width: $min-width-fifth-break) {
+      padding-left: 20rem;
+    }
+
+    @media (min-width: $min-width-sixth-break) {
+      padding-left: 28rem;
     }
 
     .tunned-logo {
@@ -191,12 +210,12 @@ export default {
   }
 }
 
-.skywatcher-delayed-enter-active,
 .skywatcher-enter-active {
   transition: opacity 1s, transform 1s ease-in-out;
 }
 
 .skywatcher-delayed-enter-active {
+  transition: opacity 1s, transform 1s ease-in-out;
   transition-delay: 1s;
 }
 

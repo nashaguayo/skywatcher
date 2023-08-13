@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import DailyPicture from '@/components/apod/DailyPicture.vue';
 import * as dateFns from 'date-fns';
 
@@ -16,7 +16,7 @@ describe('DailyPicture Template', () => {
 
   beforeEach(() => {
     spyIsEqual.mockReturnValue(true);
-    wrapper = mount(DailyPicture, {
+    wrapper = shallowMount(DailyPicture, {
       data: () => ({
         loaded: true,
       }),
@@ -42,7 +42,7 @@ describe('DailyPicture Template', () => {
   });
 
   it('shows skeleton while loading', () => {
-    wrapper = mount(DailyPicture, {
+    wrapper = shallowMount(DailyPicture, {
       propsData: {
         copyright: 'Mock Copyright',
         date: new Date('2023-08-12T10:00:00.000Z'),
@@ -56,6 +56,10 @@ describe('DailyPicture Template', () => {
     });
     const skeleton = wrapper.find('dailypictureskeleton-stub');
     expect(skeleton.exists()).toBeTruthy();
+
+    const body = wrapper.find('.daily-picture-container');
+    expect(body.exists()).toBeTruthy();
+    expect(body.attributes('style')).toBe('display: none;');
   });
 
   it('displays all the content', async () => {
@@ -91,7 +95,7 @@ describe('DailyPicture Template', () => {
   });
 
   it('loads video when it is not an image', () => {
-    wrapper = mount(DailyPicture, {
+    wrapper = shallowMount(DailyPicture, {
       propsData: {
         copyright: 'Mock Copyright',
         date: new Date('2023-08-12T10:00:00.000Z'),

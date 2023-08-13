@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import ApodContainer from '@/components/apod/ApodContainer.vue';
 import * as apodHelper from '@/helpers/apod';
 
@@ -29,7 +29,7 @@ describe('ApodContainer', () => {
       title: 'Messier 51 in 255 Hours',
       url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
     });
-    wrapper = mount(ApodContainer, { stubs: ['DailyPicture'] });
+    wrapper = shallowMount(ApodContainer, { stubs: ['DailyPicture'] });
   });
 
   afterEach(() => {

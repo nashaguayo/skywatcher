@@ -1,11 +1,21 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import LandingHero from '@/components/home/LandingHero.vue';
+
+jest.mock('@/skeleton/home/LandingHeroSkeleton.vue', () => ({
+  name: 'LandingHeroSkeleton',
+  template: '<div class="mock-landing-hero-skeleton"></div>',
+}));
 
 describe('LandingHero', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(LandingHero);
+    wrapper = shallowMount(LandingHero, {
+      data: () => ({
+        loaded: true,
+      }),
+      stubs: ['LandingHeroSkeleton'],
+    });
   });
 
   afterEach(() => {
