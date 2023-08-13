@@ -6,6 +6,7 @@
 
 - Astronomy Picture of the Day
 - Error Boundary
+- Loader for image
 
 ##### Modified
 
