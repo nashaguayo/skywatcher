@@ -44,16 +44,20 @@ export default {
     };
   },
   mounted() {
-    const imageElement = document.querySelector('.landing-hero-container');
-    const srcImage = window.getComputedStyle(imageElement).backgroundImage;
-    const url = srcImage.match(/\((.*?)\)/)[1].replace(/('|")/g, '');
-    const image = new Image();
-    image.onload = () => {
-      this.loaded = true;
-    };
-    image.src = url;
-    if (image.complete) {
-      image.onload();
+    if (!this.loaded) {
+      const imageElement = document.querySelector('.landing-hero-container');
+      const srcImage = window.getComputedStyle(imageElement).backgroundImage;
+      const url = srcImage.match(/\((.*?)\)/)[1].replace(/('|")/g, '');
+
+      const image = new Image();
+      image.onload = () => {
+        this.loaded = true;
+      };
+
+      image.src = url;
+      if (image.complete) {
+        image.onload();
+      }
     }
   },
 };
@@ -206,12 +210,12 @@ export default {
   }
 }
 
-.skywatcher-delayed-enter-active,
 .skywatcher-enter-active {
   transition: opacity 1s, transform 1s ease-in-out;
 }
 
 .skywatcher-delayed-enter-active {
+  transition: opacity 1s, transform 1s ease-in-out;
   transition-delay: 1s;
 }
 
