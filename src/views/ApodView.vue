@@ -1,17 +1,51 @@
 <template>
   <div class="apod-view">
-    <DailyPicture />
+    <DailyPicture
+      :copyright="apod.copyright"
+      :date="apod.date"
+      :explanation="apod.explanation"
+      :hdurl="apod.hdurl"
+      :mediaType="apod.mediaType"
+      :title="apod.title"
+      :url="apod.url"
+    />
   </div>
 </template>
 
 <script>
 import DailyPicture from '@/components/apod/DailyPicture.vue';
+import { getAstronomyPictureOfTheDay } from '@/helpers/apod';
+import { parseISO } from 'date-fns';
 
 export default {
   name: 'ApodView',
   title: 'Astronomy Picture of the Day',
   components: {
     DailyPicture,
+  },
+  data() {
+    return {
+      apod: {
+        copyright: '',
+        date: new Date(),
+        explanation: '',
+        hdurl: '',
+        mediaType: '',
+        title: '',
+        url: '',
+      },
+    };
+  },
+  async created() {
+    const { copyright, date, explanation, hdurl, media_type, title, url } =
+      await getAstronomyPictureOfTheDay();
+    this.apod.copyright = copyright;
+    this.apod.date = parseISO(date);
+    this.apod.explanation = explanation;
+    this.apod.hdurl = hdurl;
+    this.apod.mediaType = media_type;
+    this.apod.title = title;
+    this.apod.url = url;
   },
 };
 </script>

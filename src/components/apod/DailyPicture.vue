@@ -33,21 +33,39 @@
 </template>
 
 <script>
-import { getAstronomyPictureOfTheDay } from '@/helpers/apod';
-import { format, isEqual, startOfDay, parseISO } from 'date-fns';
+import { format, isEqual, startOfDay } from 'date-fns';
 
 export default {
   name: 'DailyPicture',
-  data() {
-    return {
-      copyright: '',
-      date: new Date(),
-      explanation: '',
-      hdurl: '',
-      mediaType: '',
-      title: '',
-      url: '',
-    };
+  props: {
+    copyright: {
+      type: String,
+      required: true,
+    },
+    date: {
+      type: Date,
+      required: true,
+    },
+    explanation: {
+      type: String,
+      required: true,
+    },
+    hdurl: {
+      type: String,
+      required: true,
+    },
+    mediaType: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    url: {
+      type: String,
+      required: true,
+    },
   },
   computed: {
     dateText() {
@@ -58,17 +76,6 @@ export default {
       }
       return format(this.date, 'EEEE, do LLLL yyyy');
     },
-  },
-  async created() {
-    const { copyright, date, explanation, hdurl, media_type, title, url } =
-      await getAstronomyPictureOfTheDay();
-    this.copyright = copyright;
-    this.date = parseISO(date);
-    this.explanation = explanation;
-    this.hdurl = hdurl;
-    this.mediaType = media_type;
-    this.title = title;
-    this.url = url;
   },
   methods: {
     seeHdImage() {
