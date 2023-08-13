@@ -1,11 +1,37 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import LandingHero from '@/components/home/LandingHero.vue';
+
+jest.mock('@/components/ui/BaseSpinner', () => ({
+  name: 'BaseSpinner',
+  template: '<div class="mock-base-spinner"></div>',
+}));
+
+const spyDocumentQuerySelector = jest
+  .spyOn(document, 'querySelector')
+  .mockReturnValue({});
+
+const spyWindowGetComputedStyle = jest
+  .spyOn(window, 'getComputedStyle')
+  .mockReturnValue({
+    backgroundImage: '',
+    match: jest
+      .fn()
+      .mockReturnValue([
+        '',
+        'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
+      ]),
+  });
 
 describe('LandingHero', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(LandingHero);
+    wrapper = shallowMount(LandingHero, {
+      data: () => ({
+        loaded: true,
+      }),
+      stubs: ['BaseSpinner'],
+    });
   });
 
   afterEach(() => {

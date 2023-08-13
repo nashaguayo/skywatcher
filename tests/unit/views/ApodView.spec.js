@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import ApodView from '@/views/ApodView.vue';
 
 jest.mock('@/components/common/ErrorBoundary.vue', () => ({
@@ -15,7 +15,9 @@ describe('ApodView', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(ApodView, { stubs: ['ErrorBoundary', 'ApodContainer'] });
+    wrapper = shallowMount(ApodView, {
+      stubs: ['ErrorBoundary', 'ApodContainer'],
+    });
   });
 
   afterEach(() => {

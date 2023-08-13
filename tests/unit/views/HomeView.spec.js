@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import HomeView from '@/views/HomeView.vue';
 
 jest.mock('@/components/common/ErrorBoundary.vue', () => ({
@@ -15,7 +15,9 @@ describe('HomeView', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(HomeView, { stubs: ['ErrorBoundary', 'LandingHero'] });
+    wrapper = shallowMount(HomeView, {
+      stubs: ['ErrorBoundary', 'LandingHero'],
+    });
   });
 
   afterEach(() => {
