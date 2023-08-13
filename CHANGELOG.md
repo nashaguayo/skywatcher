@@ -5,6 +5,7 @@
 ##### Added
 
 - Astronomy Picture of the Day
+- Error Boundary
 
 ##### Modified
 

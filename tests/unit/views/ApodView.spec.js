@@ -1,6 +1,11 @@
 import { mount } from '@vue/test-utils';
 import ApodView from '@/views/ApodView.vue';
 
+jest.mock('@/components/common/ErrorBoundary.vue', () => ({
+  name: 'ErrorBoundary',
+  template: '<div class="mock-error-boundary"></div>',
+}));
+
 jest.mock('@/components/apod/ApodContainer.vue', () => ({
   name: 'ApodContainer',
   template: '<div class="mock-apod-container"></div>',
@@ -10,7 +15,7 @@ describe('ApodView', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(ApodView, { stubs: ['ApodContainer'] });
+    wrapper = mount(ApodView, { stubs: ['ErrorBoundary', 'ApodContainer'] });
   });
 
   afterEach(() => {
@@ -29,6 +34,7 @@ describe('ApodView', () => {
   });
 
   it('renders the mocked components', () => {
+    expect(wrapper.find('errorboundary-stub').exists()).toBeTruthy();
     expect(wrapper.find('apodcontainer-stub').exists()).toBeTruthy();
   });
 });
