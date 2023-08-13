@@ -16,10 +16,8 @@
 <script>
 import DailyPicture from '@/components/apod/DailyPicture.vue';
 import ApodCalendar from '@/components/apod/ApodCalendar.vue';
-import {
-  getAstronomyPictureOfTheDay,
-  getAstronomyPicturesOfTheDay,
-} from '@/helpers/apod';
+import { getAstronomyPicturesOfTheDay } from '@/helpers/apod';
+import { format, startOfMonth } from 'date-fns';
 
 export default {
   name: 'ApodContainer',
@@ -41,17 +39,17 @@ export default {
       },
       apods: {
         list: [],
-        startDate: '2023-08-01',
-        endDate: '2023-08-13',
+        startDate: format(startOfMonth(new Date()), 'yyyy-MM-dd'),
+        endDate: format(new Date(), 'yyyy-MM-dd'),
       },
     };
   },
   async created() {
-    this.apod = await getAstronomyPictureOfTheDay();
     this.apods.list = await getAstronomyPicturesOfTheDay(
       this.apods.startDate,
       this.apods.endDate
     );
+    this.apod = this.apods.list[this.apods.list.length - 1];
   },
 };
 </script>
