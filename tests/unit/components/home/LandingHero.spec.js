@@ -6,6 +6,11 @@ jest.mock('@/components/ui/BaseSpinner', () => ({
   template: '<div class="mock-base-spinner"></div>',
 }));
 
+jest.mock('@/skeleton/home/LandingHeroSkeleton.vue', () => ({
+  name: 'LandingHeroSkeleton',
+  template: '<div class="mock-landing-hero-skeleton"></div>',
+}));
+
 const spyDocumentQuerySelector = jest
   .spyOn(document, 'querySelector')
   .mockReturnValue({});
@@ -18,9 +23,10 @@ const spyWindowGetComputedStyle = jest
 
 const spyMatch = jest
   .spyOn(String.prototype, 'match')
-  .mockReturnValue(
-    'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg'
-  );
+  .mockReturnValue([
+    '',
+    'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
+  ]);
 
 describe('LandingHero', () => {
   let wrapper;
@@ -30,7 +36,7 @@ describe('LandingHero', () => {
       data: () => ({
         loaded: true,
       }),
-      stubs: ['BaseSpinner'],
+      stubs: ['BaseSpinner', 'LandingHeroSkeleton'],
     });
   });
 
@@ -44,6 +50,14 @@ describe('LandingHero', () => {
 
   it('contains the "landing-hero" class', () => {
     expect(wrapper.classes()).toContain('landing-hero');
+  });
+
+  it('shows skeleton while loading', () => {
+    wrapper = shallowMount(LandingHero, {
+      stubs: ['BaseSpinner', 'LandingHeroSkeleton'],
+    });
+    const skeleton = wrapper.find('landingheroskeleton-stub');
+    expect(skeleton.exists()).toBeTruthy();
   });
 
   it('should wait for landing hero image', async () => {
@@ -79,5 +93,6 @@ describe('LandingHero', () => {
     expect(descriptions.at(1).text()).toContain('It is fueled by');
     expect(descriptions.at(1).text()).toContain("NASA's APIs.");
     expect(descriptions.at(2).text()).toContain('More to come soon...');
+    console.log(wrapper.html());
   });
 });
