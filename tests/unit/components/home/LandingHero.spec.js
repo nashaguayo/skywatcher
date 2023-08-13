@@ -1,11 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import LandingHero from '@/components/home/LandingHero.vue';
 
-jest.mock('@/components/ui/BaseSpinner', () => ({
-  name: 'BaseSpinner',
-  template: '<div class="mock-base-spinner"></div>',
-}));
-
 jest.mock('@/skeleton/home/LandingHeroSkeleton.vue', () => ({
   name: 'LandingHeroSkeleton',
   template: '<div class="mock-landing-hero-skeleton"></div>',
@@ -36,7 +31,7 @@ describe('LandingHero', () => {
       data: () => ({
         loaded: true,
       }),
-      stubs: ['BaseSpinner', 'LandingHeroSkeleton'],
+      stubs: ['LandingHeroSkeleton'],
     });
   });
 
@@ -54,7 +49,7 @@ describe('LandingHero', () => {
 
   it('shows skeleton while loading', () => {
     wrapper = shallowMount(LandingHero, {
-      stubs: ['BaseSpinner', 'LandingHeroSkeleton'],
+      stubs: ['LandingHeroSkeleton'],
     });
     const skeleton = wrapper.find('landingheroskeleton-stub');
     expect(skeleton.exists()).toBeTruthy();
