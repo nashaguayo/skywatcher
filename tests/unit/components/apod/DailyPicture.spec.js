@@ -56,6 +56,10 @@ describe('DailyPicture Template', () => {
     });
     const skeleton = wrapper.find('dailypictureskeleton-stub');
     expect(skeleton.exists()).toBeTruthy();
+
+    const body = wrapper.find('.daily-picture-container');
+    expect(body.exists()).toBeTruthy();
+    expect(body.attributes('style')).toBe('display: none;');
   });
 
   it('displays all the content', async () => {
