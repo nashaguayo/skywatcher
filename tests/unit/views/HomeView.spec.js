@@ -1,6 +1,11 @@
 import { mount } from '@vue/test-utils';
 import HomeView from '@/views/HomeView.vue';
 
+jest.mock('@/components/common/ErrorBoundary.vue', () => ({
+  name: 'ErrorBoundary',
+  template: '<div class="mock-error-boundary"></div>',
+}));
+
 jest.mock('@/components/home/LandingHero.vue', () => ({
   name: 'LandingHero',
   template: '<div class="mock-landing-hero"></div>',
@@ -10,7 +15,7 @@ describe('HomeView', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(HomeView, { stubs: ['LandingHero'] });
+    wrapper = mount(HomeView, { stubs: ['ErrorBoundary', 'LandingHero'] });
   });
 
   afterEach(() => {
@@ -29,6 +34,7 @@ describe('HomeView', () => {
   });
 
   it('renders the mocked components', () => {
+    expect(wrapper.find('errorboundary-stub').exists()).toBeTruthy();
     expect(wrapper.find('landinghero-stub').exists()).toBeTruthy();
   });
 });
