@@ -34,7 +34,22 @@ export default {
   data() {
     return {
       nasaApisUrl: process.env.VUE_APP_NASA_API_URL,
+      loaded: false,
     };
+  },
+  mounted() {
+    const imageElement = document.querySelector('.landing-hero');
+    const srcImage = window.getComputedStyle(imageElement).backgroundImage;
+    const url = srcImage.match(/\((.*?)\)/)[1].replace(/('|")/g, '');
+
+    const image = new Image();
+    image.onload = () => {
+      this.loaded = true;
+    };
+    image.src = url;
+    if (image.complete) {
+      image.onload();
+    }
   },
 };
 </script>
