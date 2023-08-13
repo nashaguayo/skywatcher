@@ -7,6 +7,11 @@ jest.mock('@/components/apod/DailyPicture.vue', () => ({
   template: '<div class="mock-daily-picture"></div>',
 }));
 
+jest.mock('@/components/apod/ApodCalendar.vue', () => ({
+  name: 'ApodCalendar',
+  template: '<div class="mock-apod-calendar"></div>',
+}));
+
 jest.mock('@/helpers/apod', () => ({
   getAstronomyPictureOfTheDay: jest.fn(),
 }));
@@ -68,6 +73,9 @@ describe('ApodContainer', () => {
     expect(dailyPictureComponent.attributes('url')).toBe(
       'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg'
     );
+
+    const apodCalendarComponent = wrapper.find('apodcalendar-stub');
+    expect(apodCalendarComponent.exists()).toBeTruthy();
   });
 
   it('sets apod data on created correctly', () => {
