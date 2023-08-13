@@ -14,13 +14,13 @@ const spyWindowGetComputedStyle = jest
   .spyOn(window, 'getComputedStyle')
   .mockReturnValue({
     backgroundImage: '',
-    match: jest
-      .fn()
-      .mockReturnValue([
-        '',
-        'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
-      ]),
   });
+
+const spyMatch = jest
+  .spyOn(String.prototype, 'match')
+  .mockReturnValue(
+    'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg'
+  );
 
 describe('LandingHero', () => {
   let wrapper;
@@ -44,6 +44,12 @@ describe('LandingHero', () => {
 
   it('contains the "landing-hero" class', () => {
     expect(wrapper.classes()).toContain('landing-hero');
+  });
+
+  it('should wait for landing hero image', async () => {
+    expect(spyDocumentQuerySelector).toHaveBeenCalled();
+    expect(spyWindowGetComputedStyle).toHaveBeenCalled();
+    expect(spyMatch).toHaveBeenCalled();
   });
 
   it('loads logo', () => {
