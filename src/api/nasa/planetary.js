@@ -15,3 +15,18 @@ export async function getAstronomyPictureOfTheDay() {
     );
   }
 }
+
+export async function getAstronomyPicturesOfTheDay(startDate, endDate) {
+  try {
+    const result = await nasaApi.get(
+      `${URL}apod?start_date=${startDate}&end_date=${endDate}`
+    );
+    return result.data;
+  } catch (error) {
+    logError(
+      getAstronomyPicturesOfTheDay.name,
+      'Unable to get astronomy picture of the day',
+      error
+    );
+  }
+}
