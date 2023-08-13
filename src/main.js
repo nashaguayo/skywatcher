@@ -3,6 +3,14 @@ import App from '@/App.vue';
 import router from '@/router';
 import titleMixin from '@/lib/titleMixin';
 import LazyYoutube from 'vue-lazytube';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+import { faInfo } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faInfo);
+
+Vue.component('FontAwesomeIcon', FontAwesomeIcon);
 
 Vue.use(LazyYoutube);
 

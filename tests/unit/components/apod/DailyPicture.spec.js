@@ -21,7 +21,7 @@ describe('DailyPicture Template', () => {
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
       },
-      stubs: ['LazyYoutube'],
+      stubs: ['LazyYoutube', 'FontAwesomeIcon'],
     });
   });
 
@@ -54,6 +54,9 @@ describe('DailyPicture Template', () => {
     expect(title.exists()).toBeTruthy();
     expect(title.text()).toBe('Mock Title');
 
+    const icon = wrapper.find('.icon');
+    expect(icon.exists()).toBeTruthy();
+
     const explanation = wrapper.find('.container span');
     expect(explanation.exists()).toBeTruthy();
     expect(explanation.text()).toBe('Mock Explanation');
@@ -70,7 +73,7 @@ describe('DailyPicture Template', () => {
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
       },
-      stubs: ['LazyYoutube'],
+      stubs: ['LazyYoutube', 'FontAwesomeIcon'],
     });
     const image = wrapper.find('img');
     expect(image.exists()).toBeFalsy();

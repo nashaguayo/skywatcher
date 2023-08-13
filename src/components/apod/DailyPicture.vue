@@ -26,6 +26,11 @@
     </div>
     <transition name="slide-up" appear>
       <div class="container">
+        <FontAwesomeIcon
+          icon="fa-solid fa-info"
+          class="icon"
+          style="color: #ff8800"
+        />
         <span>{{ explanation }}</span>
       </div>
     </transition>
@@ -43,7 +48,7 @@ export default {
       required: false,
     },
     date: {
-      type: Date,
+      type: [Date, String],
       required: true,
     },
     explanation: {
@@ -181,6 +186,16 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 1.5rem 2rem 2rem;
+    gap: 1rem;
+
+    .icon {
+      border: 0.2rem solid var(--variant-text-color);
+      border-radius: 50%;
+      height: 2rem;
+      width: 2rem;
+      padding: 0.2rem 0.45rem 0.7rem;
+      align-self: center;
+    }
 
     span {
       text-align: justify;

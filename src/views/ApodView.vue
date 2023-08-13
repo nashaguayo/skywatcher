@@ -29,7 +29,7 @@ export default {
         date: new Date(),
         explanation: '',
         hdurl: '',
-        mediaType: '',
+        mediaType: 'image',
         title: '',
         url: '',
       },
