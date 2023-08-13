@@ -12,6 +12,9 @@ describe('DailyPicture Template', () => {
   beforeEach(() => {
     spyIsEqual.mockReturnValue(true);
     wrapper = mount(DailyPicture, {
+      data: () => ({
+        loaded: true,
+      }),
       propsData: {
         copyright: 'Mock Copyright',
         date: new Date('2023-08-12T10:00:00.000Z'),
@@ -33,7 +36,7 @@ describe('DailyPicture Template', () => {
     expect(wrapper.classes()).toContain('daily-picture');
   });
 
-  it('displays all the content', () => {
+  it('displays all the content', async () => {
     const image = wrapper.find('img');
     expect(image.exists()).toBeTruthy();
     expect(image.attributes('src')).toBe('https://example.com/mock-url.jpg');

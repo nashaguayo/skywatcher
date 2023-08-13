@@ -1,31 +1,36 @@
 <template>
-  <div class="daily-picture">
-    <transition name="slide-slower-from-above" appear>
-      <div class="image-container" @click="seeHdImage">
-        <img v-if="mediaType === 'image'" class="image" :src="url" />
-        <LazyYoutube v-else :src="url" class="video" />
-        <transition name="slide-from-right" appear>
-          <span v-if="copyright" class="copyright">By {{ copyright }}</span>
-        </transition>
-      </div>
-    </transition>
+  <div class="daily-picture" v-show="loaded">
+    <div class="image-container" @click="seeHdImage">
+      <img
+        v-if="mediaType === 'image'"
+        class="image"
+        :src="url"
+        @load="loaded = true"
+      />
+      <LazyYoutube v-else :src="url" class="video" />
+      <transition name="slide-from-right" appear>
+        <span v-if="copyright && loaded" class="copyright">
+          By {{ copyright }}
+        </span>
+      </transition>
+    </div>
     <div class="title-container">
       <transition name="slide-from-above" appear>
-        <h1>Astronomy Picture of the Day</h1>
+        <h1 v-if="loaded">Astronomy Picture of the Day</h1>
       </transition>
       <transition name="flip-open" appear>
-        <span class="date">{{ dateText }}</span>
+        <span v-if="loaded" class="date">{{ dateText }}</span>
       </transition>
       <transition name="open-up" appear>
-        <div class="title">
+        <div v-if="loaded" class="title">
           <transition name="flip-open-later" appear>
-            <h2>{{ title }}</h2>
+            <h2 v-if="loaded">{{ title }}</h2>
           </transition>
         </div>
       </transition>
     </div>
     <transition name="slide-up" appear>
-      <div class="container">
+      <div v-if="loaded" class="container">
         <FontAwesomeIcon
           icon="fa-solid fa-info"
           class="icon"
@@ -71,6 +76,18 @@ export default {
       type: String,
       required: true,
     },
+  },
+  watch: {
+    mediaType(mediaType) {
+      if (mediaType === 'video') {
+        this.loaded = true;
+      }
+    },
+  },
+  data() {
+    return {
+      loaded: false,
+    };
   },
   computed: {
     dateText() {
@@ -205,7 +222,6 @@ export default {
 }
 
 .slide-up-enter-active,
-.slide-slower-from-above-enter-active,
 .slide-from-above-enter-active {
   transition: transform 0.5s, opacity 0.5s;
 }
@@ -213,11 +229,6 @@ export default {
 .slide-from-above-enter {
   opacity: 0;
   transform: translateY(-100%);
-}
-
-.slide-slower-from-above-enter {
-  opacity: 0;
-  transform: translateY(-10%);
 }
 
 .slide-from-right-enter-active {
