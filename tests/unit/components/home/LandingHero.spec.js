@@ -6,23 +6,6 @@ jest.mock('@/skeleton/home/LandingHeroSkeleton.vue', () => ({
   template: '<div class="mock-landing-hero-skeleton"></div>',
 }));
 
-const spyDocumentQuerySelector = jest
-  .spyOn(document, 'querySelector')
-  .mockReturnValue({});
-
-const spyWindowGetComputedStyle = jest
-  .spyOn(window, 'getComputedStyle')
-  .mockReturnValue({
-    backgroundImage: '',
-  });
-
-// const spyMatch = jest
-//   .spyOn(String.prototype, 'match')
-//   .mockReturnValue([
-//     '',
-//     'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
-//   ]);
-
 describe('LandingHero', () => {
   let wrapper;
 
