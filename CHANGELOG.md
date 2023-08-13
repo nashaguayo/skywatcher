@@ -4,6 +4,8 @@
 
 ##### Added
 
+- Astronomy Picture of the Day
+
 ##### Modified
 
 ##### Fixed
