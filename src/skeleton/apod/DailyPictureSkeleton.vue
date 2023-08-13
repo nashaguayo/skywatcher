@@ -1,4 +1,4 @@
-<template functional>
+<template>
   <div class="daily-picture-skeleton">
     <div class="image-placeholder">
       <FontAwesomeIcon
