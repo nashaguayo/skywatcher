@@ -52,7 +52,7 @@ export default {
     },
     hdurl: {
       type: String,
-      required: true,
+      required: false,
     },
     mediaType: {
       type: String,
