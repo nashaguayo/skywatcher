@@ -118,8 +118,6 @@ export default {
 
 <style lang="scss" scoped>
 .daily-picture {
-  height: 100%;
-
   .daily-picture-container {
     overflow-x: hidden;
     background: linear-gradient(

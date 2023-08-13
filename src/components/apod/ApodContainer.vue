@@ -9,11 +9,13 @@
       :title="apod.title"
       :url="apod.url"
     />
+    <ApodCalendar />
   </div>
 </template>
 
 <script>
 import DailyPicture from '@/components/apod/DailyPicture.vue';
+import ApodCalendar from '@/components/apod/ApodCalendar.vue';
 import { getAstronomyPictureOfTheDay } from '@/helpers/apod';
 
 export default {
@@ -21,6 +23,7 @@ export default {
   title: 'Astronomy Picture of the Day',
   components: {
     DailyPicture,
+    ApodCalendar,
   },
   data() {
     return {
@@ -43,6 +46,5 @@ export default {
 
 <style lang="scss" scoped>
 .apod-container {
-  height: 100%;
 }
 </style>
