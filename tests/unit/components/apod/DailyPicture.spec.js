@@ -101,7 +101,7 @@ describe('DailyPicture Template', () => {
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
       },
-      stubs: ['LazyYoutube', 'FontAwesomeIcon'],
+      stubs: ['LazyYoutube', 'FontAwesomeIcon', 'DailyPictureSkeleton'],
     });
     const image = wrapper.find('img');
     expect(image.exists()).toBeFalsy();
