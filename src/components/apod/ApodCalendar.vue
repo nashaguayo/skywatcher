@@ -10,19 +10,10 @@
 <script>
 export default {
   name: 'ApodCalendar',
-  data() {
-    return {
-      apodDate: null,
-    };
-  },
-  watch: {
-    apodDate(apodDate) {
-      console.log(apodDate);
-    },
-  },
-  methods: {
-    apodDateChanged(apodDate) {
-      this.apodDate = apodDate;
+  props: {
+    apods: {
+      type: Array,
+      required: true,
     },
   },
 };
@@ -32,7 +23,7 @@ export default {
 .apod-calendar {
   .apod-calendar-container {
     padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,8 +42,6 @@ export default {
       background-color: var(--variant-background-color);
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      width: calc(100% - 4rem);
-      height: 10rem;
     }
   }
 }

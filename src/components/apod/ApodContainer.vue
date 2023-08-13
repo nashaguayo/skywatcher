@@ -9,14 +9,17 @@
       :title="apod.title"
       :url="apod.url"
     />
-    <ApodCalendar />
+    <ApodCalendar :apods="apods.list" />
   </div>
 </template>
 
 <script>
 import DailyPicture from '@/components/apod/DailyPicture.vue';
 import ApodCalendar from '@/components/apod/ApodCalendar.vue';
-import { getAstronomyPictureOfTheDay } from '@/helpers/apod';
+import {
+  getAstronomyPictureOfTheDay,
+  getAstronomyPicturesOfTheDay,
+} from '@/helpers/apod';
 
 export default {
   name: 'ApodContainer',
@@ -36,10 +39,19 @@ export default {
         title: '',
         url: '',
       },
+      apods: {
+        list: [],
+        startDate: '2023-08-01',
+        endDate: '2023-08-13',
+      },
     };
   },
   async created() {
     this.apod = await getAstronomyPictureOfTheDay();
+    this.apods.list = await getAstronomyPicturesOfTheDay(
+      this.apods.startDate,
+      this.apods.endDate
+    );
   },
 };
 </script>
