@@ -9,7 +9,7 @@
       :title="apod.title"
       :url="apod.url"
     />
-    <ApodCalendar :apods="apods.list" />
+    <ApodCalendar :apods="apods.list" @dayTapped="displayApod" />
   </div>
 </template>
 
@@ -50,6 +50,12 @@ export default {
       this.apods.endDate
     );
     this.apod = this.apods.list[this.apods.list.length - 1];
+  },
+  methods: {
+    displayApod(apod) {
+      this.apod = apod;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
   },
 };
 </script>

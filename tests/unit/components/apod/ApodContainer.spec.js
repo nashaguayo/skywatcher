@@ -13,14 +13,8 @@ jest.mock('@/components/apod/ApodCalendar.vue', () => ({
 }));
 
 jest.mock('@/helpers/apod', () => ({
-  getAstronomyPictureOfTheDay: jest.fn(),
   getAstronomyPicturesOfTheDay: jest.fn(),
 }));
-
-const spyGetAstronomyPictureOfTheDay = jest.spyOn(
-  apodHelper,
-  'getAstronomyPictureOfTheDay'
-);
 
 const spyGetAstronomyPicturesOfTheDay = jest.spyOn(
   apodHelper,
@@ -31,15 +25,6 @@ describe('ApodContainer', () => {
   let wrapper;
 
   beforeEach(() => {
-    spyGetAstronomyPictureOfTheDay.mockResolvedValue({
-      copyright: 'The Deep Sky Collective',
-      date: new Date(2023, 8, 12),
-      explanation: 'An explanation',
-      hdurl: 'https://apod.nasa.gov/apod/image/2308/M51_255hours.jpg',
-      mediaType: 'image',
-      title: 'Messier 51 in 255 Hours',
-      url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
-    });
     spyGetAstronomyPicturesOfTheDay.mockResolvedValue([
       {
         copyright: 'The Deep Sky Collective',
@@ -116,6 +101,36 @@ describe('ApodContainer', () => {
       mediaType: 'image',
       title: 'Messier 51 in 255 Hours',
       url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
+    });
+  });
+
+  it('changes the apod in the display when tapped', () => {
+    expect(wrapper.vm.apod).toStrictEqual({
+      copyright: 'The Deep Sky Collective',
+      date: new Date(2023, 8, 12),
+      explanation: 'An explanation',
+      hdurl: 'https://apod.nasa.gov/apod/image/2308/M51_255hours.jpg',
+      mediaType: 'image',
+      title: 'Messier 51 in 255 Hours',
+      url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
+    });
+    wrapper.vm.displayApod({
+      copyright: 'Some Copyright',
+      date: new Date(2023, 8, 10),
+      explanation: 'Some explanation',
+      hdurl: 'hd-url.com',
+      mediaType: 'image',
+      title: 'Another title',
+      url: 'url.com',
+    });
+    expect(wrapper.vm.apod).toStrictEqual({
+      copyright: 'Some Copyright',
+      date: new Date(2023, 8, 10),
+      explanation: 'Some explanation',
+      hdurl: 'hd-url.com',
+      mediaType: 'image',
+      title: 'Another title',
+      url: 'url.com',
     });
   });
 });

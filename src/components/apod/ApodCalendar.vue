@@ -13,6 +13,7 @@
           v-for="apod in apods"
           :key="apod.date.toString()"
           :style="{ backgroundImage: `url(${apod.url})` }"
+          @click="$emit('dayTapped', apod)"
         >
           <span class="date">
             {{ format(apod.date, 'd') }}
