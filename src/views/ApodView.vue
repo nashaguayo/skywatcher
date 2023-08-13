@@ -15,7 +15,6 @@
 <script>
 import DailyPicture from '@/components/apod/DailyPicture.vue';
 import { getAstronomyPictureOfTheDay } from '@/helpers/apod';
-import { parseISO } from 'date-fns';
 
 export default {
   name: 'ApodView',
@@ -37,14 +36,7 @@ export default {
     };
   },
   async created() {
-    const apod = await getAstronomyPictureOfTheDay();
-    this.apod.copyright = apod.copyright;
-    this.apod.date = parseISO(apod.date);
-    this.apod.explanation = apod.explanation;
-    this.apod.hdurl = apod.hdurl;
-    this.apod.mediaType = apod.media_type;
-    this.apod.title = apod.title;
-    this.apod.url = apod.url;
+    this.apod = await getAstronomyPictureOfTheDay();
   },
 };
 </script>

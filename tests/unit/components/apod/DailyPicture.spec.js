@@ -21,7 +21,7 @@ describe('DailyPicture Template', () => {
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
       },
-      stubs: ['LazyYouTube'],
+      stubs: ['LazyYoutube'],
     });
   });
 
@@ -70,12 +70,12 @@ describe('DailyPicture Template', () => {
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
       },
-      stubs: ['LazyYouTube'],
+      stubs: ['LazyYoutube'],
     });
     const image = wrapper.find('img');
     expect(image.exists()).toBeFalsy();
 
-    const video = wrapper.find('lazyyoutube');
+    const video = wrapper.find('lazyyoutube-stub');
     expect(video.exists()).toBeTruthy();
     expect(video.attributes('src')).toBe('https://example.com/mock-url.jpg');
   });
