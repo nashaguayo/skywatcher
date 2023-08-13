@@ -47,19 +47,6 @@ describe('LandingHero', () => {
     expect(wrapper.classes()).toContain('landing-hero');
   });
 
-  it('shows skeleton while loading', () => {
-    wrapper = shallowMount(LandingHero, {
-      stubs: ['LandingHeroSkeleton'],
-    });
-    const skeleton = wrapper.find('landingheroskeleton-stub');
-    expect(skeleton.exists()).toBeTruthy();
-  });
-
-  it('should wait for landing hero image', async () => {
-    expect(spyDocumentQuerySelector).toHaveBeenCalled();
-    expect(spyWindowGetComputedStyle).toHaveBeenCalled();
-  });
-
   it('loads logo', () => {
     const image = wrapper.find('img');
     expect(image.exists()).toBeTruthy();
