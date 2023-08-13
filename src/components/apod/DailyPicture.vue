@@ -159,6 +159,10 @@ export default {
     align-items: center;
     gap: 1rem;
 
+    @media (min-width: $min-width-third-break) {
+      gap: 2rem;
+    }
+
     h1,
     h2,
     span {
@@ -191,6 +195,14 @@ export default {
         var(--secondary-gradient-background-color)
       );
       box-shadow: var(--main-box-shadow);
+      min-height: 4.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media (min-width: $min-width-third-break) {
+        min-height: 6rem;
+      }
 
       h2 {
         padding: 0.6rem 0rem;
