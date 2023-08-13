@@ -93,6 +93,5 @@ describe('LandingHero', () => {
     expect(descriptions.at(1).text()).toContain('It is fueled by');
     expect(descriptions.at(1).text()).toContain("NASA's APIs.");
     expect(descriptions.at(2).text()).toContain('More to come soon...');
-    console.log(wrapper.html());
   });
 });
