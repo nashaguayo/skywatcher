@@ -105,6 +105,7 @@ describe('ApodContainer', () => {
   });
 
   it('changes the apod in the display when tapped', () => {
+    window.scrollTo = jest.fn();
     expect(wrapper.vm.apod).toStrictEqual({
       copyright: 'The Deep Sky Collective',
       date: new Date(2023, 8, 12),

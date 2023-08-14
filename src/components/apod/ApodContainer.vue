@@ -9,7 +9,12 @@
       :title="apod.title"
       :url="apod.url"
     />
-    <ApodCalendar :apods="apods.list" @dayTapped="displayApod" />
+    <ApodCalendar
+      :apods="apods.list"
+      :date="date"
+      @dayTapped="displayApod"
+      @dateChanged="searchApod"
+    />
   </div>
 </template>
 
@@ -17,7 +22,7 @@
 import DailyPicture from '@/components/apod/DailyPicture.vue';
 import ApodCalendar from '@/components/apod/ApodCalendar.vue';
 import { getAstronomyPicturesOfTheDay } from '@/helpers/apod';
-import { format, startOfMonth } from 'date-fns';
+import { format, startOfMonth, endOfMonth, isBefore, parseISO } from 'date-fns';
 
 export default {
   name: 'ApodContainer',
@@ -28,6 +33,7 @@ export default {
   },
   data() {
     return {
+      date: '',
       apod: {
         copyright: '',
         date: new Date(),
@@ -44,6 +50,20 @@ export default {
       },
     };
   },
+  watch: {
+    async date(date) {
+      if (isBefore(parseISO(date), startOfMonth(this.apod.date))) {
+        this.apods.list = await getAstronomyPicturesOfTheDay(
+          format(startOfMonth(parseISO(date)), 'yyyy-MM-dd'),
+          format(endOfMonth(parseISO(date)), 'yyyy-MM-dd')
+        );
+      }
+      const apodIndex = this.apods.list.findIndex(
+        (apod) => format(apod.date, 'yyyy-MM-dd') === date
+      );
+      this.displayApod(this.apods.list[apodIndex]);
+    },
+  },
   async created() {
     this.apods.list = await getAstronomyPicturesOfTheDay(
       this.apods.startDate,
@@ -55,6 +75,9 @@ export default {
     displayApod(apod) {
       this.apod = apod;
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    searchApod(date) {
+      this.date = date;
     },
   },
 };

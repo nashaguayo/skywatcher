@@ -2,6 +2,12 @@
   <div class="apod-calendar">
     <div class="apod-calendar-container">
       <h1 class="title">Past APODs</h1>
+      <BaseInput
+        type="date"
+        @inputValueChanged="setDate"
+        name="date"
+        :model="date"
+      />
       <div class="calendar" v-if="apods.length">
         <div
           class="empty-day"
@@ -35,12 +41,20 @@
 
 <script>
 import { format, endOfMonth } from 'date-fns';
+import BaseInput from '@/components/ui/BaseInput.vue';
 
 export default {
   name: 'ApodCalendar',
+  components: {
+    BaseInput,
+  },
   props: {
     apods: {
       type: Array,
+      required: true,
+    },
+    date: {
+      type: String,
       required: true,
     },
   },
@@ -58,6 +72,9 @@ export default {
   methods: {
     format,
     endOfMonth,
+    setDate(date) {
+      this.$emit('dateChanged', date);
+    },
   },
 };
 </script>
