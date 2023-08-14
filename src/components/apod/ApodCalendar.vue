@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import ApodCalendarSkeleton from '@/skeleton/apod/ApodCalendarSkeleton.vue';
 import { format, endOfMonth } from 'date-fns';
+import ApodCalendarSkeleton from '@/skeleton/apod/ApodCalendarSkeleton.vue';
 import BaseInput from '@/components/ui/BaseInput.vue';
 
 export default {
@@ -80,6 +80,25 @@ export default {
         format(endOfMonth(this.apods[this.apods.length - 1]?.date), 'd') -
         format(this.apods[this.apods.length - 1].date, 'd')
       );
+    },
+  },
+  watch: {
+    apods(apods) {
+      let imagesLoaded = 0;
+      for (const apod of apods) {
+        if (apod.mediaType === 'video') {
+          imagesLoaded++;
+          continue;
+        }
+        const image = new Image();
+        image.src = apod.url;
+        image.onload = () => {
+          imagesLoaded++;
+          if (imagesLoaded === apods.length) {
+            this.loaded = true;
+          }
+        };
+      }
     },
   },
   methods: {
