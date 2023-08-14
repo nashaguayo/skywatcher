@@ -6,7 +6,6 @@
     <input
       v-if="lazy"
       :type="type"
-      id="search"
       :name="name"
       :placeholder="placeholder"
       v-model.lazy="inputValue"
@@ -17,7 +16,6 @@
     <input
       v-else
       :type="type"
-      id="search"
       :name="name"
       :placeholder="placeholder"
       v-model="inputValue"
@@ -101,5 +99,15 @@ export default {
 
 <style lang="scss" scoped>
 .base-input {
+  width: 100%;
+
+  input {
+    width: 100%;
+    border: 0;
+    height: 2.5rem;
+    padding: 1rem;
+    font-family: 'Roboto Condensed';
+    font-size: 1.5rem;
+  }
 }
 </style>

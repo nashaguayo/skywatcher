@@ -4,10 +4,11 @@
       <h1 class="title">Past APODs</h1>
       <BaseInput
         type="month"
-        @inputValueChanged="setDate"
         name="date"
         :model="date"
         :max="max"
+        @inputValueChanged="setDate"
+        class="input"
       />
       <div class="calendar" v-if="apods.length">
         <div
@@ -102,6 +103,10 @@ export default {
     .title {
       color: var(--secondary-text-color);
       margin-bottom: 1rem;
+    }
+
+    .input {
+      width: 19.5rem;
     }
 
     .calendar {
