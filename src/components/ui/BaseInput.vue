@@ -12,6 +12,7 @@
       v-model.lazy="inputValue"
       ref="input"
       :disabled="disabled"
+      :max="max"
     />
     <input
       v-else
@@ -22,6 +23,7 @@
       v-model="inputValue"
       ref="input"
       :disabled="disabled"
+      :max="max"
     />
   </div>
 </template>
@@ -64,6 +66,10 @@ export default {
     focus: {
       type: Boolean,
       default: false,
+    },
+    max: {
+      type: String,
+      default: '',
     },
   },
   watch: {

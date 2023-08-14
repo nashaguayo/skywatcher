@@ -7,6 +7,7 @@
         @inputValueChanged="setDate"
         name="date"
         :model="date"
+        :max="max"
       />
       <div class="calendar" v-if="apods.length">
         <div
@@ -57,6 +58,11 @@ export default {
       type: String,
       required: true,
     },
+  },
+  data() {
+    return {
+      max: format(new Date(), 'yyyy-MM'),
+    };
   },
   computed: {
     firstEmptyDays() {

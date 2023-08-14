@@ -52,7 +52,10 @@ export default {
   },
   watch: {
     async date(date) {
-      if (isBefore(parseISO(date), startOfMonth(this.apod.date))) {
+      if (
+        isBefore(parseISO(date), startOfMonth(this.apod.date)) ||
+        isBefore(endOfMonth(this.apod.date), parseISO(date))
+      ) {
         this.apods.list = await getAstronomyPicturesOfTheDay(
           format(startOfMonth(parseISO(date)), 'yyyy-MM-dd'),
           format(endOfMonth(parseISO(date)), 'yyyy-MM-dd')
