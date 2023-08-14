@@ -7,6 +7,7 @@
         name="date"
         :model="date"
         :max="max"
+        :min="min"
         @inputValueChanged="setDate"
         class="input"
       />
@@ -63,6 +64,7 @@ export default {
   data() {
     return {
       max: format(new Date(), 'yyyy-MM'),
+      min: format(new Date(1995, 6, 16), 'yyyy-MM'),
     };
   },
   computed: {

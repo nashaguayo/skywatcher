@@ -12,6 +12,7 @@
       ref="input"
       :disabled="disabled"
       :max="max"
+      :min="min"
     />
     <input
       v-else
@@ -22,6 +23,7 @@
       ref="input"
       :disabled="disabled"
       :max="max"
+      :min="min"
     />
   </div>
 </template>
@@ -66,6 +68,10 @@ export default {
       default: false,
     },
     max: {
+      type: String,
+      default: '',
+    },
+    min: {
       type: String,
       default: '',
     },

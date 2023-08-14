@@ -52,17 +52,22 @@ export default {
   },
   watch: {
     async date(date) {
+      let endDate;
+      let startDate;
       if (
         isBefore(parseISO(date), startOfMonth(this.apod.date)) ||
         isBefore(endOfMonth(this.apod.date), parseISO(date))
       ) {
-        let endDate;
         if (isBefore(new Date(), endOfMonth(parseISO(date)))) {
           endDate = format(new Date(), 'yyyy-MM-dd');
         } else {
           endDate = format(endOfMonth(parseISO(date)), 'yyyy-MM-dd');
         }
-        const startDate = format(startOfMonth(parseISO(date)), 'yyyy-MM-dd');
+        if (isBefore(startOfMonth(parseISO(date)), new Date(1995, 6, 16))) {
+          startDate = format(new Date(1995, 6, 16), 'yyyy-MM-dd');
+        } else {
+          startDate = format(startOfMonth(parseISO(date)), 'yyyy-MM-dd');
+        }
         this.apods.list = await getAstronomyPicturesOfTheDay(
           startDate,
           endDate
@@ -71,7 +76,7 @@ export default {
       const apodIndex = this.apods.list.findIndex(
         (apod) => format(apod.date, 'yyyy-MM-dd') === date
       );
-      this.displayApod(this.apods.list[apodIndex]);
+      this.displayApod(this.apods.list[apodIndex < 0 ? 0 : apodIndex]);
     },
   },
   async created() {
