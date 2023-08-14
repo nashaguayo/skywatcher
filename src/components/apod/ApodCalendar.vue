@@ -3,7 +3,7 @@
     <div class="apod-calendar-container">
       <h1 class="title">Past APODs</h1>
       <BaseInput
-        type="date"
+        type="month"
         @inputValueChanged="setDate"
         name="date"
         :model="date"
@@ -73,7 +73,7 @@ export default {
     format,
     endOfMonth,
     setDate(date) {
-      this.$emit('dateChanged', date);
+      this.$emit('dateChanged', `${date}-01`);
     },
   },
 };
