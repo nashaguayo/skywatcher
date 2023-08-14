@@ -56,9 +56,16 @@ export default {
         isBefore(parseISO(date), startOfMonth(this.apod.date)) ||
         isBefore(endOfMonth(this.apod.date), parseISO(date))
       ) {
+        let endDate;
+        if (isBefore(new Date(), endOfMonth(parseISO(date)))) {
+          endDate = format(new Date(), 'yyyy-MM-dd');
+        } else {
+          endDate = format(endOfMonth(parseISO(date)), 'yyyy-MM-dd');
+        }
+        const startDate = format(startOfMonth(parseISO(date)), 'yyyy-MM-dd');
         this.apods.list = await getAstronomyPicturesOfTheDay(
-          format(startOfMonth(parseISO(date)), 'yyyy-MM-dd'),
-          format(endOfMonth(parseISO(date)), 'yyyy-MM-dd')
+          startDate,
+          endDate
         );
       }
       const apodIndex = this.apods.list.findIndex(
