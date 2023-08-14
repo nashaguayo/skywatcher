@@ -120,11 +120,6 @@ export default {
 .daily-picture {
   .daily-picture-container {
     overflow-x: hidden;
-    background: linear-gradient(
-      100deg,
-      var(--main-background-color),
-      var(--main-gradient-background-color)
-    );
 
     .image-container {
       display: flex;

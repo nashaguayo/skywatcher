@@ -54,7 +54,7 @@ html {
 
 #app {
   position: absolute;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   background: linear-gradient(
     100deg,

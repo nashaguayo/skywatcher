@@ -1,6 +1,7 @@
 <template>
   <div class="apod-calendar">
-    <div class="apod-calendar-container">
+    <ApodCalendarSkeleton v-if="!loaded" />
+    <div class="apod-calendar-container" v-show="loaded">
       <h1 class="title">Past APODs</h1>
       <BaseInput
         type="month"
@@ -43,12 +44,14 @@
 </template>
 
 <script>
+import ApodCalendarSkeleton from '@/skeleton/apod/ApodCalendarSkeleton.vue';
 import { format, endOfMonth } from 'date-fns';
 import BaseInput from '@/components/ui/BaseInput.vue';
 
 export default {
   name: 'ApodCalendar',
   components: {
+    ApodCalendarSkeleton,
     BaseInput,
   },
   props: {
@@ -65,6 +68,7 @@ export default {
     return {
       max: format(new Date(), 'yyyy-MM'),
       min: format(new Date(1995, 6, 16), 'yyyy-MM'),
+      loaded: false,
     };
   },
   computed: {
@@ -82,6 +86,7 @@ export default {
     format,
     endOfMonth,
     setDate(date) {
+      this.loaded = false;
       this.$emit('dateChanged', `${date}-01`);
     },
   },
