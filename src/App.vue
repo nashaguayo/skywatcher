@@ -51,6 +51,7 @@ html {
   --button-main-color: #ff8800;
   --button-gradient-main-color: #ffd900;
   --button-variant-color: #209cee;
+  --button-gradient-variant-color: #6bb3e2;
 }
 
 #app {
