@@ -134,4 +134,11 @@ describe('ApodContainer', () => {
       url: 'url.com',
     });
   });
+
+  it('retrieves new info when changing months', async () => {
+    expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalledTimes(1);
+    wrapper.setData({ date: '2023-08-01' });
+    await wrapper.vm.$nextTick();
+    expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalledTimes(2);
+  });
 });
