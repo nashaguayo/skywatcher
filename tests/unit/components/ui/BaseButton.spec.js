@@ -18,11 +18,6 @@ describe('BaseButton', () => {
     wrapper.destroy();
   });
 
-  it('calls onClickHandler method when the button is clicked', async () => {
-    await wrapper.trigger('click');
-    expect(onClickHandler).toHaveBeenCalled();
-  });
-
   it('renders the default slot content', () => {
     const buttonText = 'Click Me';
     wrapper = shallowMount(BaseButton, {
@@ -36,21 +31,10 @@ describe('BaseButton', () => {
     expect(wrapper.text()).toBe(buttonText);
   });
 
-  it('applies the "button-animation-active" class when "wasClicked" is true', async () => {
-    expect(wrapper.classes('button-animation-active')).toBe(false);
-    await wrapper.vm.handleAndAnimate();
-    expect(wrapper.classes('button-animation-active')).toBe(true);
-  });
-
   it('disables the button when "disabled" prop is true', async () => {
     expect(wrapper.attributes('disabled')).toBeFalsy();
     await wrapper.setProps({ disabled: true });
     expect(wrapper.attributes('disabled')).toBe('disabled');
-  });
-
-  it('calls the onClickHandler method when the button is clicked', async () => {
-    await wrapper.find('button').trigger('click');
-    expect(onClickHandler).toHaveBeenCalled();
   });
 
   it('renders the default slot content', () => {

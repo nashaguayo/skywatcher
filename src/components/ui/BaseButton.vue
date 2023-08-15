@@ -3,8 +3,8 @@
     class="base-button"
     :class="{ 'button-animation-active': wasClicked }"
     :disabled="disabled"
-    @click="handleAndAnimate"
-    @animationend="wasClicked = false"
+    @click="wasClicked = true"
+    @animationend="handleAndFinish"
   >
     <slot>Click Me</slot>
   </button>
@@ -29,8 +29,8 @@ export default {
     };
   },
   methods: {
-    handleAndAnimate() {
-      this.wasClicked = true;
+    handleAndFinish() {
+      this.wasClicked = false;
       this.onClickHandler();
     },
   },
