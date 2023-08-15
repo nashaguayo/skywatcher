@@ -114,6 +114,10 @@ export default {
     padding: 1rem;
     font-family: 'Roboto Condensed';
     font-size: 1.5rem;
+
+    @media (min-width: $min-width-second-break) {
+      height: 3rem;
+    }
   }
 }
 </style>

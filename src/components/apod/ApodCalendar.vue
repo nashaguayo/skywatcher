@@ -133,6 +133,14 @@ export default {
 
     .input {
       width: 19.5rem;
+
+      @media (min-width: $min-width-first-break) {
+        width: 23.8rem;
+      }
+
+      @media (min-width: $min-width-second-break) {
+        width: 37.8rem;
+      }
     }
 
     .calendar {
@@ -140,9 +148,23 @@ export default {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
 
-      .day {
+      .day,
+      .empty-day {
         height: 2.8rem;
         width: 2.8rem;
+
+        @media (min-width: $min-width-first-break) {
+          height: 3.4rem;
+          width: 3.4rem;
+        }
+
+        @media (min-width: $min-width-second-break) {
+          height: 5.4rem;
+          width: 5.4rem;
+        }
+      }
+
+      .day {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -154,9 +176,6 @@ export default {
       }
 
       .empty-day {
-        height: 2.8rem;
-        width: 2.8rem;
-
         &.filled {
           background: linear-gradient(
             100deg,

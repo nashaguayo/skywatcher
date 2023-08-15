@@ -41,6 +41,15 @@ export default {
     width: 19.6rem;
     height: 2.5rem;
     background-color: white;
+
+    @media (min-width: $min-width-first-break) {
+      width: 23.8rem;
+    }
+
+    @media (min-width: $min-width-second-break) {
+      width: 37.8rem;
+      height: 3rem;
+    }
   }
 
   .calendar {
@@ -51,6 +60,16 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media (min-width: $min-width-first-break) {
+      width: 23.8rem;
+      height: 17rem;
+    }
+
+    @media (min-width: $min-width-second-break) {
+      width: 37.8rem;
+      height: 27rem;
+    }
   }
 }
 </style>
