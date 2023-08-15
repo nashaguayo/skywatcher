@@ -1,22 +1,22 @@
 import { shallowMount } from '@vue/test-utils';
-import HomeView from '@/views/HomeView.vue';
+import ApodView from '@/views/ApodView.vue';
 
 jest.mock('@/components/common/ErrorBoundary.vue', () => ({
   name: 'ErrorBoundary',
   template: '<div class="mock-error-boundary"></div>',
 }));
 
-jest.mock('@/components/home/LandingHero.vue', () => ({
-  name: 'LandingHero',
-  template: '<div class="mock-landing-hero"></div>',
+jest.mock('@/components/apod/ApodContainer.vue', () => ({
+  name: 'ApodContainer',
+  template: '<div class="mock-apod-container"></div>',
 }));
 
-describe('HomeView', () => {
+describe('ApodView', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(HomeView, {
-      stubs: ['ErrorBoundary', 'LandingHero'],
+    wrapper = shallowMount(ApodView, {
+      stubs: ['ErrorBoundary', 'ApodContainer'],
     });
   });
 
@@ -31,12 +31,12 @@ describe('HomeView', () => {
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it('contains the "home-view" class', () => {
-    expect(wrapper.classes()).toContain('home-view');
+  it('contains the "apod-view" class', () => {
+    expect(wrapper.classes()).toContain('apod-view');
   });
 
   it('renders the mocked components', () => {
     expect(wrapper.find('errorboundary-stub').exists()).toBeTruthy();
-    expect(wrapper.find('landinghero-stub').exists()).toBeTruthy();
+    expect(wrapper.find('apodcontainer-stub').exists()).toBeTruthy();
   });
 });

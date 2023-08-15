@@ -1,12 +1,33 @@
 # SkyWatcher
 
-## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/0.1.2...develop) (dd-mm-yyyy)
+## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/0.2.0...develop) (dd-mm-yyyy)
 
 ##### Added
 
 ##### Modified
 
 ##### Fixed
+
+---
+
+## [0.2.0](https://github.com/nashaguayo/skywatcher/compare/0.1.2...0.2.0) (15-08-2023)
+
+##### Added
+
+- Astronomy Picture of the Day
+- Added calendar to APOD
+- Added see in HD button
+- Error Boundary
+- Loader for image
+
+##### Modified
+
+- Error handling
+
+##### Fixed
+
+- Added missing styles for APOD
+- Added missing styles for Landing
 
 ---
 
