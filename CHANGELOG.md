@@ -6,6 +6,7 @@
 
 - Astronomy Picture of the Day
 - Added calendar to APOD
+- Added see in HD button
 - Error Boundary
 - Loader for image
 
