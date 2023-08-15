@@ -16,6 +16,8 @@
 
 ##### Fixed
 
+- Added missing styles for APOD
+
 ---
 
 ## [0.1.2](https://github.com/nashaguayo/skywatcher/compare/0.1.1...0.1.2) (11-08-2023)
