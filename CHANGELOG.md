@@ -5,6 +5,7 @@
 ##### Added
 
 - Astronomy Picture of the Day
+- Added calendar to APOD
 - Error Boundary
 - Loader for image
 
