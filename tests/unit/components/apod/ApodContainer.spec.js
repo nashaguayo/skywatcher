@@ -7,28 +7,35 @@ jest.mock('@/components/apod/DailyPicture.vue', () => ({
   template: '<div class="mock-daily-picture"></div>',
 }));
 
-jest.mock('@/helpers/apod', () => ({
-  getAstronomyPictureOfTheDay: jest.fn(),
+jest.mock('@/components/apod/ApodCalendar.vue', () => ({
+  name: 'ApodCalendar',
+  template: '<div class="mock-apod-calendar"></div>',
 }));
 
-const spyGetAstronomyPictureOfTheDay = jest.spyOn(
+jest.mock('@/helpers/apod', () => ({
+  getAstronomyPicturesOfTheDay: jest.fn(),
+}));
+
+const spyGetAstronomyPicturesOfTheDay = jest.spyOn(
   apodHelper,
-  'getAstronomyPictureOfTheDay'
+  'getAstronomyPicturesOfTheDay'
 );
 
 describe('ApodContainer', () => {
   let wrapper;
 
   beforeEach(() => {
-    spyGetAstronomyPictureOfTheDay.mockResolvedValue({
-      copyright: 'The Deep Sky Collective',
-      date: new Date(2023, 8, 12),
-      explanation: 'An explanation',
-      hdurl: 'https://apod.nasa.gov/apod/image/2308/M51_255hours.jpg',
-      mediaType: 'image',
-      title: 'Messier 51 in 255 Hours',
-      url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
-    });
+    spyGetAstronomyPicturesOfTheDay.mockResolvedValue([
+      {
+        copyright: 'The Deep Sky Collective',
+        date: new Date(2023, 8, 12),
+        explanation: 'An explanation',
+        hdurl: 'https://apod.nasa.gov/apod/image/2308/M51_255hours.jpg',
+        mediaType: 'image',
+        title: 'Messier 51 in 255 Hours',
+        url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
+      },
+    ]);
     wrapper = shallowMount(ApodContainer, { stubs: ['DailyPicture'] });
   });
 
@@ -68,10 +75,24 @@ describe('ApodContainer', () => {
     expect(dailyPictureComponent.attributes('url')).toBe(
       'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg'
     );
+
+    const apodCalendarComponent = wrapper.find('apodcalendar-stub');
+    expect(apodCalendarComponent.exists()).toBeTruthy();
   });
 
-  it('sets apod data on created correctly', () => {
-    expect(spyGetAstronomyPictureOfTheDay).toHaveBeenCalled();
+  it('sets apods data con created correctly', () => {
+    expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalled();
+    expect(wrapper.vm.apods.list).toStrictEqual([
+      {
+        copyright: 'The Deep Sky Collective',
+        date: new Date(2023, 8, 12),
+        explanation: 'An explanation',
+        hdurl: 'https://apod.nasa.gov/apod/image/2308/M51_255hours.jpg',
+        mediaType: 'image',
+        title: 'Messier 51 in 255 Hours',
+        url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
+      },
+    ]);
     expect(wrapper.vm.apod).toEqual({
       copyright: 'The Deep Sky Collective',
       date: new Date(2023, 8, 12),
@@ -81,5 +102,43 @@ describe('ApodContainer', () => {
       title: 'Messier 51 in 255 Hours',
       url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
     });
+  });
+
+  it('changes the apod in the display when tapped', () => {
+    window.scrollTo = jest.fn();
+    expect(wrapper.vm.apod).toStrictEqual({
+      copyright: 'The Deep Sky Collective',
+      date: new Date(2023, 8, 12),
+      explanation: 'An explanation',
+      hdurl: 'https://apod.nasa.gov/apod/image/2308/M51_255hours.jpg',
+      mediaType: 'image',
+      title: 'Messier 51 in 255 Hours',
+      url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
+    });
+    wrapper.vm.displayApod({
+      copyright: 'Some Copyright',
+      date: new Date(2023, 8, 10),
+      explanation: 'Some explanation',
+      hdurl: 'hd-url.com',
+      mediaType: 'image',
+      title: 'Another title',
+      url: 'url.com',
+    });
+    expect(wrapper.vm.apod).toStrictEqual({
+      copyright: 'Some Copyright',
+      date: new Date(2023, 8, 10),
+      explanation: 'Some explanation',
+      hdurl: 'hd-url.com',
+      mediaType: 'image',
+      title: 'Another title',
+      url: 'url.com',
+    });
+  });
+
+  it('retrieves new info when changing months', async () => {
+    expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalledTimes(1);
+    wrapper.setData({ date: '2023-08-01' });
+    await wrapper.vm.$nextTick();
+    expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalledTimes(2);
   });
 });

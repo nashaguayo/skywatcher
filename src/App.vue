@@ -34,6 +34,7 @@ html {
   --secondary-gradient-background-color: #ffd900;
 
   --variant-background-color: #101416;
+  --variant-gradient-background-color: #29261d;
 
   --main-title-color: rgb(207, 207, 207);
   --main-subtitle-color: rgb(230, 230, 230);
@@ -53,7 +54,7 @@ html {
 
 #app {
   position: absolute;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   background: linear-gradient(
     100deg,

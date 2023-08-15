@@ -118,15 +118,8 @@ export default {
 
 <style lang="scss" scoped>
 .daily-picture {
-  height: 100%;
-
   .daily-picture-container {
     overflow-x: hidden;
-    background: linear-gradient(
-      100deg,
-      var(--main-background-color),
-      var(--main-gradient-background-color)
-    );
 
     .image-container {
       display: flex;
@@ -142,6 +135,7 @@ export default {
         margin-top: 0.5rem;
         font-size: 0.8rem;
         color: var(--variant-text-color);
+        text-align: end;
       }
 
       .image {

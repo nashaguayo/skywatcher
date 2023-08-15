@@ -1,19 +1,23 @@
-import { getAstronomyPictureOfTheDay as getAstronomyPictureOfTheDayApi } from '@/api/nasa/planetary';
+import { getAstronomyPicturesOfTheDay as getAstronomyPicturesOfTheDayApi } from '@/api/nasa/planetary';
 import { parseISO } from 'date-fns';
 
-export async function getAstronomyPictureOfTheDay() {
-  const apod = await getAstronomyPictureOfTheDayApi();
-  if (!apod) {
+export async function getAstronomyPicturesOfTheDay(startDate, endDate) {
+  const apods = await getAstronomyPicturesOfTheDayApi(startDate, endDate);
+  if (!apods) {
     return false;
   }
-  const { copyright, date, explanation, hdurl, media_type, title, url } = apod;
-  return {
-    copyright,
-    date: parseISO(date),
-    explanation,
-    hdurl,
-    mediaType: media_type,
-    title,
-    url,
-  };
+  const processedApods = apods.map((apod) => {
+    const { copyright, date, explanation, hdurl, media_type, title, url } =
+      apod;
+    return {
+      copyright,
+      date: parseISO(date),
+      explanation,
+      hdurl,
+      mediaType: media_type,
+      title,
+      url,
+    };
+  });
+  return processedApods;
 }

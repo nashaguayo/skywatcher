@@ -12,7 +12,7 @@ You can check out my career [here](https://www.linkedin.com/in/natasha-aguayo-10
 
 ### Features
 
-- Astronomy Picture of the Day
+- Astronomy Picture of the Day, with a calendar to see past APODs
 - Many more to come!
 
 ### Project setup
