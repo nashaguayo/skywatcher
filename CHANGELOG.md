@@ -17,6 +17,7 @@
 ##### Fixed
 
 - Added missing styles for APOD
+- Added missing styles for Landing
 
 ---
 
