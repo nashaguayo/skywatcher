@@ -25,6 +25,6 @@ export default {
 
 <style lang="scss" scoped>
 .home-view {
-  height: 100%;
+  height: 100vh;
 }
 </style>
