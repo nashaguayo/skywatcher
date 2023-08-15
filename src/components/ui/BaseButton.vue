@@ -64,15 +64,28 @@ export default {
 
 @keyframes button-animation {
   0% {
-    transform: scale(1);
+    background: linear-gradient(
+      100deg,
+      var(--button-main-color),
+      var(--button-gradient-main-color)
+    );
   }
 
   50% {
-    transform: scale(0.95);
+    color: var(--variant-text-color);
+    background: linear-gradient(
+      100deg,
+      var(--button-variant-color),
+      var(--button-gradient-variant-color)
+    );
   }
 
   100% {
-    transform: scale(1);
+    background: linear-gradient(
+      100deg,
+      var(--button-main-color),
+      var(--button-gradient-main-color)
+    );
   }
 }
 </style>
