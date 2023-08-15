@@ -49,6 +49,7 @@ html {
   --bright-box-shadow: 0 0 0.5rem #ff8800;
 
   --button-main-color: #ff8800;
+  --button-gradient-main-color: #ffd900;
   --button-variant-color: #209cee;
 }
 

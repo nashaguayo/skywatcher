@@ -39,6 +39,7 @@
             style="color: #ff8800"
           />
           <span>{{ explanation }}</span>
+          <BaseButton :onClickHandler="seeHdImage">See HD Image</BaseButton>
         </div>
       </transition>
     </div>
@@ -48,11 +49,13 @@
 <script>
 import { format, isEqual, startOfDay } from 'date-fns';
 import DailyPictureSkeleton from '@/skeleton/apod/DailyPictureSkeleton.vue';
+import BaseButton from '@/components/ui/BaseButton.vue';
 
 export default {
   name: 'DailyPicture',
   components: {
     DailyPictureSkeleton,
+    BaseButton,
   },
   props: {
     copyright: {

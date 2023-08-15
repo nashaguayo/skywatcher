@@ -7,6 +7,11 @@ jest.mock('@/skeleton/apod/DailyPictureSkeleton', () => ({
   template: '<div class="mock-daily-picture-skeleton"></div>',
 }));
 
+jest.mock('@/components/ui/BaseButton', () => ({
+  name: 'BaseButton',
+  template: '<div class="mock-daily-base-button"></div>',
+}));
+
 jest.mock('date-fns');
 
 const spyIsEqual = jest.spyOn(dateFns, 'isEqual');
@@ -29,7 +34,12 @@ describe('DailyPicture Template', () => {
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
       },
-      stubs: ['LazyYoutube', 'FontAwesomeIcon', 'DailyPictureSkeleton'],
+      stubs: [
+        'LazyYoutube',
+        'FontAwesomeIcon',
+        'DailyPictureSkeleton',
+        'BaseButton',
+      ],
     });
   });
 
@@ -52,7 +62,12 @@ describe('DailyPicture Template', () => {
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
       },
-      stubs: ['LazyYoutube', 'FontAwesomeIcon', 'DailyPictureSkeleton'],
+      stubs: [
+        'LazyYoutube',
+        'FontAwesomeIcon',
+        'DailyPictureSkeleton',
+        'BaseButton',
+      ],
     });
     const skeleton = wrapper.find('dailypictureskeleton-stub');
     expect(skeleton.exists()).toBeTruthy();
@@ -92,6 +107,10 @@ describe('DailyPicture Template', () => {
 
     const skeleton = wrapper.find('dailypictureskeleton-stub');
     expect(skeleton.exists()).toBeFalsy();
+
+    const baseButton = wrapper.find('basebutton-stub');
+    expect(baseButton.exists()).toBeTruthy();
+    expect(baseButton.text()).toBe('See HD Image');
   });
 
   it('loads video when it is not an image', () => {
@@ -105,7 +124,12 @@ describe('DailyPicture Template', () => {
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
       },
-      stubs: ['LazyYoutube', 'FontAwesomeIcon', 'DailyPictureSkeleton'],
+      stubs: [
+        'LazyYoutube',
+        'FontAwesomeIcon',
+        'DailyPictureSkeleton',
+        'BaseButton',
+      ],
     });
     const image = wrapper.find('img');
     expect(image.exists()).toBeFalsy();
