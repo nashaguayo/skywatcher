@@ -31,7 +31,24 @@ describe('getNearEarthObjects', () => {
                 },
               },
             ],
-            estimated_diameter: 7,
+            estimated_diameter: {
+              feet: {
+                estimated_diameter_min: 10,
+                estimated_diameter_max: 11,
+              },
+              kilometers: {
+                estimated_diameter_min: 12,
+                estimated_diameter_max: 13,
+              },
+              meters: {
+                estimated_diameter_min: 14,
+                estimated_diameter_max: 15,
+              },
+              miles: {
+                estimated_diameter_min: 16,
+                estimated_diameter_max: 17,
+              },
+            },
             id: 8,
             is_potentially_hazardous_asteroid: false,
             is_sentry_object: false,
@@ -44,7 +61,24 @@ describe('getNearEarthObjects', () => {
     expect(result).toStrictEqual([
       {
         date: 2,
-        diameter: 7,
+        diameter: {
+          feet: {
+            min: 10,
+            max: 11,
+          },
+          kilometers: {
+            min: 12,
+            max: 13,
+          },
+          meters: {
+            min: 14,
+            max: 15,
+          },
+          miles: {
+            min: 16,
+            max: 17,
+          },
+        },
         id: 8,
         isPotentiallyHazardous: false,
         isSentryObject: false,
