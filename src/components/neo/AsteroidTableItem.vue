@@ -9,26 +9,31 @@
         class="icon"
       />
     </div>
-    <div class="content" v-if="open">
-      <div class="content-item">
-        <span>Magnitude</span>
-        <span>{{ magnitude }}</span>
-      </div>
-      <div class="content-item">
-        <span>Miss Distance</span>
-        <span>{{ missDistance }}</span>
-      </div>
-      <div class="content-item">
-        <span>Diameter Min</span>
-        <span>{{ diameterMin }}</span>
-      </div>
-      <div class="content-item">
-        <span>Diameter Max</span>
-        <span>{{ diameterMax }}</span>
-      </div>
-      <div class="content-item">
-        <span>Hour</span>
-        <span>{{ date }}</span>
+    <div
+      class="content-container"
+      :style="{ 'grid-template-rows': open ? '1fr' : '0fr' }"
+    >
+      <div class="content">
+        <div class="content-item">
+          <span>Magnitude</span>
+          <span>{{ magnitude }}</span>
+        </div>
+        <div class="content-item">
+          <span>Miss Distance</span>
+          <span>{{ missDistance }}</span>
+        </div>
+        <div class="content-item">
+          <span>Diameter Min</span>
+          <span>{{ diameterMin }}</span>
+        </div>
+        <div class="content-item">
+          <span>Diameter Max</span>
+          <span>{{ diameterMax }}</span>
+        </div>
+        <div class="content-item">
+          <span>Hour</span>
+          <span>{{ date }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -112,7 +117,14 @@ export default {
     }
   }
 
+  .content-container {
+    display: grid;
+    transition: grid-template-rows 0.3s;
+  }
+
   .content {
+    overflow: hidden;
+
     .content-item {
       display: flex;
       justify-content: space-between;
