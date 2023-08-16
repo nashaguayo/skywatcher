@@ -50,6 +50,5 @@ export async function getNearEarthObjects(date) {
       name,
     };
   });
-  console.log(processedNeos);
   return processedNeos;
 }
