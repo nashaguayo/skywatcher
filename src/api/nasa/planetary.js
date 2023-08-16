@@ -12,7 +12,7 @@ export async function getAstronomyPicturesOfTheDay(startDate, endDate) {
   } catch (error) {
     logError(
       getAstronomyPicturesOfTheDay.name,
-      'Unable to get astronomy picture of the day',
+      'Unable to get astronomy pictures of the day for dates',
       error
     );
   }
