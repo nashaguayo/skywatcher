@@ -2,7 +2,11 @@
   <div class="asteroids-container">
     <h1>Asteroids</h1>
     <h3>Near Earth Objects</h3>
-    <AsteroidTable :neos="neos" />
+    <AsteroidTable
+      :neos="neos"
+      :missDistanceMeasureUnit="missDistanceMeasureUnit"
+      :diameterMeasureUnit="diameterMeasureUnit"
+    />
   </div>
 </template>
 
@@ -18,6 +22,8 @@ export default {
   data() {
     return {
       neos: [],
+      missDistanceMeasureUnit: 'astronomical',
+      diameterMeasureUnit: 'kilometers',
     };
   },
   async created() {
