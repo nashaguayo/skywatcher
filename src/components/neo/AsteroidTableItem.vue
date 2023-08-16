@@ -1,6 +1,6 @@
 <template>
   <div class="asteroid-table-item">
-    <div class="name">
+    <div class="name" @click="open = !open">
       <span>{{ name }}</span>
       <FontAwesomeIcon
         v-if="isPotentiallyHazardous"
@@ -9,7 +9,7 @@
         class="icon"
       />
     </div>
-    <div class="content">
+    <div class="content" v-if="open">
       <div class="content-item">
         <span>Magnitude</span>
         <span>{{ magnitude }}</span>
@@ -53,6 +53,11 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      open: false,
+    };
+  },
   computed: {
     name() {
       return this.neo.name;
@@ -94,13 +99,13 @@ export default {
 .asteroid-table-item {
   display: grid;
   margin: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--variant-opacity-background-color);
 
   .name {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--variant-opacity-background-color);
 
     .icon {
       padding: 0.5rem;
