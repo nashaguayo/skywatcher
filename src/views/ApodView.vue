@@ -15,7 +15,7 @@ import ApodContainer from '@/components/apod/ApodContainer.vue';
 
 export default {
   name: 'ApodView',
-  title: 'Astronomy Picture of the Day',
+  title: 'Astronomy Picture of the Day (APOD)',
   components: {
     ErrorBoundary,
     ApodContainer,
