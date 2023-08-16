@@ -75,9 +75,17 @@ export default {
   display: grid;
   grid-template-columns: 2fr repeat(5, 1fr) 0.5fr;
   padding: 0.5rem 0;
+  gap: 0.5rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
 
   span {
     color: var(--secondary-text-color);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    opacity: 1;
   }
 }
 </style>
