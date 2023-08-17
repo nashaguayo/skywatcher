@@ -31,7 +31,7 @@ export default {
   methods: {
     handleAndFinish() {
       this.wasClicked = false;
-      // this.onClickHandler();
+      this.onClickHandler();
     },
   },
 };
