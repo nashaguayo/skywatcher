@@ -1,21 +1,26 @@
 <template>
   <div class="asteroid-table">
-    <AsteroidTableItem
-      v-for="neo in neos"
-      :key="neo.id"
-      :neo="neo"
-      :diameterMeasureUnit="diameterMeasureUnit"
-      :missDistanceMeasureUnit="missDistanceMeasureUnit"
-    />
+    <AsteroidTableSkeleton v-if="!loaded" />
+    <div v-else class="asteroid-table-container">
+      <AsteroidTableItem
+        v-for="neo in neos"
+        :key="neo.id"
+        :neo="neo"
+        :diameterMeasureUnit="diameterMeasureUnit"
+        :missDistanceMeasureUnit="missDistanceMeasureUnit"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import AsteroidTableSkeleton from '@/skeleton/neo/AsteroidTableSkeleton.vue';
 import AsteroidTableItem from '@/components/neo/AsteroidTableItem.vue';
 
 export default {
   name: 'AsteroidTable',
   components: {
+    AsteroidTableSkeleton,
     AsteroidTableItem,
   },
   props: {
@@ -29,6 +34,10 @@ export default {
     },
     diameterMeasureUnit: {
       type: String,
+      required: true,
+    },
+    loaded: {
+      type: Boolean,
       required: true,
     },
   },

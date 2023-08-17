@@ -7,6 +7,7 @@
       :neos="neos"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
       :diameterMeasureUnit="diameterMeasureUnit"
+      :loaded="loaded"
     />
   </div>
 </template>
@@ -29,6 +30,7 @@ export default {
       missDistanceMeasureUnit: 'astronomical',
       diameterMeasureUnit: 'kilometers',
       date: '',
+      loaded: false,
     };
   },
   watch: {
@@ -42,7 +44,9 @@ export default {
   methods: {
     parseISO,
     async getNearEarthObjects(date) {
+      this.loaded = false;
       this.neos = await getNearEarthObjects(date);
+      this.loaded = true;
     },
   },
 };
