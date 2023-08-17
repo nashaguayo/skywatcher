@@ -20,6 +20,11 @@ const routes = [
     name: 'apod',
     component: () => import('@/views/ApodView.vue'),
   },
+  {
+    path: '/neo',
+    name: 'neo',
+    component: () => import('@/views/NeoView.vue'),
+  },
 ];
 
 const router = new VueRouter({

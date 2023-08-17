@@ -35,6 +35,7 @@ html {
 
   --variant-background-color: #101416;
   --variant-gradient-background-color: #29261d;
+  --variant-opacity-background-color: rgba(0, 0, 0, 0.3);
 
   --main-title-color: rgb(207, 207, 207);
   --main-subtitle-color: rgb(230, 230, 230);
