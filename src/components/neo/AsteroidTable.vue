@@ -42,7 +42,6 @@ export default {
     var(--secondary-background-color),
     var(--secondary-gradient-background-color)
   );
-  margin: 2rem 0;
   width: 100%;
 }
 </style>

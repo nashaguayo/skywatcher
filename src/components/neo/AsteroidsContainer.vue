@@ -2,6 +2,7 @@
   <div class="asteroids-container">
     <h1>Asteroids</h1>
     <h3>Near Earth Objects</h3>
+    <AsteroidFilters :date="date" @newDate="(newDate) => (date = newDate)" />
     <AsteroidTable
       :neos="neos"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
@@ -11,12 +12,15 @@
 </template>
 
 <script>
+import AsteroidFilters from '@/components/neo/AsteroidFilters.vue';
 import AsteroidTable from '@/components/neo/AsteroidTable.vue';
 import { getNearEarthObjects } from '@/helpers/neo';
+import { parseISO } from 'date-fns';
 
 export default {
   name: 'AsteroidsContainer',
   components: {
+    AsteroidFilters,
     AsteroidTable,
   },
   data() {
@@ -24,10 +28,22 @@ export default {
       neos: [],
       missDistanceMeasureUnit: 'astronomical',
       diameterMeasureUnit: 'kilometers',
+      date: '',
     };
   },
+  watch: {
+    date(date) {
+      this.getNearEarthObjects(parseISO(date));
+    },
+  },
   async created() {
-    this.neos = await getNearEarthObjects(new Date());
+    await this.getNearEarthObjects(new Date());
+  },
+  methods: {
+    parseISO,
+    async getNearEarthObjects(date) {
+      this.neos = await getNearEarthObjects(date);
+    },
   },
 };
 </script>
@@ -40,7 +56,7 @@ export default {
   padding-top: 2rem;
 
   h3 {
-    margin-top: 0.5rem;
+    margin: 0.5rem 0;
   }
 }
 </style>
