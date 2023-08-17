@@ -72,12 +72,14 @@ export default {
   }
 
   50% {
-    color: var(--variant-text-color);
     background: linear-gradient(
       100deg,
-      var(--button-variant-color),
-      var(--button-gradient-variant-color)
+      var(--button-main-color),
+      var(--button-gradient-main-color),
+      var(--button-main-color)
     );
+    transform: scale(0.95);
+    box-shadow: none;
   }
 
   100% {
