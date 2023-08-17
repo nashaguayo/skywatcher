@@ -2,7 +2,12 @@
   <div class="asteroids-container">
     <h1>Asteroids</h1>
     <h3>Near Earth Objects</h3>
-    <AsteroidFilters :date="date" @newDate="(newDate) => (date = newDate)" />
+    <AsteroidFilters
+      :missDistanceMeasureUnit="missDistanceMeasureUnit"
+      :date="date"
+      @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
+      @newDate="newDate"
+    />
     <AsteroidTable
       :neos="neos"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
@@ -47,6 +52,12 @@ export default {
       this.loaded = false;
       this.neos = await getNearEarthObjects(date);
       this.loaded = true;
+    },
+    newDate(date) {
+      this.date = date;
+    },
+    newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
+      this.missDistanceMeasureUnit = missDistanceMeasureUnit;
     },
   },
 };
