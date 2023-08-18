@@ -5,6 +5,7 @@
 ##### Added
 
 - Near Earth Objects Page
+- Filters to NEO page
 
 ##### Modified
 
