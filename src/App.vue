@@ -30,6 +30,8 @@ html {
   --main-background-color: #142d3d;
   --main-gradient-background-color: #194966;
 
+  --accent-color: #ff8800;
+
   --secondary-background-color: #ff8800;
   --secondary-gradient-background-color: #ffd900;
 
@@ -69,6 +71,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  accent-color: var(--accent-color);
 }
 
 * {

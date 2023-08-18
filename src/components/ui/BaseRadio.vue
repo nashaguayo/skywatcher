@@ -52,9 +52,9 @@ export default {
 
 <style lang="scss" scoped>
 .base-radio {
-  input {
-    border: 0.2rem solid var(--main-border-color);
-  }
+  background-color: var(--variant-background-color);
+  margin: 0.2rem;
+  padding: 0.4rem;
 
   label {
     color: var(--main-text-color);

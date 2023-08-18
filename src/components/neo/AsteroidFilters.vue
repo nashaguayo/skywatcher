@@ -127,7 +127,7 @@ export default {
   .measure-units {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    padding: 0 2rem 1rem;
+    padding: 0 1rem 1rem;
   }
 
   .diameter-measure-unit,
