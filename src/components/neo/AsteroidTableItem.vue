@@ -20,15 +20,24 @@
         </div>
         <div class="content-item">
           <span>Miss Distance</span>
-          <span>{{ missDistance }}</span>
+          <span
+            >{{ missDistance }}
+            {{ missDistanceMeasureUnitMap.get(missDistanceMeasureUnit) }}</span
+          >
         </div>
         <div class="content-item">
           <span>Diameter Min</span>
-          <span>{{ diameterMin }}</span>
+          <span
+            >{{ diameterMin }}
+            {{ diameterMeasureUnitMap.get(diameterMeasureUnit) }}</span
+          >
         </div>
         <div class="content-item">
           <span>Diameter Max</span>
-          <span>{{ diameterMax }}</span>
+          <span
+            >{{ diameterMax }}
+            {{ diameterMeasureUnitMap.get(diameterMeasureUnit) }}</span
+          >
         </div>
         <div class="content-item">
           <span>Hour</span>
@@ -40,6 +49,10 @@
 </template>
 
 <script>
+import {
+  missDistanceMeasureUnitMap,
+  diameterMeasureUnitMap,
+} from '@/constants/measurements';
 import { format } from 'date-fns';
 
 export default {
@@ -61,6 +74,8 @@ export default {
   data() {
     return {
       open: false,
+      missDistanceMeasureUnitMap,
+      diameterMeasureUnitMap,
     };
   },
   computed: {
