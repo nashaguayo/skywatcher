@@ -6,6 +6,7 @@
 
 - Near Earth Objects Page
 - Filters to NEO page
+- 404 Error page
 
 ##### Modified
 
