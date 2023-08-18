@@ -3,8 +3,10 @@
     <h1>Asteroids</h1>
     <h3>Near Earth Objects</h3>
     <AsteroidFilters
+      :diameterMeasureUnit="diameterMeasureUnit"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
       :date="date"
+      @newDiameterMeasureUnit="newDiameterMeasureUnit"
       @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
       @newDate="newDate"
     />
@@ -58,6 +60,9 @@ export default {
     },
     newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
       this.missDistanceMeasureUnit = missDistanceMeasureUnit;
+    },
+    newDiameterMeasureUnit(diameterMeasureUnit) {
+      this.diameterMeasureUnit = diameterMeasureUnit;
     },
   },
 };

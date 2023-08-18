@@ -1,15 +1,15 @@
 <template>
   <div class="base-radio">
-    <label :for="value">
-      {{ label }}
-    </label>
     <input
       type="radio"
       :name="name"
-      :id="value"
+      :id="id"
       :value="value"
       v-model="inputValue"
     />
+    <label :for="value">
+      {{ label }}
+    </label>
   </div>
 </template>
 
@@ -32,6 +32,10 @@ export default {
       type: String,
       required: true,
     },
+    id: {
+      type: String,
+      required: true,
+    },
   },
   computed: {
     inputValue: {
@@ -48,5 +52,13 @@ export default {
 
 <style lang="scss" scoped>
 .base-radio {
+  input {
+    border: 0.2rem solid var(--main-border-color);
+  }
+
+  label {
+    color: var(--main-text-color);
+    font-family: 'Roboto Condensed';
+  }
 }
 </style>
