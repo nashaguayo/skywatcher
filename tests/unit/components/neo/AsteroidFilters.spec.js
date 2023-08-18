@@ -14,6 +14,8 @@ describe('AsteroidFilters', () => {
       stubs: ['BaseInput'],
       propsData: {
         date: '2023-08-01',
+        missDistanceMeasureUnit: 'astronomical',
+        diameterMeasureUnit: 'kilometers',
       },
     });
   });
