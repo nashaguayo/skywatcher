@@ -11,6 +11,15 @@ const routes = [
     component: HomeView,
   },
   {
+    path: '/404',
+    name: 'pageNotFound',
+    component: () => import('@/views/PageNotFoundView.vue'),
+  },
+  {
+    path: '*',
+    redirect: '/404',
+  },
+  {
     path: '/about',
     name: 'about',
     component: () => import('@/views/AboutView.vue'),
