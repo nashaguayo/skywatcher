@@ -5,6 +5,7 @@
       type="date"
       name="date"
       @inputValueChanged="newDate"
+      class="input drop-shadow"
     />
     <AsteroidTableSkeleton v-if="!loaded" />
     <div v-else class="asteroid-table-container">
@@ -70,5 +71,18 @@ export default {
   );
   width: 100%;
   margin-top: 1rem;
+
+  .drop-shadow {
+    box-shadow: var(--bottom-box-shadow);
+  }
+
+  .input {
+    transition: box-shadow 0.3s;
+  }
+
+  .asteroid-table-container {
+    overflow-y: scroll;
+    max-height: calc(100vh - 10rem);
+  }
 }
 </style>

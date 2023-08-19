@@ -50,6 +50,7 @@ html {
 
   --main-box-shadow: 0 0 0.5rem #0c0c0c;
   --bright-box-shadow: 0 0 0.5rem #ff8800;
+  --bottom-box-shadow: 0 0.3rem 0.5rem #0c0c0c;
 
   --button-main-color: #ff8800;
   --button-gradient-main-color: #ffd900;
