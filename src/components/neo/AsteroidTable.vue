@@ -1,5 +1,11 @@
 <template>
   <div class="asteroid-table">
+    <BaseInput
+      :model="date"
+      type="date"
+      name="date"
+      @inputValueChanged="newDate"
+    />
     <AsteroidTableSkeleton v-if="!loaded" />
     <div v-else class="asteroid-table-container">
       <AsteroidTableItem
@@ -14,18 +20,24 @@
 </template>
 
 <script>
+import BaseInput from '@/components/ui/BaseInput.vue';
 import AsteroidTableSkeleton from '@/skeleton/neo/AsteroidTableSkeleton.vue';
 import AsteroidTableItem from '@/components/neo/AsteroidTableItem.vue';
 
 export default {
   name: 'AsteroidTable',
   components: {
+    BaseInput,
     AsteroidTableSkeleton,
     AsteroidTableItem,
   },
   props: {
     neos: {
       type: Array,
+      required: true,
+    },
+    date: {
+      type: String,
       required: true,
     },
     missDistanceMeasureUnit: {
@@ -41,6 +53,11 @@ export default {
       required: true,
     },
   },
+  methods: {
+    newDate(date) {
+      this.$emit('newDate', date);
+    },
+  },
 };
 </script>
 
@@ -52,5 +69,6 @@ export default {
     var(--secondary-gradient-background-color)
   );
   width: 100%;
+  margin-top: 1rem;
 }
 </style>

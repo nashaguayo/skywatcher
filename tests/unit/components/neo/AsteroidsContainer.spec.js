@@ -2,9 +2,9 @@ import { shallowMount } from '@vue/test-utils';
 import AsteroidsContainer from '@/components/neo/AsteroidsContainer.vue';
 import * as neoHelpers from '@/helpers/neo';
 
-jest.mock('@/components/neo/AsteroidFilters.vue', () => ({
-  name: 'AsteroidFilters',
-  template: '<div class="mock-asteroid-filters"></div>',
+jest.mock('@/components/neo/ConfigMenu.vue', () => ({
+  name: 'ConfigMenu',
+  template: '<div class="mock-config-menu"></div>',
 }));
 
 jest.mock('@/components/neo/AsteroidTable.vue', () => ({
@@ -24,7 +24,7 @@ describe('AsteroidsContainer', () => {
   beforeEach(() => {
     spyGetNearEarthObjects.mockResolvedValue([{ name: 'XC', id: 1 }]);
     wrapper = shallowMount(AsteroidsContainer, {
-      stubs: ['ErrorBoundary', 'LandingHero'],
+      stubs: ['ConfigMenu', 'FontAwesomeIcon', 'ErrorBoundary', 'LandingHero'],
     });
   });
 
@@ -43,9 +43,27 @@ describe('AsteroidsContainer', () => {
     expect(wrapper.classes()).toContain('asteroids-container');
   });
 
+  it('renders html tags correctly', () => {
+    expect(wrapper.find('fontawesomeicon-stub').exists()).toBeTruthy();
+
+    const title = wrapper.find('h1');
+    expect(title.exists()).toBeTruthy();
+    expect(title.text()).toBe('Asteroids');
+
+    const subtitle = wrapper.find('h3');
+    expect(subtitle.exists()).toBeTruthy();
+    expect(subtitle.text()).toBe('Near Earth Objects');
+  });
+
   it('renders the mocked components', () => {
-    expect(wrapper.find('asteroidfilters-stub').exists()).toBeTruthy();
+    expect(wrapper.find('configmenu-stub').exists()).toBeFalsy();
     expect(wrapper.find('asteroidtable-stub').exists()).toBeTruthy();
     expect(spyGetNearEarthObjects).toHaveBeenCalled();
+  });
+
+  it('opens config menu when button is clicked', async () => {
+    wrapper.find('fontawesomeicon-stub').vm.$emit('click');
+    await wrapper.vm.$nextTick();
+    expect(wrapper.find('configmenu-stub').exists()).toBeTruthy();
   });
 });

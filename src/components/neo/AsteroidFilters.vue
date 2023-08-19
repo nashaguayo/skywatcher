@@ -72,30 +72,18 @@
         <span>Diameter</span>
       </div>
     </div>
-    <BaseInput
-      :model="date"
-      type="date"
-      name="date"
-      @inputValueChanged="newDate"
-    />
   </div>
 </template>
 
 <script>
 import BaseRadio from '@/components/ui/BaseRadio.vue';
-import BaseInput from '@/components/ui/BaseInput.vue';
 
 export default {
   name: 'AsteroidFilters',
   components: {
     BaseRadio,
-    BaseInput,
   },
   props: {
-    date: {
-      type: String,
-      required: true,
-    },
     missDistanceMeasureUnit: {
       type: String,
       required: true,
@@ -106,14 +94,11 @@ export default {
     },
   },
   methods: {
-    newDate(newDate) {
-      this.$emit('newDate', newDate);
+    newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
+      this.$emit('newMissDistanceMeasureUnit', missDistanceMeasureUnit);
     },
-    newMissDistanceMeasureUnit(newMissDistanceMeasureUnit) {
-      this.$emit('newMissDistanceMeasureUnit', newMissDistanceMeasureUnit);
-    },
-    newDiameterMeasureUnit(newDiameterMeasureUnit) {
-      this.$emit('newDiameterMeasureUnit', newDiameterMeasureUnit);
+    newDiameterMeasureUnit(diameterMeasureUnit) {
+      this.$emit('newDiameterMeasureUnit', diameterMeasureUnit);
     },
   },
 };

@@ -1,6 +1,11 @@
 import { shallowMount } from '@vue/test-utils';
 import AsteroidTable from '@/components/neo/AsteroidTable.vue';
 
+jest.mock('@/components/ui/BaseInput.vue', () => ({
+  name: 'BaseInput',
+  template: '<div class="mock-base-input"></div>',
+}));
+
 jest.mock('@/skeleton/neo/AsteroidTableSkeleton.vue', () => ({
   name: 'AsteroidTableSkeleton',
   template: '<div class="mock-asteroid-table-skeleton"></div>',
@@ -16,11 +21,12 @@ describe('AsteroidTable', () => {
 
   beforeEach(() => {
     wrapper = shallowMount(AsteroidTable, {
-      stubs: ['AsteroidTableSkeleton', 'AsteroidTableItem'],
+      stubs: ['BaseInput', 'AsteroidTableSkeleton', 'AsteroidTableItem'],
       propsData: {
         neos: [{ name: 'XC', id: 1 }],
         missDistanceMeasureUnit: 'astronomical',
         diameterMeasureUnit: 'kilometers',
+        date: '2023-08-01',
         loaded: true,
       },
     });
@@ -46,6 +52,7 @@ describe('AsteroidTable', () => {
       stubs: ['AsteroidTableSkeleton', 'AsteroidTableItem'],
       propsData: {
         neos: [],
+        date: '2023-08-01',
         missDistanceMeasureUnit: 'astronomical',
         diameterMeasureUnit: 'kilometers',
         loaded: false,
@@ -56,7 +63,15 @@ describe('AsteroidTable', () => {
   });
 
   it('renders the mocked components', () => {
+    expect(wrapper.find('baseinput-stub').exists()).toBeTruthy();
     expect(wrapper.find('asteroidtableskeleton-stub').exists()).toBeFalsy();
     expect(wrapper.find('asteroidtableitem-stub').exists()).toBeTruthy();
+  });
+
+  it('emits newDate event when inputValueChanged is called', async () => {
+    const newDate = '2023-08-17';
+    await wrapper.vm.newDate(newDate);
+    expect(wrapper.emitted('newDate')).toBeTruthy();
+    expect(wrapper.emitted('newDate')[0]).toEqual([newDate]);
   });
 });
