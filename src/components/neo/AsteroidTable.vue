@@ -5,10 +5,11 @@
       type="date"
       name="date"
       @inputValueChanged="newDate"
-      class="input drop-shadow"
+      class="input"
+      :class="{ 'drop-shadow': hasScrolled }"
     />
     <AsteroidTableSkeleton v-if="!loaded" />
-    <div v-else class="asteroid-table-container">
+    <div v-else class="asteroid-table-container" ref="table">
       <AsteroidTableItem
         v-for="neo in neos"
         :key="neo.id"
@@ -54,9 +55,26 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      hasScrolled: false,
+    };
+  },
+  watch: {
+    async loaded(loaded) {
+      await this.$nextTick();
+      if (loaded) {
+        this.$refs.table.addEventListener('scroll', this.handleScroll);
+      }
+    },
+  },
   methods: {
     newDate(date) {
+      this.$refs.table.removeEventListener('scroll', this.handleScroll);
       this.$emit('newDate', date);
+    },
+    handleScroll() {
+      this.hasScrolled = this.$refs.table.scrollTop !== 0;
     },
   },
 };
