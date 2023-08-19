@@ -25,6 +25,7 @@
 import BaseInput from '@/components/ui/BaseInput.vue';
 import AsteroidTableSkeleton from '@/skeleton/neo/AsteroidTableSkeleton.vue';
 import AsteroidTableItem from '@/components/neo/AsteroidTableItem.vue';
+import throttle from 'lodash/throttle';
 
 export default {
   name: 'AsteroidTable',
@@ -60,17 +61,23 @@ export default {
       hasScrolled: false,
     };
   },
+  created() {
+    this.throttledHandleScroll = throttle(this.handleScroll, 500);
+  },
   watch: {
     async loaded(loaded) {
       await this.$nextTick();
       if (loaded) {
-        this.$refs.table.addEventListener('scroll', this.handleScroll);
+        this.$refs.table.addEventListener('scroll', this.throttledHandleScroll);
       }
     },
   },
   methods: {
     newDate(date) {
-      this.$refs.table.removeEventListener('scroll', this.handleScroll);
+      this.$refs.table.removeEventListener(
+        'scroll',
+        this.throttledHandleScroll
+      );
       this.$emit('newDate', date);
     },
     handleScroll() {
