@@ -14,7 +14,6 @@ describe('ConfigMenu', () => {
       propsData: {
         missDistanceMeasureUnit: 'astronomical',
         diameterMeasureUnit: 'kilometers',
-        date: '2023-08-01',
       },
       stubs: ['FontAwesomeIcon', 'AsteroidFilters'],
     });

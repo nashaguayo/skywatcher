@@ -10,9 +10,11 @@
     <h3>Near Earth Objects</h3>
     <AsteroidTable
       :neos="neos"
+      :date="date"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
       :diameterMeasureUnit="diameterMeasureUnit"
       :loaded="loaded"
+      @newDate="newDate"
     />
     <transition name="slide-from-above">
       <ConfigMenu

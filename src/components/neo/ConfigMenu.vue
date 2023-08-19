@@ -10,10 +10,8 @@
     <AsteroidFilters
       :diameterMeasureUnit="diameterMeasureUnit"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
-      :date="date"
       @newDiameterMeasureUnit="newDiameterMeasureUnit"
       @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
-      @newDate="newDate"
     />
   </div>
 </template>
@@ -34,10 +32,6 @@ export default {
       type: String,
       required: true,
     },
-    date: {
-      type: String,
-      required: true,
-    },
   },
   methods: {
     newDiameterMeasureUnit(diameterMeasureUnit) {
@@ -45,9 +39,6 @@ export default {
     },
     newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
       this.$emit('newMissDistanceMeasureUnit', missDistanceMeasureUnit);
-    },
-    newDate(date) {
-      this.$emit('newDate', date);
     },
   },
 };

@@ -1,11 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import AsteroidFilters from '@/components/neo/AsteroidFilters.vue';
 
-jest.mock('@/components/ui/BaseInput.vue', () => ({
-  name: 'BaseInput',
-  template: '<div class="mock-base-input"></div>',
-}));
-
 jest.mock('@/components/ui/BaseRadio.vue', () => ({
   name: 'BaseRadio',
   template: '<div class="mock-base-radio"></div>',
@@ -41,17 +36,8 @@ describe('AsteroidFilters', () => {
   });
 
   it('renders the mocked components', () => {
-    expect(wrapper.find('baseinput-stub').exists()).toBeTruthy();
-    expect(wrapper.find('baseinput-stub').attributes('type')).toBe('date');
-    expect(wrapper.find('baseinput-stub').attributes('name')).toBe('date');
-    expect(wrapper.findAll('baseradio-stub').length).toBe(8);
-  });
-
-  it('emits newDate event when inputValueChanged is called', async () => {
-    const newDate = '2023-08-17';
-    await wrapper.vm.newDate(newDate);
-    expect(wrapper.emitted('newDate')).toBeTruthy();
-    expect(wrapper.emitted('newDate')[0]).toEqual([newDate]);
+    const baseRadios = wrapper.findAll('baseradio-stub');
+    expect(baseRadios.length).toBe(8);
   });
 
   it('emits newMissDistanceMeasureUnit event when inputValueChanged is called', async () => {
