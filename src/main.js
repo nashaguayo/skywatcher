@@ -11,12 +11,16 @@ import {
   faCircleNotch,
   faQuestion,
   faSkull,
+  faEllipsisVertical,
+  faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faInfo);
 library.add(faCircleNotch);
 library.add(faQuestion);
 library.add(faSkull);
+library.add(faEllipsisVertical);
+library.add(faXmark);
 
 Vue.component('FontAwesomeIcon', FontAwesomeIcon);
 
