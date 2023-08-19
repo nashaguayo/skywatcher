@@ -1,11 +1,23 @@
 import { shallowMount } from '@vue/test-utils';
 import ConfigMenu from '@/components/neo/ConfigMenu.vue';
 
+jest.mock('@/components/neo/AsteroidFilters.vue', () => ({
+  name: 'AsteroidFilters',
+  template: '<div class="mock-asteroid-filters"></div>',
+}));
+
 describe('ConfigMenu', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(ConfigMenu, { stubs: ['FontAwesomeIcon'] });
+    wrapper = shallowMount(ConfigMenu, {
+      propsData: {
+        missDistanceMeasureUnit: 'astronomical',
+        diameterMeasureUnit: 'kilometers',
+        date: '2023-08-01',
+      },
+      stubs: ['FontAwesomeIcon', 'AsteroidFilters'],
+    });
   });
 
   afterEach(() => {

@@ -7,11 +7,6 @@ jest.mock('@/components/neo/ConfigMenu.vue', () => ({
   template: '<div class="mock-config-menu"></div>',
 }));
 
-jest.mock('@/components/neo/AsteroidFilters.vue', () => ({
-  name: 'AsteroidFilters',
-  template: '<div class="mock-asteroid-filters"></div>',
-}));
-
 jest.mock('@/components/neo/AsteroidTable.vue', () => ({
   name: 'AsteroidTable',
   template: '<div class="mock-asteroid-table"></div>',
@@ -62,7 +57,6 @@ describe('AsteroidsContainer', () => {
 
   it('renders the mocked components', () => {
     expect(wrapper.find('configmenu-stub').exists()).toBeFalsy();
-    expect(wrapper.find('asteroidfilters-stub').exists()).toBeTruthy();
     expect(wrapper.find('asteroidtable-stub').exists()).toBeTruthy();
     expect(spyGetNearEarthObjects).toHaveBeenCalled();
   });

@@ -8,14 +8,6 @@
     />
     <h1>Asteroids</h1>
     <h3>Near Earth Objects</h3>
-    <AsteroidFilters
-      :diameterMeasureUnit="diameterMeasureUnit"
-      :missDistanceMeasureUnit="missDistanceMeasureUnit"
-      :date="date"
-      @newDiameterMeasureUnit="newDiameterMeasureUnit"
-      @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
-      @newDate="newDate"
-    />
     <AsteroidTable
       :neos="neos"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
@@ -23,13 +15,21 @@
       :loaded="loaded"
     />
     <transition name="slide-from-above">
-      <ConfigMenu v-if="configMenuOpen" @closeTapped="closeConfigMenu" />
+      <ConfigMenu
+        v-if="configMenuOpen"
+        :diameterMeasureUnit="diameterMeasureUnit"
+        :missDistanceMeasureUnit="missDistanceMeasureUnit"
+        :date="date"
+        @newDiameterMeasureUnit="newDiameterMeasureUnit"
+        @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
+        @newDate="newDate"
+        @closeTapped="closeConfigMenu"
+      />
     </transition>
   </div>
 </template>
 
 <script>
-import AsteroidFilters from '@/components/neo/AsteroidFilters.vue';
 import AsteroidTable from '@/components/neo/AsteroidTable.vue';
 import ConfigMenu from '@/components/neo/ConfigMenu.vue';
 import { getNearEarthObjects } from '@/helpers/neo';
@@ -38,7 +38,6 @@ import { parseISO } from 'date-fns';
 export default {
   name: 'AsteroidsContainer',
   components: {
-    AsteroidFilters,
     AsteroidTable,
     ConfigMenu,
   },

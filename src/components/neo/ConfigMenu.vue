@@ -7,12 +7,49 @@
       @click="$emit('closeTapped')"
     />
     <h1>Configuration</h1>
+    <AsteroidFilters
+      :diameterMeasureUnit="diameterMeasureUnit"
+      :missDistanceMeasureUnit="missDistanceMeasureUnit"
+      :date="date"
+      @newDiameterMeasureUnit="newDiameterMeasureUnit"
+      @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
+      @newDate="newDate"
+    />
   </div>
 </template>
 
 <script>
+import AsteroidFilters from '@/components/neo/AsteroidFilters.vue';
 export default {
   name: 'ConfigMenu',
+  components: {
+    AsteroidFilters,
+  },
+  props: {
+    diameterMeasureUnit: {
+      type: String,
+      required: true,
+    },
+    missDistanceMeasureUnit: {
+      type: String,
+      required: true,
+    },
+    date: {
+      type: String,
+      required: true,
+    },
+  },
+  methods: {
+    newDiameterMeasureUnit(diameterMeasureUnit) {
+      this.$emit('newDiameterMeasureUnit', diameterMeasureUnit);
+    },
+    newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
+      this.$emit('newMissDistanceMeasureUnit', missDistanceMeasureUnit);
+    },
+    newDate(date) {
+      this.$emit('newDate', date);
+    },
+  },
 };
 </script>
 
