@@ -1,6 +1,11 @@
 import { shallowMount } from '@vue/test-utils';
 import AsteroidFilters from '@/components/neo/AsteroidFilters.vue';
 
+jest.mock('@/components/ui/BaseButton.vue', () => ({
+  name: 'BaseButton',
+  template: '<div class="mock-base-button"></div>',
+}));
+
 jest.mock('@/components/ui/BaseRadio.vue', () => ({
   name: 'BaseRadio',
   template: '<div class="mock-base-radio"></div>',
@@ -11,7 +16,7 @@ describe('AsteroidFilters', () => {
 
   beforeEach(() => {
     wrapper = shallowMount(AsteroidFilters, {
-      stubs: ['BaseInput', 'BaseRadio'],
+      stubs: ['BaseButton', 'BaseRadio'],
       propsData: {
         date: '2023-08-01',
         missDistanceMeasureUnit: 'astronomical',
@@ -37,16 +42,14 @@ describe('AsteroidFilters', () => {
 
   it('renders the mocked components', () => {
     const baseRadios = wrapper.findAll('baseradio-stub');
-    expect(baseRadios.length).toBe(8);
-  });
+    expect(baseRadios.length).toBe(4);
 
-  it('emits newMissDistanceMeasureUnit event when inputValueChanged is called', async () => {
-    const newMissDistanceMeasureUnit = 'kilometers';
-    await wrapper.vm.newMissDistanceMeasureUnit(newMissDistanceMeasureUnit);
-    expect(wrapper.emitted('newMissDistanceMeasureUnit')).toBeTruthy();
-    expect(wrapper.emitted('newMissDistanceMeasureUnit')[0]).toEqual([
-      newMissDistanceMeasureUnit,
-    ]);
+    const baseButtons = wrapper.findAll('basebutton-stub');
+    expect(baseButtons.length).toBe(4);
+    expect(baseButtons.at(0).text()).toBe('Astronomical');
+    expect(baseButtons.at(1).text()).toBe('Kilometers');
+    expect(baseButtons.at(2).text()).toBe('Lunar');
+    expect(baseButtons.at(3).text()).toBe('Miles');
   });
 
   it('emits newDiameterMeasureUnit event when inputValueChanged is called', async () => {

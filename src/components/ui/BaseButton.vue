@@ -1,7 +1,7 @@
 <template>
   <button
     class="base-button"
-    :class="{ 'button-animation-active': wasClicked }"
+    :class="{ 'button-animation-active': wasClicked, small, variant }"
     :disabled="disabled"
     @click="wasClicked = true"
     @animationend="handleAndFinish"
@@ -19,6 +19,14 @@ export default {
       default: () => {},
     },
     disabled: {
+      type: Boolean,
+      default: false,
+    },
+    small: {
+      type: Boolean,
+      default: false,
+    },
+    variant: {
       type: Boolean,
       default: false,
     },
@@ -60,6 +68,26 @@ export default {
 
 .button-animation-active {
   animation: button-animation 0.3s;
+}
+
+.small {
+  font-size: 1rem;
+  padding: 0.5rem;
+  text-transform: none;
+
+  @media (min-width: $min-width-second-break) {
+    font-size: 1.5rem;
+  }
+}
+
+.variant {
+  background: linear-gradient(
+    100deg,
+    var(--button-variant-color),
+    var(--button-gradient-variant-color)
+  );
+  box-shadow: var(--main-box-shadow);
+  color: var(--main-text-color);
 }
 
 @keyframes button-animation {
