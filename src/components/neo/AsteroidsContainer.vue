@@ -22,9 +22,11 @@
         :diameterMeasureUnit="diameterMeasureUnit"
         :missDistanceMeasureUnit="missDistanceMeasureUnit"
         :date="date"
+        :sortBy="sortBy"
         @newDiameterMeasureUnit="newDiameterMeasureUnit"
         @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
         @newDate="newDate"
+        @newSortBy="newSortBy"
         @closeTapped="closeConfigMenu"
       />
     </transition>
@@ -49,6 +51,7 @@ export default {
       missDistanceMeasureUnit: 'astronomical',
       diameterMeasureUnit: 'kilometers',
       date: '',
+      sortBy: 'name',
       loaded: false,
       configMenuOpen: false,
     };
@@ -70,6 +73,9 @@ export default {
     },
     newDate(date) {
       this.date = date;
+    },
+    newSortBy(sortBy) {
+      this.sortBy = sortBy;
     },
     newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
       this.missDistanceMeasureUnit = missDistanceMeasureUnit;
