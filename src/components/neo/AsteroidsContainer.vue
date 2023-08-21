@@ -37,7 +37,7 @@
 import AsteroidTable from '@/components/neo/AsteroidTable.vue';
 import ConfigMenu from '@/components/neo/ConfigMenu.vue';
 import { getNearEarthObjects } from '@/helpers/neo';
-import { parseISO } from 'date-fns';
+import { parseISO, isBefore } from 'date-fns';
 
 export default {
   name: 'AsteroidsContainer',
@@ -69,6 +69,36 @@ export default {
           sortedNeos = this.neos
             .slice()
             .sort((a, b) => (a.name < b.name ? -1 : 1));
+          break;
+        case 'missDistance':
+          sortedNeos = this.neos
+            .slice()
+            .sort((a, b) => (a.missDistance < b.missDistance ? -1 : 1));
+          break;
+        case 'minDiameter':
+          sortedNeos = this.neos
+            .slice()
+            .sort((a, b) =>
+              a.diameter[this.diameterMeasureUnit].min >
+              b.diameter[this.diameterMeasureUnit].min
+                ? -1
+                : 1
+            );
+          break;
+        case 'maxDiameter':
+          sortedNeos = this.neos
+            .slice()
+            .sort((a, b) =>
+              a.diameter[this.diameterMeasureUnit].max >
+              b.diameter[this.diameterMeasureUnit].max
+                ? -1
+                : 1
+            );
+          break;
+        case 'date':
+          sortedNeos = this.neos
+            .slice()
+            .sort((a, b) => (isBefore(a.date, b.date) ? -1 : 1));
           break;
         default:
           sortedNeos = this.neos;

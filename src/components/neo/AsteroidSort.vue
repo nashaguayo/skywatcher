@@ -5,8 +5,9 @@
       :onClickHandler="() => $emit('newSortBy', 'name')"
       :variant="'name' !== sortBy"
       :small="true"
-      >Name</BaseButton
     >
+      Name
+    </BaseButton>
     <BaseButton
       :onClickHandler="() => $emit('newSortBy', 'missDistance')"
       :variant="'missDistance' !== sortBy"
