@@ -1,7 +1,12 @@
 <template>
   <button
     class="base-button"
-    :class="{ 'button-animation-active': wasClicked, small, variant }"
+    :class="{
+      'button-animation-variant-active': wasClicked && variant,
+      'button-animation-active': wasClicked && !variant,
+      small,
+      variant,
+    }"
     :disabled="disabled"
     @click="wasClicked = true"
     @animationend="handleAndFinish"
@@ -70,6 +75,10 @@ export default {
   animation: button-animation 0.3s;
 }
 
+.button-animation-variant-active {
+  animation: button-animation-variant 0.3s;
+}
+
 .small {
   font-size: 1rem;
   padding: 0.5rem;
@@ -115,6 +124,35 @@ export default {
       100deg,
       var(--button-main-color),
       var(--button-gradient-main-color)
+    );
+  }
+}
+
+@keyframes button-animation-variant {
+  0% {
+    background: linear-gradient(
+      100deg,
+      var(--button-variant-color),
+      var(--button-gradient-variant-color)
+    );
+  }
+
+  50% {
+    background: linear-gradient(
+      100deg,
+      var(--button-variant-color),
+      var(--button-gradient-variant-color),
+      var(--button-variant-color)
+    );
+    transform: scale(0.95);
+    box-shadow: none;
+  }
+
+  100% {
+    background: linear-gradient(
+      100deg,
+      var(--button-variant-color),
+      var(--button-gradient-variant-color)
     );
   }
 }
