@@ -9,7 +9,7 @@
     <h1>Asteroids</h1>
     <h3>Near Earth Objects</h3>
     <AsteroidTable
-      :neos="neos"
+      :neos="sortedNeos"
       :date="date"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
       :diameterMeasureUnit="diameterMeasureUnit"
@@ -59,6 +59,21 @@ export default {
   watch: {
     date(date) {
       this.getNearEarthObjects(parseISO(date));
+    },
+  },
+  computed: {
+    sortedNeos() {
+      let sortedNeos;
+      switch (this.sortBy) {
+        case 'name':
+          sortedNeos = this.neos
+            .slice()
+            .sort((a, b) => (a.name < b.name ? -1 : 1));
+          break;
+        default:
+          sortedNeos = this.neos;
+      }
+      return sortedNeos;
     },
   },
   async created() {
