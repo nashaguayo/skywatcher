@@ -28,6 +28,13 @@
     >
       Maximum Diameter
     </BaseButton>
+    <BaseButton
+      :onClickHandler="() => $emit('newSortBy', 'hour')"
+      :variant="'hour' !== sortBy"
+      :small="true"
+    >
+      Hour
+    </BaseButton>
   </div>
 </template>
 

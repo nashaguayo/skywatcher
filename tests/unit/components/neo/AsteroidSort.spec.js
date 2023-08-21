@@ -32,10 +32,11 @@ describe('AsteroidSort', () => {
 
   it('renders the mocked components', () => {
     const baseButtons = wrapper.findAll('basebutton-stub');
-    expect(baseButtons.length).toBe(4);
+    expect(baseButtons.length).toBe(5);
     expect(baseButtons.at(0).text()).toBe('Name');
     expect(baseButtons.at(1).text()).toBe('Miss Distance');
     expect(baseButtons.at(2).text()).toBe('Minimum Diameter');
     expect(baseButtons.at(3).text()).toBe('Maximum Diameter');
+    expect(baseButtons.at(4).text()).toBe('Hour');
   });
 });
