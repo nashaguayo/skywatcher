@@ -1,87 +1,82 @@
 <template>
   <div class="asteroid-filters">
-    <div class="measure-units">
-      <div class="miss-distance-measure-unit">
-        <BaseRadio
-          :model="missDistanceMeasureUnit"
-          name="missDistanceMeasureUnit"
-          id="kilometers"
-          value="kilometers"
-          label="Kilometers"
-          @inputValueChanged="newMissDistanceMeasureUnit"
-        />
-        <BaseRadio
-          :model="missDistanceMeasureUnit"
-          name="missDistanceMeasureUnit"
-          id="lunar"
-          value="lunar"
-          label="Lunar"
-          @inputValueChanged="newMissDistanceMeasureUnit"
-        />
-        <BaseRadio
-          :model="missDistanceMeasureUnit"
-          name="missDistanceMeasureUnit"
-          id="miles"
-          value="miles"
-          label="Miles"
-          @inputValueChanged="newMissDistanceMeasureUnit"
-        />
-        <BaseRadio
-          :model="missDistanceMeasureUnit"
-          name="missDistanceMeasureUnit"
-          id="astronomical"
-          value="astronomical"
-          label="Astronomical"
-          @inputValueChanged="newMissDistanceMeasureUnit"
-        />
-        <span>Miss Distance</span>
-      </div>
-      <div class="diameter-measure-unit">
-        <BaseRadio
-          :model="diameterMeasureUnit"
-          name="diameterMeasureUnit"
-          id="feet"
-          value="feet"
-          label="Feet"
-          @inputValueChanged="newDiameterMeasureUnit"
-        />
-        <BaseRadio
-          :model="diameterMeasureUnit"
-          name="diameterMeasureUnit"
-          id="meters"
-          value="meters"
-          label="Meters"
-          @inputValueChanged="newDiameterMeasureUnit"
-        />
-        <BaseRadio
-          :model="diameterMeasureUnit"
-          name="diameterMeasureUnit"
-          id="miles"
-          value="miles"
-          label="Miles"
-          @inputValueChanged="newDiameterMeasureUnit"
-        />
-        <BaseRadio
-          :model="diameterMeasureUnit"
-          name="diameterMeasureUnit"
-          id="kilometers"
-          value="kilometers"
-          label="Kilometers"
-          @inputValueChanged="newMissDistanceMeasureUnit"
-        />
-        <span>Diameter</span>
-      </div>
+    <h3>Measure Units</h3>
+    <div class="miss-distance-measure-unit">
+      <span>Miss Distance</span>
+      <BaseButton
+        :onClickHandler="
+          () => $emit('newMissDistanceMeasureUnit', 'astronomical')
+        "
+        :small="true"
+        :variant="'astronomical' !== missDistanceMeasureUnit"
+      >
+        Astronomical
+      </BaseButton>
+      <BaseButton
+        :onClickHandler="
+          () => $emit('newMissDistanceMeasureUnit', 'kilometers')
+        "
+        :small="true"
+        :variant="'kilometers' !== missDistanceMeasureUnit"
+      >
+        Kilometers
+      </BaseButton>
+      <BaseButton
+        :onClickHandler="() => $emit('newMissDistanceMeasureUnit', 'lunar')"
+        :small="true"
+        :variant="'lunar' !== missDistanceMeasureUnit"
+      >
+        Lunar
+      </BaseButton>
+      <BaseButton
+        :onClickHandler="() => $emit('newMissDistanceMeasureUnit', 'miles')"
+        :small="true"
+        :variant="'miles' !== missDistanceMeasureUnit"
+      >
+        Miles
+      </BaseButton>
+    </div>
+    <div class="diameter-measure-unit">
+      <span>Diameter</span>
+      <BaseButton
+        :onClickHandler="() => $emit('newDiameterMeasureUnit', 'kilometers')"
+        :small="true"
+        :variant="'kilometers' !== diameterMeasureUnit"
+      >
+        Kilometers
+      </BaseButton>
+      <BaseButton
+        :onClickHandler="() => $emit('newDiameterMeasureUnit', 'miles')"
+        :small="true"
+        :variant="'miles' !== diameterMeasureUnit"
+      >
+        Miles
+      </BaseButton>
+      <BaseButton
+        :onClickHandler="() => $emit('newDiameterMeasureUnit', 'meters')"
+        :small="true"
+        :variant="'meters' !== diameterMeasureUnit"
+      >
+        Meters
+      </BaseButton>
+      <BaseButton
+        :onClickHandler="() => $emit('newDiameterMeasureUnit', 'feet')"
+        :small="true"
+        :variant="'feet' !== diameterMeasureUnit"
+      >
+        Feet
+      </BaseButton>
     </div>
   </div>
 </template>
 
 <script>
-import BaseRadio from '@/components/ui/BaseRadio.vue';
+import BaseButton from '@/components/ui/BaseButton.vue';
 
 export default {
   name: 'AsteroidFilters',
   components: {
-    BaseRadio,
+    BaseButton,
   },
   props: {
     missDistanceMeasureUnit: {
@@ -93,35 +88,30 @@ export default {
       required: true,
     },
   },
-  methods: {
-    newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
-      this.$emit('newMissDistanceMeasureUnit', missDistanceMeasureUnit);
-    },
-    newDiameterMeasureUnit(diameterMeasureUnit) {
-      this.$emit('newDiameterMeasureUnit', diameterMeasureUnit);
-    },
-  },
 };
 </script>
 
 <style lang="scss" scoped>
 .asteroid-filters {
   width: 100%;
-  margin-top: 1rem;
 
-  .measure-units {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 1rem 1rem;
+  h3 {
+    margin-top: 1rem;
+    text-align: center;
   }
 
   .diameter-measure-unit,
   .miss-distance-measure-unit {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    padding: 0 1rem;
+    gap: 0.2rem;
+    margin-top: 1rem;
 
     span {
       font-weight: 600;
+      text-align: center;
+      color: var(--secondary-text-color);
     }
   }
 }

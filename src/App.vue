@@ -54,8 +54,8 @@ html {
 
   --button-main-color: #ff8800;
   --button-gradient-main-color: #ffd900;
-  --button-variant-color: #209cee;
-  --button-gradient-variant-color: #6bb3e2;
+  --button-variant-color: #101416;
+  --button-gradient-variant-color: #243035;
 
   --main-icon-color: rgb(207, 207, 207);
   --main-icon-hover-color: #ff8800;
