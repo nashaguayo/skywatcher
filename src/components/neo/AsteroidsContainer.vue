@@ -95,7 +95,7 @@ export default {
                 : 1
             );
           break;
-        case 'date':
+        case 'hour':
           sortedNeos = this.neos
             .slice()
             .sort((a, b) => (isBefore(a.date, b.date) ? -1 : 1));
