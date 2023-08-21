@@ -1,6 +1,7 @@
 <template>
   <div class="asteroid-filters">
     <div class="miss-distance-measure-unit">
+      <span>Miss Distance</span>
       <BaseRadio
         :model="missDistanceMeasureUnit"
         name="missDistanceMeasureUnit"
@@ -33,9 +34,9 @@
         label="Astronomical"
         @inputValueChanged="newMissDistanceMeasureUnit"
       />
-      <span>Miss Distance</span>
     </div>
     <div class="diameter-measure-unit">
+      <span>Diameter</span>
       <BaseRadio
         :model="diameterMeasureUnit"
         name="diameterMeasureUnit"
@@ -68,7 +69,6 @@
         label="Kilometers"
         @inputValueChanged="newMissDistanceMeasureUnit"
       />
-      <span>Diameter</span>
     </div>
   </div>
 </template>
@@ -109,9 +109,6 @@ export default {
 
   .diameter-measure-unit,
   .miss-distance-measure-unit {
-    display: flex;
-    flex-direction: column-reverse;
-
     span {
       font-weight: 600;
     }
