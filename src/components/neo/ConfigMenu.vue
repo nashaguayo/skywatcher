@@ -1,11 +1,12 @@
 <template>
   <div class="config-menu">
-    <FontAwesomeIcon
-      icon="fa-solid fa-xmark"
-      size="2x"
-      class="icon"
-      @click="$emit('closeTapped')"
-    />
+    <div class="close-button">
+      <FontAwesomeIcon
+        icon="fa-solid fa-xmark"
+        class="icon"
+        @click="$emit('closeTapped')"
+      />
+    </div>
     <h1>Configuration</h1>
     <AsteroidFilters
       :diameterMeasureUnit="diameterMeasureUnit"
@@ -66,12 +67,23 @@ export default {
   flex-direction: column;
   align-items: center;
 
-  .icon {
+  .close-button {
+    background-color: var(--button-variant-color);
     position: absolute;
     right: 0;
-    margin: 1rem;
-    color: var(--main-icon-color);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
     cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    box-shadow: var(--main-box-shadow);
+
+    .icon {
+      color: var(--main-icon-color);
+    }
   }
 
   .icon:hover {
