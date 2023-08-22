@@ -14,15 +14,18 @@ jest.mock('@/components/neo/AsteroidTable.vue', () => ({
 
 jest.mock('@/helpers/neo', () => ({
   getNearEarthObjects: jest.fn(),
+  sortNeos: jest.fn(),
 }));
 
 const spyGetNearEarthObjects = jest.spyOn(neoHelpers, 'getNearEarthObjects');
+const spySortNeos = jest.spyOn(neoHelpers, 'sortNeos');
 
 describe('AsteroidsContainer', () => {
   let wrapper;
 
   beforeEach(() => {
     spyGetNearEarthObjects.mockResolvedValue([{ name: 'XC', id: 1 }]);
+    spySortNeos.mockResolvedValue([{ name: 'XC', id: 1 }]);
     wrapper = shallowMount(AsteroidsContainer, {
       stubs: ['ConfigMenu', 'FontAwesomeIcon', 'ErrorBoundary', 'LandingHero'],
     });

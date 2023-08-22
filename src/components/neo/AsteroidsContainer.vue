@@ -9,7 +9,7 @@
     <h1>Asteroids</h1>
     <h3>Near Earth Objects</h3>
     <AsteroidTable
-      :neos="neos"
+      :neos="sortedNeos"
       :date="date"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
       :diameterMeasureUnit="diameterMeasureUnit"
@@ -22,9 +22,11 @@
         :diameterMeasureUnit="diameterMeasureUnit"
         :missDistanceMeasureUnit="missDistanceMeasureUnit"
         :date="date"
+        :sortBy="sortBy"
         @newDiameterMeasureUnit="newDiameterMeasureUnit"
         @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
         @newDate="newDate"
+        @newSortBy="newSortBy"
         @closeTapped="closeConfigMenu"
       />
     </transition>
@@ -34,7 +36,7 @@
 <script>
 import AsteroidTable from '@/components/neo/AsteroidTable.vue';
 import ConfigMenu from '@/components/neo/ConfigMenu.vue';
-import { getNearEarthObjects } from '@/helpers/neo';
+import { getNearEarthObjects, sortNeos } from '@/helpers/neo';
 import { parseISO } from 'date-fns';
 
 export default {
@@ -49,6 +51,7 @@ export default {
       missDistanceMeasureUnit: 'astronomical',
       diameterMeasureUnit: 'kilometers',
       date: '',
+      sortBy: 'name',
       loaded: false,
       configMenuOpen: false,
     };
@@ -56,6 +59,11 @@ export default {
   watch: {
     date(date) {
       this.getNearEarthObjects(parseISO(date));
+    },
+  },
+  computed: {
+    sortedNeos() {
+      return sortNeos(this.sortBy, this.neos, this.diameterMeasureUnit);
     },
   },
   async created() {
@@ -70,6 +78,9 @@ export default {
     },
     newDate(date) {
       this.date = date;
+    },
+    newSortBy(sortBy) {
+      this.sortBy = sortBy;
     },
     newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
       this.missDistanceMeasureUnit = missDistanceMeasureUnit;
