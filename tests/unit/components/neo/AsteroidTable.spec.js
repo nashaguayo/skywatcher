@@ -59,6 +59,7 @@ describe('AsteroidTable', () => {
       },
     });
     expect(wrapper.find('asteroidtableskeleton-stub').exists()).toBeTruthy();
+    expect(wrapper.find('.no-results').exists()).toBeFalsy();
     expect(wrapper.find('asteroidtableitem-stub').exists()).toBeFalsy();
   });
 
@@ -73,5 +74,22 @@ describe('AsteroidTable', () => {
     await wrapper.vm.newDate(newDate);
     expect(wrapper.emitted('newDate')).toBeTruthy();
     expect(wrapper.emitted('newDate')[0]).toEqual([newDate]);
+  });
+
+  it('displays no result message when no results are found', () => {
+    wrapper = shallowMount(AsteroidTable, {
+      stubs: ['BaseInput', 'AsteroidTableSkeleton', 'AsteroidTableItem'],
+      propsData: {
+        neos: [],
+        missDistanceMeasureUnit: 'astronomical',
+        diameterMeasureUnit: 'kilometers',
+        date: '2023-08-01',
+        loaded: true,
+      },
+    });
+    expect(wrapper.find('.no-results').exists()).toBeTruthy();
+    expect(wrapper.find('.no-results').text()).toBe(
+      'No asteroids found for today.'
+    );
   });
 });
