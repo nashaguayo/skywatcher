@@ -59,6 +59,7 @@ html {
 
   --main-icon-color: rgb(207, 207, 207);
   --main-icon-hover-color: #ff8800;
+  --secondary-icon-color: #101416;
 }
 
 #app {

@@ -5,7 +5,6 @@
       <FontAwesomeIcon
         v-if="isPotentiallyHazardous"
         icon="fa-solid fa-skull"
-        style="color: #101416"
         class="icon"
       />
     </div>
@@ -129,6 +128,7 @@ export default {
 
     .icon {
       padding: 0.5rem;
+      color: (--secondary-icon-color);
     }
   }
 
