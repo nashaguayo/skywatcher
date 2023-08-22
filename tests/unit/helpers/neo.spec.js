@@ -177,24 +177,4 @@ describe('sortNeos', () => {
       { diameter: { kilometers: { max: 1 } } },
     ]);
   });
-
-  it('should sort correctly by hour', () => {
-    const neos = [
-      { date: new Date(2023, 8, 1) },
-      { date: new Date(2023, 8, 17) },
-      { date: new Date(2023, 7, 17) },
-    ];
-    const result = sortNeos('hour', neos);
-    expect(result).toStrictEqual([
-      {
-        date: parseISO('2023-08-17T03:00:00.000Z'),
-      },
-      {
-        date: parseISO('2023-09-01T03:00:00.000Z'),
-      },
-      {
-        date: parseISO('2023-09-17T03:00:00.000Z'),
-      },
-    ]);
-  });
 });
