@@ -11,6 +11,7 @@
 ##### Modified
 
 - Base Button Animation
+- Logo
 
 ##### Fixed
 
