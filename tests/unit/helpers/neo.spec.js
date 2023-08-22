@@ -1,6 +1,5 @@
 import { getNearEarthObjects, sortNeos } from '@/helpers/neo';
 import * as neoApi from '@/api/nasa/neo';
-import { parseISO } from 'date-fns';
 
 jest.mock('@/api/nasa/neo', () => ({
   getNearEarthObjects: jest.fn(),
