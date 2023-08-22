@@ -1,11 +1,7 @@
 <template>
   <div class="daily-picture-skeleton">
     <div class="image-placeholder">
-      <FontAwesomeIcon
-        icon="fa-solid fa-question"
-        style="color: rgb(207, 207, 207)"
-        size="6x"
-      />
+      <FontAwesomeIcon icon="fa-solid fa-question" size="6x" class="icon" />
     </div>
     <h1 class="loading-title">Loading</h1>
     <h3>Astronomy Picture</h3>
@@ -56,6 +52,10 @@ export default {
 
     @media (min-width: $min-width-fourth-break) {
       height: 40rem;
+    }
+
+    .icon {
+      color: var(--main-icon-color);
     }
   }
 }
