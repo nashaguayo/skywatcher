@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import {
   faInfo,
-  faCircleNotch,
   faQuestion,
   faSkull,
   faEllipsisVertical,
@@ -16,7 +15,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faInfo);
-library.add(faCircleNotch);
 library.add(faQuestion);
 library.add(faSkull);
 library.add(faEllipsisVertical);
