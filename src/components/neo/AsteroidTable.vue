@@ -9,6 +9,9 @@
       :class="{ 'drop-shadow': hasScrolled }"
     />
     <AsteroidTableSkeleton v-if="!loaded" />
+    <div v-else-if="!neos.length" class="no-results">
+      <span>No asteroids found for today.</span>
+    </div>
     <div v-else class="asteroid-table-container" ref="table">
       <AsteroidTableItem
         v-for="neo in neos"
@@ -103,6 +106,18 @@ export default {
 
   .input {
     transition: box-shadow 0.3s;
+  }
+
+  .no-results {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+
+    span {
+      color: var(--secondary-text-color);
+      text-align: center;
+    }
   }
 
   .asteroid-table-container {
