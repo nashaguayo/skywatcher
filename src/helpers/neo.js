@@ -1,5 +1,5 @@
 import { getNearEarthObjects as getNearEarthObjectsApi } from '@/api/nasa/neo';
-import { format } from 'date-fns';
+import { format, isBefore } from 'date-fns';
 
 export async function getNearEarthObjects(date) {
   const formattedDate = format(date, 'yyyy-MM-dd');
@@ -51,4 +51,46 @@ export async function getNearEarthObjects(date) {
     };
   });
   return processedNeos;
+}
+
+export function sortNeos(sortBy, neos, diameterMeasureUnit) {
+  let sortedNeos;
+  switch (sortBy) {
+    case 'name':
+      sortedNeos = neos.slice().sort((a, b) => (a.name < b.name ? -1 : 1));
+      break;
+    case 'missDistance':
+      sortedNeos = neos
+        .slice()
+        .sort((a, b) => (a.missDistance < b.missDistance ? -1 : 1));
+      break;
+    case 'minDiameter':
+      sortedNeos = neos
+        .slice()
+        .sort((a, b) =>
+          a.diameter[diameterMeasureUnit].min >
+          b.diameter[diameterMeasureUnit].min
+            ? -1
+            : 1
+        );
+      break;
+    case 'maxDiameter':
+      sortedNeos = neos
+        .slice()
+        .sort((a, b) =>
+          a.diameter[diameterMeasureUnit].max >
+          b.diameter[diameterMeasureUnit].max
+            ? -1
+            : 1
+        );
+      break;
+    case 'hour':
+      sortedNeos = neos
+        .slice()
+        .sort((a, b) => (isBefore(a.date, b.date) ? -1 : 1));
+      break;
+    default:
+      sortedNeos = neos;
+  }
+  return sortedNeos;
 }

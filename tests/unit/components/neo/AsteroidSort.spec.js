@@ -12,6 +12,9 @@ describe('AsteroidSort', () => {
   beforeEach(() => {
     wrapper = shallowMount(AsteroidSort, {
       stubs: ['BaseButton'],
+      propsData: {
+        sortBy: 'name',
+      },
     });
   });
 

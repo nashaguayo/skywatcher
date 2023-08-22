@@ -1,5 +1,6 @@
-import { getNearEarthObjects } from '@/helpers/neo';
+import { getNearEarthObjects, sortNeos } from '@/helpers/neo';
 import * as neoApi from '@/api/nasa/neo';
+import { parseISO } from 'date-fns';
 
 jest.mock('@/api/nasa/neo', () => ({
   getNearEarthObjects: jest.fn(),
@@ -95,5 +96,105 @@ describe('getNearEarthObjects', () => {
     const result = await getNearEarthObjects(new Date(2023, 8, 1));
     expect(result).toBeFalsy();
     expect(spyGetNearEarthObjects).toHaveBeenCalled();
+  });
+});
+
+describe('sortNeos', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+    jest.resetAllMocks();
+  });
+
+  it('should sort correctly by name', () => {
+    const neos = [{ name: 'XC' }, { name: 'ZA' }, { name: 'AB' }];
+    const result = sortNeos('name', neos);
+    expect(result).toStrictEqual([
+      {
+        name: 'AB',
+      },
+      {
+        name: 'XC',
+      },
+      {
+        name: 'ZA',
+      },
+    ]);
+  });
+
+  it('should sort correctly by miss distance', () => {
+    const neos = [
+      { missDistance: 10 },
+      { missDistance: 5 },
+      { missDistance: 1 },
+      { missDistance: 20 },
+    ];
+    const result = sortNeos('missDistance', neos);
+    expect(result).toStrictEqual([
+      {
+        missDistance: 1,
+      },
+      {
+        missDistance: 5,
+      },
+      {
+        missDistance: 10,
+      },
+      {
+        missDistance: 20,
+      },
+    ]);
+  });
+
+  it('should sort correctly by minimum diameter', () => {
+    const neos = [
+      { diameter: { kilometers: { min: 10 } } },
+      { diameter: { kilometers: { min: 5 } } },
+      { diameter: { kilometers: { min: 1 } } },
+      { diameter: { kilometers: { min: 20 } } },
+    ];
+    const result = sortNeos('minDiameter', neos, 'kilometers');
+    expect(result).toStrictEqual([
+      { diameter: { kilometers: { min: 20 } } },
+      { diameter: { kilometers: { min: 10 } } },
+      { diameter: { kilometers: { min: 5 } } },
+      { diameter: { kilometers: { min: 1 } } },
+    ]);
+  });
+
+  it('should sort correctly by maximum diameter', () => {
+    const neos = [
+      { diameter: { kilometers: { max: 10 } } },
+      { diameter: { kilometers: { max: 5 } } },
+      { diameter: { kilometers: { max: 1 } } },
+      { diameter: { kilometers: { max: 20 } } },
+    ];
+    const result = sortNeos('maxDiameter', neos, 'kilometers');
+    expect(result).toStrictEqual([
+      { diameter: { kilometers: { max: 20 } } },
+      { diameter: { kilometers: { max: 10 } } },
+      { diameter: { kilometers: { max: 5 } } },
+      { diameter: { kilometers: { max: 1 } } },
+    ]);
+  });
+
+  it('should sort correctly by hour', () => {
+    const neos = [
+      { date: new Date(2023, 8, 1) },
+      { date: new Date(2023, 8, 17) },
+      { date: new Date(2023, 7, 17) },
+    ];
+    const result = sortNeos('hour', neos);
+    expect(result).toStrictEqual([
+      {
+        date: parseISO('2023-08-17T03:00:00.000Z'),
+      },
+      {
+        date: parseISO('2023-09-01T03:00:00.000Z'),
+      },
+      {
+        date: parseISO('2023-09-17T03:00:00.000Z'),
+      },
+    ]);
   });
 });

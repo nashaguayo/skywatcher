@@ -36,8 +36,8 @@
 <script>
 import AsteroidTable from '@/components/neo/AsteroidTable.vue';
 import ConfigMenu from '@/components/neo/ConfigMenu.vue';
-import { getNearEarthObjects } from '@/helpers/neo';
-import { parseISO, isBefore } from 'date-fns';
+import { getNearEarthObjects, sortNeos } from '@/helpers/neo';
+import { parseISO } from 'date-fns';
 
 export default {
   name: 'AsteroidsContainer',
@@ -63,47 +63,7 @@ export default {
   },
   computed: {
     sortedNeos() {
-      let sortedNeos;
-      switch (this.sortBy) {
-        case 'name':
-          sortedNeos = this.neos
-            .slice()
-            .sort((a, b) => (a.name < b.name ? -1 : 1));
-          break;
-        case 'missDistance':
-          sortedNeos = this.neos
-            .slice()
-            .sort((a, b) => (a.missDistance < b.missDistance ? -1 : 1));
-          break;
-        case 'minDiameter':
-          sortedNeos = this.neos
-            .slice()
-            .sort((a, b) =>
-              a.diameter[this.diameterMeasureUnit].min >
-              b.diameter[this.diameterMeasureUnit].min
-                ? -1
-                : 1
-            );
-          break;
-        case 'maxDiameter':
-          sortedNeos = this.neos
-            .slice()
-            .sort((a, b) =>
-              a.diameter[this.diameterMeasureUnit].max >
-              b.diameter[this.diameterMeasureUnit].max
-                ? -1
-                : 1
-            );
-          break;
-        case 'hour':
-          sortedNeos = this.neos
-            .slice()
-            .sort((a, b) => (isBefore(a.date, b.date) ? -1 : 1));
-          break;
-        default:
-          sortedNeos = this.neos;
-      }
-      return sortedNeos;
+      return sortNeos(this.sortBy, this.neos, this.diameterMeasureUnit);
     },
   },
   async created() {
