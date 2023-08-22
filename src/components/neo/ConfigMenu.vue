@@ -61,11 +61,12 @@ export default {
   position: absolute;
   z-index: 50;
   backdrop-filter: blur(0.5rem);
-  min-height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
 
   .close-button {
     background-color: var(--button-variant-color);
