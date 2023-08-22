@@ -107,24 +107,11 @@ export default {
     .tunned-logo {
       display: flex;
       align-items: center;
-      margin-top: 1rem;
-
-      @media (min-width: $min-width-second-break) {
-        margin-top: 2rem;
-      }
-
-      @media (min-width: $min-width-second-break) {
-        margin-top: 5rem;
-      }
-
-      @media (min-width: $min-width-fourth-break) {
-        margin-top: 8rem;
-      }
 
       h1 {
         -webkit-mask-image: linear-gradient(90deg, transparent, 0.1%, black);
         font-size: 2.5rem;
-        font-family: 'Zilla Slab';
+        font-family: 'Lobster';
 
         @media (min-width: $min-width-first-break) {
           font-size: 3.5rem;

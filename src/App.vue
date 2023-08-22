@@ -21,9 +21,8 @@
 }
 
 @font-face {
-  font-family: 'Zilla Slab';
-  src: local('Zilla Slab'),
-    url(@/assets/fonts/zilla-slab.ttf) format('truetype');
+  font-family: 'Lobster';
+  src: local('Lobster'), url(@/assets/fonts/lobster.ttf) format('truetype');
 }
 
 html {
