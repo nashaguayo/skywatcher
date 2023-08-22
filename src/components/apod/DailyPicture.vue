@@ -33,11 +33,7 @@
       </div>
       <transition name="slide-up" appear>
         <div v-if="loaded" class="container">
-          <FontAwesomeIcon
-            icon="fa-solid fa-info"
-            class="icon"
-            style="color: #ff8800"
-          />
+          <FontAwesomeIcon icon="fa-solid fa-info" class="icon" />
           <span>{{ explanation }}</span>
           <BaseButton :onClickHandler="seeHdImage">See HD Image</BaseButton>
         </div>
@@ -230,6 +226,7 @@ export default {
         width: 2rem;
         padding: 0.2rem 0.45rem 0.7rem;
         align-self: center;
+        color: var(--main-icon-hover-color);
       }
 
       span {
