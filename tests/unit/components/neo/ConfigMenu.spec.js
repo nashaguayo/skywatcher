@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils';
 import ConfigMenu from '@/components/neo/ConfigMenu.vue';
 
-jest.mock('@/components/neo/AsteroidFilters.vue', () => ({
-  name: 'AsteroidFilters',
-  template: '<div class="mock-asteroid-filters"></div>',
+jest.mock('@/components/neo/AsteroidMeasureUnits.vue', () => ({
+  name: 'AsteroidMeasureUnits',
+  template: '<div class="mock-asteroid-measure-units"></div>',
 }));
 
 describe('ConfigMenu', () => {
@@ -16,7 +16,7 @@ describe('ConfigMenu', () => {
         diameterMeasureUnit: 'kilometers',
         sortBy: 'name',
       },
-      stubs: ['FontAwesomeIcon', 'AsteroidFilters'],
+      stubs: ['FontAwesomeIcon', 'AsteroidMeasureUnits'],
     });
   });
 
@@ -30,6 +30,10 @@ describe('ConfigMenu', () => {
 
   it('contains the "config-menu" class', () => {
     expect(wrapper.classes()).toContain('config-menu');
+  });
+
+  it('renders mocked components', () => {
+    expect(wrapper.find('asteroidmeasureunits-stub').exists()).toBeTruthy();
   });
 
   it('renders the close button', () => {

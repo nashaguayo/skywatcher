@@ -8,7 +8,7 @@
       />
     </div>
     <h1>Configuration</h1>
-    <AsteroidFilters
+    <AsteroidMeasureUnits
       :diameterMeasureUnit="diameterMeasureUnit"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
       @newDiameterMeasureUnit="newDiameterMeasureUnit"
@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import AsteroidFilters from '@/components/neo/AsteroidFilters.vue';
+import AsteroidMeasureUnits from '@/components/neo/AsteroidMeasureUnits.vue';
 import AsteroidSort from '@/components/neo/AsteroidSort.vue';
 
 export default {
   name: 'ConfigMenu',
   components: {
-    AsteroidFilters,
+    AsteroidMeasureUnits,
     AsteroidSort,
   },
   props: {

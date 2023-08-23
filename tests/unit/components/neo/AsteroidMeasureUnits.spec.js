@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils';
-import AsteroidFilters from '@/components/neo/AsteroidFilters.vue';
+import AsteroidMeasureUnits from '@/components/neo/AsteroidMeasureUnits.vue';
 
 jest.mock('@/components/ui/BaseButton.vue', () => ({
   name: 'BaseButton',
   template: '<div class="mock-base-button"></div>',
 }));
 
-describe('AsteroidFilters', () => {
+describe('AsteroidMeasureUnits', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(AsteroidFilters, {
+    wrapper = shallowMount(AsteroidMeasureUnits, {
       stubs: ['BaseButton'],
       propsData: {
         date: '2023-08-01',
