@@ -2,6 +2,13 @@
   <div class="asteroid-filters">
     <h3>Filter By</h3>
     <BaseButton
+      :onClickHandler="() => $emit('newFilterBy', '')"
+      :small="true"
+      :variant="filterBy !== ''"
+    >
+      No Filters
+    </BaseButton>
+    <BaseButton
       :onClickHandler="() => $emit('newFilterBy', 'sentry')"
       :small="true"
       :variant="filterBy !== 'sentry'"

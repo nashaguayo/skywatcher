@@ -1,4 +1,4 @@
-import { getNearEarthObjects, sortNeos } from '@/helpers/neo';
+import { filterNeos, getNearEarthObjects, sortNeos } from '@/helpers/neo';
 import * as neoApi from '@/api/nasa/neo';
 
 jest.mock('@/api/nasa/neo', () => ({
@@ -175,5 +175,52 @@ describe('sortNeos', () => {
       { diameter: { kilometers: { max: 5 } } },
       { diameter: { kilometers: { max: 1 } } },
     ]);
+  });
+});
+
+describe('filterNeos', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+    jest.resetAllMocks();
+  });
+
+  it('should filter by sentry objects correctly', () => {
+    const neos = [
+      { name: 'A', isSentryObject: false },
+      { name: 'B', isSentryObject: true },
+      { name: 'C', isSentryObject: false },
+      { name: 'D', isSentryObject: true },
+    ];
+    const result = filterNeos('sentry', neos);
+    expect(result).toStrictEqual([
+      { name: 'B', isSentryObject: true },
+      { name: 'D', isSentryObject: true },
+    ]);
+  });
+
+  it('should filter by hazardous objects correctly', () => {
+    const neos = [
+      { name: 'A', isPotentiallyHazardous: false },
+      { name: 'B', isPotentiallyHazardous: true },
+      { name: 'C', isPotentiallyHazardous: false },
+      { name: 'D', isPotentiallyHazardous: true },
+    ];
+    const result = filterNeos('hazardous', neos);
+    expect(result).toStrictEqual([
+      { name: 'B', isPotentiallyHazardous: true },
+      { name: 'D', isPotentiallyHazardous: true },
+    ]);
+  });
+
+  it('should apply no filter when none is given', () => {
+    const neos = [
+      { name: 'A', isPotentiallyHazardous: false },
+      { name: 'B', isPotentiallyHazardous: true },
+      { name: 'C', isPotentiallyHazardous: false },
+      { name: 'D', isPotentiallyHazardous: true },
+    ];
+    const result = filterNeos('', neos);
+    expect(result).toStrictEqual(neos);
   });
 });

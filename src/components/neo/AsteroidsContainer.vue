@@ -46,7 +46,7 @@
 <script>
 import AsteroidTable from '@/components/neo/AsteroidTable.vue';
 import ConfigMenu from '@/components/neo/ConfigMenu.vue';
-import { getNearEarthObjects, sortNeos } from '@/helpers/neo';
+import { getNearEarthObjects, sortNeos, filterNeos } from '@/helpers/neo';
 import { parseISO } from 'date-fns';
 
 export default {
@@ -73,8 +73,11 @@ export default {
     },
   },
   computed: {
+    filteredNeos() {
+      return filterNeos(this.filterBy, this.neos);
+    },
     sortedNeos() {
-      return sortNeos(this.sortBy, this.neos, this.diameterMeasureUnit);
+      return sortNeos(this.sortBy, this.filteredNeos, this.diameterMeasureUnit);
     },
   },
   async created() {
