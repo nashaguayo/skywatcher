@@ -12,6 +12,7 @@ import {
   faSkull,
   faEllipsisVertical,
   faXmark,
+  faSatellite,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faInfo);
@@ -19,6 +20,7 @@ library.add(faQuestion);
 library.add(faSkull);
 library.add(faEllipsisVertical);
 library.add(faXmark);
+library.add(faSatellite);
 
 Vue.component('FontAwesomeIcon', FontAwesomeIcon);
 

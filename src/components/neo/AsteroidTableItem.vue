@@ -2,11 +2,18 @@
   <div class="asteroid-table-item">
     <div class="name" @click="open = !open">
       <span>{{ name }}</span>
-      <FontAwesomeIcon
-        v-if="isPotentiallyHazardous"
-        icon="fa-solid fa-skull"
-        class="icon"
-      />
+      <div class="icons">
+        <FontAwesomeIcon
+          v-if="isSentryObject"
+          icon="fa-solid fa-satellite"
+          class="icon"
+        />
+        <FontAwesomeIcon
+          v-if="isPotentiallyHazardous"
+          icon="fa-solid fa-skull"
+          class="icon"
+        />
+      </div>
     </div>
     <div
       class="content-container"
@@ -83,6 +90,9 @@ export default {
     },
     isPotentiallyHazardous() {
       return this.neo.isPotentiallyHazardous;
+    },
+    isSentryObject() {
+      return this.neo.isSentryObject;
     },
     magnitude() {
       return this.neo.magnitude;
