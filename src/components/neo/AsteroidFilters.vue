@@ -27,8 +27,7 @@ export default {
 .asteroid-filters {
   display: flex;
   flex-direction: column;
-  margin: 1.5rem 0;
-  padding: 0 1rem;
+  padding: 1rem;
   width: 100%;
   gap: 0.3rem;
 
