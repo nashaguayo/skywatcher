@@ -8,14 +8,6 @@
     />
     <h1>Asteroids</h1>
     <h3>Near Earth Objects</h3>
-    <div class="reference">
-      <FontAwesomeIcon icon="fa-solid fa-satellite" class="icon" />
-      <span>Is sentry object</span>
-    </div>
-    <div class="reference">
-      <FontAwesomeIcon icon="fa-solid fa-skull" class="icon" />
-      <span>Is potentially hazardous</span>
-    </div>
     <AsteroidTable
       :neos="sortedNeos"
       :date="date"

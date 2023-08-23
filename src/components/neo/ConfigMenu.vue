@@ -15,18 +15,21 @@
       @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
     />
     <AsteroidSort @newSortBy="newSortBy" :sortBy="sortBy" />
+    <AsteroidFilters />
   </div>
 </template>
 
 <script>
 import AsteroidMeasureUnits from '@/components/neo/AsteroidMeasureUnits.vue';
 import AsteroidSort from '@/components/neo/AsteroidSort.vue';
+import AsteroidFilters from '@/components/neo/AsteroidFilters.vue';
 
 export default {
   name: 'ConfigMenu',
   components: {
     AsteroidMeasureUnits,
     AsteroidSort,
+    AsteroidFilters,
   },
   props: {
     diameterMeasureUnit: {
