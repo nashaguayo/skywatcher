@@ -8,6 +8,14 @@
     />
     <h1>Asteroids</h1>
     <h3>Near Earth Objects</h3>
+    <div class="reference">
+      <FontAwesomeIcon icon="fa-solid fa-satellite" class="icon" />
+      <span>Is Sentry Object</span>
+    </div>
+    <div class="reference">
+      <FontAwesomeIcon icon="fa-solid fa-skull" class="icon" />
+      <span>Is Hazardous Object</span>
+    </div>
     <AsteroidTable
       :neos="sortedNeos"
       :date="date"
@@ -23,10 +31,12 @@
         :missDistanceMeasureUnit="missDistanceMeasureUnit"
         :date="date"
         :sortBy="sortBy"
+        :filterBy="filterBy"
         @newDiameterMeasureUnit="newDiameterMeasureUnit"
         @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
         @newDate="newDate"
         @newSortBy="newSortBy"
+        @newFilterBy="newFilterBy"
         @closeTapped="closeConfigMenu"
       />
     </transition>
@@ -54,6 +64,7 @@ export default {
       sortBy: 'name',
       loaded: false,
       configMenuOpen: false,
+      filterBy: '',
     };
   },
   watch: {
@@ -81,6 +92,9 @@ export default {
     },
     newSortBy(sortBy) {
       this.sortBy = sortBy;
+    },
+    newFilterBy(filterBy) {
+      this.filterBy = filterBy;
     },
     newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
       this.missDistanceMeasureUnit = missDistanceMeasureUnit;

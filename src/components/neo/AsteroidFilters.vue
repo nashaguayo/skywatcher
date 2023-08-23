@@ -1,13 +1,19 @@
 <template>
   <div class="asteroid-filters">
     <h3>Filter By</h3>
-    <BaseButton :small="true" :variant="true">
-      <FontAwesomeIcon icon="fa-solid fa-satellite" class="icon" />
-      <span>Sentry Objects</span>
+    <BaseButton
+      :onClickHandler="() => $emit('newFilterBy', 'sentry')"
+      :small="true"
+      :variant="filterBy !== 'sentry'"
+    >
+      Sentry Objects
     </BaseButton>
-    <BaseButton :small="true" :variant="true">
-      <FontAwesomeIcon icon="fa-solid fa-skull" class="icon" />
-      <span>Hazardous Objects</span>
+    <BaseButton
+      :onClickHandler="() => $emit('newFilterBy', 'hazardous')"
+      :small="true"
+      :variant="filterBy !== 'hazardous'"
+    >
+      Hazardous Objects
     </BaseButton>
   </div>
 </template>
@@ -19,6 +25,12 @@ export default {
   name: 'AsteroidFilters',
   components: {
     BaseButton,
+  },
+  props: {
+    filterBy: {
+      type: String,
+      required: true,
+    },
   },
 };
 </script>

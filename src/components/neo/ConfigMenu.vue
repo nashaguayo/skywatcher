@@ -15,7 +15,7 @@
       @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
     />
     <AsteroidSort @newSortBy="newSortBy" :sortBy="sortBy" />
-    <AsteroidFilters />
+    <AsteroidFilters @newFilterBy="newFilterBy" :filterBy="filterBy" />
   </div>
 </template>
 
@@ -44,6 +44,10 @@ export default {
       type: String,
       required: true,
     },
+    filterBy: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
     newDiameterMeasureUnit(diameterMeasureUnit) {
@@ -54,6 +58,9 @@ export default {
     },
     newSortBy(sortBy) {
       this.$emit('newSortBy', sortBy);
+    },
+    newFilterBy(filterBy) {
+      this.$emit('newFilterBy', filterBy);
     },
   },
 };
