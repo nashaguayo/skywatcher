@@ -31,8 +31,8 @@ describe('AsteroidMeasureUnits', () => {
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it('contains the "asteroid-filters" class', () => {
-    expect(wrapper.classes()).toContain('asteroid-filters');
+  it('contains the "asteroid-measure-units" class', () => {
+    expect(wrapper.classes()).toContain('asteroid-measure-units');
   });
 
   it('renders the mocked components', () => {

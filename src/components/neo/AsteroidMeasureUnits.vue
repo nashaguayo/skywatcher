@@ -1,5 +1,5 @@
 <template>
-  <div class="asteroid-filters">
+  <div class="asteroid-measure-units">
     <h3>Measure Units</h3>
     <div class="miss-distance-measure-unit">
       <span>Miss Distance</span>
@@ -92,7 +92,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.asteroid-filters {
+.asteroid-measure-units {
   width: 100%;
 
   h3 {
