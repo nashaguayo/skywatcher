@@ -8,11 +8,11 @@
     />
     <h1>Asteroids</h1>
     <h3>Near Earth Objects</h3>
-    <div class="reference">
+    <div class="reference" :class="{ active: filterBy === 'sentry' }">
       <FontAwesomeIcon icon="fa-solid fa-satellite" class="icon" />
       <span>Is Sentry Object</span>
     </div>
-    <div class="reference">
+    <div class="reference" :class="{ active: filterBy === 'hazardous' }">
       <FontAwesomeIcon icon="fa-solid fa-skull" class="icon" />
       <span>Is Hazardous Object</span>
     </div>
@@ -152,6 +152,13 @@ export default {
 
     span {
       margin-left: 0.5rem;
+    }
+
+    &.active {
+      .icon,
+      span {
+        color: var(--main-icon-hover-color);
+      }
     }
   }
 }
