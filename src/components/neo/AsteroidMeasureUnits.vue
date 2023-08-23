@@ -74,7 +74,7 @@
 import BaseButton from '@/components/ui/BaseButton.vue';
 
 export default {
-  name: 'AsteroidFilters',
+  name: 'AsteroidMeasureUnits',
   components: {
     BaseButton,
   },
