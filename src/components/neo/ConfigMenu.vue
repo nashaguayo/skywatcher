@@ -8,25 +8,28 @@
       />
     </div>
     <h1>Configuration</h1>
-    <AsteroidFilters
+    <AsteroidMeasureUnits
       :diameterMeasureUnit="diameterMeasureUnit"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
       @newDiameterMeasureUnit="newDiameterMeasureUnit"
       @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
     />
     <AsteroidSort @newSortBy="newSortBy" :sortBy="sortBy" />
+    <AsteroidFilters @newFilterBy="newFilterBy" :filterBy="filterBy" />
   </div>
 </template>
 
 <script>
-import AsteroidFilters from '@/components/neo/AsteroidFilters.vue';
+import AsteroidMeasureUnits from '@/components/neo/AsteroidMeasureUnits.vue';
 import AsteroidSort from '@/components/neo/AsteroidSort.vue';
+import AsteroidFilters from '@/components/neo/AsteroidFilters.vue';
 
 export default {
   name: 'ConfigMenu',
   components: {
-    AsteroidFilters,
+    AsteroidMeasureUnits,
     AsteroidSort,
+    AsteroidFilters,
   },
   props: {
     diameterMeasureUnit: {
@@ -41,6 +44,10 @@ export default {
       type: String,
       required: true,
     },
+    filterBy: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
     newDiameterMeasureUnit(diameterMeasureUnit) {
@@ -51,6 +58,9 @@ export default {
     },
     newSortBy(sortBy) {
       this.$emit('newSortBy', sortBy);
+    },
+    newFilterBy(filterBy) {
+      this.$emit('newFilterBy', filterBy);
     },
   },
 };

@@ -15,6 +15,7 @@ jest.mock('@/components/neo/AsteroidTable.vue', () => ({
 jest.mock('@/helpers/neo', () => ({
   getNearEarthObjects: jest.fn(),
   sortNeos: jest.fn(),
+  filterNeos: jest.fn(),
 }));
 
 const spyGetNearEarthObjects = jest.spyOn(neoHelpers, 'getNearEarthObjects');

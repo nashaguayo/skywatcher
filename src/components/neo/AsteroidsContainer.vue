@@ -8,6 +8,14 @@
     />
     <h1>Asteroids</h1>
     <h3>Near Earth Objects</h3>
+    <div class="reference" :class="{ active: filterBy === 'sentry' }">
+      <FontAwesomeIcon icon="fa-solid fa-satellite" class="icon" />
+      <span>Is Sentry Object</span>
+    </div>
+    <div class="reference" :class="{ active: filterBy === 'hazardous' }">
+      <FontAwesomeIcon icon="fa-solid fa-skull" class="icon" />
+      <span>Is Hazardous Object</span>
+    </div>
     <AsteroidTable
       :neos="sortedNeos"
       :date="date"
@@ -23,10 +31,12 @@
         :missDistanceMeasureUnit="missDistanceMeasureUnit"
         :date="date"
         :sortBy="sortBy"
+        :filterBy="filterBy"
         @newDiameterMeasureUnit="newDiameterMeasureUnit"
         @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
         @newDate="newDate"
         @newSortBy="newSortBy"
+        @newFilterBy="newFilterBy"
         @closeTapped="closeConfigMenu"
       />
     </transition>
@@ -36,7 +46,7 @@
 <script>
 import AsteroidTable from '@/components/neo/AsteroidTable.vue';
 import ConfigMenu from '@/components/neo/ConfigMenu.vue';
-import { getNearEarthObjects, sortNeos } from '@/helpers/neo';
+import { getNearEarthObjects, sortNeos, filterNeos } from '@/helpers/neo';
 import { parseISO } from 'date-fns';
 
 export default {
@@ -54,6 +64,7 @@ export default {
       sortBy: 'name',
       loaded: false,
       configMenuOpen: false,
+      filterBy: '',
     };
   },
   watch: {
@@ -62,8 +73,11 @@ export default {
     },
   },
   computed: {
+    filteredNeos() {
+      return filterNeos(this.filterBy, this.neos);
+    },
     sortedNeos() {
-      return sortNeos(this.sortBy, this.neos, this.diameterMeasureUnit);
+      return sortNeos(this.sortBy, this.filteredNeos, this.diameterMeasureUnit);
     },
   },
   async created() {
@@ -81,6 +95,9 @@ export default {
     },
     newSortBy(sortBy) {
       this.sortBy = sortBy;
+    },
+    newFilterBy(filterBy) {
+      this.filterBy = filterBy;
     },
     newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
       this.missDistanceMeasureUnit = missDistanceMeasureUnit;
@@ -121,7 +138,28 @@ export default {
   }
 
   h3 {
-    margin: 0.5rem 0;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .reference {
+    align-self: start;
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+
+    .icon {
+      color: var(--main-icon-color);
+    }
+
+    span {
+      margin-left: 0.5rem;
+    }
+
+    &.active {
+      .icon,
+      span {
+        color: var(--main-icon-hover-color);
+      }
+    }
   }
 }
 

@@ -6,6 +6,11 @@ jest.mock('@/components/neo/AsteroidFilters.vue', () => ({
   template: '<div class="mock-asteroid-filters"></div>',
 }));
 
+jest.mock('@/components/neo/AsteroidMeasureUnits.vue', () => ({
+  name: 'AsteroidMeasureUnits',
+  template: '<div class="mock-asteroid-measure-units"></div>',
+}));
+
 describe('ConfigMenu', () => {
   let wrapper;
 
@@ -15,8 +20,9 @@ describe('ConfigMenu', () => {
         missDistanceMeasureUnit: 'astronomical',
         diameterMeasureUnit: 'kilometers',
         sortBy: 'name',
+        filterBy: '',
       },
-      stubs: ['FontAwesomeIcon', 'AsteroidFilters'],
+      stubs: ['FontAwesomeIcon', 'AsteroidFilters', 'AsteroidMeasureUnits'],
     });
   });
 
@@ -30,6 +36,11 @@ describe('ConfigMenu', () => {
 
   it('contains the "config-menu" class', () => {
     expect(wrapper.classes()).toContain('config-menu');
+  });
+
+  it('renders mocked components', () => {
+    expect(wrapper.find('asteroidfilters-stub').exists()).toBeTruthy();
+    expect(wrapper.find('asteroidmeasureunits-stub').exists()).toBeTruthy();
   });
 
   it('renders the close button', () => {

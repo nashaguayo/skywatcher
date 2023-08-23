@@ -94,3 +94,18 @@ export function sortNeos(sortBy, neos, diameterMeasureUnit) {
   }
   return sortedNeos;
 }
+
+export function filterNeos(filterBy, neos) {
+  let filteredNeos;
+  switch (filterBy) {
+    case 'sentry':
+      filteredNeos = neos.filter((neo) => neo.isSentryObject);
+      break;
+    case 'hazardous':
+      filteredNeos = neos.filter((neo) => neo.isPotentiallyHazardous);
+      break;
+    default:
+      filteredNeos = neos;
+  }
+  return filteredNeos;
+}

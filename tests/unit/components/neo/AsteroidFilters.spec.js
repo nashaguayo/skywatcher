@@ -13,9 +13,7 @@ describe('AsteroidFilters', () => {
     wrapper = shallowMount(AsteroidFilters, {
       stubs: ['BaseButton'],
       propsData: {
-        date: '2023-08-01',
-        missDistanceMeasureUnit: 'astronomical',
-        diameterMeasureUnit: 'kilometers',
+        filterBy: '',
       },
     });
   });
@@ -35,16 +33,17 @@ describe('AsteroidFilters', () => {
     expect(wrapper.classes()).toContain('asteroid-filters');
   });
 
+  it('renders title', () => {
+    const title = wrapper.find('h3');
+    expect(title.exists()).toBeTruthy();
+    expect(title.text()).toBe('Filter By');
+  });
+
   it('renders the mocked components', () => {
     const baseButtons = wrapper.findAll('basebutton-stub');
-    expect(baseButtons.length).toBe(8);
-    expect(baseButtons.at(0).text()).toBe('Astronomical');
-    expect(baseButtons.at(1).text()).toBe('Kilometers');
-    expect(baseButtons.at(2).text()).toBe('Lunar');
-    expect(baseButtons.at(3).text()).toBe('Miles');
-    expect(baseButtons.at(4).text()).toBe('Kilometers');
-    expect(baseButtons.at(5).text()).toBe('Miles');
-    expect(baseButtons.at(6).text()).toBe('Meters');
-    expect(baseButtons.at(7).text()).toBe('Feet');
+    expect(baseButtons.length).toBe(3);
+    expect(baseButtons.at(0).text()).toBe('No Filters');
+    expect(baseButtons.at(1).text()).toBe('Sentry Objects');
+    expect(baseButtons.at(2).text()).toBe('Hazardous Objects');
   });
 });
