@@ -71,13 +71,16 @@ export default {
     async loaded(loaded) {
       await this.$nextTick();
       if (loaded) {
-        this.$refs.table.addEventListener('scroll', this.throttledHandleScroll);
+        this.$refs.table?.addEventListener(
+          'scroll',
+          this.throttledHandleScroll
+        );
       }
     },
   },
   methods: {
     newDate(date) {
-      this.$refs.table.removeEventListener(
+      this.$refs.table?.removeEventListener(
         'scroll',
         this.throttledHandleScroll
       );
