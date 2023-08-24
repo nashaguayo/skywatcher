@@ -16,6 +16,7 @@
 ##### Fixed
 
 - APOD not displaying loader on month change
+- APOD error message when no daily picture
 
 ---
 
