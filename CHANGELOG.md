@@ -12,6 +12,7 @@
 
 - Base Button Animation
 - Logo
+- Refactored types in daily picture
 
 ##### Fixed
 
