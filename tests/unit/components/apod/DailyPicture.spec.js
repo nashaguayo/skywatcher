@@ -33,6 +33,7 @@ describe('DailyPicture Template', () => {
         mediaType: 'image',
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
+        reloadDailyPicture: false,
       },
       stubs: [
         'LazyYoutube',
@@ -61,6 +62,7 @@ describe('DailyPicture Template', () => {
         mediaType: 'image',
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
+        reloadDailyPicture: false,
       },
       stubs: [
         'LazyYoutube',
@@ -123,6 +125,7 @@ describe('DailyPicture Template', () => {
         mediaType: 'video',
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
+        reloadDailyPicture: false,
       },
       stubs: [
         'LazyYoutube',
