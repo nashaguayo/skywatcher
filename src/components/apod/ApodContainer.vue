@@ -8,6 +8,8 @@
       :mediaType="apod.mediaType"
       :title="apod.title"
       :url="apod.url"
+      :reloadDailyPicture="reloadDailyPicture"
+      @dailyPictureReloaded="reloadDailyPicture = false"
     />
     <ApodCalendar
       :apods="apods.list"
@@ -34,6 +36,7 @@ export default {
   data() {
     return {
       date: '',
+      reloadDailyPicture: false,
       apod: {
         copyright: '',
         date: new Date(),
@@ -58,6 +61,7 @@ export default {
         isBefore(parseISO(date), startOfMonth(this.apod.date)) ||
         isBefore(endOfMonth(this.apod.date), parseISO(date))
       ) {
+        this.reloadDailyPicture = true;
         if (isBefore(new Date(), endOfMonth(parseISO(date)))) {
           endDate = format(new Date(), 'yyyy-MM-dd');
         } else {
