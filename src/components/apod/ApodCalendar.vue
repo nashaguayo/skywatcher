@@ -84,22 +84,25 @@ export default {
   },
   watch: {
     apods(apods) {
-      let imagesLoaded = 0;
+      let imagesLoadedAmount = 0;
       for (const apod of apods) {
         if (apod.mediaType === 'video') {
-          imagesLoaded++;
+          imagesLoadedAmount++;
           continue;
         }
         const image = new Image();
         image.src = apod.url;
         image.onload = () => {
-          imagesLoaded++;
-          if (imagesLoaded === apods.length) {
+          imagesLoadedAmount++;
+          if (imagesLoadedAmount === apods.length) {
             this.loaded = true;
           }
         };
         image.onerror = () => {
-          imagesLoaded++;
+          imagesLoadedAmount++;
+          if (imagesLoadedAmount === apods.length) {
+            this.loaded = true;
+          }
         };
       }
     },
