@@ -15,6 +15,8 @@
 
 ##### Fixed
 
+- APOD not displaying loader on month change
+
 ---
 
 ## [0.2.0](https://github.com/nashaguayo/skywatcher/compare/0.1.2...0.2.0) (15-08-2023)
