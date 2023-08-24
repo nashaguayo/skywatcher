@@ -98,6 +98,9 @@ export default {
             this.loaded = true;
           }
         };
+        image.onerror = () => {
+          imagesLoaded++;
+        };
       }
     },
   },
