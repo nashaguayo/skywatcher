@@ -2,42 +2,49 @@
   <div class="daily-picture">
     <DailyPictureSkeleton v-if="!loaded" />
     <div class="daily-picture-container" v-show="loaded">
-      <div class="image-container" @click="seeHdImage">
-        <img
-          v-if="mediaType === 'image'"
-          class="image"
-          :src="url"
-          @load="imageLoaded"
-        />
-        <LazyYoutube v-else :src="url" class="video" />
-        <transition name="slide-from-right" appear>
-          <span v-if="copyright && loaded" class="copyright">
-            By {{ copyright }}
-          </span>
-        </transition>
+      <div v-if="error" class="error-message">
+        <h1>Astronomy Picture of the Day</h1>
+        <h3>Unable to load daily picture for {{ dateText }}.</h3>
       </div>
-      <div class="title-container">
-        <transition name="slide-from-above" appear>
-          <h1 v-if="loaded">Astronomy Picture of the Day</h1>
-        </transition>
-        <transition name="flip-open" appear>
-          <span v-if="loaded" class="date">{{ dateText }}</span>
-        </transition>
-        <transition name="open-up" appear>
-          <div v-if="loaded" class="title">
-            <transition name="flip-open-later" appear>
-              <h2 v-if="loaded">{{ title }}</h2>
-            </transition>
+      <template v-else>
+        <div class="image-container" @click="seeHdImage">
+          <img
+            v-if="mediaType === 'image'"
+            class="image"
+            :src="url"
+            @load="imageLoaded"
+            @error="displayError"
+          />
+          <LazyYoutube v-else :src="url" class="video" />
+          <transition name="slide-from-right" appear>
+            <span v-if="copyright && loaded" class="copyright">
+              By {{ copyright }}
+            </span>
+          </transition>
+        </div>
+        <div class="title-container">
+          <transition name="slide-from-above" appear>
+            <h1 v-if="loaded">Astronomy Picture of the Day</h1>
+          </transition>
+          <transition name="flip-open" appear>
+            <span v-if="loaded" class="date">{{ dateText }}</span>
+          </transition>
+          <transition name="open-up" appear>
+            <div v-if="loaded" class="title">
+              <transition name="flip-open-later" appear>
+                <h2 v-if="loaded">{{ title }}</h2>
+              </transition>
+            </div>
+          </transition>
+        </div>
+        <transition name="slide-up" appear>
+          <div v-if="loaded" class="container">
+            <FontAwesomeIcon icon="fa-solid fa-info" class="icon" />
+            <span>{{ explanation }}</span>
+            <BaseButton :onClickHandler="seeHdImage">See HD Image</BaseButton>
           </div>
         </transition>
-      </div>
-      <transition name="slide-up" appear>
-        <div v-if="loaded" class="container">
-          <FontAwesomeIcon icon="fa-solid fa-info" class="icon" />
-          <span>{{ explanation }}</span>
-          <BaseButton :onClickHandler="seeHdImage">See HD Image</BaseButton>
-        </div>
-      </transition>
+      </template>
     </div>
   </div>
 </template>
@@ -98,10 +105,14 @@ export default {
         this.loaded = false;
       }
     },
+    date() {
+      this.error = false;
+    },
   },
   data() {
     return {
       loaded: false,
+      error: false,
     };
   },
   computed: {
@@ -124,6 +135,12 @@ export default {
       this.loaded = true;
       this.$emit('dailyPictureReloaded');
     },
+    displayError() {
+      if (!this.url) {
+        return;
+      }
+      this.error = true;
+    },
   },
 };
 </script>
@@ -132,6 +149,19 @@ export default {
 .daily-picture {
   .daily-picture-container {
     overflow-x: hidden;
+
+    .error-message {
+      margin: 2rem;
+
+      h1,
+      h3 {
+        text-align: center;
+      }
+
+      h3 {
+        margin-top: 1rem;
+      }
+    }
 
     .image-container {
       display: flex;
