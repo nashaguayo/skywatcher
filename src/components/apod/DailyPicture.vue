@@ -66,7 +66,7 @@ export default {
       required: false,
     },
     date: {
-      type: [Date, String],
+      type: Date,
       required: true,
     },
     explanation: {
