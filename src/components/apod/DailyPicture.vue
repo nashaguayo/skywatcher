@@ -7,7 +7,7 @@
           v-if="mediaType === 'image'"
           class="image"
           :src="url"
-          @load="loaded = true"
+          @load="imageLoaded"
         />
         <LazyYoutube v-else :src="url" class="video" />
         <transition name="slide-from-right" appear>
@@ -82,11 +82,20 @@ export default {
       type: String,
       required: true,
     },
+    reloadDailyPicture: {
+      type: Boolean,
+      required: true,
+    },
   },
   watch: {
     mediaType(mediaType) {
       if (mediaType === 'video') {
-        this.loaded = true;
+        this.imageLoaded();
+      }
+    },
+    reloadDailyPicture(reloadDailyPicture) {
+      if (reloadDailyPicture) {
+        this.loaded = false;
       }
     },
   },
@@ -110,6 +119,10 @@ export default {
       if (this.mediaType === 'image') {
         window.open(this.hdurl, '_blank');
       }
+    },
+    imageLoaded() {
+      this.loaded = true;
+      this.$emit('dailyPictureReloaded');
     },
   },
 };
