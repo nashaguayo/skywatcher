@@ -1,6 +1,16 @@
 # SkyWatcher
 
-## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/0.2.0...develop) (dd-mm-yyyy)
+## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/0.3.0...develop) (dd-mm-yyyy)
+
+##### Added
+
+##### Modified
+
+##### Fixed
+
+---
+
+## [0.3.0](https://github.com/nashaguayo/skywatcher/compare/0.2.0...0.3.0) (25-08-2023)
 
 ##### Added
 
