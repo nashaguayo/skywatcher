@@ -45,6 +45,12 @@
 import AsteroidTable from '@/components/neo/AsteroidTable.vue';
 import ConfigMenu from '@/components/neo/ConfigMenu.vue';
 import { getNearEarthObjects, sortNeos, filterNeos } from '@/helpers/neo';
+import {
+  getMissDistanceMeasureUnit as getMissDistanceMeasureUnitLS,
+  setMissDistanceMeasureUnit as setMissDistanceMeasureUnitLS,
+  getDiameterMeasureUnit as getDiameterMeasureUnitLS,
+  setDiameterMeasureUnit as setDiameterMeasureUnitLS,
+} from '@/lib/localStorage';
 import { parseISO } from 'date-fns';
 
 export default {
@@ -56,8 +62,8 @@ export default {
   data() {
     return {
       neos: [],
-      missDistanceMeasureUnit: 'astronomical',
-      diameterMeasureUnit: 'kilometers',
+      missDistanceMeasureUnit: getMissDistanceMeasureUnitLS() ?? 'astronomical',
+      diameterMeasureUnit: getDiameterMeasureUnitLS() ?? 'kilometers',
       date: '',
       sortBy: 'name',
       loaded: false,
@@ -99,9 +105,11 @@ export default {
     },
     newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
       this.missDistanceMeasureUnit = missDistanceMeasureUnit;
+      setMissDistanceMeasureUnitLS(missDistanceMeasureUnit);
     },
     newDiameterMeasureUnit(diameterMeasureUnit) {
       this.diameterMeasureUnit = diameterMeasureUnit;
+      setDiameterMeasureUnitLS(diameterMeasureUnit);
     },
     openConfigMenu() {
       this.configMenuOpen = true;
