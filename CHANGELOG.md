@@ -1,12 +1,33 @@
 # SkyWatcher
 
-## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/0.2.0...develop) (dd-mm-yyyy)
+## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/0.3.0...develop) (dd-mm-yyyy)
 
 ##### Added
 
 ##### Modified
 
 ##### Fixed
+
+---
+
+## [0.3.0](https://github.com/nashaguayo/skywatcher/compare/0.2.0...0.3.0) (25-08-2023)
+
+##### Added
+
+- Near Earth Objects Page
+- Filters to NEO page
+- 404 Error page
+
+##### Modified
+
+- Base Button Animation
+- Logo
+- Refactored types in daily picture
+
+##### Fixed
+
+- APOD not displaying loader on month change
+- APOD error message when no daily picture
 
 ---
 

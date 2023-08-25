@@ -21,20 +21,22 @@
 }
 
 @font-face {
-  font-family: 'Zilla Slab';
-  src: local('Zilla Slab'),
-    url(@/assets/fonts/zilla-slab.ttf) format('truetype');
+  font-family: 'Lobster';
+  src: local('Lobster'), url(@/assets/fonts/lobster.ttf) format('truetype');
 }
 
 html {
   --main-background-color: #142d3d;
   --main-gradient-background-color: #194966;
 
+  --accent-color: #ff8800;
+
   --secondary-background-color: #ff8800;
   --secondary-gradient-background-color: #ffd900;
 
   --variant-background-color: #101416;
   --variant-gradient-background-color: #29261d;
+  --variant-opacity-background-color: rgba(0, 0, 0, 0.3);
 
   --main-title-color: rgb(207, 207, 207);
   --main-subtitle-color: rgb(230, 230, 230);
@@ -47,11 +49,16 @@ html {
 
   --main-box-shadow: 0 0 0.5rem #0c0c0c;
   --bright-box-shadow: 0 0 0.5rem #ff8800;
+  --bottom-box-shadow: 0 0.3rem 0.5rem #0c0c0c;
 
   --button-main-color: #ff8800;
   --button-gradient-main-color: #ffd900;
-  --button-variant-color: #209cee;
-  --button-gradient-variant-color: #6bb3e2;
+  --button-variant-color: #101416;
+  --button-gradient-variant-color: #243035;
+
+  --main-icon-color: rgb(207, 207, 207);
+  --main-icon-hover-color: #ff8800;
+  --secondary-icon-color: #101416;
 }
 
 #app {
@@ -68,6 +75,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  accent-color: var(--accent-color);
 }
 
 * {

@@ -33,6 +33,7 @@ describe('DailyPicture Template', () => {
         mediaType: 'image',
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
+        reloadDailyPicture: false,
       },
       stubs: [
         'LazyYoutube',
@@ -61,6 +62,7 @@ describe('DailyPicture Template', () => {
         mediaType: 'image',
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
+        reloadDailyPicture: false,
       },
       stubs: [
         'LazyYoutube',
@@ -123,6 +125,7 @@ describe('DailyPicture Template', () => {
         mediaType: 'video',
         title: 'Mock Title',
         url: 'https://example.com/mock-url.jpg',
+        reloadDailyPicture: false,
       },
       stubs: [
         'LazyYoutube',
@@ -147,5 +150,31 @@ describe('DailyPicture Template', () => {
       'https://example.com/mock-hdurl.jpg',
       '_blank'
     );
+  });
+
+  it('displays error message when unable to load image', () => {
+    wrapper = shallowMount(DailyPicture, {
+      data: () => ({
+        error: true,
+      }),
+      propsData: {
+        copyright: 'Mock Copyright',
+        date: new Date('2023-08-12T10:00:00.000Z'),
+        explanation: 'Mock Explanation',
+        hdurl: 'https://example.com/mock-hdurl.jpg',
+        mediaType: 'image',
+        title: 'Mock Title',
+        url: 'https://example.com/mock-url.jpg',
+        reloadDailyPicture: false,
+      },
+      stubs: [
+        'LazyYoutube',
+        'FontAwesomeIcon',
+        'DailyPictureSkeleton',
+        'BaseButton',
+      ],
+    });
+    const errorMessage = wrapper.find('.error-message');
+    expect(errorMessage.exists()).toBeTruthy();
   });
 });

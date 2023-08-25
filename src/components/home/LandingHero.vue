@@ -4,7 +4,6 @@
     <div v-show="loaded" class="landing-hero-container">
       <transition name="skywatcher" appear>
         <div v-if="loaded" class="tunned-logo">
-          <img src="@/assets/images/ui/logo.svg" alt="SkyWatcher Logo" />
           <h1>SkyWatcher</h1>
         </div>
       </transition>
@@ -108,70 +107,20 @@ export default {
     .tunned-logo {
       display: flex;
       align-items: center;
-      margin-top: 1rem;
-      margin-left: -2rem;
-
-      @media (min-width: $min-width-first-break) {
-        margin-left: -2.3rem;
-      }
-
-      @media (min-width: $min-width-second-break) {
-        margin-top: 2rem;
-        margin-left: -2.5rem;
-      }
-
-      @media (min-width: $min-width-second-break) {
-        margin-top: 5rem;
-        margin-left: -3.5rem;
-      }
-
-      @media (min-width: $min-width-third-break) {
-        margin-left: -5rem;
-      }
-
-      @media (min-width: $min-width-fourth-break) {
-        margin-top: 8rem;
-      }
-
-      img {
-        -webkit-mask-image: linear-gradient(90deg, black, 40%, transparent);
-        filter: invert(1);
-        height: 3rem;
-
-        @media (min-width: $min-width-first-break) {
-          height: 3.5em;
-        }
-
-        @media (min-width: $min-width-second-break) {
-          height: 4rem;
-        }
-
-        @media (min-width: $min-width-second-break) {
-          height: 5rem;
-        }
-
-        @media (min-width: $min-width-third-break) {
-          height: 7.5rem;
-        }
-      }
 
       h1 {
         -webkit-mask-image: linear-gradient(90deg, transparent, 0.1%, black);
-        margin-left: -1rem;
         font-size: 2.5rem;
-        font-family: 'Zilla Slab';
+        font-family: 'Lobster';
 
         @media (min-width: $min-width-first-break) {
-          margin-left: -1.3rem;
           font-size: 3.5rem;
         }
         @media (min-width: $min-width-second-break) {
           font-size: 5rem;
-          margin-left: -1.8rem;
         }
 
         @media (min-width: $min-width-third-break) {
-          margin-left: -3rem;
           font-size: 8rem;
         }
       }

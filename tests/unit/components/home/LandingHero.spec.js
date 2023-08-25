@@ -30,13 +30,6 @@ describe('LandingHero', () => {
     expect(wrapper.classes()).toContain('landing-hero');
   });
 
-  it('loads logo', () => {
-    const image = wrapper.find('img');
-    expect(image.exists()).toBeTruthy();
-    expect(image.attributes().src).toBe('@/assets/images/ui/logo.svg');
-    expect(image.attributes().alt).toBe('SkyWatcher Logo');
-  });
-
   it('loads title', () => {
     const title = wrapper.find('h1');
     expect(title.exists()).toBeTruthy();

@@ -6,13 +6,21 @@ import LazyYoutube from 'vue-lazytube';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-import { faInfo } from '@fortawesome/free-solid-svg-icons';
-import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-import { faQuestion } from '@fortawesome/free-solid-svg-icons';
+import {
+  faInfo,
+  faQuestion,
+  faSkull,
+  faEllipsisVertical,
+  faXmark,
+  faSatellite,
+} from '@fortawesome/free-solid-svg-icons';
 
 library.add(faInfo);
-library.add(faCircleNotch);
 library.add(faQuestion);
+library.add(faSkull);
+library.add(faEllipsisVertical);
+library.add(faXmark);
+library.add(faSatellite);
 
 Vue.component('FontAwesomeIcon', FontAwesomeIcon);
 
