@@ -52,6 +52,8 @@ import {
   setDiameterMeasureUnit as setDiameterMeasureUnitLS,
   getSortBy as getSortByLS,
   setSortBy as setSortByLS,
+  getFilterBy as getFilterByLS,
+  setFilterBy as setFilterByLS,
 } from '@/lib/localStorage';
 import { parseISO } from 'date-fns';
 
@@ -68,9 +70,9 @@ export default {
       diameterMeasureUnit: getDiameterMeasureUnitLS() ?? 'kilometers',
       date: '',
       sortBy: getSortByLS() ?? 'name',
+      filterBy: getFilterByLS() ?? '',
       loaded: false,
       configMenuOpen: false,
-      filterBy: '',
     };
   },
   watch: {
@@ -105,6 +107,7 @@ export default {
     },
     newFilterBy(filterBy) {
       this.filterBy = filterBy;
+      setFilterByLS(filterBy);
     },
     newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
       this.missDistanceMeasureUnit = missDistanceMeasureUnit;
