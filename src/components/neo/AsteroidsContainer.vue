@@ -50,6 +50,8 @@ import {
   setMissDistanceMeasureUnit as setMissDistanceMeasureUnitLS,
   getDiameterMeasureUnit as getDiameterMeasureUnitLS,
   setDiameterMeasureUnit as setDiameterMeasureUnitLS,
+  getSortBy as getSortByLS,
+  setSortBy as setSortByLS,
 } from '@/lib/localStorage';
 import { parseISO } from 'date-fns';
 
@@ -65,7 +67,7 @@ export default {
       missDistanceMeasureUnit: getMissDistanceMeasureUnitLS() ?? 'astronomical',
       diameterMeasureUnit: getDiameterMeasureUnitLS() ?? 'kilometers',
       date: '',
-      sortBy: 'name',
+      sortBy: getSortByLS() ?? 'name',
       loaded: false,
       configMenuOpen: false,
       filterBy: '',
@@ -99,6 +101,7 @@ export default {
     },
     newSortBy(sortBy) {
       this.sortBy = sortBy;
+      setSortByLS(sortBy);
     },
     newFilterBy(filterBy) {
       this.filterBy = filterBy;
