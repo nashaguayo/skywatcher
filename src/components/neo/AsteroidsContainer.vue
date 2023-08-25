@@ -45,6 +45,16 @@
 import AsteroidTable from '@/components/neo/AsteroidTable.vue';
 import ConfigMenu from '@/components/neo/ConfigMenu.vue';
 import { getNearEarthObjects, sortNeos, filterNeos } from '@/helpers/neo';
+import {
+  getMissDistanceMeasureUnit as getMissDistanceMeasureUnitLS,
+  setMissDistanceMeasureUnit as setMissDistanceMeasureUnitLS,
+  getDiameterMeasureUnit as getDiameterMeasureUnitLS,
+  setDiameterMeasureUnit as setDiameterMeasureUnitLS,
+  getSortBy as getSortByLS,
+  setSortBy as setSortByLS,
+  getFilterBy as getFilterByLS,
+  setFilterBy as setFilterByLS,
+} from '@/lib/localStorage';
 import { parseISO } from 'date-fns';
 
 export default {
@@ -56,13 +66,13 @@ export default {
   data() {
     return {
       neos: [],
-      missDistanceMeasureUnit: 'astronomical',
-      diameterMeasureUnit: 'kilometers',
+      missDistanceMeasureUnit: getMissDistanceMeasureUnitLS() ?? 'astronomical',
+      diameterMeasureUnit: getDiameterMeasureUnitLS() ?? 'kilometers',
       date: '',
-      sortBy: 'name',
+      sortBy: getSortByLS() ?? 'name',
+      filterBy: getFilterByLS() ?? '',
       loaded: false,
       configMenuOpen: false,
-      filterBy: '',
     };
   },
   watch: {
@@ -93,15 +103,19 @@ export default {
     },
     newSortBy(sortBy) {
       this.sortBy = sortBy;
+      setSortByLS(sortBy);
     },
     newFilterBy(filterBy) {
       this.filterBy = filterBy;
+      setFilterByLS(filterBy);
     },
     newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
       this.missDistanceMeasureUnit = missDistanceMeasureUnit;
+      setMissDistanceMeasureUnitLS(missDistanceMeasureUnit);
     },
     newDiameterMeasureUnit(diameterMeasureUnit) {
       this.diameterMeasureUnit = diameterMeasureUnit;
+      setDiameterMeasureUnitLS(diameterMeasureUnit);
     },
     openConfigMenu() {
       this.configMenuOpen = true;

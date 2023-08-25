@@ -18,6 +18,17 @@ jest.mock('@/helpers/neo', () => ({
   filterNeos: jest.fn(),
 }));
 
+jest.mock('@/lib/localStorage', () => ({
+  getMissDistanceMeasureUnit: jest.fn(),
+  setMissDistanceMeasureUnit: jest.fn(),
+  getDiameterMeasureUnit: jest.fn(),
+  setDiameterMeasureUnit: jest.fn(),
+  getSortBy: jest.fn(),
+  setSortBy: jest.fn(),
+  getFilterBy: jest.fn(),
+  setFilterBy: jest.fn(),
+}));
+
 const spyGetNearEarthObjects = jest.spyOn(neoHelpers, 'getNearEarthObjects');
 const spySortNeos = jest.spyOn(neoHelpers, 'sortNeos');
 
