@@ -21,8 +21,20 @@
           </p>
         </transition>
       </div>
-      <transition name="flip" appear>
-        <p v-if="loaded">More to come soon...</p>
+      <transition name="flip-delayed" appear>
+        <div
+          v-if="displayInstallButton && loaded && loadedPrompt"
+          class="install-button"
+        >
+          <BaseButton
+            v-if="!installing"
+            :onClickHandler="onClickHandler"
+            class="install"
+          >
+            Install App
+          </BaseButton>
+          <BaseSpinner v-else-if="installing" class="installing" />
+        </div>
       </transition>
     </div>
   </div>
@@ -30,11 +42,33 @@
 
 <script>
 import LandingHeroSkeleton from '@/skeleton/home/LandingHeroSkeleton.vue';
+import BaseButton from '@/components/ui/BaseButton.vue';
+import BaseSpinner from '@/components/ui/BaseSpinner.vue';
 
 export default {
   name: 'LandingHero',
   components: {
     LandingHeroSkeleton,
+    BaseButton,
+    BaseSpinner,
+  },
+  props: {
+    displayInstallButton: {
+      type: Boolean,
+      default: false,
+    },
+    onClickHandler: {
+      type: Function,
+      default: () => {},
+    },
+    installing: {
+      type: Boolean,
+      default: false,
+    },
+    loadedPrompt: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -112,6 +146,7 @@ export default {
         -webkit-mask-image: linear-gradient(90deg, transparent, 0.1%, black);
         font-size: 2.5rem;
         font-family: 'Lobster';
+        color: var(--variant-title-color);
 
         @media (min-width: $min-width-first-break) {
           font-size: 3.5rem;
@@ -143,6 +178,20 @@ export default {
 
       @media (min-width: $min-width-third-break) {
         font-size: 1.7rem;
+      }
+    }
+
+    .install-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .install {
+        width: 100%;
+      }
+
+      .installing {
+        justify-self: center;
       }
     }
   }
@@ -179,6 +228,12 @@ export default {
   transition-delay: 2s;
 }
 
+.flip-delayed-enter-active {
+  transition: transform 0.5s ease-in-out;
+  transition-delay: 2.5s;
+}
+
+.flip-delayed-enter,
 .flip-enter {
   transform: scaleY(0);
 }

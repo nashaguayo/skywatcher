@@ -5,6 +5,7 @@
 ##### Added
 
 - Created Offline page
+- Created Install page
 
 ##### Modified
 

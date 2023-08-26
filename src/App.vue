@@ -15,6 +15,10 @@ export default {
     window.addEventListener('online', this.online);
     window.addEventListener('offline', this.offline);
   },
+  beforeDestroy() {
+    window.removeEventListener('online', this.online);
+    window.removeEventListener('offline', this.offline);
+  },
   methods: {
     online() {
       this.$router.push({ name: 'home' });
@@ -57,6 +61,7 @@ html {
   --variant-opacity-background-color: rgba(0, 0, 0, 0.3);
 
   --main-title-color: rgb(207, 207, 207);
+  --variant-title-color: #ff8800;
   --main-subtitle-color: rgb(230, 230, 230);
   --main-text-color: rgb(230, 230, 230);
 
