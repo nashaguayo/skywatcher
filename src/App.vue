@@ -15,6 +15,10 @@ export default {
     window.addEventListener('online', this.online);
     window.addEventListener('offline', this.offline);
   },
+  beforeDestroy() {
+    window.removeEventListener('online', this.online);
+    window.removeEventListener('offline', this.offline);
+  },
   methods: {
     online() {
       this.$router.push({ name: 'home' });
