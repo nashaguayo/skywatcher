@@ -15,6 +15,8 @@ import {
   faSatellite,
 } from '@fortawesome/free-solid-svg-icons';
 
+import './registerServiceWorker'
+
 library.add(faInfo);
 library.add(faQuestion);
 library.add(faSkull);

@@ -1,5 +1,4 @@
 const { defineConfig } = require('@vue/cli-service');
-const path = require('path');
 
 module.exports = defineConfig({
   publicPath: process.env.NODE_ENV === 'production' ? '/skywatcher/' : '/',
@@ -9,6 +8,19 @@ module.exports = defineConfig({
       sass: {
         additionalData: `@import "@/assets/css/media-queries.scss";`,
       },
+    },
+  },
+  pwa: {
+    name: 'SkyWatcher',
+    iconPaths: {
+      faviconSVG: null,
+      maskIcon: null,
+      msTitleImage: null,
+    },
+    manifestOptions: {
+      display: 'standalone',
+      theme_color: '#ff8800',
+      background_color: '#194966',
     },
   },
 });
