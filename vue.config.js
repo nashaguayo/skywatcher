@@ -21,6 +21,10 @@ module.exports = defineConfig({
     manifestOptions: {
       display: 'standalone',
       background_color: '#ff8800',
+      capture_links: 'existing-client-navigate',
+      launch_handler: {
+        route_to: 'existing-client-navigate',
+      },
     },
   },
 });

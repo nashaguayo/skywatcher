@@ -10,6 +10,7 @@ import BaseSpinner from '@/components/ui/BaseSpinner.vue';
 
 export default {
   name: 'InstallingView',
+  title: 'Installing',
   components: {
     BaseSpinner,
   },
