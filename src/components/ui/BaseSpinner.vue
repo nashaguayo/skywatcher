@@ -1,10 +1,16 @@
 <template functional>
-  <span class="base-spinner"></span>
+  <span class="base-spinner" :class="{ big: props.big }"></span>
 </template>
 
 <script>
 export default {
   name: 'BaseSpinner',
+  props: {
+    big: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 
@@ -20,6 +26,14 @@ export default {
     transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+
+  &.big {
+    width: 6rem;
+    height: 6rem;
+    border: 0.4rem solid;
+    border-color: var(--main-icon-color) var(--main-icon-color) transparent
+      transparent;
+  }
 }
 
 .base-spinner::after,
@@ -48,6 +62,21 @@ export default {
   border-color: var(--main-icon-color) var(--main-icon-color) transparent
     transparent;
   animation: rotation 1.5s linear infinite;
+}
+
+.big::after,
+.big::before {
+  width: 5rem;
+  height: 5rem;
+  border: 0.4rem solid;
+  border-color: transparent transparent var(--accent-color) var(--accent-color);
+}
+
+.big::before {
+  width: 4rem;
+  height: 4rem;
+  border-color: var(--main-icon-color) var(--main-icon-color) transparent
+    transparent;
 }
 
 @keyframes rotation {

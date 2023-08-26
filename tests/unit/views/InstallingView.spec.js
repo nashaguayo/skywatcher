@@ -33,6 +33,8 @@ describe('InstallingView', () => {
     expect(title.exists()).toBeTruthy();
     expect(title.text()).toBe('Installing...');
 
-    expect(wrapper.find('basespinner-stub').exists()).toBeTruthy();
+    const spinner = wrapper.find('basespinner-stub');
+    expect(spinner.exists()).toBeTruthy();
+    expect(spinner.attributes('big')).toBeTruthy();
   });
 });

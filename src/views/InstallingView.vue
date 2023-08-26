@@ -1,7 +1,7 @@
 <template>
   <div class="installing-view">
     <h1>Installing...</h1>
-    <BaseSpinner />
+    <BaseSpinner :big="true" />
   </div>
 </template>
 
