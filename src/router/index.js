@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import HomeView from '../views/HomeView.vue';
-import { isOnline } from '@/lib/pwa';
+import { isOnline, isDesktop, isUsingApp } from '@/lib/pwa';
 
 Vue.use(VueRouter);
 
@@ -54,6 +54,11 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  if (!isDesktop() && !isUsingApp() && to.name !== 'install') {
+    next({ name: 'install' });
+    return;
+  }
+
   if (!isOnline() && to.name !== 'offline') {
     next({ name: 'offline' });
     return;
