@@ -34,9 +34,11 @@ export default {
   },
   async created() {
     window.addEventListener('beforeinstallprompt', this.beforeInstallPrompt);
+    window.addEventListener('appinstalled', this.appInstalled);
   },
   beforeDestroy() {
     window.removeEventListener('beforeinstallprompt', this.beforeInstallPrompt);
+    window.removeEventListener('appinstalled', this.appInstalled);
   },
   methods: {
     async install() {
@@ -51,6 +53,9 @@ export default {
       event.preventDefault();
       this.deferredInstallPrompt = event;
       this.loadedPrompt = true;
+    },
+    appInstalled() {
+      this.$router.push({ name: 'installing' });
     },
   },
 };
