@@ -41,6 +41,11 @@ const routes = [
     component: () => import('@/views/InstallingView.vue'),
   },
   {
+    path: '/launch-app',
+    name: 'launchApp',
+    component: () => import('@/views/LaunchAppView.vue'),
+  },
+  {
     path: '/apod',
     name: 'apod',
     component: () => import('@/views/ApodView.vue'),
@@ -63,7 +68,8 @@ router.beforeEach((to, from, next) => {
     !isDesktop() &&
     !isUsingApp() &&
     to.name !== 'install' &&
-    to.name !== 'installing'
+    to.name !== 'installing' &&
+    to.name !== 'launchApp'
   ) {
     next({ name: 'install' });
     return;
