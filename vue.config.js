@@ -12,6 +12,7 @@ module.exports = defineConfig({
   },
   pwa: {
     name: 'SkyWatcher',
+    themeColor: '#194966',
     iconPaths: {
       faviconSVG: null,
       maskIcon: null,
@@ -19,8 +20,7 @@ module.exports = defineConfig({
     },
     manifestOptions: {
       display: 'standalone',
-      theme_color: '#ff8800',
-      background_color: '#194966',
+      background_color: '#ff8800',
     },
   },
 });

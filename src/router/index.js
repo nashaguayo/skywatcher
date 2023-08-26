@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+import { isOnline } from '@/lib/pwa';
 
 Vue.use(VueRouter);
 
@@ -25,6 +26,11 @@ const routes = [
     component: () => import('@/views/AboutView.vue'),
   },
   {
+    path: '/offline',
+    name: 'offline',
+    component: () => import('@/views/OfflineView.vue'),
+  },
+  {
     path: '/apod',
     name: 'apod',
     component: () => import('@/views/ApodView.vue'),
@@ -40,6 +46,14 @@ const router = new VueRouter({
   base: '/skywatcher',
   mode: 'hash',
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (!isOnline() && to.name !== 'offline') {
+    next({ name: 'offline' });
+    return;
+  }
+  next();
 });
 
 export default router;

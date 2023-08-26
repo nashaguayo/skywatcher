@@ -8,6 +8,24 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'App',
+  created() {
+    window.addEventListener('online', this.online);
+    window.addEventListener('offline', this.offline);
+  },
+  methods: {
+    online() {
+      this.$router.push({ name: 'home' });
+    },
+    offline() {
+      this.$router.push({ name: 'offline' });
+    },
+  },
+};
+</script>
+
 <style lang="scss">
 @font-face {
   font-family: 'Roboto Condensed';

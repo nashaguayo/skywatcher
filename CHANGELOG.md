@@ -4,6 +4,8 @@
 
 ##### Added
 
+- Created Offline page
+
 ##### Modified
 
 - Converted app to PWA
