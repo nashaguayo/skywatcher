@@ -11,7 +11,7 @@
 
 <script>
 import ErrorBoundary from '@/components/common/ErrorBoundary.vue';
-import LandingHero from '@/components/home/LandingHero.vue';
+import LandingHero from '@/components/common/LandingHero.vue';
 
 export default {
   name: 'InstallView',

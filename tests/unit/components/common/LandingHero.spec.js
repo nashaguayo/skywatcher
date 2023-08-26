@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import LandingHero from '@/components/home/LandingHero.vue';
+import LandingHero from '@/components/common/LandingHero.vue';
 
 jest.mock('@/skeleton/home/LandingHeroSkeleton.vue', () => ({
   name: 'LandingHeroSkeleton',

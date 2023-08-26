@@ -6,7 +6,7 @@ jest.mock('@/components/common/ErrorBoundary.vue', () => ({
   template: '<div class="mock-error-boundary"></div>',
 }));
 
-jest.mock('@/components/home/LandingHero.vue', () => ({
+jest.mock('@/components/common/LandingHero.vue', () => ({
   name: 'LandingHero',
   template: '<div class="mock-landing-hero"></div>',
 }));
