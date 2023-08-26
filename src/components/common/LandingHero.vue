@@ -22,9 +22,12 @@
         </transition>
       </div>
       <transition name="flip-delayed" appear>
-        <div v-if="loaded && loadedPrompt" class="install-button">
+        <div
+          v-if="displayInstallButton && loaded && loadedPrompt"
+          class="install-button"
+        >
           <BaseButton
-            v-if="displayInstallButton && !installing"
+            v-if="!installing"
             :onClickHandler="onClickHandler"
             class="install"
           >
