@@ -22,9 +22,16 @@
         </transition>
       </div>
       <transition name="flip-delayed" appear>
-        <BaseButton v-if="loaded && displayInstallButton">
-          Install App
-        </BaseButton>
+        <div v-if="loaded && loadedPrompt" class="install-button">
+          <BaseButton
+            v-if="displayInstallButton && !installing"
+            :onClickHandler="onClickHandler"
+            class="install"
+          >
+            Install App
+          </BaseButton>
+          <BaseSpinner v-else-if="installing" class="installing" />
+        </div>
       </transition>
     </div>
   </div>
@@ -33,15 +40,29 @@
 <script>
 import LandingHeroSkeleton from '@/skeleton/home/LandingHeroSkeleton.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
+import BaseSpinner from '@/components/ui/BaseSpinner.vue';
 
 export default {
   name: 'LandingHero',
   components: {
     LandingHeroSkeleton,
     BaseButton,
+    BaseSpinner,
   },
   props: {
     displayInstallButton: {
+      type: Boolean,
+      default: false,
+    },
+    onClickHandler: {
+      type: Function,
+      default: () => {},
+    },
+    installing: {
+      type: Boolean,
+      default: false,
+    },
+    loadedPrompt: {
       type: Boolean,
       default: false,
     },
@@ -154,6 +175,20 @@ export default {
 
       @media (min-width: $min-width-third-break) {
         font-size: 1.7rem;
+      }
+    }
+
+    .install-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .install {
+        width: 100%;
+      }
+
+      .installing {
+        justify-self: center;
       }
     }
   }

@@ -11,6 +11,11 @@ jest.mock('@/components/ui/BaseButton.vue', () => ({
   template: '<div class="mock-base-button"></div>',
 }));
 
+jest.mock('@/components/ui/BaseSpinner.vue', () => ({
+  name: 'BaseSpinner',
+  template: '<div class="mock-base-spinner"></div>',
+}));
+
 describe('LandingHero', () => {
   let wrapper;
 
@@ -19,7 +24,7 @@ describe('LandingHero', () => {
       data: () => ({
         loaded: true,
       }),
-      stubs: ['LandingHeroSkeleton', 'BaseButton'],
+      stubs: ['LandingHeroSkeleton', 'BaseButton', 'BaseSpinner'],
     });
   });
 
@@ -61,8 +66,8 @@ describe('LandingHero', () => {
       data: () => ({
         loaded: true,
       }),
-      propsData: { displayInstallButton: true },
-      stubs: ['LandingHeroSkeleton', 'BaseButton'],
+      propsData: { displayInstallButton: true, loadedPrompt: true },
+      stubs: ['LandingHeroSkeleton', 'BaseButton', 'BaseSpinner'],
     });
     const installButton = wrapper.find('basebutton-stub');
     expect(installButton.exists()).toBeTruthy();
@@ -72,5 +77,21 @@ describe('LandingHero', () => {
   it('does not load button when no prop is passed down', () => {
     const installButton = wrapper.find('basebutton-stub');
     expect(installButton.exists()).toBeFalsy();
+  });
+
+  it('displays spinner when user is installing app', () => {
+    wrapper = shallowMount(LandingHero, {
+      data: () => ({
+        loaded: true,
+      }),
+      propsData: {
+        displayInstallButton: true,
+        installing: true,
+        loadedPrompt: true,
+      },
+      stubs: ['LandingHeroSkeleton', 'BaseButton', 'BaseSpinner'],
+    });
+    expect(wrapper.find('basebutton-stub').exists()).toBeFalsy();
+    expect(wrapper.find('basespinner-stub').exists()).toBeTruthy();
   });
 });
