@@ -6,6 +6,8 @@
 
 ##### Modified
 
+- Converted app to PWA
+
 ##### Fixed
 
 ---
