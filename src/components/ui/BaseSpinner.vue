@@ -1,25 +1,39 @@
 <template functional>
-  <span class="base-spinner"></span>
+  <span class="base-spinner" :class="{ big: props.big }"></span>
 </template>
 
 <script>
 export default {
   name: 'BaseSpinner',
+  props: {
+    big: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .base-spinner {
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   display: inline-block;
   position: relative;
-  border: 3px solid;
+  border: 0.188rem solid;
   border-color: var(--main-icon-color) var(--main-icon-color) transparent
     transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+
+  &.big {
+    width: 6rem;
+    height: 6rem;
+    border: 0.4rem solid;
+    border-color: var(--main-icon-color) var(--main-icon-color) transparent
+      transparent;
+  }
 }
 
 .base-spinner::after,
@@ -32,10 +46,10 @@ export default {
   top: 0;
   bottom: 0;
   margin: auto;
-  border: 3px solid;
+  border: 0.188rem solid;
   border-color: transparent transparent var(--accent-color) var(--accent-color);
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   box-sizing: border-box;
   animation: rotationBack 0.5s linear infinite;
@@ -43,11 +57,26 @@ export default {
 }
 
 .base-spinner::before {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   border-color: var(--main-icon-color) var(--main-icon-color) transparent
     transparent;
   animation: rotation 1.5s linear infinite;
+}
+
+.big::after,
+.big::before {
+  width: 5rem;
+  height: 5rem;
+  border: 0.4rem solid;
+  border-color: transparent transparent var(--accent-color) var(--accent-color);
+}
+
+.big::before {
+  width: 4rem;
+  height: 4rem;
+  border-color: var(--main-icon-color) var(--main-icon-color) transparent
+    transparent;
 }
 
 @keyframes rotation {
