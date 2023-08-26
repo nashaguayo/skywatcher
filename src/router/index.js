@@ -31,6 +31,11 @@ const routes = [
     component: () => import('@/views/OfflineView.vue'),
   },
   {
+    path: '/install',
+    name: 'install',
+    component: () => import('@/views/InstallView.vue'),
+  },
+  {
     path: '/apod',
     name: 'apod',
     component: () => import('@/views/ApodView.vue'),
