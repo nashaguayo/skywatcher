@@ -21,8 +21,10 @@
           </p>
         </transition>
       </div>
-      <transition name="flip" appear>
-        <p v-if="loaded">More to come soon...</p>
+      <transition name="flip-delayed" appear>
+        <BaseButton v-if="loaded && displayInstallButton">
+          Install App
+        </BaseButton>
       </transition>
     </div>
   </div>
@@ -30,11 +32,19 @@
 
 <script>
 import LandingHeroSkeleton from '@/skeleton/home/LandingHeroSkeleton.vue';
+import BaseButton from '@/components/ui/BaseButton.vue';
 
 export default {
   name: 'LandingHero',
   components: {
     LandingHeroSkeleton,
+    BaseButton,
+  },
+  props: {
+    displayInstallButton: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -112,6 +122,7 @@ export default {
         -webkit-mask-image: linear-gradient(90deg, transparent, 0.1%, black);
         font-size: 2.5rem;
         font-family: 'Lobster';
+        color: var(--variant-title-color);
 
         @media (min-width: $min-width-first-break) {
           font-size: 3.5rem;
@@ -179,6 +190,12 @@ export default {
   transition-delay: 2s;
 }
 
+.flip-delayed-enter-active {
+  transition: transform 0.5s ease-in-out;
+  transition-delay: 2.5s;
+}
+
+.flip-delayed-enter,
 .flip-enter {
   transform: scaleY(0);
 }

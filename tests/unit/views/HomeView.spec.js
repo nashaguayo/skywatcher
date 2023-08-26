@@ -39,4 +39,10 @@ describe('HomeView', () => {
     expect(wrapper.find('errorboundary-stub').exists()).toBeTruthy();
     expect(wrapper.find('landinghero-stub').exists()).toBeTruthy();
   });
+
+  it('does not render install button', () => {
+    expect(
+      wrapper.find('landinghero-stub').attributes('displayinstallbutton')
+    ).toBeFalsy();
+  });
 });

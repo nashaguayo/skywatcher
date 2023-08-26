@@ -4,7 +4,7 @@
       componentName="LandingHero"
       errorMessage="Unable to load landing hero"
     >
-      <LandingHero />
+      <LandingHero :displayInstallButton="true" />
     </ErrorBoundary>
   </div>
 </template>

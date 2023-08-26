@@ -38,5 +38,8 @@ describe('InstallView', () => {
   it('renders the mocked components', () => {
     expect(wrapper.find('errorboundary-stub').exists()).toBeTruthy();
     expect(wrapper.find('landinghero-stub').exists()).toBeTruthy();
+    expect(
+      wrapper.find('landinghero-stub').attributes('displayinstallbutton')
+    ).toBeTruthy();
   });
 });
