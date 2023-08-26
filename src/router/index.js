@@ -25,6 +25,11 @@ const routes = [
     component: () => import('@/views/AboutView.vue'),
   },
   {
+    path: '/offline',
+    name: 'offline',
+    component: () => import('@/views/OfflineView.vue'),
+  },
+  {
     path: '/apod',
     name: 'apod',
     component: () => import('@/views/ApodView.vue'),
