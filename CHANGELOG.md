@@ -6,6 +6,8 @@
 
 - Created Offline page
 - Created Install page
+- Created Installing page
+- Created Launch App page
 
 ##### Modified
 
