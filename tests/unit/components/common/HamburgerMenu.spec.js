@@ -5,7 +5,7 @@ describe('HamburgerMenu', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(HamburgerMenu);
+    wrapper = shallowMount(HamburgerMenu, { stubs: ['FontAwesomeIcon'] });
   });
 
   afterEach(() => {
@@ -25,7 +25,8 @@ describe('HamburgerMenu', () => {
 
   it('renders everything correctly', () => {
     const title = wrapper.find('h1');
-    expect(title.exists()).toBeTruthy();
-    expect(title.text()).toBe('Menu');
+    expect(title.exists()).toBeFalsy();
+
+    expect(wrapper.find('fontawesomeicon-stub').exists()).toBeTruthy();
   });
 });
