@@ -120,6 +120,7 @@ export default {
 
     .navigation-link {
       margin-bottom: 0.3rem;
+      pointer-events: all;
     }
   }
 
