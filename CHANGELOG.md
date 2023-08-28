@@ -8,6 +8,7 @@
 - Created Install page
 - Created Installing page
 - Created Launch App page
+- Created Hamburger Menu
 
 ##### Modified
 
