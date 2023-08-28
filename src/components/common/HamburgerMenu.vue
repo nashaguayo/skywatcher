@@ -3,7 +3,18 @@
     <div v-if="open" class="hamburger-menu-container">
       <h1>Menu</h1>
     </div>
-    <FontAwesomeIcon class="open-menu-icon" icon="fa-solid fa-bars" />
+    <FontAwesomeIcon
+      v-if="!open"
+      class="open-menu-icon"
+      icon="fa-solid fa-bars"
+      @click="open = true"
+    />
+    <FontAwesomeIcon
+      v-else
+      class="open-menu-icon"
+      icon="fa-solid fa-chevron-left"
+      @click="open = false"
+    />
   </div>
 </template>
 
@@ -22,6 +33,15 @@ export default {
 .hamburger-menu {
   position: absolute;
   z-index: 1000;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+
+  .hamburger-menu-container {
+    width: calc(100% - 4.9rem);
+    height: 100%;
+    background-color: red;
+  }
 
   .open-menu-icon {
     color: var(--main-icon-color);
