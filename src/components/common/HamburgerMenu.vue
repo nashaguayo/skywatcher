@@ -62,7 +62,6 @@ export default {
   data() {
     return {
       open: false,
-      page: 'home',
     };
   },
   methods: {

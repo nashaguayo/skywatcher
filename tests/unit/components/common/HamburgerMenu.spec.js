@@ -24,9 +24,28 @@ describe('HamburgerMenu', () => {
   });
 
   it('renders everything correctly', () => {
-    const title = wrapper.find('h1');
-    expect(title.exists()).toBeFalsy();
-
+    const container = wrapper.find('.hamburger-menu-container');
+    expect(container.exists()).toBeFalsy();
     expect(wrapper.find('fontawesomeicon-stub').exists()).toBeTruthy();
+  });
+
+  it('opens menu when clicking icon', () => {
+    wrapper = shallowMount(HamburgerMenu, {
+      data: () => ({ open: true }),
+      stubs: ['FontAwesomeIcon'],
+      mocks: {
+        $router: {
+          push: jest.fn(),
+          currentRoute: {
+            name: 'home',
+          },
+        },
+        $route: {
+          name: 'someRouteName',
+        },
+      },
+    });
+    const container = wrapper.find('.hamburger-menu-container');
+    expect(container.exists()).toBeTruthy();
   });
 });
