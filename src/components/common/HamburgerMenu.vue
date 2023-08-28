@@ -3,6 +3,33 @@
     <transition name="slide-from-right">
       <div v-if="open" class="hamburger-menu-container">
         <h1 class="title">SkyWatcher</h1>
+        <BaseButton
+          class="navigation-link"
+          :small="true"
+          :onClickHandler="goToHomePage"
+          :disabled="$router.currentRoute.name === 'home'"
+          :variant="$router.currentRoute.name !== 'home'"
+        >
+          Home
+        </BaseButton>
+        <BaseButton
+          class="navigation-link"
+          :small="true"
+          :onClickHandler="goToApodPage"
+          :disabled="$router.currentRoute.name === 'apod'"
+          :variant="$router.currentRoute.name !== 'apod'"
+        >
+          Astronomy Picture of the Day
+        </BaseButton>
+        <BaseButton
+          class="navigation-link"
+          :small="true"
+          :onClickHandler="goToNeoPage"
+          :disabled="$router.currentRoute.name === 'neo'"
+          :variant="$router.currentRoute.name !== 'neo'"
+        >
+          Near Earth Objects
+        </BaseButton>
       </div>
     </transition>
     <transition name="translate-right">
@@ -25,12 +52,32 @@
 </template>
 
 <script>
+import BaseButton from '@/components/ui/BaseButton.vue';
+
 export default {
   name: 'HamburgerMenu',
+  components: {
+    BaseButton,
+  },
   data() {
     return {
       open: false,
+      page: 'home',
     };
+  },
+  methods: {
+    goToHomePage() {
+      this.open = false;
+      this.$router.push({ name: 'home' });
+    },
+    goToApodPage() {
+      this.open = false;
+      this.$router.push({ name: 'apod' });
+    },
+    goToNeoPage() {
+      this.open = false;
+      this.$router.push({ name: 'neo' });
+    },
   },
 };
 </script>
@@ -52,11 +99,18 @@ export default {
       var(--menu-gradient-background-color)
     );
     box-shadow: var(--main-box-shadow);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
 
     .title {
       color: var(--variant-title-color);
       font-family: 'Lobster';
-      margin: 1rem 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .navigation-link {
+      margin-bottom: 0.3rem;
     }
   }
 
