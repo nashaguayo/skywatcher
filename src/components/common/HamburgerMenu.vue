@@ -1,20 +1,18 @@
 <template>
   <div class="hamburger-menu">
-    <div v-if="open" class="hamburger-menu-container">
-      <h1>Menu</h1>
-    </div>
-    <FontAwesomeIcon
-      v-if="!open"
-      class="open-menu-icon"
-      icon="fa-solid fa-bars"
-      @click="open = true"
-    />
-    <FontAwesomeIcon
-      v-else
-      class="open-menu-icon"
-      icon="fa-solid fa-chevron-left"
-      @click="open = false"
-    />
+    <transition name="slide-from-right">
+      <div v-if="open" class="hamburger-menu-container">
+        <h1>Menu</h1>
+      </div>
+    </transition>
+    <transition name="translate">
+      <FontAwesomeIcon
+        :key="!open"
+        class="open-menu-icon"
+        :icon="`fa-solid ${!open ? 'fa-bars' : 'fa-chevron-left'}`"
+        @click="open = !open"
+      />
+    </transition>
   </div>
 </template>
 
@@ -44,9 +42,9 @@ export default {
   }
 
   .open-menu-icon {
+    position: absolute;
     color: var(--main-icon-color);
     background-color: var(--variant-background-color);
-    backdrop-filter: blur(1rem);
     border-radius: 3rem;
     padding: 0.7rem;
     margin: 1rem;
@@ -54,5 +52,37 @@ export default {
     height: 1.5rem;
     opacity: 0.7;
   }
+
+  .close-menu-icon {
+    position: absolute;
+    color: var(--main-icon-color);
+    background-color: var(--variant-background-color);
+    border-radius: 3rem;
+    padding: 0.7rem;
+    margin: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    opacity: 0.7;
+    right: 0;
+  }
+}
+
+.slide-from-right-enter-active {
+  transition: transform 0.5s;
+}
+
+.slide-from-right-enter,
+.slide-from-right-leave-to {
+  transform: translateX(-100%);
+}
+
+.translate-enter-active,
+.translate-leave-active {
+  transition: transform 0.5s;
+}
+
+.translate-enter,
+.translate-leave-to {
+  transform: translateX(calc(100vw - 4.9rem));
 }
 </style>
