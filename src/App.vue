@@ -4,13 +4,19 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </nav> -->
+    <HamburgerMenu />
     <router-view />
   </div>
 </template>
 
 <script>
+import HamburgerMenu from '@/components/common/HamburgerMenu.vue';
+
 export default {
   name: 'App',
+  components: {
+    HamburgerMenu,
+  },
   created() {
     window.addEventListener('online', this.online);
     window.addEventListener('offline', this.offline);
