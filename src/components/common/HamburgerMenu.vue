@@ -2,7 +2,7 @@
   <div class="hamburger-menu">
     <transition name="slide-from-right">
       <div v-if="open" class="hamburger-menu-container">
-        <h1>Menu</h1>
+        <h1 class="title">SkyWatcher</h1>
       </div>
     </transition>
     <transition name="translate-right">
@@ -46,8 +46,18 @@ export default {
   .hamburger-menu-container {
     width: 100%;
     height: 100%;
-    background-color: red;
+    background: linear-gradient(
+      100deg,
+      var(--menu-background-color),
+      var(--menu-gradient-background-color)
+    );
     box-shadow: var(--main-box-shadow);
+
+    .title {
+      color: var(--variant-title-color);
+      font-family: 'Lobster';
+      margin: 1rem 2rem;
+    }
   }
 
   .open-menu-icon {

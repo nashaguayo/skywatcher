@@ -88,6 +88,9 @@ html {
   --main-icon-color: rgb(207, 207, 207);
   --main-icon-hover-color: #ff8800;
   --secondary-icon-color: #101416;
+
+  --menu-background-color: #0672b4;
+  --menu-gradient-background-color: #0c89d6;
 }
 
 #app {
