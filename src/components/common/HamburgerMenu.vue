@@ -93,10 +93,11 @@ export default {
 <style lang="scss" scoped>
 .hamburger-menu {
   position: absolute;
-  z-index: 1000;
+  z-index: 50;
   display: flex;
   width: 100vw;
   height: 100vh;
+  pointer-events: none;
 
   .hamburger-menu-container {
     width: 100%;
@@ -132,6 +133,7 @@ export default {
     width: 1.5rem;
     height: 1.5rem;
     opacity: 0.7;
+    pointer-events: all;
   }
 
   .close-menu-icon {
@@ -145,6 +147,7 @@ export default {
     height: 1.5rem;
     opacity: 0.7;
     right: 0;
+    pointer-events: all;
   }
 }
 
