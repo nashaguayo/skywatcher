@@ -64,7 +64,16 @@ export default {
       open: false,
     };
   },
+  created() {
+    window.addEventListener('popstate', this.popState);
+  },
+  beforeDestroy() {
+    window.removeEventListener('popstate', this.popState);
+  },
   methods: {
+    popState() {
+      this.open = false;
+    },
     goToHomePage() {
       this.open = false;
       this.$router.push({ name: 'home' });
