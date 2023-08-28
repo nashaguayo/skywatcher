@@ -5,12 +5,20 @@
         <h1>Menu</h1>
       </div>
     </transition>
-    <transition name="translate">
+    <transition name="translate-right">
       <FontAwesomeIcon
-        :key="!open"
+        v-if="!open"
         class="open-menu-icon"
-        :icon="`fa-solid ${!open ? 'fa-bars' : 'fa-chevron-left'}`"
-        @click="open = !open"
+        icon="fa-solid fa-bars"
+        @click="open = true"
+      />
+    </transition>
+    <transition name="translate-left">
+      <FontAwesomeIcon
+        v-if="open"
+        class="close-menu-icon"
+        icon="fa-solid fa-chevron-left"
+        @click="open = false"
       />
     </transition>
   </div>
@@ -36,9 +44,10 @@ export default {
   height: 100vh;
 
   .hamburger-menu-container {
-    width: calc(100% - 4.9rem);
+    width: 100%;
     height: 100%;
     background-color: red;
+    box-shadow: var(--main-box-shadow);
   }
 
   .open-menu-icon {
@@ -67,6 +76,7 @@ export default {
   }
 }
 
+.slide-from-right-leave-active,
 .slide-from-right-enter-active {
   transition: transform 0.5s;
 }
@@ -76,13 +86,31 @@ export default {
   transform: translateX(-100%);
 }
 
-.translate-enter-active,
-.translate-leave-active {
+.translate-right-enter-active,
+.translate-right-leave-active {
   transition: transform 0.5s;
 }
 
-.translate-enter,
-.translate-leave-to {
-  transform: translateX(calc(100vw - 4.9rem));
+.translate-right-enter {
+  transform: translateX(-150%);
+}
+
+.translate-right-leave-to {
+  transform: translateX(100vw);
+}
+
+.translate-left-enter-active,
+.translate-left-leave-active {
+  transition: transform 0.5s;
+}
+
+.translate-left-enter,
+.translate-left-leave-to {
+  transform: translateX(150%);
+}
+
+.translate-right-enter-active,
+.translate-left-enter-active {
+  transition-delay: 0.5s;
 }
 </style>
