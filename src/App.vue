@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <!-- <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav> -->
     <HamburgerMenu />
     <router-view />
   </div>
@@ -16,6 +12,11 @@ export default {
   name: 'App',
   components: {
     HamburgerMenu,
+  },
+  computed: {
+    displayHeader() {
+      return this.$route.meta.header ?? false;
+    },
   },
   created() {
     window.addEventListener('online', this.online);
