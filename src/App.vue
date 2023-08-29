@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HamburgerMenu />
+    <HamburgerMenu v-if="displayHeader" />
     <router-view />
   </div>
 </template>
