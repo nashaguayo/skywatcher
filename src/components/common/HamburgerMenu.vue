@@ -92,7 +92,7 @@ export default {
 
 <style lang="scss" scoped>
 .hamburger-menu {
-  position: absolute;
+  position: fixed;
   z-index: 50;
   display: flex;
   width: 100vw;
