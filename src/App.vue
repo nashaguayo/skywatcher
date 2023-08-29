@@ -2,20 +2,26 @@
   <div id="app">
     <HamburgerMenu v-if="displayHeader" />
     <router-view />
+    <FooterInfo v-if="displayFooter" />
   </div>
 </template>
 
 <script>
 import HamburgerMenu from '@/components/common/HamburgerMenu.vue';
+import FooterInfo from '@/components/common/FooterInfo.vue';
 
 export default {
   name: 'App',
   components: {
     HamburgerMenu,
+    FooterInfo,
   },
   computed: {
     displayHeader() {
       return this.$route.meta.header ?? false;
+    },
+    displayFooter() {
+      return this.$route.meta.footer ?? false;
     },
   },
   created() {

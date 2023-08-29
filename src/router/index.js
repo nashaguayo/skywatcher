@@ -12,6 +12,7 @@ const routes = [
     component: HomeView,
     meta: {
       header: true,
+      footer: true,
     },
   },
   {
@@ -32,6 +33,7 @@ const routes = [
     component: () => import('@/views/AboutView.vue'),
     meta: {
       header: true,
+      footer: true,
     },
   },
   {
@@ -60,6 +62,7 @@ const routes = [
     component: () => import('@/views/ApodView.vue'),
     meta: {
       header: true,
+      footer: true,
     },
   },
   {
@@ -68,6 +71,7 @@ const routes = [
     component: () => import('@/views/NeoView.vue'),
     meta: {
       header: true,
+      footer: true,
     },
   },
 ];
