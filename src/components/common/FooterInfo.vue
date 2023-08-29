@@ -13,5 +13,11 @@ export default {
 <style lang="scss" scoped>
 .footer-info {
   background-color: var(--variant-background-color);
+  position: absolute;
+  bottom: 0;
+  transform: translateY(100%);
+  margin-top: auto;
+  height: 5rem;
+  width: 100%;
 }
 </style>

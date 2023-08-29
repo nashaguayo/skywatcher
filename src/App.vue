@@ -102,7 +102,7 @@ html {
 
 #app {
   position: absolute;
-  min-height: 100%;
+  min-height: calc(100% - 5rem);
   width: 100%;
   background: linear-gradient(
     100deg,
