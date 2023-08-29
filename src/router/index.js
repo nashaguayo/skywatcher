@@ -10,11 +10,17 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
+    meta: {
+      header: true,
+    },
   },
   {
     path: '/404',
     name: 'pageNotFound',
     component: () => import('@/views/PageNotFoundView.vue'),
+    meta: {
+      header: true,
+    },
   },
   {
     path: '*',
@@ -24,6 +30,9 @@ const routes = [
     path: '/about',
     name: 'about',
     component: () => import('@/views/AboutView.vue'),
+    meta: {
+      header: true,
+    },
   },
   {
     path: '/offline',
@@ -49,11 +58,17 @@ const routes = [
     path: '/apod',
     name: 'apod',
     component: () => import('@/views/ApodView.vue'),
+    meta: {
+      header: true,
+    },
   },
   {
     path: '/neo',
     name: 'neo',
     component: () => import('@/views/NeoView.vue'),
+    meta: {
+      header: true,
+    },
   },
 ];
 

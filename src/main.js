@@ -13,9 +13,11 @@ import {
   faEllipsisVertical,
   faXmark,
   faSatellite,
+  faBars,
+  faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
-import './registerServiceWorker'
+import './registerServiceWorker';
 
 library.add(faInfo);
 library.add(faQuestion);
@@ -23,6 +25,8 @@ library.add(faSkull);
 library.add(faEllipsisVertical);
 library.add(faXmark);
 library.add(faSatellite);
+library.add(faBars);
+library.add(faChevronLeft);
 
 Vue.component('FontAwesomeIcon', FontAwesomeIcon);
 

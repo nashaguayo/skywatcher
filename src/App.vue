@@ -1,16 +1,23 @@
 <template>
   <div id="app">
-    <!-- <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav> -->
+    <HamburgerMenu v-if="displayHeader" />
     <router-view />
   </div>
 </template>
 
 <script>
+import HamburgerMenu from '@/components/common/HamburgerMenu.vue';
+
 export default {
   name: 'App',
+  components: {
+    HamburgerMenu,
+  },
+  computed: {
+    displayHeader() {
+      return this.$route.meta.header ?? false;
+    },
+  },
   created() {
     window.addEventListener('online', this.online);
     window.addEventListener('offline', this.offline);
@@ -82,6 +89,9 @@ html {
   --main-icon-color: rgb(207, 207, 207);
   --main-icon-hover-color: #ff8800;
   --secondary-icon-color: #101416;
+
+  --menu-background-color: #0672b4;
+  --menu-gradient-background-color: #0c89d6;
 }
 
 #app {
