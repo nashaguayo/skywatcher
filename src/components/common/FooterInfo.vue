@@ -1,10 +1,26 @@
 <template>
   <div class="footer-info">
     <div class="links">
-      <FontAwesomeIcon class="icon" icon="fa-brands fa-square-github" />
-      <FontAwesomeIcon class="icon" icon="fa-solid fa-code" />
-      <FontAwesomeIcon class="icon" icon="fa-brands fa-linkedin" />
-      <FontAwesomeIcon class="icon" icon="fa-solid fa-rocket" />
+      <FontAwesomeIcon
+        class="icon"
+        icon="fa-brands fa-square-github"
+        @click="openGithubProfileInNewTab"
+      />
+      <FontAwesomeIcon
+        class="icon"
+        icon="fa-solid fa-code"
+        @click="openGithubRepositoryInNewTab"
+      />
+      <FontAwesomeIcon
+        class="icon"
+        icon="fa-brands fa-linkedin"
+        @click="openLinkedinProfileInNewTab"
+      />
+      <FontAwesomeIcon
+        class="icon"
+        icon="fa-solid fa-rocket"
+        @click="openNasaApiUrlInNewTab"
+      />
     </div>
     <div class="author">
       <span>Get more information on SkyWatcher</span>
@@ -15,6 +31,24 @@
 <script>
 export default {
   name: 'FooterInfo',
+  methods: {
+    openGithubProfileInNewTab() {
+      window.open(process.env.VUE_APP_GITHUB_PROFILE, '_blank', 'noreferrer');
+    },
+    openGithubRepositoryInNewTab() {
+      window.open(
+        process.env.VUE_APP_GITHUB_REPOSITORY,
+        '_blank',
+        'noreferrer'
+      );
+    },
+    openLinkedinProfileInNewTab() {
+      window.open(process.env.VUE_APP_LINKEDIN_PROFILE, '_blank', 'noreferrer');
+    },
+    openNasaApiUrlInNewTab() {
+      window.open(process.env.VUE_APP_NASA_API_URL, '_blank', 'noreferrer');
+    },
+  },
 };
 </script>
 
