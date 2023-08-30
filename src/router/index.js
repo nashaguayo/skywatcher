@@ -42,6 +42,14 @@ const routes = [
     component: () => import('@/views/OfflineView.vue'),
   },
   {
+    path: '/desktop-guardian',
+    name: 'desktopGuardian',
+    component: () => import('@/views/DesktopGuardianView.vue'),
+    meta: {
+      footer: true,
+    },
+  },
+  {
     path: '/install',
     name: 'install',
     component: () => import('@/views/InstallView.vue'),
@@ -83,6 +91,11 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  if (isDesktop() && to.name !== 'desktopGuardian') {
+    next({ name: 'desktopGuardian' });
+    return;
+  }
+
   if (
     !isDesktop() &&
     !isUsingApp() &&

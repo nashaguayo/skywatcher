@@ -1,11 +1,11 @@
 import { shallowMount } from '@vue/test-utils';
-import DesktopGuardian from '@/views/DesktopGuardian.vue';
+import DesktopGuardianView from '@/views/DesktopGuardianView.vue';
 
-describe('DesktopGuardian', () => {
+describe('DesktopGuardianView', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(DesktopGuardian);
+    wrapper = shallowMount(DesktopGuardianView);
   });
 
   afterEach(() => {
@@ -19,8 +19,8 @@ describe('DesktopGuardian', () => {
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it('contains the "desktop-guardian" class', () => {
-    expect(wrapper.classes()).toContain('desktop-guardian');
+  it('contains the "desktop-guardian-view" class', () => {
+    expect(wrapper.classes()).toContain('desktop-guardian-view');
   });
 
   it('renders everything correctly', () => {
