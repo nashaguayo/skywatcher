@@ -43,6 +43,11 @@ export default {
   align-self: center;
   justify-self: center;
   transition: color 0.5s;
+  cursor: pointer;
+}
+
+.footer-info-link:hover {
+  color: var(--main-icon-hover-color);
 }
 
 .active {

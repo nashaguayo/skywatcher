@@ -10,6 +10,7 @@
 - Created Launch App page
 - Created Hamburger Menu
 - Created Footer
+- Added Desktop Guardian
 
 ##### Modified
 
