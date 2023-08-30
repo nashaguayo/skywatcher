@@ -20,7 +20,10 @@ describe('ApodBlock', () => {
 
   beforeEach(() => {
     spyGetTodaysAstronomyPicture.mockResolvedValue('some-url.png');
-    wrapper = shallowMount(ApodBlock, { stubs: ['ApodBlockSkeleton'] });
+    wrapper = shallowMount(ApodBlock, {
+      data: () => ({ loaded: true }),
+      stubs: ['ApodBlockSkeleton'],
+    });
   });
 
   afterEach(() => {
@@ -38,7 +41,22 @@ describe('ApodBlock', () => {
     expect(wrapper.classes()).toContain('apod-block');
   });
 
+  it('shows skeleton when loading', () => {
+    spyGetTodaysAstronomyPicture.mockResolvedValue('some-url.png');
+    wrapper = shallowMount(ApodBlock, {
+      stubs: ['ApodBlockSkeleton'],
+    });
+    const skeleton = wrapper.find('apodblockskeleton-stub');
+    expect(skeleton.exists()).toBeTruthy();
+
+    const body = wrapper.find('.apod-block-container');
+    expect(body.exists()).toBeTruthy();
+    expect(body.attributes('style')).toBe('display: none;');
+  });
+
   it('renders everything correctly', () => {
+    const skeleton = wrapper.find('apodblockskeleton-stub');
+    expect(skeleton.exists()).toBeFalsy();
     const title = wrapper.find('h2');
     expect(title.exists()).toBeTruthy();
     const content = wrapper.find('.content');

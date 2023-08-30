@@ -1,7 +1,7 @@
 <template>
   <div class="apod-block">
-    <ApodBlockSkeleton />
-    <div class="apod-block-container">
+    <ApodBlockSkeleton v-if="!loaded" />
+    <div v-show="loaded" class="apod-block-container">
       <h2 class="title">
         Astronomy Picture <br />
         of the Day
@@ -10,7 +10,11 @@
         There was some error loading today's picture. Try again later.
       </div>
       <div v-else class="content">
-        <div class="image" :style="{ backgroundImage: `url(${url})` }"></div>
+        <div
+          class="image"
+          :style="{ backgroundImage: `url(${url})` }"
+          @load="loaded = true"
+        ></div>
         <BaseButton
           :variant="true"
           class="learn-more-button"
@@ -38,7 +42,21 @@ export default {
     return {
       url: '',
       error: true,
+      loaded: false,
     };
+  },
+  watch: {
+    url(url) {
+      const image = new Image();
+      image.src = url;
+      image.onload = () => {
+        this.loaded = true;
+      };
+      image.onerror = () => {
+        this.loaded = true;
+        this.error = true;
+      };
+    },
   },
   async created() {
     const url = await getTodaysAstronomyPicture();
