@@ -1,11 +1,15 @@
 import { shallowMount } from '@vue/test-utils';
 import NeoBlock from '@/components/home/NeoBlock.vue';
 
+jest.mock('@/components/ui/BaseButton.vue', () => ({
+  name: 'BaseButton',
+}));
+
 describe('NeoBlock', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(NeoBlock);
+    wrapper = shallowMount(NeoBlock, { stubs: ['BaseButton'] });
   });
 
   afterEach(() => {
@@ -26,6 +30,10 @@ describe('NeoBlock', () => {
   it('renders everything correctly', () => {
     const title = wrapper.find('h2');
     expect(title.exists()).toBeTruthy();
-    expect(title.text()).toBe('Near Earth Objects');
+    expect(title.text()).toBe('Asteroids');
+
+    const button = wrapper.find('basebutton-stub');
+    expect(button.exists()).toBeTruthy();
+    expect(button.text()).toBe('Check them out');
   });
 });
