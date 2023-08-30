@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import LandingHeroSkeleton from '@/skeleton/home/LandingHeroSkeleton.vue';
+import LandingHeroSkeleton from '@/skeleton/common/LandingHeroSkeleton.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import BaseSpinner from '@/components/ui/BaseSpinner.vue';
 
