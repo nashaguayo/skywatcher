@@ -1,14 +1,24 @@
 import { shallowMount } from '@vue/test-utils';
 import NeoBlock from '@/components/home/NeoBlock.vue';
+import * as neoHelpers from '@/helpers/neo';
 
 jest.mock('@/components/ui/BaseButton.vue', () => ({
   name: 'BaseButton',
 }));
 
+jest.mock('@/helpers/neo', () => ({
+  getNearEarthObjects: jest.fn(),
+}));
+
+const spyGetNearEarthObjects = jest.spyOn(neoHelpers, 'getNearEarthObjects');
+
 describe('NeoBlock', () => {
   let wrapper;
 
   beforeEach(() => {
+    spyGetNearEarthObjects.mockResolvedValue([
+      { isPotentiallyHazardous: true },
+    ]);
     wrapper = shallowMount(NeoBlock, { stubs: ['BaseButton'] });
   });
 
@@ -34,6 +44,6 @@ describe('NeoBlock', () => {
 
     const button = wrapper.find('basebutton-stub');
     expect(button.exists()).toBeTruthy();
-    expect(button.text()).toBe('Check them out');
+    expect(button.text()).toBe('Check out more');
   });
 });

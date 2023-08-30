@@ -2,19 +2,33 @@
   <div class="neo-block">
     <div class="neo-block-container">
       <h2>Asteroids</h2>
-      <span>There are X hazardous asteroids passing through earth today.</span>
-      <BaseButton>Check them out</BaseButton>
+      <span>
+        There {{ this.amount !== 1 ? 'are' : 'is' }} {{ this.amount }} hazardous
+        {{ this.amount !== 1 ? 'asteroids' : 'asteroid' }} passing through Earth
+        today.
+      </span>
+      <BaseButton>Check out more</BaseButton>
     </div>
   </div>
 </template>
 
 <script>
 import BaseButton from '@/components/ui/BaseButton.vue';
+import { getNearEarthObjects } from '@/helpers/neo';
 
 export default {
   name: 'NeoBlock',
   components: {
     BaseButton,
+  },
+  data() {
+    return {
+      amount: null,
+    };
+  },
+  async created() {
+    const neos = await getNearEarthObjects(new Date());
+    this.amount = neos.filter((neo) => neo.isPotentiallyHazardous).length;
   },
 };
 </script>
