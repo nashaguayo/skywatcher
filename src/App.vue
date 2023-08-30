@@ -1,7 +1,14 @@
 <template>
   <div id="app">
     <HamburgerMenu v-if="displayHeader" />
-    <transition mode="out-in" :name="$route.meta.transition ?? ''">
+    <transition
+      mode="out-in"
+      :name="
+        $route.meta.transition && !$route.query?.noTransition
+          ? $route.meta.transition
+          : ''
+      "
+    >
       <router-view :key="$route.fullPath" />
     </transition>
     <FooterInfo v-if="displayFooter" />
