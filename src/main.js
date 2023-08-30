@@ -15,7 +15,10 @@ import {
   faSatellite,
   faBars,
   faChevronLeft,
+  faCode,
+  faRocket,
 } from '@fortawesome/free-solid-svg-icons';
+import { faSquareGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 import './registerServiceWorker';
 
@@ -27,6 +30,10 @@ library.add(faXmark);
 library.add(faSatellite);
 library.add(faBars);
 library.add(faChevronLeft);
+library.add(faCode);
+library.add(faRocket);
+library.add(faSquareGithub);
+library.add(faLinkedin);
 
 Vue.component('FontAwesomeIcon', FontAwesomeIcon);
 

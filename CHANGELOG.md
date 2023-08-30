@@ -9,6 +9,7 @@
 - Created Installing page
 - Created Launch App page
 - Created Hamburger Menu
+- Created Footer
 
 ##### Modified
 
