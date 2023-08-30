@@ -57,8 +57,6 @@ describe('LandingHero', () => {
     expect(descriptions.at(0).text()).toBe(
       'This webapp was built by a universe fan.'
     );
-    expect(descriptions.at(1).text()).toContain('It is fueled by');
-    expect(descriptions.at(1).text()).toContain("NASA's APIs.");
   });
 
   it('loads button when sending props data', () => {

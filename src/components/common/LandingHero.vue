@@ -14,12 +14,6 @@
         <transition name="flip" appear>
           <p v-if="loaded">This webapp was built by a universe fan.</p>
         </transition>
-        <transition name="flip" appear>
-          <p v-if="loaded">
-            It is fueled by
-            <a :href="nasaApisUrl" target="_blank"> NASA's APIs. </a>
-          </p>
-        </transition>
       </div>
       <transition name="flip-delayed" appear>
         <div
