@@ -32,16 +32,16 @@ export default {
   data() {
     return {
       url: '',
-      error: false,
+      error: true,
     };
   },
   async created() {
     const url = await getTodaysAstronomyPicture();
     if (!url) {
-      this.error = true;
       return;
     }
     this.url = url;
+    this.error = false;
   },
   methods: {
     goToApodPage() {
@@ -69,7 +69,7 @@ export default {
 
   .error {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 7rem;
   }
 
   .content {
