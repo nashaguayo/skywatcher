@@ -1,4 +1,7 @@
-import { getAstronomyPicturesOfTheDay } from '@/helpers/apod';
+import {
+  getAstronomyPicturesOfTheDay,
+  getTodaysAstronomyPicture,
+} from '@/helpers/apod';
 import * as planetaryApi from '@/api/nasa/planetary';
 
 jest.mock('@/api/nasa/planetary', () => ({
@@ -50,6 +53,34 @@ describe('getAstronomyPicturesOfTheDay', () => {
   it('should return false when no apod', async () => {
     spyGetAstronomyPicturesOfTheDay.mockResolvedValue(undefined);
     const result = await getAstronomyPicturesOfTheDay();
+    expect(result).toBeFalsy();
+    expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalled();
+  });
+});
+
+describe('getTodaysAstronomyPicture', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+    jest.resetAllMocks();
+  });
+
+  it('should return todays astronomy picture', async () => {
+    spyGetAstronomyPicturesOfTheDay.mockResolvedValue([
+      {
+        url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
+      },
+    ]);
+    const result = await getTodaysAstronomyPicture();
+    expect(result).toBe(
+      'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg'
+    );
+    expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalled();
+  });
+
+  it('should return false when no apod', async () => {
+    spyGetAstronomyPicturesOfTheDay.mockResolvedValue(undefined);
+    const result = await getTodaysAstronomyPicture();
     expect(result).toBeFalsy();
     expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalled();
   });
