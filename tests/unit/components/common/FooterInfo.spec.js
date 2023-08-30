@@ -5,7 +5,7 @@ describe('FooterInfo', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(FooterInfo);
+    wrapper = shallowMount(FooterInfo, { stubs: ['FontAwesomeIcon'] });
   });
 
   afterEach(() => {
@@ -24,8 +24,9 @@ describe('FooterInfo', () => {
   });
 
   it('renders everything correctly', () => {
-    const title = wrapper.find('h1');
-    expect(title.exists()).toBeTruthy();
-    expect(title.text()).toBe('Footer');
+    const linksContainer = wrapper.find('.links');
+    expect(linksContainer.exists()).toBeTruthy();
+    const links = wrapper.findAll('fontawesomeicon-stub');
+    expect(links.length).toBe(4);
   });
 });
