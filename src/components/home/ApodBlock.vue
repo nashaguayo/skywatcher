@@ -58,9 +58,10 @@ export default {
     var(--secondary-background-color),
     var(--secondary-gradient-background-color)
   );
-  margin: 2rem;
+  margin: 1rem;
   padding: 1rem;
   height: 24rem;
+  box-shadow: var(--main-box-shadow);
 
   .title {
     text-align: center;
