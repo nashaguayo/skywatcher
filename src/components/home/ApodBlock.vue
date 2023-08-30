@@ -9,15 +9,26 @@
     </div>
     <div v-else class="content">
       <div class="image" :style="{ backgroundImage: `url(${url})` }"></div>
+      <BaseButton
+        :variant="true"
+        class="learn-more-button"
+        :onClickHandler="goToApodPage"
+      >
+        Learn More!
+      </BaseButton>
     </div>
   </div>
 </template>
 
 <script>
+import BaseButton from '@/components/ui/BaseButton.vue';
 import { getTodaysAstronomyPicture } from '@/helpers/apod';
 
 export default {
   name: 'ApodBlock',
+  components: {
+    BaseButton,
+  },
   data() {
     return {
       url: '',
@@ -32,6 +43,11 @@ export default {
     }
     this.url = url;
   },
+  methods: {
+    goToApodPage() {
+      this.$router.push({ name: 'apod' });
+    },
+  },
 };
 </script>
 
@@ -44,7 +60,7 @@ export default {
   );
   margin: 2rem;
   padding: 1rem;
-  height: 20rem;
+  height: 24rem;
 
   .title {
     text-align: center;
@@ -59,6 +75,7 @@ export default {
   .content {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     margin-top: 1rem;
 
     .image {
@@ -68,6 +85,10 @@ export default {
       background-size: cover;
       background-position: center;
       box-shadow: var(--main-box-shadow);
+    }
+
+    .learn-more-button {
+      margin-top: 1rem;
     }
   }
 }
