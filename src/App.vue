@@ -1,7 +1,16 @@
 <template>
   <div id="app">
     <HamburgerMenu v-if="displayHeader" />
-    <router-view />
+    <transition
+      mode="out-in"
+      :name="
+        $route.meta.transition && !$route.query?.noTransition
+          ? $route.meta.transition
+          : ''
+      "
+    >
+      <router-view :key="$route.fullPath" />
+    </transition>
     <FooterInfo v-if="displayFooter" />
   </div>
 </template>
@@ -182,5 +191,18 @@ p {
     font-size: 1.5rem;
     line-height: 1.7rem;
   }
+}
+
+.slide-from-home-enter-active,
+.slide-from-home-leave-active {
+  transition: transform 0.3s;
+}
+
+.slide-from-home-enter {
+  transform: translateX(100%);
+}
+
+.slide-from-home-leave-to {
+  transform: translateX(-100%);
 }
 </style>

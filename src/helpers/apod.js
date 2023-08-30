@@ -1,5 +1,5 @@
 import { getAstronomyPicturesOfTheDay as getAstronomyPicturesOfTheDayApi } from '@/api/nasa/planetary';
-import { parseISO } from 'date-fns';
+import { parseISO, format } from 'date-fns';
 
 export async function getAstronomyPicturesOfTheDay(startDate, endDate) {
   const apods = await getAstronomyPicturesOfTheDayApi(startDate, endDate);
@@ -20,4 +20,13 @@ export async function getAstronomyPicturesOfTheDay(startDate, endDate) {
     };
   });
   return processedApods;
+}
+
+export async function getTodaysAstronomyPicture() {
+  const date = format(new Date(), 'yyyy-MM-dd');
+  const result = await getAstronomyPicturesOfTheDay(date, date);
+  if (!result) {
+    return false;
+  }
+  return result[0].url;
 }

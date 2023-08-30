@@ -11,12 +11,17 @@ jest.mock('@/components/common/LandingHero.vue', () => ({
   template: '<div class="mock-landing-hero"></div>',
 }));
 
+jest.mock('@/components/home/ApodBlock.vue', () => ({
+  name: 'ApodBlock',
+  template: '<div class="mock-apod-block"></div>',
+}));
+
 describe('HomeView', () => {
   let wrapper;
 
   beforeEach(() => {
     wrapper = shallowMount(HomeView, {
-      stubs: ['ErrorBoundary', 'LandingHero'],
+      stubs: ['ErrorBoundary', 'LandingHero', 'ApodBlock'],
     });
   });
 
@@ -38,6 +43,7 @@ describe('HomeView', () => {
   it('renders the mocked components', () => {
     expect(wrapper.find('errorboundary-stub').exists()).toBeTruthy();
     expect(wrapper.find('landinghero-stub').exists()).toBeTruthy();
+    expect(wrapper.find('apodblock-stub').exists()).toBeTruthy();
   });
 
   it('does not render install button', () => {

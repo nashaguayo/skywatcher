@@ -14,12 +14,6 @@
         <transition name="flip" appear>
           <p v-if="loaded">This webapp was built by a universe fan.</p>
         </transition>
-        <transition name="flip" appear>
-          <p v-if="loaded">
-            It is fueled by
-            <a :href="nasaApisUrl" target="_blank"> NASA's APIs. </a>
-          </p>
-        </transition>
       </div>
       <transition name="flip-delayed" appear>
         <div
@@ -41,7 +35,7 @@
 </template>
 
 <script>
-import LandingHeroSkeleton from '@/skeleton/home/LandingHeroSkeleton.vue';
+import LandingHeroSkeleton from '@/skeleton/common/LandingHeroSkeleton.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import BaseSpinner from '@/components/ui/BaseSpinner.vue';
 
@@ -106,6 +100,7 @@ export default {
     background-position: center;
     padding: 2rem;
     padding-left: 3.5rem;
+    min-height: 17rem;
     height: 100%;
     display: flex;
     flex-direction: column;

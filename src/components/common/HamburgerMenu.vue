@@ -76,15 +76,15 @@ export default {
     },
     goToHomePage() {
       this.open = false;
-      this.$router.push({ name: 'home' });
+      this.$router.push({ name: 'home', query: { noTransition: true } });
     },
     goToApodPage() {
       this.open = false;
-      this.$router.push({ name: 'apod' });
+      this.$router.push({ name: 'apod', query: { noTransition: true } });
     },
     goToNeoPage() {
       this.open = false;
-      this.$router.push({ name: 'neo' });
+      this.$router.push({ name: 'neo', query: { noTransition: true } });
     },
   },
 };
