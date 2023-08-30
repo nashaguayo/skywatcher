@@ -111,6 +111,13 @@ router.beforeEach((to, from, next) => {
     next({ name: 'offline' });
     return;
   }
+
+  if (from.name === 'home') {
+    to.meta.transition = 'slide-from-home';
+  } else {
+    to.meta.transition = '';
+  }
+
   next();
 });
 
