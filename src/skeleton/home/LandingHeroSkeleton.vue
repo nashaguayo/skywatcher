@@ -25,5 +25,6 @@ export default {
   align-items: center;
   height: 100%;
   gap: 2rem;
+  min-height: 17rem;
 }
 </style>

@@ -100,6 +100,7 @@ export default {
     background-position: center;
     padding: 2rem;
     padding-left: 3.5rem;
+    min-height: 17rem;
     height: 100%;
     display: flex;
     flex-direction: column;
