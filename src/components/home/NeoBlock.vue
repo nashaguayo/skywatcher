@@ -12,7 +12,7 @@
         {{ this.amount !== 1 ? 'asteroids' : 'asteroid' }} passing through Earth
         today.
       </span>
-      <BaseButton>Check out more</BaseButton>
+      <BaseButton :onClickHandler="goToNeoPage">Check out more</BaseButton>
     </div>
   </div>
 </template>
@@ -34,6 +34,11 @@ export default {
   async created() {
     const neos = await getNearEarthObjects(new Date());
     this.amount = neos.filter((neo) => neo.isPotentiallyHazardous).length;
+  },
+  methods: {
+    goToNeoPage() {
+      this.$router.push({ name: 'neo' });
+    },
   },
 };
 </script>
