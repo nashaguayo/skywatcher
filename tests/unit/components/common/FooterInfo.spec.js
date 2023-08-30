@@ -1,11 +1,15 @@
 import { shallowMount } from '@vue/test-utils';
 import FooterInfo from '@/components/common/FooterInfo.vue';
 
+jest.mock('@/components/common/FooterInfoLink.vue', () => ({
+  name: 'FooterInfoLink',
+}));
+
 describe('FooterInfo', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(FooterInfo, { stubs: ['FontAwesomeIcon'] });
+    wrapper = shallowMount(FooterInfo, { stubs: ['FooterInfoLink'] });
   });
 
   afterEach(() => {
@@ -26,7 +30,7 @@ describe('FooterInfo', () => {
   it('renders everything correctly', () => {
     const linksContainer = wrapper.find('.links');
     expect(linksContainer.exists()).toBeTruthy();
-    const links = wrapper.findAll('fontawesomeicon-stub');
+    const links = wrapper.findAll('footerinfolink-stub');
     expect(links.length).toBe(4);
   });
 });

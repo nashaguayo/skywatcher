@@ -1,25 +1,21 @@
 <template>
   <div class="footer-info">
     <div class="links">
-      <FontAwesomeIcon
-        class="icon"
+      <FooterInfoLink
         icon="fa-brands fa-square-github"
-        @click="openGithubProfileInNewTab"
+        :handler="openGithubProfileInNewTab"
       />
-      <FontAwesomeIcon
-        class="icon"
+      <FooterInfoLink
         icon="fa-solid fa-code"
-        @click="openGithubRepositoryInNewTab"
+        :handler="openGithubRepositoryInNewTab"
       />
-      <FontAwesomeIcon
-        class="icon"
+      <FooterInfoLink
         icon="fa-brands fa-linkedin"
-        @click="openLinkedinProfileInNewTab"
+        :handler="openLinkedinProfileInNewTab"
       />
-      <FontAwesomeIcon
-        class="icon"
+      <FooterInfoLink
         icon="fa-solid fa-rocket"
-        @click="openNasaApiUrlInNewTab"
+        :handler="openNasaApiUrlInNewTab"
       />
     </div>
     <div class="author">
@@ -29,8 +25,13 @@
 </template>
 
 <script>
+import FooterInfoLink from '@/components/common/FooterInfoLink.vue';
+
 export default {
   name: 'FooterInfo',
+  components: {
+    FooterInfoLink,
+  },
   methods: {
     openGithubProfileInNewTab() {
       window.open(process.env.VUE_APP_GITHUB_PROFILE, '_blank', 'noreferrer');
