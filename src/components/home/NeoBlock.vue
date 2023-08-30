@@ -26,12 +26,6 @@ export default {
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(
-      100deg,
-      var(--variant-background-color),
-      var(--variant-gradient-background-color)
-    );
-    box-shadow: var(--main-box-shadow);
     height: 12.5rem;
 
     h2,
