@@ -19,7 +19,9 @@ describe('NeoBlock', () => {
     spyGetNearEarthObjects.mockResolvedValue([
       { isPotentiallyHazardous: true },
     ]);
-    wrapper = shallowMount(NeoBlock, { stubs: ['BaseButton'] });
+    wrapper = shallowMount(NeoBlock, {
+      stubs: ['BaseButton', 'FontAwesomeIcon'],
+    });
   });
 
   afterEach(() => {
@@ -41,6 +43,9 @@ describe('NeoBlock', () => {
     const title = wrapper.find('h2');
     expect(title.exists()).toBeTruthy();
     expect(title.text()).toBe('Asteroids');
+
+    const icon = wrapper.find('fontawesomeicon-stub');
+    expect(icon.exists()).toBeTruthy();
 
     const button = wrapper.find('basebutton-stub');
     expect(button.exists()).toBeTruthy();

@@ -17,6 +17,7 @@ import {
   faChevronLeft,
   faCode,
   faRocket,
+  faMeteor,
 } from '@fortawesome/free-solid-svg-icons';
 import { faSquareGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
@@ -32,6 +33,7 @@ library.add(faBars);
 library.add(faChevronLeft);
 library.add(faCode);
 library.add(faRocket);
+library.add(faMeteor);
 library.add(faSquareGithub);
 library.add(faLinkedin);
 
