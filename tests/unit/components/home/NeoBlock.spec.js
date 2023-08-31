@@ -20,7 +20,8 @@ describe('NeoBlock', () => {
       { isPotentiallyHazardous: true },
     ]);
     wrapper = shallowMount(NeoBlock, {
-      stubs: ['BaseButton', 'FontAwesomeIcon'],
+      data: () => ({ loaded: true }),
+      stubs: ['BaseButton', 'FontAwesomeIcon', 'NeoBlockSkeleton'],
     });
   });
 
@@ -37,6 +38,20 @@ describe('NeoBlock', () => {
 
   it('contains the "neo-block" class', () => {
     expect(wrapper.classes()).toContain('neo-block');
+  });
+
+  it('shows skeleton when loading', () => {
+    spyGetNearEarthObjects.mockResolvedValue([
+      { isPotentiallyHazardous: true },
+    ]);
+    wrapper = shallowMount(NeoBlock, {
+      stubs: ['NeoBlockSkeleton', 'FontAwesomeIcon'],
+    });
+    const skeleton = wrapper.find('neoblockskeleton-stub');
+    expect(skeleton.exists()).toBeTruthy();
+
+    const body = wrapper.find('.neo-block-container');
+    expect(body.exists()).toBeFalsy();
   });
 
   it('renders everything correctly', () => {

@@ -1,6 +1,7 @@
 <template>
   <div class="neo-block">
-    <div class="neo-block-container">
+    <NeoBlockSkeleton v-if="!loaded" />
+    <div v-else class="neo-block-container">
       <h2>Asteroids</h2>
       <FontAwesomeIcon class="icon" icon="fa-solid fa-meteor" />
       <span v-if="this.amount === 0">
@@ -18,22 +19,26 @@
 </template>
 
 <script>
+import NeoBlockSkeleton from '@/skeleton/home/NeoBlockSkeleton.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import { getNearEarthObjects } from '@/helpers/neo';
 
 export default {
   name: 'NeoBlock',
   components: {
+    NeoBlockSkeleton,
     BaseButton,
   },
   data() {
     return {
       amount: null,
+      loaded: false,
     };
   },
   async created() {
     const neos = await getNearEarthObjects(new Date());
     this.amount = neos.filter((neo) => neo.isPotentiallyHazardous).length;
+    this.loaded = true;
   },
   methods: {
     goToNeoPage() {
