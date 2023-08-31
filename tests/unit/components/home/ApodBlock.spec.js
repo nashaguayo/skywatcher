@@ -10,6 +10,10 @@ jest.mock('@/skeleton/home/ApodBlockSkeleton.vue', () => ({
   name: 'ApodBlockSkeleton',
 }));
 
+jest.mock('@/components/ui/BaseButton.vue', () => ({
+  name: 'BaseButton',
+}));
+
 const spyGetTodaysAstronomyPicture = jest.spyOn(
   apodHelper,
   'getTodaysAstronomyPicture'
@@ -22,7 +26,7 @@ describe('ApodBlock', () => {
     spyGetTodaysAstronomyPicture.mockResolvedValue('some-url.png');
     wrapper = shallowMount(ApodBlock, {
       data: () => ({ loaded: true }),
-      stubs: ['ApodBlockSkeleton'],
+      stubs: ['ApodBlockSkeleton', 'BaseButton'],
     });
   });
 
