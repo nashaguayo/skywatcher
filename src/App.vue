@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{ 'bottom-margin': displayFooter }">
     <HamburgerMenu v-if="displayHeader" />
     <transition
       mode="out-in"
@@ -111,13 +111,17 @@ html {
 
 #app {
   position: absolute;
-  min-height: calc(100% - 5rem);
+  min-height: 100%;
   width: 100%;
   background: linear-gradient(
     100deg,
     var(--main-background-color),
     var(--main-gradient-background-color)
   );
+
+  &.bottom-margin {
+    min-height: calc(100% - 5rem);
+  }
 }
 
 body {

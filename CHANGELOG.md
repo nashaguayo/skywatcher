@@ -11,6 +11,7 @@
 - Created Hamburger Menu
 - Created Footer
 - Added Desktop Guardian
+- Populated home
 
 ##### Modified
 
