@@ -23,10 +23,13 @@ describe('ApodBlock', () => {
   let wrapper;
 
   beforeEach(() => {
-    spyGetTodaysAstronomyPicture.mockResolvedValue('some-url.png');
+    spyGetTodaysAstronomyPicture.mockResolvedValue({
+      url: 'some-url.png',
+      mediaType: 'image',
+    });
     wrapper = shallowMount(ApodBlock, {
       data: () => ({ loaded: true }),
-      stubs: ['ApodBlockSkeleton', 'BaseButton'],
+      stubs: ['LazyYoutube', 'ApodBlockSkeleton', 'BaseButton'],
     });
   });
 
@@ -46,7 +49,10 @@ describe('ApodBlock', () => {
   });
 
   it('shows skeleton when loading', () => {
-    spyGetTodaysAstronomyPicture.mockResolvedValue('some-url.png');
+    spyGetTodaysAstronomyPicture.mockResolvedValue({
+      url: 'some-url.png',
+      mediaType: 'image',
+    });
     wrapper = shallowMount(ApodBlock, {
       stubs: ['ApodBlockSkeleton'],
     });
@@ -76,5 +82,28 @@ describe('ApodBlock', () => {
     expect(content.exists()).toBeFalsy();
     const error = wrapper.find('.error');
     expect(error.exists()).toBeTruthy();
+  });
+
+  it('displays image when media type is an image', () => {
+    const image = wrapper.find('.image');
+    expect(image.exists()).toBeTruthy();
+    const video = wrapper.find('lazyyoutube-stub');
+    expect(video.exists()).toBeFalsy();
+  });
+
+  it('displays video when media type is a video', async () => {
+    spyGetTodaysAstronomyPicture.mockResolvedValue({
+      url: 'some-other-url.png',
+      mediaType: 'video',
+    });
+    wrapper = shallowMount(ApodBlock, {
+      stubs: ['LazyYoutube', 'ApodBlockSkeleton', 'BaseButton'],
+    });
+    await wrapper.vm.$nextTick();
+    await wrapper.vm.$nextTick();
+    const video = wrapper.find('lazyyoutube-stub');
+    expect(video.exists()).toBeTruthy();
+    const image = wrapper.find('.image');
+    expect(image.exists()).toBeFalsy();
   });
 });
