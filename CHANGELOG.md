@@ -10,6 +10,7 @@
 - Created Launch App page
 - Created Hamburger Menu
 - Created Footer
+- Created Footer links
 - Added Desktop Guardian
 - Populated home
 - Transitions between pages
