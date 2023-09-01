@@ -112,11 +112,7 @@ router.beforeEach((to, from, next) => {
     return;
   }
 
-  if (from.name === 'home') {
-    to.meta.transition = 'slide-from-home';
-  } else {
-    to.meta.transition = '';
-  }
+  to.meta.transition = 'slide-from-home';
 
   next();
 });
