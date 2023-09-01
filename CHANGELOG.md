@@ -1,6 +1,16 @@
 # SkyWatcher
 
-## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/0.3.0...develop) (dd-mm-yyyy)
+## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/1.0.0...develop) (dd-mm-yyyy)
+
+##### Added
+
+##### Modified
+
+##### Fixed
+
+---
+
+## [1.0.0](https://github.com/nashaguayo/skywatcher/compare/0.3.0...1.0.0) (1-9-2023)
 
 ##### Added
 
@@ -18,10 +28,6 @@
 ##### Modified
 
 - Converted app to PWA
-
-##### Fixed
-
----
 
 ## [0.3.0](https://github.com/nashaguayo/skywatcher/compare/0.2.0...0.3.0) (25-08-2023)
 
