@@ -8,6 +8,7 @@
 <script>
 export default {
   name: 'PageNotFoundView',
+  title: 'Page Not Found',
 };
 </script>
 

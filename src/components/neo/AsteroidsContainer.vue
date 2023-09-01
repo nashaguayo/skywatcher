@@ -137,7 +137,7 @@ export default {
     position: absolute;
     right: 0;
     color: var(--main-icon-color);
-    margin: 1rem;
+    margin: 1.5rem;
     cursor: pointer;
   }
 

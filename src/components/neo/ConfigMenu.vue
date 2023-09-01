@@ -69,7 +69,7 @@ export default {
 <style lang="scss" scoped>
 .config-menu {
   position: absolute;
-  z-index: 50;
+  z-index: 100;
   backdrop-filter: blur(0.5rem);
   height: 100vh;
   width: 100%;

@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import HomeView from '@/views/HomeView.vue';
+import InstallView from '@/views/InstallView.vue';
 
 jest.mock('@/components/common/ErrorBoundary.vue', () => ({
   name: 'ErrorBoundary',
@@ -11,22 +11,12 @@ jest.mock('@/components/common/LandingHero.vue', () => ({
   template: '<div class="mock-landing-hero"></div>',
 }));
 
-jest.mock('@/components/home/ApodBlock.vue', () => ({
-  name: 'ApodBlock',
-  template: '<div class="mock-apod-block"></div>',
-}));
-
-jest.mock('@/components/home/NeoBlock.vue', () => ({
-  name: 'NeoBlock',
-  template: '<div class="mock-neo-block"></div>',
-}));
-
-describe('HomeView', () => {
+describe('InstallView', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(HomeView, {
-      stubs: ['ErrorBoundary', 'LandingHero', 'ApodBlock', 'NeoBlock'],
+    wrapper = shallowMount(InstallView, {
+      stubs: ['ErrorBoundary', 'LandingHero'],
     });
   });
 
@@ -41,20 +31,19 @@ describe('HomeView', () => {
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it('contains the "home-view" class', () => {
-    expect(wrapper.classes()).toContain('home-view');
+  it('contains the "install-view" class', () => {
+    expect(wrapper.classes()).toContain('install-view');
   });
 
   it('renders the mocked components', () => {
     expect(wrapper.find('errorboundary-stub').exists()).toBeTruthy();
     expect(wrapper.find('landinghero-stub').exists()).toBeTruthy();
-    expect(wrapper.find('apodblock-stub').exists()).toBeTruthy();
-    expect(wrapper.find('neoblock-stub').exists()).toBeTruthy();
   });
 
-  it('does not render install button', () => {
+  it('passes down correct props to landing hero component', () => {
+    const landingHeroComponent = wrapper.find('landinghero-stub');
     expect(
-      wrapper.find('landinghero-stub').attributes('displayinstallbutton')
-    ).toBeFalsy();
+      landingHeroComponent.attributes('displayinstallbutton')
+    ).toBeTruthy();
   });
 });

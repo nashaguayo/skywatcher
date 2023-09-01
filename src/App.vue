@@ -1,12 +1,56 @@
 <template>
-  <div id="app">
-    <!-- <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav> -->
-    <router-view />
+  <div id="app" :class="{ 'bottom-margin': displayFooter }">
+    <HamburgerMenu v-if="displayHeader" />
+    <transition
+      mode="out-in"
+      :name="
+        $route.meta.transition && !$route.query?.noTransition
+          ? $route.meta.transition
+          : ''
+      "
+    >
+      <router-view :key="$route.fullPath" />
+    </transition>
+    <FooterInfo v-if="displayFooter" />
   </div>
 </template>
+
+<script>
+import HamburgerMenu from '@/components/common/HamburgerMenu.vue';
+import FooterInfo from '@/components/common/FooterInfo.vue';
+
+export default {
+  name: 'App',
+  components: {
+    HamburgerMenu,
+    FooterInfo,
+  },
+  computed: {
+    displayHeader() {
+      return this.$route.meta.header ?? false;
+    },
+    displayFooter() {
+      return this.$route.meta.footer ?? false;
+    },
+  },
+  created() {
+    window.addEventListener('online', this.online);
+    window.addEventListener('offline', this.offline);
+  },
+  beforeDestroy() {
+    window.removeEventListener('online', this.online);
+    window.removeEventListener('offline', this.offline);
+  },
+  methods: {
+    online() {
+      this.$router.push({ name: 'home' });
+    },
+    offline() {
+      this.$router.push({ name: 'offline' });
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 @font-face {
@@ -39,6 +83,7 @@ html {
   --variant-opacity-background-color: rgba(0, 0, 0, 0.3);
 
   --main-title-color: rgb(207, 207, 207);
+  --variant-title-color: #ff8800;
   --main-subtitle-color: rgb(230, 230, 230);
   --main-text-color: rgb(230, 230, 230);
 
@@ -59,6 +104,9 @@ html {
   --main-icon-color: rgb(207, 207, 207);
   --main-icon-hover-color: #ff8800;
   --secondary-icon-color: #101416;
+
+  --menu-background-color: #0672b4;
+  --menu-gradient-background-color: #0c89d6;
 }
 
 #app {
@@ -70,6 +118,10 @@ html {
     var(--main-background-color),
     var(--main-gradient-background-color)
   );
+
+  &.bottom-margin {
+    min-height: calc(100% - 5rem);
+  }
 }
 
 body {
@@ -143,5 +195,18 @@ p {
     font-size: 1.5rem;
     line-height: 1.7rem;
   }
+}
+
+.slide-from-home-enter-active,
+.slide-from-home-leave-active {
+  transition: transform 0.3s;
+}
+
+.slide-from-home-enter {
+  transform: translateX(100%);
+}
+
+.slide-from-home-leave-to {
+  transform: translateX(-100%);
 }
 </style>

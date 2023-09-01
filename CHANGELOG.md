@@ -1,6 +1,6 @@
 # SkyWatcher
 
-## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/0.3.0...develop) (dd-mm-yyyy)
+## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/1.0.0...develop) (dd-mm-yyyy)
 
 ##### Added
 
@@ -9,6 +9,25 @@
 ##### Fixed
 
 ---
+
+## [1.0.0](https://github.com/nashaguayo/skywatcher/compare/0.3.0...1.0.0) (1-9-2023)
+
+##### Added
+
+- Created Offline page
+- Created Install page
+- Created Installing page
+- Created Launch App page
+- Created Hamburger Menu
+- Created Footer
+- Created Footer links
+- Added Desktop Guardian
+- Populated home
+- Transitions between pages
+
+##### Modified
+
+- Converted app to PWA
 
 ## [0.3.0](https://github.com/nashaguayo/skywatcher/compare/0.2.0...0.3.0) (25-08-2023)
 

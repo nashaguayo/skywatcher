@@ -1,8 +1,7 @@
 <template>
-  <div class="landing-hero-skeleton">
-    <h1>Loading</h1>
-    <h3>Hero Image — Carina Nebula</h3>
-    <BaseSpinner />
+  <div class="installing-view">
+    <h1>Installing...</h1>
+    <BaseSpinner :big="true" />
   </div>
 </template>
 
@@ -10,7 +9,8 @@
 import BaseSpinner from '@/components/ui/BaseSpinner.vue';
 
 export default {
-  name: 'LandingHeroSkeleton',
+  name: 'InstallingView',
+  title: 'Installing',
   components: {
     BaseSpinner,
   },
@@ -18,12 +18,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.landing-hero-skeleton {
+.installing-view {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100%;
-  gap: 2rem;
+  margin-top: 5rem;
+  gap: 3rem;
 }
 </style>
