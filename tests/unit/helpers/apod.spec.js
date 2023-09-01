@@ -69,19 +69,21 @@ describe('getTodaysAstronomyPicture', () => {
     spyGetAstronomyPicturesOfTheDay.mockResolvedValue([
       {
         url: 'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg',
+        media_type: 'image',
       },
     ]);
     const result = await getTodaysAstronomyPicture();
-    expect(result).toBe(
+    expect(result.url).toBe(
       'https://apod.nasa.gov/apod/image/2308/M51_255hours_1024.jpg'
     );
+    expect(result.mediaType).toBe('image');
     expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalled();
   });
 
   it('should return false when no apod', async () => {
     spyGetAstronomyPicturesOfTheDay.mockResolvedValue(undefined);
     const result = await getTodaysAstronomyPicture();
-    expect(result).toBeFalsy();
+    expect(result.url).toBeFalsy();
     expect(spyGetAstronomyPicturesOfTheDay).toHaveBeenCalled();
   });
 });
