@@ -12,6 +12,7 @@
 - Created Footer
 - Added Desktop Guardian
 - Populated home
+- Transitions between pages
 
 ##### Modified
 
