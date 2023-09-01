@@ -46,10 +46,6 @@ export default {
   cursor: pointer;
 }
 
-.footer-info-link:hover {
-  color: var(--main-icon-hover-color);
-}
-
 .active {
   animation: orange-flash 0.5s;
 }
