@@ -11,10 +11,16 @@
       </div>
       <div v-else class="content">
         <div
+          v-if="mediaType === 'image'"
           class="image"
           :style="{ backgroundImage: `url(${url})` }"
           @load="loaded = true"
         ></div>
+        <LazyYoutube
+          v-else-if="mediaType === 'video'"
+          :src="url"
+          class="video"
+        />
         <BaseButton
           :variant="true"
           class="learn-more-button"
@@ -41,12 +47,17 @@ export default {
   data() {
     return {
       url: '',
+      mediaType: '',
       error: true,
       loaded: false,
     };
   },
   watch: {
     url(url) {
+      if (this.mediaType === 'video') {
+        this.loaded = true;
+        return;
+      }
       const image = new Image();
       image.src = url;
       image.onload = () => {
@@ -59,10 +70,11 @@ export default {
     },
   },
   async created() {
-    const url = await getTodaysAstronomyPicture();
+    const { url, mediaType } = await getTodaysAstronomyPicture();
     if (!url) {
       return;
     }
+    this.mediaType = mediaType;
     this.url = url;
     this.error = false;
   },
@@ -110,6 +122,10 @@ export default {
         background-size: cover;
         background-position: center;
         box-shadow: var(--main-box-shadow);
+      }
+
+      .video {
+        height: 12rem;
       }
 
       .learn-more-button {

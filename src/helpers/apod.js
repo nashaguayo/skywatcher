@@ -26,7 +26,7 @@ export async function getTodaysAstronomyPicture() {
   const date = format(new Date(), 'yyyy-MM-dd');
   const result = await getAstronomyPicturesOfTheDay(date, date);
   if (!result) {
-    return false;
+    return { url: false, mediaType: '' };
   }
-  return result[0].url;
+  return { url: result[0].url, mediaType: result[0].mediaType };
 }
