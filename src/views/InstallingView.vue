@@ -7,12 +7,28 @@
 
 <script>
 import BaseSpinner from '@/components/ui/BaseSpinner.vue';
+import { isInstalled } from '@/lib/pwa';
 
 export default {
   name: 'InstallingView',
   title: 'Installing',
   components: {
     BaseSpinner,
+  },
+  data() {
+    return {
+      interval: null,
+    };
+  },
+  async created() {
+    this.interval = setInterval(async () => {
+      if (await isInstalled()) {
+        this.$router.push({ name: 'launchApp' });
+      }
+    }, 2500);
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
   },
 };
 </script>
