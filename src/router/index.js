@@ -83,7 +83,7 @@ const routes = [
     },
   },
   {
-    path: '/neo-details',
+    path: '/neo/:id',
     name: 'neoDetails',
     component: () => import('@/views/NeoDetailsView.vue'),
     meta: {

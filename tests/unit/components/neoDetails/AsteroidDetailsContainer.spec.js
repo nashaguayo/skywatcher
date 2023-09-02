@@ -5,7 +5,15 @@ describe('AsteroidDetailsContainer', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(AsteroidDetailsContainer);
+    wrapper = shallowMount(AsteroidDetailsContainer, {
+      mocks: {
+        $route: {
+          params: {
+            id: 'asteroid-id',
+          },
+        },
+      },
+    });
   });
 
   afterEach(() => {
