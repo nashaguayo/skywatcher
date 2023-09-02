@@ -4,6 +4,8 @@
 
 ##### Added
 
+- Missing URLs in menu
+
 ##### Modified
 
 ##### Fixed

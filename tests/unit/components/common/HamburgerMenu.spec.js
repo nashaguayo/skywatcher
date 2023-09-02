@@ -1,11 +1,17 @@
 import { shallowMount } from '@vue/test-utils';
 import HamburgerMenu from '@/components/common/HamburgerMenu.vue';
 
+jest.mock('@/components/ui/BaseButton.vue', () => ({
+  name: 'BaseButton',
+}));
+
 describe('HamburgerMenu', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(HamburgerMenu, { stubs: ['FontAwesomeIcon'] });
+    wrapper = shallowMount(HamburgerMenu, {
+      stubs: ['FontAwesomeIcon', 'BaseButton'],
+    });
   });
 
   afterEach(() => {
@@ -32,7 +38,7 @@ describe('HamburgerMenu', () => {
   it('opens menu when clicking icon', () => {
     wrapper = shallowMount(HamburgerMenu, {
       data: () => ({ open: true }),
-      stubs: ['FontAwesomeIcon'],
+      stubs: ['FontAwesomeIcon', 'BaseButton'],
       mocks: {
         $router: {
           push: jest.fn(),
@@ -47,5 +53,25 @@ describe('HamburgerMenu', () => {
     });
     const container = wrapper.find('.hamburger-menu-container');
     expect(container.exists()).toBeTruthy();
+  });
+
+  it('loads all links', () => {
+    wrapper = shallowMount(HamburgerMenu, {
+      data: () => ({ open: true }),
+      stubs: ['FontAwesomeIcon', 'BaseButton'],
+      mocks: {
+        $router: {
+          push: jest.fn(),
+          currentRoute: {
+            name: 'home',
+          },
+        },
+        $route: {
+          name: 'someRouteName',
+        },
+      },
+    });
+    const buttons = wrapper.findAll('basebutton-stub');
+    expect(buttons.length).toBe(7);
   });
 });
