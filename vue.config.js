@@ -25,6 +25,13 @@ module.exports = defineConfig({
       launch_handler: {
         route_to: 'existing-client-navigate',
       },
+      prefer_related_applications: true,
+      related_applications: [
+        {
+          platform: 'webapp',
+          url: 'https://nashaguayo.github.io/skywatcher/manifest.json',
+        },
+      ],
     },
   },
 });
