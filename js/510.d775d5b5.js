@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkskywatcher"]=self["webpackChunkskywatcher"]||[]).push([[510],{9510:function(e,t,n){n.r(t),n.d(t,{default:function(){return i}});var u=function(){var e=this;e._self._c;return e._m(0)},r=[function(){var e=this,t=e._self._c;return t("div",{staticClass:"page-not-found-view"},[t("h1",[e._v("404 Error")]),t("h3",[e._v("Page Not Found")])])}],a={name:"PageNotFoundView",title:"Page Not Found"},s=a,o=n(1001),c=(0,o.Z)(s,u,r,!1,null,"05ec0a57",null),i=c.exports}}]);
+//# sourceMappingURL=510.d775d5b5.js.map
