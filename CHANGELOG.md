@@ -1,12 +1,24 @@
 # SkyWatcher
 
-## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/1.0.0...develop) (dd-mm-yyyy)
+## [Unreleased](https://github.com/nashaguayo/skywatcher/compare/1.0.1...develop) (dd-mm-yyyy)
 
 ##### Added
 
 ##### Modified
 
 ##### Fixed
+
+---
+
+## [1.0.1](https://github.com/nashaguayo/skywatcher/compare/1.0.0...1.0.1) (2-9-2023)
+
+##### Added
+
+- Missing URLs in menu
+
+##### Fixed
+
+- Installing view not redirecting to launch app
 
 ---
 

@@ -30,6 +30,39 @@
         >
           Near Earth Objects
         </BaseButton>
+        <hr />
+        <BaseButton
+          class="navigation-link"
+          :small="true"
+          :onClickHandler="openGithubProfileInNewTab"
+          :variant="true"
+        >
+          Github Profile
+        </BaseButton>
+        <BaseButton
+          class="navigation-link"
+          :small="true"
+          :onClickHandler="openGithubRepositoryInNewTab"
+          :variant="true"
+        >
+          Code Repository
+        </BaseButton>
+        <BaseButton
+          class="navigation-link"
+          :small="true"
+          :onClickHandler="openLinkedinProfileInNewTab"
+          :variant="true"
+        >
+          LinkedIn Profile
+        </BaseButton>
+        <BaseButton
+          class="navigation-link"
+          :small="true"
+          :onClickHandler="openNasaApiUrlInNewTab"
+          :variant="true"
+        >
+          Nasa API
+        </BaseButton>
       </div>
     </transition>
     <transition name="translate-right">
@@ -86,6 +119,22 @@ export default {
       this.open = false;
       this.$router.push({ name: 'neo', query: { noTransition: true } });
     },
+    openGithubProfileInNewTab() {
+      window.open(process.env.VUE_APP_GITHUB_PROFILE, '_blank', 'noreferrer');
+    },
+    openGithubRepositoryInNewTab() {
+      window.open(
+        process.env.VUE_APP_GITHUB_REPOSITORY,
+        '_blank',
+        'noreferrer'
+      );
+    },
+    openLinkedinProfileInNewTab() {
+      window.open(process.env.VUE_APP_LINKEDIN_PROFILE, '_blank', 'noreferrer');
+    },
+    openNasaApiUrlInNewTab() {
+      window.open(process.env.VUE_APP_NASA_API_URL, '_blank', 'noreferrer');
+    },
   },
 };
 </script>
@@ -121,6 +170,13 @@ export default {
     .navigation-link {
       margin-bottom: 0.3rem;
       pointer-events: all;
+    }
+
+    hr {
+      width: 100%;
+      border: 0.1rem solid var(--variant-background-color);
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
     }
   }
 
