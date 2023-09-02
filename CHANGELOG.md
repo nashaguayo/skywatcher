@@ -8,6 +8,8 @@
 
 ##### Fixed
 
+- Installing view not redirecting to launch app
+
 ---
 
 ## [1.0.0](https://github.com/nashaguayo/skywatcher/compare/0.3.0...1.0.0) (1-9-2023)
