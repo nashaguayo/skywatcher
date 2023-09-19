@@ -1,5 +1,11 @@
 <template>
   <div class="asteroid-details-container">
+    <FontAwesomeIcon
+      icon="fa-solid fa-chevron-left"
+      size="2x"
+      class="go-back-button"
+      @click="goBack"
+    />
     <h3 v-if="error">There was an error loading asteroid details.</h3>
     <template v-else>
       <h1>{{ designation }}</h1>
@@ -111,6 +117,11 @@ export default {
     this.description = neo.damage.description;
     this.category = neo.damage.category;
   },
+  methods: {
+    goBack() {
+      this.$router.back();
+    },
+  },
 };
 </script>
 
@@ -120,6 +131,20 @@ export default {
   flex-direction: column;
   padding: 2rem;
   align-items: center;
+
+  .go-back-button {
+    position: absolute;
+    color: var(--main-icon-color);
+    background-color: var(--variant-background-color);
+    border-radius: 3rem;
+    padding: 0.7rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    opacity: 0.7;
+    left: 1rem;
+    top: 1rem;
+    pointer-events: all;
+  }
 
   h1 {
     margin-bottom: 2rem;
