@@ -107,6 +107,9 @@ html {
 
   --menu-background-color: #0672b4;
   --menu-gradient-background-color: #0c89d6;
+
+  --magnitude-border-color: #0c0c0c;
+  --magnitude-background-color: rgb(29, 29, 29);
 }
 
 #app {

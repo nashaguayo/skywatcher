@@ -17,3 +17,16 @@ export async function getNearEarthObjects(date) {
     );
   }
 }
+
+export async function getNearEarthObject(id) {
+  try {
+    const result = await nasaApi.get(`${URL}neo/${id}`);
+    return result.data;
+  } catch (error) {
+    logError(
+      getNearEarthObject.name,
+      'Unable to get near earth object for id',
+      error
+    );
+  }
+}
