@@ -259,7 +259,7 @@ describe('getNearEarthObject', () => {
         megatonKineticE: 0.26,
         megatonAirburst: 0.26,
         craterSize: 0,
-        description: 'Window Breaker',
+        description: 'on impact, it would break windows',
         category: 0,
       },
     });
