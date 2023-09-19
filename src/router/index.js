@@ -87,7 +87,6 @@ const routes = [
     name: 'neoDetails',
     component: () => import('@/views/NeoDetailsView.vue'),
     meta: {
-      header: true,
       footer: true,
     },
   },
