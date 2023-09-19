@@ -130,8 +130,7 @@ export default {
   }
 
   .what-if {
-    width: calc(100% - 2rem);
-    margin: 0 1rem 1rem;
+    width: calc(100%);
     padding: 1.2rem;
     background: linear-gradient(
       100deg,
@@ -260,6 +259,7 @@ export default {
   .copyright-disclaimer {
     text-align: center;
     font-size: 0.8rem;
+    margin-top: 2rem;
 
     a {
       display: inline-block;
