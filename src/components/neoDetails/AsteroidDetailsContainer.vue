@@ -208,7 +208,7 @@ export default {
     }
 
     .category-0-active {
-      background-color: rgb(0, 100, 0);
+      background-color: var(--magnitude-0);
     }
 
     .category-1 {
@@ -217,7 +217,7 @@ export default {
     }
 
     .category-1-active {
-      background-color: rgb(82, 146, 9);
+      background-color: var(--magnitude-1);
     }
 
     .category-2 {
@@ -226,7 +226,7 @@ export default {
     }
 
     .category-2-active {
-      background-color: rgb(165, 182, 10);
+      background-color: var(--magnitude-2);
     }
 
     .category-3 {
@@ -235,7 +235,7 @@ export default {
     }
 
     .category-3-active {
-      background-color: rgb(255, 208, 0);
+      background-color: var(--magnitude-3);
     }
 
     .category-4 {
@@ -244,7 +244,7 @@ export default {
     }
 
     .category-4-active {
-      background-color: rgb(255, 145, 0);
+      background-color: var(--magnitude-4);
     }
 
     .category-5 {
@@ -253,7 +253,7 @@ export default {
     }
 
     .category-5-active {
-      background-color: rgb(163, 0, 0);
+      background-color: var(--magnitude-5);
     }
   }
 
