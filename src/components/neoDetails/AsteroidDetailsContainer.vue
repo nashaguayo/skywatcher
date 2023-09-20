@@ -5,6 +5,7 @@
       errorMessage="Unable to load basic asteroid information"
     >
       <BasicInfoHeader
+        :loaded="loaded"
         :category="category"
         :designation="designation"
         :magnitude="magnitude"
@@ -51,6 +52,7 @@ export default {
       category: 0,
       sentry: false,
       hazardous: false,
+      loaded: false,
     };
   },
   async created() {
@@ -65,6 +67,8 @@ export default {
     this.craterSize = neo.damage.craterSize;
     this.description = neo.damage.description;
     this.category = neo.damage.category;
+
+    this.loaded = true;
   },
 };
 </script>

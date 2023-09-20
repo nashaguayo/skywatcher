@@ -1,40 +1,58 @@
 <template>
   <div class="basic-info-header">
-    <FontAwesomeIcon
-      icon="fa-solid fa-chevron-left"
-      size="2x"
-      class="go-back-button"
-      @click="goBack"
-    />
-    <h1>{{ designation }}</h1>
-    <h3>Magnitude — {{ magnitude }}H</h3>
-    <div class="categories">
-      <div
-        v-for="n in 6"
-        :key="`category-${n - 1}`"
-        :class="{
-          [`category-${n - 1}`]: true,
-          [`category-${n - 1}-active`]: category >= n - 1,
-        }"
-      />
-    </div>
-    <div class="disclaimers">
-      <div class="disclaimer">
-        <span v-if="hazardous">This asteroid is potentially hazardous.</span>
-        <span v-else>This asteroid is not hazardous.</span>
+    <transition name="fade">
+      <BasicInfoHeaderSkeleton v-if="!loaded" />
+      <div class="basic-info-header-container" v-else>
+        <FontAwesomeIcon
+          icon="fa-solid fa-chevron-left"
+          size="2x"
+          class="go-back-button"
+          @click="goBack"
+        />
+        <h1>{{ designation }}</h1>
+        <h3>Magnitude — {{ magnitude }}H</h3>
+        <transition-group class="categories" name="scale-open" tag="div" appear>
+          <div
+            v-for="n in 6"
+            :key="`category-${n - 1}`"
+            :class="{
+              [`category-${n - 1}`]: true,
+              [`category-${n - 1}-active`]: category >= n - 1,
+            }"
+          />
+        </transition-group>
+        <transition name="open-sides" appear>
+          <div class="disclaimers" v-if="loaded">
+            <div class="disclaimer">
+              <span v-if="hazardous"
+                >This asteroid is potentially hazardous.</span
+              >
+              <span v-else>This asteroid is not hazardous.</span>
+            </div>
+            <div class="disclaimer">
+              <span v-if="sentry">Also, it is a sentry object.</span>
+              <span v-else>Also, it is not a sentry object.</span>
+            </div>
+          </div>
+        </transition>
       </div>
-      <div class="disclaimer">
-        <span v-if="sentry">Also, it is a sentry object.</span>
-        <span v-else>Also, it is not a sentry object.</span>
-      </div>
-    </div>
+    </transition>
   </div>
 </template>
 
 <script>
+import BasicInfoHeaderSkeleton from '@/skeleton/neoDetails/BasicInfoHeaderSkeleton.vue';
+
 export default {
   name: 'BasicInfoHeader',
+  components: {
+    BasicInfoHeaderSkeleton,
+  },
   props: {
+    loaded: {
+      type: Boolean,
+      required: true,
+    },
     category: {
       type: Number,
       required: true,
@@ -66,119 +84,142 @@ export default {
 
 <style lang="scss" scoped>
 .basic-info-header {
-  display: flex;
-  flex-direction: column;
-  margin: 2rem 0;
-  align-items: center;
-
-  .go-back-button {
-    position: absolute;
-    color: var(--main-icon-color);
-    background-color: var(--variant-background-color);
-    border-radius: 3rem;
-    padding: 0.7rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    opacity: 0.7;
-    left: 1rem;
-    top: 1rem;
-    pointer-events: all;
-  }
-
-  h1 {
-    margin-bottom: 2rem;
-  }
-
-  .categories {
-    margin: 1rem 0 2rem;
+  .basic-info-header-container {
     display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
     align-items: center;
-    gap: 0.5rem;
 
-    .category-0,
-    .category-1,
-    .category-2,
-    .category-3,
-    .category-4,
-    .category-5 {
-      border-radius: 50%;
-      border: 0.15rem solid var(--magnitude-border-color);
-      background-color: var(--magnitude-background-color);
+    .go-back-button {
+      position: absolute;
+      color: var(--main-icon-color);
+      background-color: var(--variant-background-color);
+      border-radius: 3rem;
+      padding: 0.7rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      opacity: 0.7;
+      left: 1rem;
+      top: 1rem;
+      pointer-events: all;
     }
 
-    .category-0 {
-      width: 1rem;
-      height: 1rem;
+    h1 {
+      margin-bottom: 2rem;
     }
 
-    .category-0-active {
-      background-color: var(--magnitude-0);
-    }
-
-    .category-1 {
-      width: 1.2rem;
-      height: 1.2rem;
-    }
-
-    .category-1-active {
-      background-color: var(--magnitude-1);
-    }
-
-    .category-2 {
-      width: 1.4rem;
-      height: 1.4rem;
-    }
-
-    .category-2-active {
-      background-color: var(--magnitude-2);
-    }
-
-    .category-3 {
-      width: 1.6rem;
-      height: 1.6rem;
-    }
-
-    .category-3-active {
-      background-color: var(--magnitude-3);
-    }
-
-    .category-4 {
-      width: 1.8rem;
-      height: 1.8rem;
-    }
-
-    .category-4-active {
-      background-color: var(--magnitude-4);
-    }
-
-    .category-5 {
-      width: 2rem;
-      height: 2rem;
-    }
-
-    .category-5-active {
-      background-color: var(--magnitude-5);
-    }
-  }
-
-  .disclaimers {
-    width: 100%;
-    background: linear-gradient(
-      var(--secondary-background-color),
-      var(--secondary-gradient-background-color)
-    );
-    padding: 0.5rem 0;
-    box-shadow: var(--main-box-shadow);
-
-    .disclaimer {
+    .categories {
+      margin: 1rem 0 2rem;
       display: flex;
-      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+
+      .category-0,
+      .category-1,
+      .category-2,
+      .category-3,
+      .category-4,
+      .category-5 {
+        border-radius: 50%;
+        border: 0.15rem solid var(--magnitude-border-color);
+        background-color: var(--magnitude-background-color);
+      }
+
+      .category-0 {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      .category-0-active {
+        background-color: var(--magnitude-0);
+      }
+
+      .category-1 {
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+
+      .category-1-active {
+        background-color: var(--magnitude-1);
+      }
+
+      .category-2 {
+        width: 1.4rem;
+        height: 1.4rem;
+      }
+
+      .category-2-active {
+        background-color: var(--magnitude-2);
+      }
+
+      .category-3 {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+
+      .category-3-active {
+        background-color: var(--magnitude-3);
+      }
+
+      .category-4 {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+
+      .category-4-active {
+        background-color: var(--magnitude-4);
+      }
+
+      .category-5 {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      .category-5-active {
+        background-color: var(--magnitude-5);
+      }
     }
 
-    span {
-      text-align: center;
-      color: var(--secondary-text-color);
+    .disclaimers {
+      width: 100%;
+      background: linear-gradient(
+        var(--secondary-background-color),
+        var(--secondary-gradient-background-color)
+      );
+      padding: 0.5rem 0;
+      box-shadow: var(--main-box-shadow);
+
+      .disclaimer {
+        display: flex;
+        justify-content: center;
+      }
+
+      span {
+        text-align: center;
+        color: var(--secondary-text-color);
+      }
     }
   }
+}
+
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.scale-open-enter-active,
+.open-sides-enter-active {
+  transition: transform 0.3s;
+}
+
+.open-sides-enter {
+  transform: scaleX(0);
+}
+
+.scale-open-enter {
+  transform: scale(0);
 }
 </style>

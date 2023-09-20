@@ -12,6 +12,7 @@ describe('BasicInfoHeader', () => {
         magnitude: 20,
         hazardous: true,
         sentry: false,
+        loaded: true,
       },
       stubs: ['FontAwesomeIcon'],
     });
