@@ -12,28 +12,12 @@
       <h3>Magnitude — {{ magnitude }} H</h3>
       <div class="categories">
         <div
-          class="category-0"
-          :class="{ 'category-0-active': category >= 0 }"
-        />
-        <div
-          class="category-1"
-          :class="{ 'category-1-active': category >= 1 }"
-        />
-        <div
-          class="category-2"
-          :class="{ 'category-2-active': category >= 2 }"
-        />
-        <div
-          class="category-3"
-          :class="{ 'category-3-active': category >= 3 }"
-        />
-        <div
-          class="category-4"
-          :class="{ 'category-4-active': category >= 4 }"
-        />
-        <div
-          class="category-5"
-          :class="{ 'category-5-active': category === 5 }"
+          v-for="n in 5"
+          :key="`category-${n}`"
+          :class="{
+            [`category-${n}`]: true,
+            [`category-${n}-active`]: category >= n,
+          }"
         />
       </div>
       <div class="what-if">
