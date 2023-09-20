@@ -82,7 +82,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 2rem;
+  margin: 0 2rem 2rem;
 
   .what-if {
     width: calc(100%);
