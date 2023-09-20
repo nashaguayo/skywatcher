@@ -125,6 +125,8 @@ export async function getNearEarthObject(id) {
     designation: neo.designation,
     magnitude: neo.absolute_magnitude_h,
     damage,
+    hazardous: neo.is_potentially_hazardous_asteroid,
+    sentry: neo.is_sentry_object,
   };
 }
 

@@ -8,6 +8,8 @@
         :category="category"
         :designation="designation"
         :magnitude="magnitude"
+        :hazardous="hazardous"
+        :sentry="sentry"
       />
     </ErrorBoundary>
     <ErrorBoundary
@@ -47,6 +49,8 @@ export default {
       craterSize: 0,
       description: '',
       category: 0,
+      sentry: false,
+      hazardous: false,
     };
   },
   async created() {
@@ -54,6 +58,8 @@ export default {
 
     this.designation = neo.designation;
     this.magnitude = neo.magnitude;
+    this.hazardous = neo.hazardous;
+    this.sentry = neo.sentry;
     this.megatonKineticE = neo.damage.megatonKineticE;
     this.megatonAirburst = neo.damage.megatonAirburst;
     this.craterSize = neo.damage.craterSize;

@@ -10,6 +10,8 @@ describe('BasicInfoHeader', () => {
         category: 2,
         designation: 'Asteroid Name',
         magnitude: 20,
+        hazardous: true,
+        sentry: false,
       },
       stubs: ['FontAwesomeIcon'],
     });
@@ -41,6 +43,16 @@ describe('BasicInfoHeader', () => {
     const magnitude = wrapper.find('h3');
     expect(magnitude.exists()).toBeTruthy();
     expect(magnitude.text()).toBe('Magnitude — 20H');
+  });
+
+  it('renders disclaimer', () => {
+    const disclaimers = wrapper.findAll('span');
+    expect(disclaimers.at(0).exists()).toBeTruthy();
+    expect(disclaimers.at(0).text()).toBe(
+      'This asteroid is potentially hazardous.'
+    );
+    expect(disclaimers.at(1).exists()).toBeTruthy();
+    expect(disclaimers.at(1).text()).toBe('Also, it is not a sentry object.');
   });
 
   it('renders categories', () => {

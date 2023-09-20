@@ -18,6 +18,16 @@
         }"
       />
     </div>
+    <div class="disclaimers">
+      <div class="disclaimer">
+        <span v-if="hazardous">This asteroid is potentially hazardous.</span>
+        <span v-else>This asteroid is not hazardous.</span>
+      </div>
+      <div class="disclaimer">
+        <span v-if="sentry">Also, it is a sentry object.</span>
+        <span v-else>Also, it is not a sentry object.</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,6 +47,14 @@ export default {
       type: Number,
       required: true,
     },
+    sentry: {
+      type: Boolean,
+      required: true,
+    },
+    hazardous: {
+      type: Boolean,
+      required: true,
+    },
   },
   methods: {
     goBack() {
@@ -50,7 +68,7 @@ export default {
 .basic-info-header {
   display: flex;
   flex-direction: column;
-  margin: 2rem 2rem 0;
+  margin: 2rem 0;
   align-items: center;
 
   .go-back-button {
@@ -140,6 +158,26 @@ export default {
 
     .category-5-active {
       background-color: var(--magnitude-5);
+    }
+  }
+
+  .disclaimers {
+    width: 100%;
+    background: linear-gradient(
+      var(--secondary-background-color),
+      var(--secondary-gradient-background-color)
+    );
+    padding: 0.5rem 0;
+    box-shadow: var(--main-box-shadow);
+
+    .disclaimer {
+      display: flex;
+      justify-content: center;
+    }
+
+    span {
+      text-align: center;
+      color: var(--secondary-text-color);
     }
   }
 }

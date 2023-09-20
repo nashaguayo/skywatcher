@@ -243,6 +243,8 @@ describe('getNearEarthObject', () => {
     const neo = {
       designation: 'Asteroid name',
       absolute_magnitude_h: 8,
+      is_potentially_hazardous_asteroid: true,
+      is_sentry_object: false,
       estimated_diameter: {
         meters: {
           estimated_diameter_min: 10,
@@ -255,6 +257,8 @@ describe('getNearEarthObject', () => {
     expect(result).toStrictEqual({
       designation: 'Asteroid name',
       magnitude: 8,
+      hazardous: true,
+      sentry: false,
       damage: {
         megatonKineticE: 0.26,
         megatonAirburst: 0.26,
