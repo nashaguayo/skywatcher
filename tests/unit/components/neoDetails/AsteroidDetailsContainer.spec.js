@@ -51,7 +51,6 @@ describe('AsteroidDetailsContainer', () => {
   });
 
   it('renders the component', () => {
-    console.log(wrapper.html());
     expect(wrapper.exists()).toBeTruthy();
   });
 
