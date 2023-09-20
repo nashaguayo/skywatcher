@@ -6,78 +6,46 @@
       class="go-back-button"
       @click="goBack"
     />
-    <h3 v-if="error">There was an error loading asteroid details.</h3>
-    <template v-else>
-      <h1>{{ designation }}</h1>
-      <h3>Magnitude — {{ magnitude }} H</h3>
-      <div class="categories">
-        <div
-          v-for="n in 5"
-          :key="`category-${n}`"
-          :class="{
-            [`category-${n}`]: true,
-            [`category-${n}-active`]: category >= n,
-          }"
-        />
-      </div>
-      <div class="what-if">
-        <h3 class="what-if-title">What if it hit Earth?*</h3>
-        <span class="description" v-if="category === 0">
-          This asteroid is not dangerous.
-        </span>
-        <span class="description" v-else-if="category === 1">
-          This asteroid is dangerous.
-        </span>
-        <span class="description" v-else-if="category === 2">
-          This asteroid is very dangerous.
-        </span>
-        <span class="description" v-else-if="category === 3">Dangerous.</span>
-        <span class="description" v-else-if="category === 4">
-          This asteroid is extremely dangerous.
-        </span>
-        <span class="description" v-else-if="category === 5">
-          This asteroid is devastating.
-        </span>
-        <span class="description">If it hit, {{ description }}.</span>
-        <div class="asteroid-stats">
-          <div class="stat">
-            <span class="value"> {{ craterSize }}km </span>
-            <span class="key">Crater Size</span>
-          </div>
-          <div class="stat">
-            <span class="value"> {{ megatonKineticE }}E </span>
-            <span class="key">Megaton Kinetic Energy</span>
-          </div>
-          <div class="stat">
-            <span class="value"> {{ megatonAirburst }}MT </span>
-            <span class="key">Megaton Airburst</span>
-          </div>
-        </div>
-      </div>
-      <span class="copyright-disclaimer">
-        * Categories according to
-        <a
-          href="https://www.nextbigfuture.com/2013/11/asteroid-size-danger-chart.html"
-          target="_blank"
-          ref="noreferrer"
-        >
-          this article
-        </a>
-        <br />
-        by Brian Wang
-      </span>
-    </template>
+    <h1>{{ designation }}</h1>
+    <h3>Magnitude — {{ magnitude }} H</h3>
+    <div class="categories">
+      <div
+        v-for="n in 6"
+        :key="`category-${n - 1}`"
+        :class="{
+          [`category-${n - 1}`]: true,
+          [`category-${n - 1}-active`]: category >= n - 1,
+        }"
+      />
+    </div>
+    <ErrorBoundary
+      componentName="WhatIfImpact"
+      errorMessage="Unable to load what if it impacted earth component"
+    >
+      <WhatIfImpact
+        :category="category"
+        :description="description"
+        :craterSize="craterSize"
+        :megatonKineticE="megatonKineticE"
+        :megatonAirburst="megatonAirburst"
+      />
+    </ErrorBoundary>
   </div>
 </template>
 
 <script>
 import { getNearEarthObject } from '@/helpers/neo';
+import ErrorBoundary from '@/components/common/ErrorBoundary.vue';
+import WhatIfImpact from '@/components/neoDetails/WhatIfImpact.vue';
 
 export default {
   name: 'AsteroidDetailsContainer',
+  components: {
+    ErrorBoundary,
+    WhatIfImpact,
+  },
   data() {
     return {
-      error: false,
       designation: '',
       magnitude: 0,
       megatonKineticE: 0,
@@ -89,9 +57,6 @@ export default {
   },
   async created() {
     const neo = await getNearEarthObject(this.$route.params.id);
-    if (!neo) {
-      this.error = true;
-    }
 
     this.designation = neo.designation;
     this.magnitude = neo.magnitude;
@@ -111,11 +76,6 @@ export default {
 
 <style lang="scss" scoped>
 .asteroid-details-container {
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  align-items: center;
-
   .go-back-button {
     position: absolute;
     color: var(--main-icon-color);
@@ -132,65 +92,6 @@ export default {
 
   h1 {
     margin-bottom: 2rem;
-  }
-
-  h3 {
-    text-align: center;
-  }
-
-  .what-if {
-    width: calc(100%);
-    padding: 1.2rem;
-    background: linear-gradient(
-      100deg,
-      var(--variant-background-color),
-      var(--variant-gradient-background-color)
-    );
-    box-shadow: var(--main-box-shadow);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    .what-if-title {
-      margin: 1rem 0;
-    }
-
-    .description {
-      text-align: center;
-      margin-top: 0.5rem;
-    }
-
-    .asteroid-stats {
-      background: linear-gradient(
-        100deg,
-        var(--secondary-background-color),
-        var(--secondary-gradient-background-color)
-      );
-      width: 100%;
-      margin: 1rem 0;
-      padding: 0.5rem;
-
-      .stat {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        margin: 1rem 0;
-
-        .key,
-        .value {
-          color: var(--secondary-text-color);
-          text-align: center;
-        }
-
-        .key {
-          font-size: 1rem;
-        }
-
-        .value {
-          font-size: 2rem;
-        }
-      }
-    }
   }
 
   .categories {
@@ -262,16 +163,6 @@ export default {
 
     .category-5-active {
       background-color: var(--magnitude-5);
-    }
-  }
-
-  .copyright-disclaimer {
-    text-align: center;
-    font-size: 0.8rem;
-    margin-top: 2rem;
-
-    a {
-      display: inline-block;
     }
   }
 }
