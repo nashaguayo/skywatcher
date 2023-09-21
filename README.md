@@ -13,7 +13,7 @@ You can check out my career [here](https://www.linkedin.com/in/natasha-aguayo-10
 ### Features
 
 - Astronomy Picture of the Day, with a calendar to see past APODs
-- Near Earth Objects page
+- Near Earth Objects page, now with details for each asteroid!
 - Many more to come!
 
 ### Project setup
