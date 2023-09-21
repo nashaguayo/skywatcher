@@ -14,6 +14,12 @@
       />
     </ErrorBoundary>
     <ErrorBoundary
+      componentName="CloseApproach"
+      errorMessage="Unable to load close approach data"
+    >
+      <CloseApproach />
+    </ErrorBoundary>
+    <ErrorBoundary
       componentName="WhatIfImpact"
       errorMessage="Unable to load what if it impacted earth component"
     >
@@ -33,6 +39,7 @@
 import { getNearEarthObject } from '@/helpers/neo';
 import ErrorBoundary from '@/components/common/ErrorBoundary.vue';
 import BasicInfoHeader from '@/components/neoDetails/BasicInfoHeader.vue';
+import CloseApproach from '@/components/neoDetails/CloseApproach.vue';
 import WhatIfImpact from '@/components/neoDetails/WhatIfImpact.vue';
 
 export default {
@@ -40,6 +47,7 @@ export default {
   components: {
     ErrorBoundary,
     BasicInfoHeader,
+    CloseApproach,
     WhatIfImpact,
   },
   data() {
