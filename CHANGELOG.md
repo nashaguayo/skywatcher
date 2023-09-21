@@ -4,6 +4,8 @@
 
 ##### Added
 
+- Created NEO Details page
+
 ##### Modified
 
 ##### Fixed

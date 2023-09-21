@@ -82,6 +82,14 @@ const routes = [
       footer: true,
     },
   },
+  {
+    path: '/neo/:id',
+    name: 'neoDetails',
+    component: () => import('@/views/NeoDetailsView.vue'),
+    meta: {
+      footer: true,
+    },
+  },
 ];
 
 const router = new VueRouter({

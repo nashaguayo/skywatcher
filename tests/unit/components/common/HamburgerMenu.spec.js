@@ -5,12 +5,16 @@ jest.mock('@/components/ui/BaseButton.vue', () => ({
   name: 'BaseButton',
 }));
 
+jest.mock('@/components/ui/BaseDivider.vue', () => ({
+  name: 'BaseDivider',
+}));
+
 describe('HamburgerMenu', () => {
   let wrapper;
 
   beforeEach(() => {
     wrapper = shallowMount(HamburgerMenu, {
-      stubs: ['FontAwesomeIcon', 'BaseButton'],
+      stubs: ['FontAwesomeIcon', 'BaseButton', 'BaseDivider'],
     });
   });
 

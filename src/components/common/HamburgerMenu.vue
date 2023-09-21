@@ -30,7 +30,7 @@
         >
           Near Earth Objects
         </BaseButton>
-        <hr />
+        <BaseDivider />
         <BaseButton
           class="navigation-link"
           :small="true"
@@ -86,11 +86,13 @@
 
 <script>
 import BaseButton from '@/components/ui/BaseButton.vue';
+import BaseDivider from '@/components/ui/BaseDivider.vue';
 
 export default {
   name: 'HamburgerMenu',
   components: {
     BaseButton,
+    BaseDivider,
   },
   data() {
     return {
@@ -170,13 +172,6 @@ export default {
     .navigation-link {
       margin-bottom: 0.3rem;
       pointer-events: all;
-    }
-
-    hr {
-      width: 100%;
-      border: 0.1rem solid var(--variant-background-color);
-      margin-top: 1rem;
-      margin-bottom: 1.5rem;
     }
   }
 

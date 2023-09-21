@@ -1,11 +1,18 @@
-import { filterNeos, getNearEarthObjects, sortNeos } from '@/helpers/neo';
+import {
+  filterNeos,
+  getNearEarthObject,
+  getNearEarthObjects,
+  sortNeos,
+} from '@/helpers/neo';
 import * as neoApi from '@/api/nasa/neo';
 
 jest.mock('@/api/nasa/neo', () => ({
   getNearEarthObjects: jest.fn(),
+  getNearEarthObject: jest.fn(),
 }));
 
 const spyGetNearEarthObjects = jest.spyOn(neoApi, 'getNearEarthObjects');
+const spyGetNearEarthObject = jest.spyOn(neoApi, 'getNearEarthObject');
 
 describe('getNearEarthObjects', () => {
   afterEach(() => {
@@ -222,5 +229,43 @@ describe('filterNeos', () => {
     ];
     const result = filterNeos('', neos);
     expect(result).toStrictEqual(neos);
+  });
+});
+
+describe('getNearEarthObject', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+    jest.resetAllMocks();
+  });
+
+  it('should transform data from api correctly', async () => {
+    const neo = {
+      designation: 'Asteroid name',
+      absolute_magnitude_h: 8,
+      is_potentially_hazardous_asteroid: true,
+      is_sentry_object: false,
+      estimated_diameter: {
+        meters: {
+          estimated_diameter_min: 10,
+          estimated_diameter_max: 20,
+        },
+      },
+    };
+    spyGetNearEarthObject.mockResolvedValue(neo);
+    const result = await getNearEarthObject(0);
+    expect(result).toStrictEqual({
+      designation: 'Asteroid name',
+      magnitude: 8,
+      hazardous: true,
+      sentry: false,
+      damage: {
+        megatonKineticE: 0.26,
+        megatonAirburst: 0.26,
+        craterSize: 0,
+        description: 'on impact, it would break windows',
+        category: 0,
+      },
+    });
   });
 });

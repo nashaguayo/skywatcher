@@ -49,12 +49,21 @@
           <span>Hour</span>
           <span>{{ date }}</span>
         </div>
+        <BaseButton
+          class="see-more-info-button"
+          :small="true"
+          :variant="true"
+          :onClickHandler="goToNeoDetailsPage"
+        >
+          See More Info
+        </BaseButton>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import BaseButton from '@/components/ui/BaseButton.vue';
 import {
   missDistanceMeasureUnitMap,
   diameterMeasureUnitMap,
@@ -63,6 +72,9 @@ import { format } from 'date-fns';
 
 export default {
   name: 'AsteroidTableItem',
+  components: {
+    BaseButton,
+  },
   props: {
     neo: {
       type: Object,
@@ -120,6 +132,9 @@ export default {
     roundTwoDecimalPlaces(number) {
       return Math.round(number * 100) / 100;
     },
+    goToNeoDetailsPage() {
+      this.$router.push({ name: 'neoDetails', params: { id: this.neo.id } });
+    },
   },
 };
 </script>
@@ -154,6 +169,10 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .see-more-info-button {
+      width: 100%;
     }
   }
 
