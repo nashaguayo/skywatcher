@@ -18,6 +18,7 @@
       errorMessage="Unable to load what if it impacted earth component"
     >
       <WhatIfImpact
+        :loaded="loaded"
         :category="category"
         :description="description"
         :craterSize="craterSize"

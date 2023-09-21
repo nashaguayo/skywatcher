@@ -7,6 +7,7 @@ describe('WhatIfImpact', () => {
   beforeEach(() => {
     wrapper = shallowMount(WhatIfImpact, {
       propsData: {
+        loaded: true,
         category: 2,
         description: 'some description',
         craterSize: 10,
