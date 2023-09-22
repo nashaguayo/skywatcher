@@ -1,14 +1,14 @@
 <template>
   <div class="close-approach">
     <div class="close-approach-container">
-      <h2>Close Approach</h2>
+      <h2>Close Approach Dates</h2>
       <div class="table">
         <div class="row header" :class="{ 'header-shadow': displayShadow }">
-          <span>Date</span>
-          <span>Hour</span>
-          <span>Orbiting</span>
-          <span>Distance</span>
-          <span>Velocity</span>
+          <span class="header-item">Date</span>
+          <span class="header-item">Hour</span>
+          <span class="header-item">Orbiting</span>
+          <span class="header-item">Distance</span>
+          <span class="header-item">Velocity</span>
         </div>
         <div class="content" @scroll="throttledScrollHandler">
           <div v-for="data in closeApproach" :key="data.epoch" class="row">
@@ -74,13 +74,17 @@ export default {
       box-shadow: var(--main-box-shadow);
 
       .content {
-        max-height: 20rem;
+        max-height: 18rem;
         overflow-x: scroll;
       }
 
       .header {
         padding: 1rem 0;
         transition: box-shadow 0.3s;
+
+        .header-item {
+          font-size: 1rem;
+        }
       }
 
       .header-shadow {
@@ -95,6 +99,7 @@ export default {
 
         span {
           color: var(--secondary-text-color);
+          font-size: 0.8rem;
         }
       }
     }
