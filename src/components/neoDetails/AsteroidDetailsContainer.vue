@@ -17,7 +17,7 @@
       componentName="CloseApproach"
       errorMessage="Unable to load close approach data"
     >
-      <CloseApproach />
+      <CloseApproach :closeApproach="closeApproach" />
     </ErrorBoundary>
     <ErrorBoundary
       componentName="WhatIfImpact"
@@ -61,11 +61,16 @@ export default {
       category: 0,
       sentry: false,
       hazardous: false,
+      closeApproach: [],
       loaded: false,
     };
   },
   async created() {
-    const neo = await getNearEarthObject(this.$route.params.id);
+    const neo = await getNearEarthObject(
+      this.$route.params.id,
+      'kilometers_per_hour',
+      'astronomical'
+    );
 
     this.designation = neo.designation;
     this.magnitude = neo.magnitude;
@@ -76,6 +81,7 @@ export default {
     this.craterSize = neo.damage.craterSize;
     this.description = neo.damage.description;
     this.category = neo.damage.category;
+    this.closeApproach = neo.closeApproach;
 
     this.loaded = true;
   },

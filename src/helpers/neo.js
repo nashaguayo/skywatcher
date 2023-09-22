@@ -113,7 +113,11 @@ export function filterNeos(filterBy, neos) {
   return filteredNeos;
 }
 
-export async function getNearEarthObject(id) {
+export async function getNearEarthObject(
+  id,
+  velocityMeasureUnit,
+  missDistanceMeasureUnit
+) {
   const neo = await getNearEarthObjectApi(id);
   const damage = getDamageData(
     (neo.estimated_diameter.meters.estimated_diameter_min +
@@ -127,6 +131,14 @@ export async function getNearEarthObject(id) {
     damage,
     hazardous: neo.is_potentially_hazardous_asteroid,
     sentry: neo.is_sentry_object,
+    closeApproach: neo.close_approach_data.reverse().map((data) => ({
+      epoch: data.epoch_date_close_approach,
+      date: data.close_approach_date,
+      hour: format(data.epoch_date_close_approach, 'HH:mm'),
+      velocity: data.relative_velocity[velocityMeasureUnit],
+      missDistance: data.miss_distance[missDistanceMeasureUnit],
+      orbitingBody: data.orbiting_body,
+    })),
   };
 }
 
