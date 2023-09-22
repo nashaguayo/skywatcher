@@ -183,6 +183,7 @@ export default {
     .disclaimers {
       width: 100%;
       background: linear-gradient(
+        100deg,
         var(--secondary-background-color),
         var(--secondary-gradient-background-color)
       );
