@@ -15,8 +15,8 @@
             <span>{{ data.date }}</span>
             <span>{{ data.hour }}</span>
             <span>{{ data.orbitingBody }}</span>
-            <span>{{ Math.round(data.missDistance * 100) / 100 }}</span>
-            <span>{{ Math.round(data.velocity * 100) / 100 }}</span>
+            <span>{{ roundTwoDecimalPlaces(data.missDistance) }}</span>
+            <span>{{ roundTwoDecimalPlaces(data.velocity) }}</span>
           </div>
         </div>
       </div>
@@ -26,6 +26,7 @@
 
 <script>
 import throttle from 'lodash/throttle';
+import { roundTwoDecimalPlaces } from '@/lib/math';
 
 export default {
   name: 'CloseApproach',
@@ -45,6 +46,7 @@ export default {
     this.throttledScrollHandler = throttle(this.scrollHandler, 500);
   },
   methods: {
+    roundTwoDecimalPlaces,
     scrollHandler(event) {
       this.displayShadow = event.target.scrollTop !== 0;
     },
