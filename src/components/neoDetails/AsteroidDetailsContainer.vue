@@ -14,12 +14,6 @@
       />
     </ErrorBoundary>
     <ErrorBoundary
-      componentName="CloseApproach"
-      errorMessage="Unable to load close approach data"
-    >
-      <CloseApproach :closeApproach="closeApproach" />
-    </ErrorBoundary>
-    <ErrorBoundary
       componentName="WhatIfImpact"
       errorMessage="Unable to load what if it impacted earth component"
     >
@@ -32,23 +26,32 @@
         :megatonAirburst="megatonAirburst"
       />
     </ErrorBoundary>
+    <BaseDivider />
+    <ErrorBoundary
+      componentName="CloseApproach"
+      errorMessage="Unable to load close approach data"
+    >
+      <CloseApproach :closeApproach="closeApproach" />
+    </ErrorBoundary>
   </div>
 </template>
 
 <script>
 import { getNearEarthObject } from '@/helpers/neo';
+import BaseDivider from '@/components/ui/BaseDivider.vue';
 import ErrorBoundary from '@/components/common/ErrorBoundary.vue';
 import BasicInfoHeader from '@/components/neoDetails/BasicInfoHeader.vue';
-import CloseApproach from '@/components/neoDetails/CloseApproach.vue';
 import WhatIfImpact from '@/components/neoDetails/WhatIfImpact.vue';
+import CloseApproach from '@/components/neoDetails/CloseApproach.vue';
 
 export default {
   name: 'AsteroidDetailsContainer',
   components: {
+    BaseDivider,
     ErrorBoundary,
     BasicInfoHeader,
-    CloseApproach,
     WhatIfImpact,
+    CloseApproach,
   },
   data() {
     return {
