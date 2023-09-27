@@ -6,4 +6,9 @@ describe('BaseDivider.vue', () => {
     const wrapper = shallowMount(BaseDivider);
     expect(wrapper.find('.base-divider').exists()).toBeTruthy();
   });
+
+  it('renders variant divider', () => {
+    const wrapper = shallowMount(BaseDivider, { propsData: { variant: true } });
+    expect(wrapper.find('.variant').exists()).toBeTruthy();
+  });
 });

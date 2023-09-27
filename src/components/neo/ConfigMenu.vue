@@ -11,8 +11,10 @@
     <AsteroidMeasureUnits
       :diameterMeasureUnit="diameterMeasureUnit"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
+      :velocityMeasureUnit="velocityMeasureUnit"
       @newDiameterMeasureUnit="newDiameterMeasureUnit"
       @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
+      @newVelocityMeasureUnit="newVelocityMeasureUnit"
     />
     <AsteroidSort @newSortBy="newSortBy" :sortBy="sortBy" />
     <AsteroidFilters @newFilterBy="newFilterBy" :filterBy="filterBy" />
@@ -40,6 +42,10 @@ export default {
       type: String,
       required: true,
     },
+    velocityMeasureUnit: {
+      type: String,
+      required: true,
+    },
     sortBy: {
       type: String,
       required: true,
@@ -55,6 +61,9 @@ export default {
     },
     newMissDistanceMeasureUnit(missDistanceMeasureUnit) {
       this.$emit('newMissDistanceMeasureUnit', missDistanceMeasureUnit);
+    },
+    newVelocityMeasureUnit(velocityMeasureUnit) {
+      this.$emit('newVelocityMeasureUnit', velocityMeasureUnit);
     },
     newSortBy(sortBy) {
       this.$emit('newSortBy', sortBy);

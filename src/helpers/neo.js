@@ -131,7 +131,7 @@ export async function getNearEarthObject(
     damage,
     hazardous: neo.is_potentially_hazardous_asteroid,
     sentry: neo.is_sentry_object,
-    closeApproach: neo.close_approach_data.reverse().map((data) => ({
+    closeApproaches: neo.close_approach_data.reverse().map((data) => ({
       epoch: data.epoch_date_close_approach,
       date: data.close_approach_date,
       hour: format(data.epoch_date_close_approach, 'HH:mm'),

@@ -31,7 +31,11 @@
       componentName="CloseApproach"
       errorMessage="Unable to load close approach data"
     >
-      <CloseApproach :closeApproach="closeApproach" />
+      <CloseApproach
+        :closeApproaches="closeApproaches"
+        :missDistanceMeasureUnit="missDistanceMeasureUnit"
+        :velocityMeasureUnit="velocityMeasureUnit"
+      />
     </ErrorBoundary>
   </div>
 </template>
@@ -43,6 +47,10 @@ import ErrorBoundary from '@/components/common/ErrorBoundary.vue';
 import BasicInfoHeader from '@/components/neoDetails/BasicInfoHeader.vue';
 import WhatIfImpact from '@/components/neoDetails/WhatIfImpact.vue';
 import CloseApproach from '@/components/neoDetails/CloseApproach.vue';
+import {
+  getMissDistanceMeasureUnit as getMissDistanceMeasureUnitLS,
+  getVelocityMeasureUnit as getVelocityMeasureUnitLS,
+} from '@/lib/localStorage';
 
 export default {
   name: 'AsteroidDetailsContainer',
@@ -55,6 +63,8 @@ export default {
   },
   data() {
     return {
+      missDistanceMeasureUnit: getMissDistanceMeasureUnitLS() ?? 'astronomical',
+      velocityMeasureUnit: getVelocityMeasureUnitLS() ?? 'kilometers_per_hour',
       designation: '',
       magnitude: 0,
       megatonKineticE: 0,
@@ -64,15 +74,15 @@ export default {
       category: 0,
       sentry: false,
       hazardous: false,
-      closeApproach: [],
+      closeApproaches: [],
       loaded: false,
     };
   },
   async created() {
     const neo = await getNearEarthObject(
       this.$route.params.id,
-      'kilometers_per_hour',
-      'astronomical'
+      this.velocityMeasureUnit,
+      this.missDistanceMeasureUnit
     );
 
     this.designation = neo.designation;
@@ -84,7 +94,7 @@ export default {
     this.craterSize = neo.damage.craterSize;
     this.description = neo.damage.description;
     this.category = neo.damage.category;
-    this.closeApproach = neo.closeApproach;
+    this.closeApproaches = neo.closeApproaches;
 
     this.loaded = true;
   },

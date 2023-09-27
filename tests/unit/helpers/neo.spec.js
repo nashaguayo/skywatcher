@@ -284,7 +284,7 @@ describe('getNearEarthObject', () => {
         description: 'on impact, it would break windows',
         category: 0,
       },
-      closeApproach: [
+      closeApproaches: [
         {
           epoch: 7287481800000,
           date: '2023-06-23',

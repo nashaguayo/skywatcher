@@ -29,10 +29,12 @@
         v-if="configMenuOpen"
         :diameterMeasureUnit="diameterMeasureUnit"
         :missDistanceMeasureUnit="missDistanceMeasureUnit"
+        :velocityMeasureUnit="velocityMeasureUnit"
         :sortBy="sortBy"
         :filterBy="filterBy"
         @newDiameterMeasureUnit="newDiameterMeasureUnit"
         @newMissDistanceMeasureUnit="newMissDistanceMeasureUnit"
+        @newVelocityMeasureUnit="newVelocityMeasureUnit"
         @newSortBy="newSortBy"
         @newFilterBy="newFilterBy"
         @closeTapped="closeConfigMenu"
@@ -50,6 +52,8 @@ import {
   setMissDistanceMeasureUnit as setMissDistanceMeasureUnitLS,
   getDiameterMeasureUnit as getDiameterMeasureUnitLS,
   setDiameterMeasureUnit as setDiameterMeasureUnitLS,
+  getVelocityMeasureUnit as getVelocityMeasureUnitLS,
+  setVelocityMeasureUnit as setVelocityMeasureUnit,
   getSortBy as getSortByLS,
   setSortBy as setSortByLS,
   getFilterBy as getFilterByLS,
@@ -68,6 +72,7 @@ export default {
       neos: [],
       missDistanceMeasureUnit: getMissDistanceMeasureUnitLS() ?? 'astronomical',
       diameterMeasureUnit: getDiameterMeasureUnitLS() ?? 'kilometers',
+      velocityMeasureUnit: getVelocityMeasureUnitLS() ?? 'kilometers_per_hour',
       date: '',
       sortBy: getSortByLS() ?? 'name',
       filterBy: getFilterByLS() ?? '',
@@ -116,6 +121,10 @@ export default {
     newDiameterMeasureUnit(diameterMeasureUnit) {
       this.diameterMeasureUnit = diameterMeasureUnit;
       setDiameterMeasureUnitLS(diameterMeasureUnit);
+    },
+    newVelocityMeasureUnit(velocityMeasureUnit) {
+      this.velocityMeasureUnit = velocityMeasureUnit;
+      setVelocityMeasureUnit(velocityMeasureUnit);
     },
     openConfigMenu() {
       this.configMenuOpen = true;

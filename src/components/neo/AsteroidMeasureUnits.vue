@@ -67,6 +67,36 @@
         Feet
       </BaseButton>
     </div>
+    <div class="velocity-measure-unit">
+      <span>Velocity</span>
+      <BaseButton
+        :onClickHandler="
+          () => $emit('newVelocityMeasureUnit', 'kilometers_per_hour')
+        "
+        :small="true"
+        :variant="'kilometers_per_hour' !== velocityMeasureUnit"
+      >
+        Kilometers per Hour
+      </BaseButton>
+      <BaseButton
+        :onClickHandler="
+          () => $emit('newVelocityMeasureUnit', 'kilometers_per_second')
+        "
+        :small="true"
+        :variant="'kilometers_per_second' !== velocityMeasureUnit"
+      >
+        Kilometers per Second
+      </BaseButton>
+      <BaseButton
+        :onClickHandler="
+          () => $emit('newVelocityMeasureUnit', 'miles_per_hour')
+        "
+        :small="true"
+        :variant="'miles_per_hour' !== velocityMeasureUnit"
+      >
+        Miles per Hour
+      </BaseButton>
+    </div>
   </div>
 </template>
 
@@ -87,6 +117,10 @@ export default {
       type: String,
       required: true,
     },
+    velocityMeasureUnit: {
+      type: String,
+      required: true,
+    },
   },
 };
 </script>
@@ -101,7 +135,8 @@ export default {
   }
 
   .diameter-measure-unit,
-  .miss-distance-measure-unit {
+  .miss-distance-measure-unit,
+  .velocity-measure-unit {
     display: flex;
     flex-direction: column;
     padding: 0 1rem;
