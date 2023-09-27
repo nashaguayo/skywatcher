@@ -123,6 +123,7 @@ export default {
         border-radius: 50%;
         border: 0.15rem solid var(--magnitude-border-color);
         background-color: var(--magnitude-background-color);
+        box-shadow: var(--main-box-shadow);
       }
 
       .category-0 {
