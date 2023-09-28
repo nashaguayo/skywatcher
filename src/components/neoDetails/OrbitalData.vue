@@ -1,9 +1,18 @@
 <template>
   <div class="orbital-data">
     <div class="orbital-data-container">
-      <h2>Orbital Data</h2>
       <div class="content-outside">
-        <div class="content-inside"></div>
+        <div
+          class="content-inside"
+          v-if="orbitalData && orbitalData.orbit && orbitalData.orbit.class"
+        >
+          <p class="item value">
+            {{ orbitalData.orbit.class.description }}
+          </p>
+          <p class="item key">Class {{ orbitalData.orbit.class.type }}</p>
+          <p class="item value">{{ orbitalData.orbit.class.range }}</p>
+          <p class="item key">Range</p>
+        </div>
       </div>
     </div>
   </div>
@@ -30,7 +39,7 @@ export default {
 
     .content-outside {
       margin: 1rem 2rem;
-      padding: 1rem;
+      padding: 1.5rem;
       width: calc(100% - 4rem);
       background: linear-gradient(
         100deg,
@@ -40,12 +49,27 @@ export default {
       box-shadow: var(--main-box-shadow);
 
       .content-inside {
+        display: flex;
+        flex-direction: column;
         background: linear-gradient(
           100deg,
           var(--variant-background-color),
           var(--variant-gradient-background-color)
         );
+        box-shadow: var(--main-box-shadow);
         padding: 1rem;
+        justify-content: center;
+        height: 20rem;
+
+        .item {
+          text-align: center;
+          margin: 1rem 0 0;
+
+          &.key {
+            font-size: 2rem;
+            margin: 0 0 1.5rem;
+          }
+        }
       }
     }
   }

@@ -7,7 +7,15 @@ describe('OrbitalData', () => {
   beforeEach(() => {
     wrapper = shallowMount(OrbitalData, {
       propsData: {
-        orbitalData: {},
+        orbitalData: {
+          orbit: {
+            class: {
+              type: 'orbitClassType',
+              description: 'orbitClassDescription',
+              range: 'orbitClassRange',
+            },
+          },
+        },
       },
     });
   });
@@ -24,13 +32,17 @@ describe('OrbitalData', () => {
     expect(wrapper.classes()).toContain('orbital-data');
   });
 
-  it('renders mocked components', () => {
-    // expect(wrapper.find('basedivider-stub').exists()).toBeTruthy();
-  });
+  it('renders class information', () => {
+    expect(wrapper.find('.content-inside').exists()).toBeTruthy();
 
-  it('renders title', () => {
-    const title = wrapper.find('h2');
-    expect(title.exists()).toBeTruthy();
-    expect(title.text()).toBe('Orbital Data');
+    const classDataKeys = wrapper.findAll('.content-inside .key');
+    expect(classDataKeys.length).toBe(2);
+    expect(classDataKeys.at(0).text()).toBe('Class orbitClassType');
+    expect(classDataKeys.at(1).text()).toBe('Range');
+
+    const classDataValues = wrapper.findAll('.content-inside .value');
+    expect(classDataValues.length).toBe(2);
+    expect(classDataValues.at(0).text()).toBe('orbitClassDescription');
+    expect(classDataValues.at(1).text()).toBe('orbitClassRange');
   });
 });
