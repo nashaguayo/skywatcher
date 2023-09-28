@@ -54,7 +54,7 @@ import {
   getDiameterMeasureUnit as getDiameterMeasureUnitLS,
   setDiameterMeasureUnit as setDiameterMeasureUnitLS,
   getVelocityMeasureUnit as getVelocityMeasureUnitLS,
-  setVelocityMeasureUnit as setVelocityMeasureUnit,
+  setVelocityMeasureUnit as setVelocityMeasureUnitLS,
   getSortBy as getSortByLS,
   setSortBy as setSortByLS,
   getFilterBy as getFilterByLS,
@@ -125,7 +125,7 @@ export default {
     },
     newVelocityMeasureUnit(velocityMeasureUnit) {
       this.velocityMeasureUnit = velocityMeasureUnit;
-      setVelocityMeasureUnit(velocityMeasureUnit);
+      setVelocityMeasureUnitLS(velocityMeasureUnit);
     },
     openConfigMenu() {
       this.configMenuOpen = true;
