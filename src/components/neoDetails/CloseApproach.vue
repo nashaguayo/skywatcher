@@ -125,6 +125,7 @@ export default {
       .content {
         max-height: 18rem;
         overflow-x: scroll;
+        padding-bottom: 1rem;
       }
 
       .header {
