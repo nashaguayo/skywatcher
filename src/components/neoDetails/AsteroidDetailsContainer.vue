@@ -35,6 +35,7 @@
         :closeApproaches="closeApproaches"
         :missDistanceMeasureUnit="missDistanceMeasureUnit"
         :velocityMeasureUnit="velocityMeasureUnit"
+        :loaded="loaded"
       />
     </ErrorBoundary>
   </div>

@@ -1,6 +1,7 @@
 <template>
   <div class="close-approach">
-    <div class="close-approach-container">
+    <CloseApproachSkeleton v-if="!loaded" />
+    <div v-show="loaded" class="close-approach-container">
       <h2>Close Approach Dates</h2>
       <div class="measure-units">
         <h3 class="measure-units-title">Measure Units</h3>
@@ -28,11 +29,25 @@
             :key="closeApproach.epoch"
             class="row info"
           >
-            <span>{{ closeApproach.date }}</span>
-            <span>{{ closeApproach.hour }}</span>
-            <span>{{ closeApproach.orbitingBody }}</span>
-            <span>{{ roundTwoDecimalPlaces(closeApproach.missDistance) }}</span>
-            <span>{{ roundTwoDecimalPlaces(closeApproach.velocity) }}</span>
+            <transition name="fade-in" appear>
+              <span v-if="loaded">{{ closeApproach.date }}</span>
+            </transition>
+            <transition name="fade-in" appear>
+              <span v-if="loaded">{{ closeApproach.hour }}</span>
+            </transition>
+            <transition name="fade-in" appear>
+              <span v-if="loaded">{{ closeApproach.orbitingBody }}</span>
+            </transition>
+            <transition name="fade-in" appear>
+              <span v-if="loaded">{{
+                roundTwoDecimalPlaces(closeApproach.missDistance)
+              }}</span>
+            </transition>
+            <transition name="fade-in" appear>
+              <span v-if="loaded">{{
+                roundTwoDecimalPlaces(closeApproach.velocity)
+              }}</span>
+            </transition>
           </div>
         </div>
       </div>
@@ -44,11 +59,13 @@
 import throttle from 'lodash/throttle';
 import { roundTwoDecimalPlaces } from '@/lib/math';
 import { velocityMeasureUnitMap } from '@/constants/measurements';
+import CloseApproachSkeleton from '@/skeleton/neoDetails/CloseApproachSkeleton.vue';
 import BaseDivider from '@/components/ui/BaseDivider.vue';
 
 export default {
   name: 'CloseApproach',
   components: {
+    CloseApproachSkeleton,
     BaseDivider,
   },
   props: {
@@ -62,6 +79,10 @@ export default {
     },
     velocityMeasureUnit: {
       type: String,
+      required: true,
+    },
+    loaded: {
+      type: Boolean,
       required: true,
     },
   },
@@ -124,7 +145,7 @@ export default {
 
       .content {
         max-height: 14.3rem;
-        overflow-x: scroll;
+        overflow: scroll;
         padding-bottom: 1rem;
       }
 
@@ -161,5 +182,13 @@ export default {
       }
     }
   }
+}
+
+.fade-in-enter-active {
+  transition: opacity 0.3s;
+}
+
+.fade-in-enter {
+  opacity: 0;
 }
 </style>

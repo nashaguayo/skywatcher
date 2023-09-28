@@ -25,8 +25,9 @@ describe('CloseApproach', () => {
         ],
         missDistanceMeasureUnit: 'miles',
         velocityMeasureUnit: 'kilometers_per_hour',
+        loaded: true,
       },
-      stubs: ['BaseDivider'],
+      stubs: ['CloseApproachSkeleton', 'BaseDivider'],
     });
   });
 
