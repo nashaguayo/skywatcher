@@ -20,6 +20,7 @@ export default {
   border: 0.1rem solid var(--variant-background-color);
   margin-top: 1rem;
   margin-bottom: 1.5rem;
+  box-shadow: var(--main-box-shadow);
 
   &.variant {
     border: 0.1rem solid var(--secondary-background-color);
