@@ -89,6 +89,10 @@ export default {
       type: String,
       required: true,
     },
+    velocityMeasureUnit: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
@@ -131,7 +135,14 @@ export default {
   },
   methods: {
     goToNeoDetailsPage() {
-      this.$router.push({ name: 'neoDetails', params: { id: this.neo.id } });
+      this.$router.push({
+        name: 'neoDetails',
+        params: {
+          id: this.neo.id,
+          velocityMeasureUnit: this.velocityMeasureUnit,
+          missDistanceMeasureUnit: this.missDistanceMeasureUnit,
+        },
+      });
     },
   },
 };

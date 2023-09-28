@@ -21,6 +21,7 @@
       :date="date"
       :missDistanceMeasureUnit="missDistanceMeasureUnit"
       :diameterMeasureUnit="diameterMeasureUnit"
+      :velocityMeasureUnit="velocityMeasureUnit"
       :loaded="loaded"
       @newDate="newDate"
     />

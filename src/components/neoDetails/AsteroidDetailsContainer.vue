@@ -33,8 +33,8 @@
     >
       <CloseApproach
         :closeApproaches="closeApproaches"
-        :missDistanceMeasureUnit="missDistanceMeasureUnit"
-        :velocityMeasureUnit="velocityMeasureUnit"
+        :missDistanceMeasureUnit="$route.params.missDistanceMeasureUnit"
+        :velocityMeasureUnit="$route.params.velocityMeasureUnit"
         :loaded="loaded"
       />
     </ErrorBoundary>
@@ -48,10 +48,6 @@ import ErrorBoundary from '@/components/common/ErrorBoundary.vue';
 import BasicInfoHeader from '@/components/neoDetails/BasicInfoHeader.vue';
 import WhatIfImpact from '@/components/neoDetails/WhatIfImpact.vue';
 import CloseApproach from '@/components/neoDetails/CloseApproach.vue';
-import {
-  getMissDistanceMeasureUnit as getMissDistanceMeasureUnitLS,
-  getVelocityMeasureUnit as getVelocityMeasureUnitLS,
-} from '@/lib/localStorage';
 
 export default {
   name: 'AsteroidDetailsContainer',
@@ -64,8 +60,6 @@ export default {
   },
   data() {
     return {
-      missDistanceMeasureUnit: getMissDistanceMeasureUnitLS() ?? 'astronomical',
-      velocityMeasureUnit: getVelocityMeasureUnitLS() ?? 'kilometers_per_hour',
       designation: '',
       magnitude: 0,
       megatonKineticE: 0,
@@ -82,8 +76,8 @@ export default {
   async created() {
     const neo = await getNearEarthObject(
       this.$route.params.id,
-      this.velocityMeasureUnit,
-      this.missDistanceMeasureUnit
+      this.$route.params.velocityMeasureUnit,
+      this.$route.params.missDistanceMeasureUnit
     );
 
     this.designation = neo.designation;

@@ -19,6 +19,7 @@
         :neo="neo"
         :diameterMeasureUnit="diameterMeasureUnit"
         :missDistanceMeasureUnit="missDistanceMeasureUnit"
+        :velocityMeasureUnit="velocityMeasureUnit"
       />
     </div>
   </div>
@@ -51,6 +52,10 @@ export default {
       required: true,
     },
     diameterMeasureUnit: {
+      type: String,
+      required: true,
+    },
+    velocityMeasureUnit: {
       type: String,
       required: true,
     },
