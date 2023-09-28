@@ -5,7 +5,11 @@ describe('OrbitalData', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(OrbitalData);
+    wrapper = shallowMount(OrbitalData, {
+      propsData: {
+        orbitalData: {},
+      },
+    });
   });
 
   afterEach(() => {

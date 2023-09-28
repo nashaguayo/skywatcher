@@ -12,6 +12,12 @@
 <script>
 export default {
   name: 'OrbitalData',
+  props: {
+    orbitalData: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
 

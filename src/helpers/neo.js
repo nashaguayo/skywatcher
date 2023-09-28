@@ -139,6 +139,40 @@ export async function getNearEarthObject(
       missDistance: data.miss_distance[missDistanceMeasureUnit],
       orbitingBody: data.orbiting_body,
     })),
+    orbitalData: {
+      orbit: {
+        class: {
+          description: neo.orbital_data.orbit_class.orbit_class_description,
+          range: neo.orbital_data.orbit_class.orbit_class_range,
+          type: neo.orbital_data.orbit_class.orbit_class_type,
+        },
+        determinationDate: neo.orbital_data.orbit_determination_date,
+        uncertainty: neo.orbital_data.orbit_uncertainty,
+        period: neo.orbital_data.orbital_period,
+      },
+      aphelionDistance: neo.orbital_data.aphelion_distance,
+      ascendingNodeLongitude: neo.orbital_data.ascending_node_longitude,
+      dataArc: neo.orbital_data.data_arc_in_days,
+      eccentricity: neo.orbital_data.eccentricity,
+      epochOsculation: neo.orbital_data.epoch_osculation,
+      equinox: neo.orbital_data.equinox,
+      inclination: neo.orbital_data.inclination,
+      jupiterTisserandInvariant: neo.orbital_data.jupiter_tisserand_invariant,
+      firstObservationDate: neo.orbital_data.first_observation_date,
+      lastObservationDate: neo.orbital_data.last_observation_date,
+      mean: {
+        anomaly: neo.orbital_data.mean_anomaly,
+        motion: neo.orbital_data.mean_motion,
+      },
+      minimumOrbitIntersection: neo.orbital_data.minimum_orbit_intersection,
+      observationsUsed: neo.orbital_data.observations_used,
+      perihelion: {
+        argument: neo.orbital_data.perihelion_argument,
+        distance: neo.orbital_data.perihelion_distance,
+        time: neo.orbital_data.perihelion_time,
+      },
+      semiMajorAxis: neo.orbital_data.semi_major_axis,
+    },
   };
 }
 

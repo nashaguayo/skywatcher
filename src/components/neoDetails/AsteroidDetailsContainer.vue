@@ -31,7 +31,7 @@
       componentName="OrbitalData"
       errorMessage="Unable to load orbital data"
     >
-      <OrbitalData />
+      <OrbitalData :orbitalData="orbitalData" />
     </ErrorBoundary>
     <BaseDivider />
     <ErrorBoundary
@@ -79,6 +79,7 @@ export default {
       sentry: false,
       hazardous: false,
       closeApproaches: [],
+      orbitalData: {},
       loaded: false,
     };
   },
@@ -99,6 +100,7 @@ export default {
     this.description = neo.damage.description;
     this.category = neo.damage.category;
     this.closeApproaches = neo.closeApproaches;
+    this.orbitalData = neo.orbitalData;
 
     this.loaded = true;
   },
