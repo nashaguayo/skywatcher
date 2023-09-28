@@ -91,7 +91,7 @@ export default {
     align-items: center;
 
     .go-back-button {
-      position: absolute;
+      position: fixed;
       color: var(--main-icon-color);
       background-color: var(--variant-background-color);
       border-radius: 3rem;
