@@ -26,7 +26,7 @@
           <div
             v-for="closeApproach in closeApproaches"
             :key="closeApproach.epoch"
-            class="row"
+            class="row info"
           >
             <span>{{ closeApproach.date }}</span>
             <span>{{ closeApproach.hour }}</span>
@@ -123,7 +123,7 @@ export default {
       box-shadow: var(--main-box-shadow);
 
       .content {
-        max-height: 18rem;
+        max-height: 14.3rem;
         overflow-x: scroll;
         padding-bottom: 1rem;
       }
@@ -134,11 +134,18 @@ export default {
 
         .header-item {
           font-size: 1rem;
+          text-shadow: var(--main-text-shadow);
         }
       }
 
       .header-shadow {
         box-shadow: var(--bottom-box-shadow);
+      }
+
+      .info {
+        background-color: rgba(0, 0, 0, 0.3);
+        margin-bottom: 0.5rem;
+        padding: 0.3rem 0;
       }
 
       .row {
