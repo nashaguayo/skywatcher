@@ -19,6 +19,7 @@ describe('ConfigMenu', () => {
       propsData: {
         missDistanceMeasureUnit: 'astronomical',
         diameterMeasureUnit: 'kilometers',
+        velocityMeasureUnit: 'kilometers_per_hour',
         sortBy: 'name',
         filterBy: '',
       },

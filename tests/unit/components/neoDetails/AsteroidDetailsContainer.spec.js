@@ -6,6 +6,10 @@ jest.mock('@/components/neoDetails/BasicInfoHeader.vue', () => ({
   name: 'BasicInfoHeader',
 }));
 
+jest.mock('@/components/neoDetails/CloseApproach.vue', () => ({
+  name: 'CloseApproach',
+}));
+
 jest.mock('@/components/neoDetails/WhatIfImpact.vue', () => ({
   name: 'WhatIfImpact',
 }));
@@ -39,7 +43,7 @@ describe('AsteroidDetailsContainer', () => {
           },
         },
       },
-      stubs: ['BasicInfoHeader', 'WhatIfImpact'],
+      stubs: ['BasicInfoHeader', 'CloseApproach', 'WhatIfImpact'],
     });
   });
 
@@ -60,6 +64,7 @@ describe('AsteroidDetailsContainer', () => {
 
   it('renders stubs correctly', () => {
     expect(wrapper.find('basicinfoheader-stub').exists()).toBeTruthy();
+    expect(wrapper.find('closeapproach-stub').exists()).toBeTruthy();
     expect(wrapper.find('whatifimpact-stub').exists()).toBeTruthy();
   });
 });

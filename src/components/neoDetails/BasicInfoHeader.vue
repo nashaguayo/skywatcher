@@ -91,7 +91,7 @@ export default {
     align-items: center;
 
     .go-back-button {
-      position: absolute;
+      position: fixed;
       color: var(--main-icon-color);
       background-color: var(--variant-background-color);
       border-radius: 3rem;
@@ -123,6 +123,7 @@ export default {
         border-radius: 50%;
         border: 0.15rem solid var(--magnitude-border-color);
         background-color: var(--magnitude-background-color);
+        box-shadow: var(--main-box-shadow);
       }
 
       .category-0 {
@@ -183,6 +184,7 @@ export default {
     .disclaimers {
       width: 100%;
       background: linear-gradient(
+        100deg,
         var(--secondary-background-color),
         var(--secondary-gradient-background-color)
       );

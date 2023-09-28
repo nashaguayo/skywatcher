@@ -26,21 +26,37 @@
         :megatonAirburst="megatonAirburst"
       />
     </ErrorBoundary>
+    <BaseDivider />
+    <ErrorBoundary
+      componentName="CloseApproach"
+      errorMessage="Unable to load close approach data"
+    >
+      <CloseApproach
+        :closeApproaches="closeApproaches"
+        :missDistanceMeasureUnit="$route.params.missDistanceMeasureUnit"
+        :velocityMeasureUnit="$route.params.velocityMeasureUnit"
+        :loaded="loaded"
+      />
+    </ErrorBoundary>
   </div>
 </template>
 
 <script>
 import { getNearEarthObject } from '@/helpers/neo';
+import BaseDivider from '@/components/ui/BaseDivider.vue';
 import ErrorBoundary from '@/components/common/ErrorBoundary.vue';
 import BasicInfoHeader from '@/components/neoDetails/BasicInfoHeader.vue';
 import WhatIfImpact from '@/components/neoDetails/WhatIfImpact.vue';
+import CloseApproach from '@/components/neoDetails/CloseApproach.vue';
 
 export default {
   name: 'AsteroidDetailsContainer',
   components: {
+    BaseDivider,
     ErrorBoundary,
     BasicInfoHeader,
     WhatIfImpact,
+    CloseApproach,
   },
   data() {
     return {
@@ -53,11 +69,16 @@ export default {
       category: 0,
       sentry: false,
       hazardous: false,
+      closeApproaches: [],
       loaded: false,
     };
   },
   async created() {
-    const neo = await getNearEarthObject(this.$route.params.id);
+    const neo = await getNearEarthObject(
+      this.$route.params.id,
+      this.$route.params.velocityMeasureUnit,
+      this.$route.params.missDistanceMeasureUnit
+    );
 
     this.designation = neo.designation;
     this.magnitude = neo.magnitude;
@@ -68,6 +89,7 @@ export default {
     this.craterSize = neo.damage.craterSize;
     this.description = neo.damage.description;
     this.category = neo.damage.category;
+    this.closeApproaches = neo.closeApproaches;
 
     this.loaded = true;
   },

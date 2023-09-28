@@ -251,10 +251,28 @@ describe('getNearEarthObject', () => {
           estimated_diameter_max: 20,
         },
       },
+      close_approach_data: [
+        {
+          epoch_date_close_approach: 7287481800000,
+          close_approach_date: '2023-06-23',
+          close_approach_date_full: '2023-06-23 13:18',
+          relative_velocity: {
+            kilometers_per_hour: 321,
+          },
+          miss_distance: {
+            astronomical: 123,
+          },
+          orbiting_body: 'Earth',
+        },
+      ],
     };
     spyGetNearEarthObject.mockResolvedValue(neo);
-    const result = await getNearEarthObject(0);
-    expect(result).toStrictEqual({
+    const result = await getNearEarthObject(
+      0,
+      'kilometers_per_hour',
+      'astronomical'
+    );
+    expect(result).toMatchObject({
       designation: 'Asteroid name',
       magnitude: 8,
       hazardous: true,
@@ -266,6 +284,15 @@ describe('getNearEarthObject', () => {
         description: 'on impact, it would break windows',
         category: 0,
       },
+      closeApproaches: [
+        {
+          epoch: 7287481800000,
+          date: '2023-06-23',
+          missDistance: 123,
+          orbitingBody: 'Earth',
+          velocity: 321,
+        },
+      ],
     });
   });
 });

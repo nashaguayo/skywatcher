@@ -30,6 +30,7 @@ describe('AsteroidTableItem.vue', () => {
         },
         missDistanceMeasureUnit: 'km',
         diameterMeasureUnit: 'km',
+        velocityMeasureUnit: 'kilometers per hour',
       },
       stubs: ['FontAwesomeIcon'],
     });

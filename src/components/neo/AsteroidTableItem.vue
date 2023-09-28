@@ -68,6 +68,7 @@ import {
   missDistanceMeasureUnitMap,
   diameterMeasureUnitMap,
 } from '@/constants/measurements';
+import { roundTwoDecimalPlaces } from '@/lib/math';
 import { format } from 'date-fns';
 
 export default {
@@ -85,6 +86,10 @@ export default {
       required: true,
     },
     diameterMeasureUnit: {
+      type: String,
+      required: true,
+    },
+    velocityMeasureUnit: {
       type: String,
       required: true,
     },
@@ -110,17 +115,17 @@ export default {
       return this.neo.magnitude;
     },
     missDistance() {
-      return this.roundTwoDecimalPlaces(
+      return roundTwoDecimalPlaces(
         this.neo.missDistance[this.missDistanceMeasureUnit]
       );
     },
     diameterMin() {
-      return this.roundTwoDecimalPlaces(
+      return roundTwoDecimalPlaces(
         this.neo.diameter[this.diameterMeasureUnit].min
       );
     },
     diameterMax() {
-      return this.roundTwoDecimalPlaces(
+      return roundTwoDecimalPlaces(
         this.neo.diameter[this.diameterMeasureUnit].max
       );
     },
@@ -129,11 +134,15 @@ export default {
     },
   },
   methods: {
-    roundTwoDecimalPlaces(number) {
-      return Math.round(number * 100) / 100;
-    },
     goToNeoDetailsPage() {
-      this.$router.push({ name: 'neoDetails', params: { id: this.neo.id } });
+      this.$router.push({
+        name: 'neoDetails',
+        params: {
+          id: this.neo.id,
+          velocityMeasureUnit: this.velocityMeasureUnit,
+          missDistanceMeasureUnit: this.missDistanceMeasureUnit,
+        },
+      });
     },
   },
 };

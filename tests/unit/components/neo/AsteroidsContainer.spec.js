@@ -23,6 +23,8 @@ jest.mock('@/lib/localStorage', () => ({
   setMissDistanceMeasureUnit: jest.fn(),
   getDiameterMeasureUnit: jest.fn(),
   setDiameterMeasureUnit: jest.fn(),
+  getVelocityMeasureUnit: jest.fn(),
+  setVelocityMeasureUnit: jest.fn(),
   getSortBy: jest.fn(),
   setSortBy: jest.fn(),
   getFilterBy: jest.fn(),

@@ -95,6 +95,7 @@ html {
   --main-box-shadow: 0 0 0.5rem #0c0c0c;
   --bright-box-shadow: 0 0 0.5rem #ff8800;
   --bottom-box-shadow: 0 0.3rem 0.5rem #0c0c0c;
+  --main-text-shadow: #101416 0 0 0.5rem;
 
   --button-main-color: #ff8800;
   --button-gradient-main-color: #ffd900;
@@ -147,6 +148,7 @@ h1 {
   margin: 0;
   color: var(--main-title-color);
   font-family: 'Nanum';
+  text-shadow: var(--main-text-shadow);
 
   @media (min-width: $min-width-second-break) {
     font-size: 3rem;
@@ -161,6 +163,7 @@ h3,
 h2 {
   margin: 0;
   font-family: 'Nanum';
+  text-shadow: var(--main-text-shadow);
 }
 
 h2 {

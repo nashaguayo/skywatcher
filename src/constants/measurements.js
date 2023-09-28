@@ -11,3 +11,9 @@ export const diameterMeasureUnitMap = new Map([
   ['meters', 'm'],
   ['feet', 'ft'],
 ]);
+
+export const velocityMeasureUnitMap = new Map([
+  ['kilometers_per_hour', 'kilometers per hour'],
+  ['kilometers_per_second', 'kilometers per second'],
+  ['miles_per_hour', 'miles per hour'],
+]);

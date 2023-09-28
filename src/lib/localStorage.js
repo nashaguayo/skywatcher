@@ -1,5 +1,6 @@
 const MISS_DISTANCE_MEASURE_UNIT = 'missDistanceMeasureUnit';
 const DIAMETER_MEASURE_UNIT = 'diameterMeasureUnit';
+const VELOCITY_MEASURE_UNIT = 'velocityMeasureUnit';
 const SORT_BY = 'sortBy';
 const FILTER_BY = 'filterBy';
 
@@ -17,6 +18,14 @@ export function getDiameterMeasureUnit() {
 
 export function setDiameterMeasureUnit(diameterMeasureUnit) {
   localStorage.setItem(DIAMETER_MEASURE_UNIT, diameterMeasureUnit);
+}
+
+export function getVelocityMeasureUnit() {
+  return localStorage.getItem(VELOCITY_MEASURE_UNIT);
+}
+
+export function setVelocityMeasureUnit(velocityMeasureUnit) {
+  localStorage.setItem(VELOCITY_MEASURE_UNIT, velocityMeasureUnit);
 }
 
 export function getSortBy() {

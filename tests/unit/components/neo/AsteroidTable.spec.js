@@ -26,6 +26,7 @@ describe('AsteroidTable', () => {
         neos: [{ name: 'XC', id: 1 }],
         missDistanceMeasureUnit: 'astronomical',
         diameterMeasureUnit: 'kilometers',
+        velocityMeasureUnit: 'kilometers per hour',
         date: '2023-08-01',
         loaded: true,
       },
@@ -55,6 +56,7 @@ describe('AsteroidTable', () => {
         date: '2023-08-01',
         missDistanceMeasureUnit: 'astronomical',
         diameterMeasureUnit: 'kilometers',
+        velocityMeasureUnit: 'kilometers per hour',
         loaded: false,
       },
     });
@@ -83,6 +85,7 @@ describe('AsteroidTable', () => {
         neos: [],
         missDistanceMeasureUnit: 'astronomical',
         diameterMeasureUnit: 'kilometers',
+        velocityMeasureUnit: 'kilometers per hour',
         date: '2023-08-01',
         loaded: true,
       },
