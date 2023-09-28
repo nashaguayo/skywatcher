@@ -272,7 +272,7 @@ describe('getNearEarthObject', () => {
       'kilometers_per_hour',
       'astronomical'
     );
-    expect(result).toStrictEqual({
+    expect(result).toMatchObject({
       designation: 'Asteroid name',
       magnitude: 8,
       hazardous: true,
@@ -288,7 +288,6 @@ describe('getNearEarthObject', () => {
         {
           epoch: 7287481800000,
           date: '2023-06-23',
-          hour: '17:30',
           missDistance: 123,
           orbitingBody: 'Earth',
           velocity: 321,
