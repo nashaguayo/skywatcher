@@ -2,6 +2,7 @@
   <div class="orbital-data">
     <OrbitalDataSkeleton v-if="!loaded" />
     <div v-show="loaded" class="orbital-data-container">
+      <h2 class="orbital-data-title">Orbital Data</h2>
       <div class="content-outside">
         <div class="content-inside">
           <transition name="slide-open">
@@ -81,6 +82,66 @@
         <span class="key">Semi Major Axis</span>
         <span class="value">{{ orbitalData.semiMajorAxis }}</span>
       </div>
+      <div class="content-outside">
+        <div class="content-inside">
+          <transition name="slide-open">
+            <p class="item value" v-if="orbitalData && orbitalData.mean">
+              {{ orbitalData.mean.anomaly }}
+            </p>
+          </transition>
+          <transition name="slide-open">
+            <p class="item key" v-if="orbitalData && orbitalData.mean">
+              Mean Anomaly
+            </p>
+          </transition>
+          <transition name="slide-open">
+            <p class="item value" v-if="orbitalData && orbitalData.mean">
+              {{ orbitalData.mean.motion }}
+            </p>
+          </transition>
+          <transition name="slide-open">
+            <p class="item key" v-if="orbitalData && orbitalData.mean">
+              Mean Motion
+            </p>
+          </transition>
+        </div>
+        <p
+          class="variant-item value wrap-text"
+          v-if="orbitalData && orbitalData.perihelion"
+        >
+          {{ orbitalData.perihelion.argument }}
+        </p>
+        <p
+          class="variant-item key"
+          v-if="orbitalData && orbitalData.perihelion"
+        >
+          Perihelion Argument
+        </p>
+        <p
+          class="variant-item value wrap-text"
+          v-if="orbitalData && orbitalData.perihelion"
+        >
+          {{ orbitalData.perihelion.distance }}
+        </p>
+        <p
+          class="variant-item key"
+          v-if="orbitalData && orbitalData.perihelion"
+        >
+          Perihelion Distance
+        </p>
+        <p
+          class="variant-item value wrap-text"
+          v-if="orbitalData && orbitalData.perihelion"
+        >
+          {{ orbitalData.perihelion.time }}
+        </p>
+        <p
+          class="variant-item key"
+          v-if="orbitalData && orbitalData.perihelion"
+        >
+          Perihelion Time
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -113,6 +174,10 @@ export default {
     flex-direction: column;
     align-items: center;
 
+    .orbital-data-title {
+      font-size: 2rem;
+    }
+
     .content-outside {
       display: flex;
       flex-direction: column;
@@ -140,6 +205,7 @@ export default {
         margin-bottom: 1rem;
         justify-content: center;
         height: 20rem;
+        width: 100%;
       }
 
       .item {
@@ -177,7 +243,7 @@ export default {
     }
 
     .other-data {
-      margin-top: 1rem;
+      margin: 1rem 0;
       background-color: var(--opaque-background-color);
       padding: 1rem;
       display: grid;

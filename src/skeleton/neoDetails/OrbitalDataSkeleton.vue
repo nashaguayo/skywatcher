@@ -33,6 +33,17 @@
       <span class="key">Semi Major Axis</span>
       <span class="value">-</span>
     </div>
+    <div class="content-outside">
+      <div class="content-inside">
+        <BaseSpinner />
+      </div>
+      <p class="item value">-</p>
+      <p class="item key">Perihelion Argument</p>
+      <p class="item value">-</p>
+      <p class="item key">Perihelion Distance</p>
+      <p class="item value">-</p>
+      <p class="item key">Perihelion Time</p>
+    </div>
   </div>
 </template>
 
@@ -102,7 +113,7 @@ export default {
   }
 
   .other-data {
-    margin-top: 1rem;
+    margin: 1rem 0;
     background-color: var(--opaque-background-color);
     padding: 1rem;
     display: grid;

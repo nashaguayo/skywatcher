@@ -29,6 +29,15 @@ describe('OrbitalData', () => {
           minimumOrbitIntersection: 'minimumOrbitIntersection',
           observationsUsed: 'observationsUsed',
           semiMajorAxis: 'semiMajorAxis',
+          mean: {
+            anomaly: 'meanAnomaly',
+            motion: 'meanMotion',
+          },
+          perihelion: {
+            argument: 'perihelionArgument',
+            distance: 'perihelionDistance',
+            time: 'perihelionTime',
+          },
         },
       },
       stubs: ['OrbitalDataSkeleton'],
@@ -47,11 +56,15 @@ describe('OrbitalData', () => {
     expect(wrapper.classes()).toContain('orbital-data');
   });
 
-  it('renders class information', () => {
-    expect(wrapper.find('.content-inside').exists()).toBeTruthy();
+  it('renders title', () => {
+    const title = wrapper.find('.orbital-data-title');
+    expect(title.exists()).toBeTruthy();
+    expect(title.text()).toBe('Orbital Data');
+  });
 
+  it('renders information', () => {
     const classDataKeys = wrapper.findAll('.key');
-    expect(classDataKeys.length).toBe(15);
+    expect(classDataKeys.length).toBe(20);
     expect(classDataKeys.at(0).text()).toBe('Class orbitClassType');
     expect(classDataKeys.at(1).text()).toBe('Range');
     expect(classDataKeys.at(2).text()).toBe('Orbit Determination Date');
@@ -67,9 +80,14 @@ describe('OrbitalData', () => {
     expect(classDataKeys.at(12).text()).toBe('Min. Intersection');
     expect(classDataKeys.at(13).text()).toBe('Observations Used');
     expect(classDataKeys.at(14).text()).toBe('Semi Major Axis');
+    expect(classDataKeys.at(15).text()).toBe('Mean Anomaly');
+    expect(classDataKeys.at(16).text()).toBe('Mean Motion');
+    expect(classDataKeys.at(17).text()).toBe('Perihelion Argument');
+    expect(classDataKeys.at(18).text()).toBe('Perihelion Distance');
+    expect(classDataKeys.at(19).text()).toBe('Perihelion Time');
 
     const classDataValues = wrapper.findAll('.value');
-    expect(classDataValues.length).toBe(15);
+    expect(classDataValues.length).toBe(20);
     expect(classDataValues.at(0).text()).toBe('orbitClassDescription');
     expect(classDataValues.at(1).text()).toBe('orbitClassRange');
     expect(classDataValues.at(2).text()).toBe('orbitDeterminationDate');
@@ -85,5 +103,10 @@ describe('OrbitalData', () => {
     expect(classDataValues.at(12).text()).toBe('minimumOrbitIntersection');
     expect(classDataValues.at(13).text()).toBe('observationsUsed');
     expect(classDataValues.at(14).text()).toBe('semiMajorAxis');
+    expect(classDataValues.at(15).text()).toBe('meanAnomaly');
+    expect(classDataValues.at(16).text()).toBe('meanMotion');
+    expect(classDataValues.at(17).text()).toBe('perihelionArgument');
+    expect(classDataValues.at(18).text()).toBe('perihelionDistance');
+    expect(classDataValues.at(19).text()).toBe('perihelionTime');
   });
 });
