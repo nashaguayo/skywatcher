@@ -41,7 +41,22 @@
           {{ orbitalData.orbit.determinationDate }}
         </p>
         <p class="variant-item key" v-if="orbitalData && orbitalData.orbit">
-          Class Determination Date
+          Orbit Determination Date
+        </p>
+        <p class="variant-item value" v-if="orbitalData && orbitalData.orbit">
+          {{ orbitalData.orbit.uncertainty }}
+        </p>
+        <p class="variant-item key" v-if="orbitalData && orbitalData.orbit">
+          Orbit Uncertainty
+        </p>
+        <p
+          class="variant-item value wrap-text"
+          v-if="orbitalData && orbitalData.orbit"
+        >
+          {{ orbitalData.orbit.period }}
+        </p>
+        <p class="variant-item key" v-if="orbitalData && orbitalData.orbit">
+          Orbit Period
         </p>
       </div>
     </div>
@@ -125,9 +140,16 @@ export default {
           line-height: 1.7rem;
         }
 
+        &.wrap-text {
+          max-width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+
         &.key {
           font-size: 1.2rem;
-          margin: 0 0 1.5rem;
+          margin: 0 0 0.5rem;
         }
       }
     }

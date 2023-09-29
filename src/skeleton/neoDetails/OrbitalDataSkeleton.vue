@@ -5,7 +5,11 @@
         <BaseSpinner />
       </div>
       <p class="item value">YYYY-MM-DD hh:mm:ss</p>
-      <p class="item key">Class Determination Date</p>
+      <p class="item key">Orbit Determination Date</p>
+      <p class="item value">-</p>
+      <p class="item key">Orbit Uncertainty</p>
+      <p class="item value">-</p>
+      <p class="item key">Orbit Period</p>
     </div>
   </div>
 </template>
@@ -70,7 +74,7 @@ export default {
 
       &.key {
         font-size: 1.2rem;
-        margin: 0 0 1.5rem;
+        margin: 0 0 0.5rem;
       }
     }
   }
