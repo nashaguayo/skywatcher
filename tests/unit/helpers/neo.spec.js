@@ -265,6 +265,34 @@ describe('getNearEarthObject', () => {
           orbiting_body: 'Earth',
         },
       ],
+      orbital_data: {
+        orbit_class: {
+          orbit_class_description: 'orbitClassDescription',
+          orbit_class_range: 'orbitClassRange',
+          orbit_class_type: 'orbitClassType',
+        },
+        orbit_determination_date: 'orbitDeterminationDate',
+        orbit_uncertainty: 'orbitUncertainty',
+        orbital_period: 'orbitPeriod',
+        aphelion_distance: 'aphelionDistance',
+        ascending_node_longitude: 'ascendingNodeLongitude',
+        data_arc_in_days: 'dataArc',
+        eccentricity: 'eccentricity',
+        epoch_osculation: 'epochOsculation',
+        equinox: 'equinox',
+        inclination: 'inclination',
+        jupiter_tisserand_invariant: 'jupiterTisserandInvariant',
+        first_observation_date: 'firstObservationDate',
+        last_observation_date: 'lastObservationDate',
+        mean_anomaly: 'meanAnomaly',
+        mean_motion: 'meanMotion',
+        minimum_orbit_intersection: 'minimumOrbitIntersection',
+        observations_used: 'observationsUsed',
+        perihelion_argument: 'perihelionArgument',
+        perihelion_distance: 'perihelionDistance',
+        perihelion_time: 'perihelionTime',
+        semi_major_axis: 'semiMajorAxis',
+      },
     };
     spyGetNearEarthObject.mockResolvedValue(neo);
     const result = await getNearEarthObject(
@@ -293,6 +321,40 @@ describe('getNearEarthObject', () => {
           velocity: 321,
         },
       ],
+      orbitalData: {
+        orbit: {
+          class: {
+            description: 'orbitClassDescription',
+            range: 'orbitClassRange',
+            type: 'orbitClassType',
+          },
+          determinationDate: 'orbitDeterminationDate',
+          uncertainty: 'orbitUncertainty',
+          period: 'orbitPeriod',
+        },
+        aphelionDistance: 'aphelionDistance',
+        ascendingNodeLongitude: 'ascendingNodeLongitude',
+        dataArc: 'dataArc',
+        eccentricity: 'eccentricity',
+        epochOsculation: 'epochOsculation',
+        equinox: 'equinox',
+        inclination: 'inclination',
+        jupiterTisserandInvariant: 'jupiterTisserandInvariant',
+        firstObservationDate: 'firstObservationDate',
+        lastObservationDate: 'lastObservationDate',
+        mean: {
+          anomaly: 'meanAnomaly',
+          motion: 'meanMotion',
+        },
+        minimumOrbitIntersection: 'minimumOrbitIntersection',
+        observationsUsed: 'observationsUsed',
+        perihelion: {
+          argument: 'perihelionArgument',
+          distance: 'perihelionDistance',
+          time: 'perihelionTime',
+        },
+        semiMajorAxis: 'semiMajorAxis',
+      },
     });
   });
 });

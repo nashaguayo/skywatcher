@@ -28,6 +28,13 @@
     </ErrorBoundary>
     <BaseDivider />
     <ErrorBoundary
+      componentName="OrbitalData"
+      errorMessage="Unable to load orbital data"
+    >
+      <OrbitalData :loaded="loaded" :orbitalData="orbitalData" />
+    </ErrorBoundary>
+    <BaseDivider />
+    <ErrorBoundary
       componentName="CloseApproach"
       errorMessage="Unable to load close approach data"
     >
@@ -47,6 +54,7 @@ import BaseDivider from '@/components/ui/BaseDivider.vue';
 import ErrorBoundary from '@/components/common/ErrorBoundary.vue';
 import BasicInfoHeader from '@/components/neoDetails/BasicInfoHeader.vue';
 import WhatIfImpact from '@/components/neoDetails/WhatIfImpact.vue';
+import OrbitalData from '@/components/neoDetails/OrbitalData.vue';
 import CloseApproach from '@/components/neoDetails/CloseApproach.vue';
 
 export default {
@@ -56,6 +64,7 @@ export default {
     ErrorBoundary,
     BasicInfoHeader,
     WhatIfImpact,
+    OrbitalData,
     CloseApproach,
   },
   data() {
@@ -70,6 +79,7 @@ export default {
       sentry: false,
       hazardous: false,
       closeApproaches: [],
+      orbitalData: {},
       loaded: false,
     };
   },
@@ -90,6 +100,7 @@ export default {
     this.description = neo.damage.description;
     this.category = neo.damage.category;
     this.closeApproaches = neo.closeApproaches;
+    this.orbitalData = neo.orbitalData;
 
     this.loaded = true;
   },

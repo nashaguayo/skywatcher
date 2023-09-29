@@ -25,6 +25,7 @@ export default {
   flex-direction: column;
   align-items: center;
   height: 19rem;
+  background-color: var(--opaque-background-color);
 
   h2,
   span {

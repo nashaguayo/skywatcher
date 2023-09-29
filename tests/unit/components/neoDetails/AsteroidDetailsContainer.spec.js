@@ -14,6 +14,10 @@ jest.mock('@/components/neoDetails/WhatIfImpact.vue', () => ({
   name: 'WhatIfImpact',
 }));
 
+jest.mock('@/components/neoDetails/OrbitalData.vue', () => ({
+  name: 'OrbitalData',
+}));
+
 jest.mock('@/helpers/neo', () => ({
   getNearEarthObject: jest.fn(),
 }));
@@ -43,7 +47,12 @@ describe('AsteroidDetailsContainer', () => {
           },
         },
       },
-      stubs: ['BasicInfoHeader', 'CloseApproach', 'WhatIfImpact'],
+      stubs: [
+        'BasicInfoHeader',
+        'CloseApproach',
+        'WhatIfImpact',
+        'OrbitalData',
+      ],
     });
   });
 
@@ -66,5 +75,6 @@ describe('AsteroidDetailsContainer', () => {
     expect(wrapper.find('basicinfoheader-stub').exists()).toBeTruthy();
     expect(wrapper.find('closeapproach-stub').exists()).toBeTruthy();
     expect(wrapper.find('whatifimpact-stub').exists()).toBeTruthy();
+    expect(wrapper.find('orbitaldata-stub').exists()).toBeTruthy();
   });
 });

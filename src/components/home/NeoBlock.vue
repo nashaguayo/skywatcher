@@ -56,6 +56,7 @@ export default {
     display: flex;
     flex-direction: column;
     height: 19rem;
+    background-color: var(--opaque-background-color);
 
     h2,
     span {

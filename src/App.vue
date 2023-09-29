@@ -78,9 +78,11 @@ html {
   --secondary-background-color: #ff8800;
   --secondary-gradient-background-color: #ffd900;
 
-  --variant-background-color: #101416;
+  --variant-background-color: rgb(16, 20, 22);
   --variant-gradient-background-color: #29261d;
   --variant-opacity-background-color: rgba(0, 0, 0, 0.3);
+
+  --opaque-background-color: rgba(16, 20, 22, 0.5);
 
   --main-title-color: rgb(207, 207, 207);
   --variant-title-color: #ff8800;
