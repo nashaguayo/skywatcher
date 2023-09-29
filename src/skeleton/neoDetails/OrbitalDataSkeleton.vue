@@ -4,6 +4,8 @@
       <div class="content-inside">
         <BaseSpinner />
       </div>
+      <p class="item value">YYYY-MM-DD hh:mm:ss</p>
+      <p class="item key">Class Determination Date</p>
     </div>
   </div>
 </template>
@@ -26,6 +28,9 @@ export default {
   align-items: center;
 
   .content-outside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 1rem 2rem;
     padding: 1.5rem;
     width: calc(100% - 4rem);
@@ -37,6 +42,7 @@ export default {
     box-shadow: var(--main-box-shadow);
 
     .content-inside {
+      width: 100%;
       display: flex;
       flex-direction: column;
       background: linear-gradient(
@@ -46,9 +52,26 @@ export default {
       );
       box-shadow: var(--main-box-shadow);
       padding: 1rem;
+      margin: 1rem 0;
       justify-content: center;
       align-items: center;
       height: 20rem;
+    }
+
+    .item {
+      text-align: center;
+      margin: 1rem 0 0;
+      color: var(--secondary-text-color);
+
+      &.value {
+        font-size: 2rem;
+        line-height: 1.7rem;
+      }
+
+      &.key {
+        font-size: 1.2rem;
+        margin: 0 0 1.5rem;
+      }
     }
   }
 }
