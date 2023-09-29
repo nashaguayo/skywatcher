@@ -40,10 +40,7 @@
         <p class="variant-item value" v-if="orbitalData && orbitalData.orbit">
           {{ orbitalData.orbit.determinationDate }}
         </p>
-        <p
-          class="variant-item key"
-          v-if="orbitalData && orbitalData.orbit && orbitalData.orbit.class"
-        >
+        <p class="variant-item key" v-if="orbitalData && orbitalData.orbit">
           Class Determination Date
         </p>
       </div>
