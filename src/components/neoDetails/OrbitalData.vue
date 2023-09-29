@@ -59,6 +59,28 @@
           Orbit Period
         </p>
       </div>
+      <div class="other-data" v-if="orbitalData">
+        <span class="key">Aphelion Distance</span>
+        <span class="value">{{ orbitalData.aphelionDistance }}</span>
+        <span class="key">Asc. Node Longitude</span>
+        <span class="value">{{ orbitalData.ascendingNodeLongitude }}</span>
+        <span class="key">Data Arc</span>
+        <span class="value">{{ orbitalData.dataArc }} days</span>
+        <span class="key">Eccentricity</span>
+        <span class="value">{{ orbitalData.eccentricity }}</span>
+        <span class="key">Equinox</span>
+        <span class="value">{{ orbitalData.equinox }}</span>
+        <span class="key">Inclination</span>
+        <span class="value">{{ orbitalData.inclination }}</span>
+        <span class="key">Jupiter Tisserant Inv.</span>
+        <span class="value">{{ orbitalData.jupiterTisserandInvariant }}</span>
+        <span class="key">Min. Intersection</span>
+        <span class="value">{{ orbitalData.minimumOrbitIntersection }}</span>
+        <span class="key">Observations Used</span>
+        <span class="value">{{ orbitalData.observationsUsed }}</span>
+        <span class="key">Semi Major Axis</span>
+        <span class="value">{{ orbitalData.semiMajorAxis }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -115,7 +137,7 @@ export default {
         );
         box-shadow: var(--main-box-shadow);
         padding: 1rem;
-        margin: 1rem 0;
+        margin-bottom: 1rem;
         justify-content: center;
         height: 20rem;
       }
@@ -151,6 +173,29 @@ export default {
           font-size: 1.2rem;
           margin: 0 0 0.5rem;
         }
+      }
+    }
+
+    .other-data {
+      margin-top: 1rem;
+      background-color: var(--opaque-background-color);
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      gap: 1rem;
+      box-shadow: var(--main-box-shadow);
+
+      .key {
+        font-weight: 800;
+        justify-self: end;
+      }
+
+      .value {
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
   }
