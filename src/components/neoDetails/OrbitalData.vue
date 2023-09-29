@@ -1,17 +1,41 @@
 <template>
   <div class="orbital-data">
-    <div class="orbital-data-container">
+    <OrbitalDataSkeleton v-if="!loaded" />
+    <div v-show="loaded" class="orbital-data-container">
       <div class="content-outside">
-        <div
-          class="content-inside"
-          v-if="orbitalData && orbitalData.orbit && orbitalData.orbit.class"
-        >
-          <p class="item value">
-            {{ orbitalData.orbit.class.description }}
-          </p>
-          <p class="item key">Class {{ orbitalData.orbit.class.type }}</p>
-          <p class="item value">{{ orbitalData.orbit.class.range }}</p>
-          <p class="item key">Range</p>
+        <div class="content-inside">
+          <transition name="slide-open">
+            <p
+              class="item value"
+              v-if="orbitalData && orbitalData.orbit && orbitalData.orbit.class"
+            >
+              {{ orbitalData.orbit.class.description }}
+            </p>
+          </transition>
+          <transition name="slide-open">
+            <p
+              class="item key"
+              v-if="orbitalData && orbitalData.orbit && orbitalData.orbit.class"
+            >
+              Class {{ orbitalData.orbit.class.type }}
+            </p>
+          </transition>
+          <transition name="slide-open">
+            <p
+              class="item value"
+              v-if="orbitalData && orbitalData.orbit && orbitalData.orbit.class"
+            >
+              {{ orbitalData.orbit.class.range }}
+            </p>
+          </transition>
+          <transition name="slide-open">
+            <p
+              class="item key"
+              v-if="orbitalData && orbitalData.orbit && orbitalData.orbit.class"
+            >
+              Range
+            </p>
+          </transition>
         </div>
       </div>
     </div>
@@ -19,9 +43,18 @@
 </template>
 
 <script>
+import OrbitalDataSkeleton from '@/skeleton/neoDetails/OrbitalDataSkeleton.vue';
+
 export default {
   name: 'OrbitalData',
+  components: {
+    OrbitalDataSkeleton,
+  },
   props: {
+    loaded: {
+      type: Boolean,
+      required: true,
+    },
     orbitalData: {
       type: Object,
       required: true,
@@ -73,5 +106,13 @@ export default {
       }
     }
   }
+}
+
+.slide-open-enter-active {
+  transition: transform 0.3s;
+}
+
+.slide-open-enter {
+  transform: scaleX(0);
 }
 </style>

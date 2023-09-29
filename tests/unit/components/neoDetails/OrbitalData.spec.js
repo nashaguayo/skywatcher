@@ -7,6 +7,7 @@ describe('OrbitalData', () => {
   beforeEach(() => {
     wrapper = shallowMount(OrbitalData, {
       propsData: {
+        loaded: true,
         orbitalData: {
           orbit: {
             class: {
@@ -17,6 +18,7 @@ describe('OrbitalData', () => {
           },
         },
       },
+      stubs: ['OrbitalDataSkeleton'],
     });
   });
 

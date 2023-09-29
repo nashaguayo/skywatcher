@@ -31,7 +31,7 @@
       componentName="OrbitalData"
       errorMessage="Unable to load orbital data"
     >
-      <OrbitalData :orbitalData="orbitalData" />
+      <OrbitalData :loaded="loaded" :orbitalData="orbitalData" />
     </ErrorBoundary>
     <BaseDivider />
     <ErrorBoundary
