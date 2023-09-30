@@ -29,6 +29,7 @@ export default {
   );
   margin: 1rem;
   padding: 1rem;
+  border-radius: 0.5rem;
 
   h2 {
     text-align: center;
