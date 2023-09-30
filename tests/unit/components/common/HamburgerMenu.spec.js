@@ -9,12 +9,16 @@ jest.mock('@/components/ui/BaseDivider.vue', () => ({
   name: 'BaseDivider',
 }));
 
+jest.mock('@/components/ui/BaseIcon.vue', () => ({
+  name: 'BaseIcon',
+}));
+
 describe('HamburgerMenu', () => {
   let wrapper;
 
   beforeEach(() => {
     wrapper = shallowMount(HamburgerMenu, {
-      stubs: ['FontAwesomeIcon', 'BaseButton', 'BaseDivider'],
+      stubs: ['BaseIcon', 'BaseButton', 'BaseDivider'],
     });
   });
 
@@ -36,7 +40,7 @@ describe('HamburgerMenu', () => {
   it('renders everything correctly', () => {
     const container = wrapper.find('.hamburger-menu-container');
     expect(container.exists()).toBeFalsy();
-    expect(wrapper.find('fontawesomeicon-stub').exists()).toBeTruthy();
+    expect(wrapper.find('baseicon-stub').exists()).toBeTruthy();
   });
 
   it('opens menu when clicking icon', () => {
