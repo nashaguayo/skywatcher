@@ -82,6 +82,7 @@ export default {
       var(--secondary-gradient-background-color)
     );
     box-shadow: var(--main-box-shadow);
+    border-radius: 1rem;
 
     .content-inside {
       width: 100%;
@@ -98,6 +99,7 @@ export default {
       justify-content: center;
       align-items: center;
       height: 20rem;
+      border-radius: 1rem;
     }
 
     .item {
