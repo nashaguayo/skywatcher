@@ -50,6 +50,7 @@ export default {
       var(--variant-gradient-background-color)
     );
     box-shadow: var(--main-box-shadow);
+    border-radius: 1rem;
 
     .measure-units-title,
     .measure-unit {
