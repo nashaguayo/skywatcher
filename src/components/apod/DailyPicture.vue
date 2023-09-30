@@ -190,7 +190,7 @@ export default {
         width: 100%;
         object-fit: contain;
         cursor: pointer;
-        -webkit-mask-image: linear-gradient(black 70%, transparent);
+        mask-image: linear-gradient(black 70%, transparent);
       }
 
       .video {
