@@ -1,8 +1,7 @@
 <template>
   <div class="asteroids-container">
-    <FontAwesomeIcon
+    <BaseIcon
       icon="fa-solid fa-ellipsis-vertical"
-      size="2x"
       class="config-menu-open"
       @click="openConfigMenu"
     />
@@ -47,6 +46,7 @@
 <script>
 import AsteroidTable from '@/components/neo/AsteroidTable.vue';
 import ConfigMenu from '@/components/neo/ConfigMenu.vue';
+import BaseIcon from '@/components//ui/BaseIcon.vue';
 import { getNearEarthObjects, sortNeos, filterNeos } from '@/helpers/neo';
 import {
   getMissDistanceMeasureUnit as getMissDistanceMeasureUnitLS,
@@ -67,6 +67,7 @@ export default {
   components: {
     AsteroidTable,
     ConfigMenu,
+    BaseIcon,
   },
   data() {
     return {
@@ -147,7 +148,7 @@ export default {
     position: absolute;
     right: 0;
     color: var(--main-icon-color);
-    margin: 1.5rem;
+    margin: 1rem;
     cursor: pointer;
   }
 
