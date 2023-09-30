@@ -1,9 +1,9 @@
-<template functional>
+<template>
   <div class="close-approach-skeleton">
     <h2>Close Approach Dates</h2>
     <div class="measure-units">
       <h3 class="measure-units-title">Measure Units</h3>
-      <hr class="base-divider" />
+      <BaseDivider :variant="true" />
       <p class="measure-unit">The measure unit for miss distance <br />is...</p>
       <p class="measure-unit">The measure unit for velocity <br />is...</p>
     </div>
@@ -25,8 +25,13 @@
 </template>
 
 <script>
+import BaseDivider from '@/components/ui/BaseDivider.vue';
+
 export default {
   name: 'CloseApproachSkeleton',
+  components: {
+    BaseDivider,
+  },
 };
 </script>
 
