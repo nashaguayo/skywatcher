@@ -147,9 +147,7 @@ export default {
   .config-menu-open {
     position: absolute;
     right: 0;
-    color: var(--main-icon-color);
     margin: 1rem;
-    cursor: pointer;
   }
 
   .asteroids-title {

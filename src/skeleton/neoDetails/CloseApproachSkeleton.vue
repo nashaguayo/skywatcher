@@ -8,7 +8,7 @@
       <p class="measure-unit">The measure unit for velocity <br />is...</p>
     </div>
     <div class="table">
-      <div class="row header" :class="{ 'header-shadow': displayShadow }">
+      <div class="row header">
         <span class="header-item">Date</span>
         <span class="header-item">Hour</span>
         <span class="header-item">Orbiting</span>
