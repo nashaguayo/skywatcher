@@ -60,8 +60,9 @@ export default {
 }
 
 @font-face {
-  font-family: 'Nanum';
-  src: local('Nanum'), url(@/assets/fonts/nanum-myeongjo.ttf) format('truetype');
+  font-family: 'Yanone Kaffeesatz';
+  src: local('Yanone Kaffeesatz'),
+    url(@/assets/fonts/yanone-kaffeesatz.ttf) format('truetype');
 }
 
 @font-face {
@@ -149,7 +150,7 @@ body {
 h1 {
   margin: 0;
   color: var(--main-title-color);
-  font-family: 'Nanum';
+  font-family: 'Yanone Kaffeesatz';
   text-shadow: var(--main-text-shadow);
 
   @media (min-width: $min-width-second-break) {
@@ -164,7 +165,7 @@ h1 {
 h3,
 h2 {
   margin: 0;
-  font-family: 'Nanum';
+  font-family: 'Yanone Kaffeesatz';
   text-shadow: var(--main-text-shadow);
 }
 
