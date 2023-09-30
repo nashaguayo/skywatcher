@@ -22,10 +22,6 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 14.162rem;
-
-  h1 {
-    margin-bottom: 2rem;
-  }
+  height: 16.599rem;
 }
 </style>

@@ -9,8 +9,8 @@
           class="go-back-button"
           @click="goBack"
         />
-        <h1>{{ designation }}</h1>
-        <h3>Magnitude — {{ magnitude }}H</h3>
+        <h1 class="asteroid-designation">{{ designation }}</h1>
+        <h3 class="asteroid-magnitude">Magnitude — {{ magnitude }}H</h3>
         <transition-group class="categories" name="scale-open" tag="div" appear>
           <div
             v-for="n in 6"
@@ -104,8 +104,13 @@ export default {
       pointer-events: all;
     }
 
-    h1 {
+    .asteroid-designation {
       margin-bottom: 2rem;
+      font-size: 4rem;
+    }
+
+    .asteroid-magnitude {
+      font-size: 2rem;
     }
 
     .categories {
