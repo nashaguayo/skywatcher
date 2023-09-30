@@ -41,7 +41,13 @@ describe('AsteroidsContainer', () => {
     spyGetNearEarthObjects.mockResolvedValue([{ name: 'XC', id: 1 }]);
     spySortNeos.mockResolvedValue([{ name: 'XC', id: 1 }]);
     wrapper = shallowMount(AsteroidsContainer, {
-      stubs: ['ConfigMenu', 'FontAwesomeIcon', 'ErrorBoundary', 'LandingHero'],
+      stubs: [
+        'FontAwesomeIcon',
+        'ConfigMenu',
+        'BaseIcon',
+        'ErrorBoundary',
+        'LandingHero',
+      ],
     });
   });
 
@@ -61,7 +67,7 @@ describe('AsteroidsContainer', () => {
   });
 
   it('renders html tags correctly', () => {
-    expect(wrapper.find('fontawesomeicon-stub').exists()).toBeTruthy();
+    expect(wrapper.find('baseicon-stub').exists()).toBeTruthy();
 
     const title = wrapper.find('h1');
     expect(title.exists()).toBeTruthy();
@@ -79,7 +85,7 @@ describe('AsteroidsContainer', () => {
   });
 
   it('opens config menu when button is clicked', async () => {
-    wrapper.find('fontawesomeicon-stub').vm.$emit('click');
+    wrapper.find('baseicon-stub').vm.$emit('click');
     await wrapper.vm.$nextTick();
     expect(wrapper.find('configmenu-stub').exists()).toBeTruthy();
   });
