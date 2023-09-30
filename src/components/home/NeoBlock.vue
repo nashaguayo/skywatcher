@@ -51,12 +51,13 @@ export default {
 <style lang="scss" scoped>
 .neo-block {
   .neo-block-container {
-    margin: 1rem;
+    margin: 2rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     height: 19rem;
     background-color: var(--opaque-background-color);
+    border-radius: 0.5rem;
 
     h2,
     span {

@@ -94,7 +94,7 @@ export default {
       var(--secondary-background-color),
       var(--secondary-gradient-background-color)
     );
-    margin: 1rem;
+    margin: 2rem;
     padding: 1rem;
     height: 24rem;
     box-shadow: var(--main-box-shadow);
