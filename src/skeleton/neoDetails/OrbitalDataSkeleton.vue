@@ -1,5 +1,6 @@
 <template>
   <div class="orbital-data-skeleton">
+    <h2 class="orbital-data-title">Orbital Data</h2>
     <div class="content-outside">
       <div class="content-inside">
         <BaseSpinner />
@@ -63,6 +64,10 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .orbital-data-title {
+    font-size: 2rem;
+  }
 
   .content-outside {
     display: flex;
