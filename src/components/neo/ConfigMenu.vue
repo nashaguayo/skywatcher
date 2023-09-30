@@ -1,9 +1,10 @@
 <template>
   <div class="config-menu">
     <div class="close-button">
-      <FontAwesomeIcon
+      <BaseIcon
         icon="fa-solid fa-xmark"
         class="icon"
+        :variant="true"
         @click="$emit('closeTapped')"
       />
     </div>
@@ -22,6 +23,7 @@
 </template>
 
 <script>
+import BaseIcon from '@/components/ui/BaseIcon.vue';
 import AsteroidMeasureUnits from '@/components/neo/AsteroidMeasureUnits.vue';
 import AsteroidSort from '@/components/neo/AsteroidSort.vue';
 import AsteroidFilters from '@/components/neo/AsteroidFilters.vue';
@@ -29,6 +31,7 @@ import AsteroidFilters from '@/components/neo/AsteroidFilters.vue';
 export default {
   name: 'ConfigMenu',
   components: {
+    BaseIcon,
     AsteroidMeasureUnits,
     AsteroidSort,
     AsteroidFilters,
@@ -88,26 +91,9 @@ export default {
   overflow: scroll;
 
   .close-button {
-    background-color: var(--button-variant-color);
     position: absolute;
     right: 0;
     margin: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 50%;
-    cursor: pointer;
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    justify-content: center;
-    box-shadow: var(--main-box-shadow);
-
-    .icon {
-      color: var(--main-icon-color);
-    }
-  }
-
-  .icon:hover {
-    color: var(--main-icon-hover-color);
   }
 
   h1 {
