@@ -65,38 +65,40 @@ export default {
   );
   box-shadow: var(--main-box-shadow);
   cursor: pointer;
+  border-radius: 0.4rem;
 
   @media (min-width: $min-width-second-break) {
     font-size: 2rem;
   }
-}
 
-.button-animation-active {
-  animation: button-animation 0.3s;
-}
-
-.button-animation-variant-active {
-  animation: button-animation-variant 0.3s;
-}
-
-.small {
-  font-size: 1rem;
-  padding: 0.5rem;
-  text-transform: none;
-
-  @media (min-width: $min-width-second-break) {
-    font-size: 1.5rem;
+  &.button-animation-active {
+    animation: button-animation 0.3s;
   }
-}
 
-.variant {
-  background: linear-gradient(
-    100deg,
-    var(--button-variant-color),
-    var(--button-gradient-variant-color)
-  );
-  box-shadow: var(--main-box-shadow);
-  color: var(--main-text-color);
+  &.button-animation-variant-active {
+    animation: button-animation-variant 0.3s;
+  }
+
+  &.small {
+    font-size: 1rem;
+    padding: 0.5rem;
+    text-transform: none;
+    border-radius: 0.2rem;
+
+    @media (min-width: $min-width-second-break) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &.variant {
+    background: linear-gradient(
+      100deg,
+      var(--button-variant-color),
+      var(--button-gradient-variant-color)
+    );
+    box-shadow: var(--main-box-shadow);
+    color: var(--main-text-color);
+  }
 }
 
 @keyframes button-animation {
