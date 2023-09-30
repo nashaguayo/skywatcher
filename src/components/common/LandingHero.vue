@@ -138,7 +138,7 @@ export default {
       align-items: center;
 
       h1 {
-        -webkit-mask-image: linear-gradient(90deg, transparent, 0.1%, black);
+        mask-image: linear-gradient(90deg, transparent, 0.1%, black);
         font-size: 2.5rem;
         font-family: 'Lobster';
         color: var(--variant-title-color);
