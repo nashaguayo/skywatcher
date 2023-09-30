@@ -3,9 +3,8 @@
     <transition name="fade">
       <BasicInfoHeaderSkeleton v-if="!loaded" />
       <div class="basic-info-header-container" v-else>
-        <FontAwesomeIcon
+        <BaseIcon
           icon="fa-solid fa-chevron-left"
-          size="2x"
           class="go-back-button"
           @click="goBack"
         />
@@ -42,11 +41,13 @@
 
 <script>
 import BasicInfoHeaderSkeleton from '@/skeleton/neoDetails/BasicInfoHeaderSkeleton.vue';
+import BaseIcon from '@/components/ui/BaseIcon.vue';
 
 export default {
   name: 'BasicInfoHeader',
   components: {
     BasicInfoHeaderSkeleton,
+    BaseIcon,
   },
   props: {
     loaded: {
@@ -92,16 +93,8 @@ export default {
 
     .go-back-button {
       position: fixed;
-      color: var(--main-icon-color);
-      background-color: var(--variant-background-color);
-      border-radius: 3rem;
-      padding: 0.7rem;
-      width: 1.5rem;
-      height: 1.5rem;
-      opacity: 0.7;
       left: 1rem;
       top: 1rem;
-      pointer-events: all;
     }
 
     .asteroid-designation {

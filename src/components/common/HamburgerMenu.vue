@@ -66,7 +66,7 @@
       </div>
     </transition>
     <transition name="translate-right">
-      <FontAwesomeIcon
+      <BaseIcon
         v-if="!open"
         class="open-menu-icon"
         icon="fa-solid fa-bars"
@@ -74,7 +74,7 @@
       />
     </transition>
     <transition name="translate-left">
-      <FontAwesomeIcon
+      <BaseIcon
         v-if="open"
         class="close-menu-icon"
         icon="fa-solid fa-chevron-left"
@@ -87,12 +87,14 @@
 <script>
 import BaseButton from '@/components/ui/BaseButton.vue';
 import BaseDivider from '@/components/ui/BaseDivider.vue';
+import BaseIcon from '@/components/ui/BaseIcon.vue';
 
 export default {
   name: 'HamburgerMenu',
   components: {
     BaseButton,
     BaseDivider,
+    BaseIcon,
   },
   data() {
     return {
@@ -177,29 +179,13 @@ export default {
 
   .open-menu-icon {
     position: absolute;
-    color: var(--main-icon-color);
-    background-color: var(--variant-background-color);
-    border-radius: 3rem;
-    padding: 0.7rem;
     margin: 1rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    opacity: 0.7;
-    pointer-events: all;
   }
 
   .close-menu-icon {
     position: absolute;
-    color: var(--main-icon-color);
-    background-color: var(--variant-background-color);
-    border-radius: 3rem;
-    padding: 0.7rem;
     margin: 1rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    opacity: 0.7;
     right: 0;
-    pointer-events: all;
   }
 }
 

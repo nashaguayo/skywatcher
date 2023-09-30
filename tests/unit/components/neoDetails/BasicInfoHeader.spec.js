@@ -14,7 +14,7 @@ describe('BasicInfoHeader', () => {
         sentry: false,
         loaded: true,
       },
-      stubs: ['FontAwesomeIcon'],
+      stubs: ['BaseIcon'],
     });
   });
 
@@ -31,7 +31,7 @@ describe('BasicInfoHeader', () => {
   });
 
   it('renders mocked components', () => {
-    expect(wrapper.find('fontawesomeicon-stub').exists()).toBeTruthy();
+    expect(wrapper.find('baseicon-stub').exists()).toBeTruthy();
   });
 
   it('renders designation', () => {
