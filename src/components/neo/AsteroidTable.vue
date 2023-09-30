@@ -130,7 +130,7 @@ export default {
 
   .asteroid-table-container {
     overflow-y: scroll;
-    max-height: calc(100vh - 19.25rem);
+    max-height: calc(100vh - 21.6rem);
   }
 }
 </style>

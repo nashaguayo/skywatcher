@@ -1,6 +1,6 @@
 <template>
   <div class="asteroid-table-item">
-    <div class="name" @click="open = !open">
+    <div class="name" :class="{ 'name-open': !open }" @click="open = !open">
       <span>{{ name }}</span>
       <div class="icons">
         <FontAwesomeIcon
@@ -153,12 +153,20 @@ export default {
   display: grid;
   margin: 0.5rem;
   background-color: var(--variant-opacity-background-color);
+  border-radius: 0.5rem;
 
   .name {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--variant-opacity-background-color);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+
+    &.name-open {
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
 
     .icon {
       padding: 0.5rem;
@@ -173,6 +181,8 @@ export default {
 
   .content {
     overflow: hidden;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 
     .content-item {
       display: flex;

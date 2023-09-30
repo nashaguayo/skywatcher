@@ -50,6 +50,7 @@ export default {
     padding: 2rem;
     align-items: center;
     box-shadow: var(--main-box-shadow);
+    border-radius: 1rem;
 
     h3 {
       margin-bottom: 5rem;

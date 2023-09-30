@@ -1,5 +1,6 @@
 <template>
   <div class="orbital-data-skeleton">
+    <h2 class="orbital-data-title">Orbital Data</h2>
     <div class="content-outside">
       <div class="content-inside">
         <BaseSpinner />
@@ -64,6 +65,10 @@ export default {
   flex-direction: column;
   align-items: center;
 
+  .orbital-data-title {
+    font-size: 2rem;
+  }
+
   .content-outside {
     display: flex;
     flex-direction: column;
@@ -77,6 +82,7 @@ export default {
       var(--secondary-gradient-background-color)
     );
     box-shadow: var(--main-box-shadow);
+    border-radius: 1rem;
 
     .content-inside {
       width: 100%;
@@ -93,6 +99,7 @@ export default {
       justify-content: center;
       align-items: center;
       height: 20rem;
+      border-radius: 1rem;
     }
 
     .item {

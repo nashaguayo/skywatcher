@@ -158,8 +158,13 @@ export default {
         text-align: center;
       }
 
+      h1 {
+        font-size: 4rem;
+      }
+
       h3 {
         margin-top: 1rem;
+        font-size: 2rem;
       }
     }
 
@@ -217,6 +222,14 @@ export default {
       h1,
       h2 {
         padding: 0 2rem;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      h2 {
+        font-size: 2rem;
       }
 
       .date {

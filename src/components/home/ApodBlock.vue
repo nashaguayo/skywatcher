@@ -94,10 +94,11 @@ export default {
       var(--secondary-background-color),
       var(--secondary-gradient-background-color)
     );
-    margin: 1rem;
+    margin: 2rem;
     padding: 1rem;
     height: 24rem;
     box-shadow: var(--main-box-shadow);
+    border-radius: 0.5rem;
 
     .title {
       text-align: center;
@@ -122,6 +123,7 @@ export default {
         background-size: cover;
         background-position: center;
         box-shadow: var(--main-box-shadow);
+        border-radius: 0.4rem;
       }
 
       .video {

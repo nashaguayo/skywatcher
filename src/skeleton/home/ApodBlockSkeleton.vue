@@ -27,8 +27,9 @@ export default {
     var(--variant-background-color),
     var(--variant-gradient-background-color)
   );
-  margin: 1rem;
+  margin: 2rem;
   padding: 1rem;
+  border-radius: 0.5rem;
 
   h2 {
     text-align: center;

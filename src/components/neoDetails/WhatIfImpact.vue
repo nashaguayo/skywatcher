@@ -122,6 +122,7 @@ export default {
       flex-direction: column;
       justify-content: center;
       height: 25rem;
+      border-radius: 1rem;
 
       .what-if-title {
         margin: 1rem 0;
@@ -142,6 +143,7 @@ export default {
         width: 100%;
         margin: 1rem 0;
         padding: 0.5rem;
+        border-radius: 1rem;
 
         .stat {
           display: flex;

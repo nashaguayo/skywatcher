@@ -191,6 +191,7 @@ export default {
         var(--secondary-gradient-background-color)
       );
       box-shadow: var(--main-box-shadow);
+      border-radius: 1rem;
 
       .content-inside {
         display: flex;
@@ -206,6 +207,7 @@ export default {
         justify-content: center;
         height: 20rem;
         width: 100%;
+        border-radius: 1rem;
       }
 
       .item {

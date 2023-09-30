@@ -6,8 +6,8 @@
       class="config-menu-open"
       @click="openConfigMenu"
     />
-    <h1>Asteroids</h1>
-    <h3>Near Earth Objects</h3>
+    <h1 class="asteroids-title">Asteroids</h1>
+    <h3 class="asteroids-subtitle">Near Earth Objects</h3>
     <div class="reference" :class="{ active: filterBy === 'sentry' }">
       <FontAwesomeIcon icon="fa-solid fa-satellite" class="icon" />
       <span>Is Sentry Object</span>
@@ -149,6 +149,14 @@ export default {
     color: var(--main-icon-color);
     margin: 1.5rem;
     cursor: pointer;
+  }
+
+  .asteroids-title {
+    font-size: 4rem;
+  }
+
+  .asteroids-subtitle {
+    font-size: 2rem;
   }
 
   .config-menu-open:hover {
